@@ -7,5 +7,272 @@
  * Fall 2023
  *
  */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
+
+body {
+    background-color: white;
+    text-align: center;
+    margin: 0px;
+    font-family: Manrope;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    padding: 0;
+ }
+
+ .navbar {
+    background-color: #92DAD9;
+    height: 60px;
+    width: 100%;
+    color: #4B4B4B;
+    font-family: Manrope;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+ }
+
+ .navbar .collapse .nav .nav-item .nav-link {
+    color: white;
+    font-family: Manrope;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+ }
+
+ .navbar .collapse .nav .nav-item .nav-link:hover, .navbar .collapse .nav .nav-item .active {
+    color: #119899;
+ }
+
+ .yellowButton {
+    background-color: #FFC011;
+    border: 1px solid white; 
+    border-radius: 10px;
+    color: white;
+    font-size: 20px;
+    padding: 0.2rem 1rem;
+    transition: 0.3s;
+ }
+
+ .yellowButton:hover {
+    background-color: #FFA903;
+ }
+ 
+ header {
+    background-color: #92DAD9;
+    height: 60px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    margin: 0;
+    position: relative;
+    overflow: hidden;
+    vertical-align: center;
+ }
+
+ .topnav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    color: #4B4B4B;
+    font-family: Manrope;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    padding-left: 8px;
+    padding-bottom: 0.2rem;
+    margin-left: 8px;
+    position: absolute;
+    vertical-align: center;
+  }
+ 
+  .topnav a {
+    color: #4B4B4B;
+    text-decoration: none;
+    padding-right: 2rem;
+  }
+ 
+  .topnav a.active {
+    color: #4B4B4B;
+    text-decoration: none;
+    padding-right: 2rem;
+    font-weight: 700;
+  }
+ 
+  .topnav a:hover {
+    color: #4B4B4B;
+    text-decoration: none;
+    padding-right: 2rem;
+  }
+ 
+  .nav {
+    padding-right: 2rem;
+  }
+
+  .main {
+    display: flex;
+    padding: 128px 2px 128px 2px;
+    padding-bottom: 0;
+    margin-bottom: 128px;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+ }
+
+ .page-container {
+   position: relative;
+   display: flex;
+   flex-direction: column;
+   justify-content: start;
+   align-items: center;
+   min-height: 100vh;
+   text-align: center;
+   width: 100%;
+   height: 100%;
+   margin: 0px;
+ }
+
+ #petpal {
+    font-family: Mochiy Pop One;
+    font-size: 20px;
+    color: white;
+ }
+
+ footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 351px;
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center; */
+    /* align-items: center; */
+    margin: 0px;
+    text-align: center;
+    color: white;
+    text-align: center;
+    vertical-align: center;
+    background-color: #A0D8D4;
+    overflow: hidden;
+  }
+
+  /* #footer {
+    padding: 24px;
+  } */
+
+  .footerContact {
+    background-color: #A0D8D4;
+    font-size: 16px;
+    font-family: Manrope;
+    font-weight: 400;
+    width: 100%;
+    height: 295px;
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    align-items: center;
+    padding-right: 24px;
+    /* gap: 20px; */
+  }
+
+  .copyright {
+    background-color: #48B7AB;
+    font-size: 16px;
+    font-family: Manrope;
+    font-weight: 400;
+    width: 100%;
+    height: 56px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  #connect {
+    font-size: 32px;
+    font-family: Manrope;
+    font-weight: 500;
+    text-align: left;
+    padding-top: 20px;
+  }
+
+  #connectPetPal {
+    font-family: Mochiy Pop One;
+    font-size: 30px;
+    /* color: white; */
+    text-align: left;
+  }
+
+  #contactInfo {
+    font-size: 23px;
+    font-family: Manrope;
+    font-weight: 400;
+    /* color: white; */
+    text-decoration: none;
+    text-align: left;
+    /* border-left: 1px solid white; */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 20px;
+  }
+
+  #verticalLineBox {
+    position: relative;
+  }
+
+  #verticalLine {
+    border-left: 1px solid white;
+    position: absolute;
+    top: 27%;
+    bottom: 22%;
+    text-align: center;
+    margin-left: 50%;
+  }
+
+  #link {
+    text-decoration: none;
+    color: white;
+  }
+  #link:hover {
+    text-decoration: none;
+    color: white;
+  }
+
+  .vr {
+    color: white;
+    height: 100px;
+    width: 4px;
+  }
+
+  #telephone {
+    margin-bottom: 0.5rem;
+  }
+
+  #insta, #x, #fb {
+    background-color: transparent;
+    border: none;
+    border-width: 0;
+    padding: 0;
+    padding-right: 20px;
+  }
+
+  .socialMedia {
+    width: 20px;
+    height: 20px;
+  }
+
+  .bi {
+    color: white;
+    font-size: 30px;
+  }
+
+  p {
+    margin: 0;
+  }
