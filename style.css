@@ -18,7 +18,7 @@ body {
     width: 100%;
     height: 100%;
     display: flex;
-    padding: 0;
+    /* padding-bottom: 120px; */
  }
 
  .navbar {
@@ -117,7 +117,7 @@ body {
   .main {
     display: flex;
     padding: 128px 2px 128px 2px;
-    padding-bottom: 0;
+    padding-bottom: 351px;
     margin-bottom: 128px;
     flex-direction: column;
     align-items: center;
@@ -149,10 +149,6 @@ body {
     bottom: 0;
     width: 100%;
     height: 351px;
-    /* display: flex;
-    flex-direction: column;
-    justify-content: center; */
-    /* align-items: center; */
     margin: 0px;
     text-align: center;
     color: white;
