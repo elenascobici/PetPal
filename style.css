@@ -78,9 +78,12 @@ body {
 
   .main {
     display: flex;
-    padding: 128px 2px 128px 2px;
+    padding-top: 78px;
     padding-bottom: 351px;
+    padding-left: 100px;
+    padding-right: 100px;
     margin-bottom: 128px;
+    width: 100%;
     flex-direction: column;
     align-items: center;
     text-align: center;
@@ -98,6 +101,11 @@ body {
    width: 100%;
    height: 100%;
    margin: 0px;
+ }
+
+ .px-6 {
+    padding-left: 5rem !important;
+    padding-right: 5rem !important;
  }
 
  #petpal {
