@@ -56,9 +56,19 @@
     padding-bottom: 0.5rem;
     padding-left: 3rem;
     padding-right: 3rem;
-    margin-top: 1rem;
+    
     font-size: 30px;
     font-weight: 600;
+    text-decoration: none;
+    /* position: absolute; */
+ }
+
+ #applyToday {
+    margin-top: 1rem;
+ }
+
+ #apply:hover {
+    color: white;
  }
 
  .circle {
@@ -134,10 +144,130 @@
     font-family: Mochiy Pop One;
     color: #119899;
     font-size: 55px;
+    line-height: 1.3;
  }
 
  .break {
     display: inline;
+ }
+
+ .text {
+    font-family: Manrope;
+    font-size: 32px;
+    font-weight: 400;
+    color: #4B4B4B;
+    margin-top: 85px;
+ }
+
+ .pet {
+    background-color: #D9EDED;
+    border-radius: 20px;
+    border: none;
+    width: 213px;
+    height: 306px;
+    margin-top: 94px;
+    transition: 0.3s;
+    position: relative;
+    margin-top: 37px;
+ }
+
+ .petImage {
+    position: absolute;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border: none;
+    width: 213px;
+    height: 258px;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+ }
+
+ .petLabel {
+    font-family: Manrope;
+    font-weight: 400;
+    font-size: 28px;
+    color: #4B4B4B;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0.3rem;
+    max-height: 48px;
+ }
+
+ #morePets {
+    font-family: Manrope;
+    font-weight: 600;
+    font-size: 28px;
+    color: white;
+    text-decoration: none;
+    padding: 20px;
+    background-color: #FFE599;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s;
+ }
+
+ #morePets:hover {
+    background-color: #FFCF43;
+ }
+ 
+ #morePetsText {
+    font-family: Manrope;
+    font-weight: 600;
+    font-size: 28px;
+    /* padding: 24px; */
+    /* margin-bottom: 20px; */
+    color: white;
+    text-decoration: none;
+    /* position: absolute; */
+    display: flex;
+    transition: 0.3s;
+ }
+
+ #arrow {
+    font-family: Manrope;
+    font-weight: 700;
+    font-size: 35px;
+    color: #FFE599;
+    /* position: absolute; */
+    bottom: 3.5rem;
+    display: none;
+    transition: 0.3s;
+ }
+
+ #morePets:hover #arrow {
+    display: block;
+    color: #FFF1C6;
+    transition: 0.3s;
+ }
+
+ #shelterOrgs {
+    margin-top: 136px;
+    margin-bottom: 40px;
+ }
+
+ #shelters {
+    margin-top: 0;
+    /* height: 80%; */
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    /* gap: 1rem; */
+    /* max-width: 80%; */
+    /* margin-bottom: 120px;
+    height: 120px; */
+ }
+
+ .shelterLogo {
+    /* height: 80%; */
+    object-fit: contain;
+    display: flex;
+    /* flex-wrap: row wrap; */
+    max-height: 200px;
+    padding: 1rem;
  }
 
  @media screen and (max-width: 1000px) {
