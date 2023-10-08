@@ -52,10 +52,12 @@ body {
     font-size: 20px;
     padding: 0.2rem 1rem;
     transition: 0.3s;
+    text-decoration: none;
  }
 
  .yellowButton:hover {
     background-color: #FFA903;
+    color: white;
  }
  
  header {
