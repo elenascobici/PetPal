@@ -1,0 +1,106 @@
+/*
+ * shelter-detail.css
+ *
+ * CSC309 PetPal
+ * 
+ * University of Toronto
+ * Fall 2023
+ * Cassandra Tin Kwon Yuen
+ *
+ */
+ @import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
+
+ .main {
+    padding-bottom: 351px;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-bottom: 128px;
+    width: 100%;
+ }
+
+ #title {
+    font-family: Mochiy Pop One;
+    font-size: 55px;
+    color: #009899;
+ }
+
+ #webpage {
+    text-decoration: none;
+    color: #F4A133;
+    font-family: Manrope;
+    font-size: 32px;
+    font-weight: 400;
+ }
+
+ #contact {
+    background-color: #F9FAFF;
+    margin-top: 100px;
+    text-align: left;
+    padding: 3rem;
+    border-radius: 20px;
+    height: auto;
+ }
+
+ .subtitle {
+    font-family: Manrope;
+    font-size: 30px;
+    font-weight: 700;
+    color: #009899;
+ }
+
+ #shelterLogo {
+    /* max-width: 100%; */
+    width: 100%;
+    /* max-height: 100%; */
+    height: auto;
+    object-fit: contain;
+    display: flex;
+    padding: 1rem;
+ }
+
+ .bi {
+    color: black;
+    padding-bottom: 1rem;
+ }
+
+ .contactRow {
+    width: 100%;
+    /* display: flex;
+    align-items: center; */
+    /* height: 5rem; */
+    /* padding-top: 1rem; */
+    padding-bottom: 1rem;
+ }
+
+ #subtitleRow {
+    height: 1rem;
+ }
+
+ .shelterContactInfoLabel {
+    font-family: Manrope;
+    color: #4B4B4B;
+    font-size: 30px;
+    font-weight: 600;
+    padding-right: 0.5rem;
+ }
+
+ .shelterContactInfo {
+    font-family: Manrope;
+    color: #4B4B4B;
+    font-size: 30px;
+    font-weight: 400;
+ }
+
+ .contactImg {
+    padding-right: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    height: 1rem;
+ }
+
+ .contactInfoRow {
+    height: 3rem;
+    line-height: normal;
+ }
