@@ -10,4 +10,136 @@
  @import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap');
  @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
 
- 
+ .main {
+    padding-top: 0;
+    padding-bottom: 351px;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-bottom: 128px;
+    width: 100%;
+ }
+
+ #mainImg {
+    width: 100%;
+ }
+
+ #mainImgContainer {
+    padding-left: 0;
+    padding-right: 0;
+    position: relative;
+    /* background-image: url(images/main.png);
+    height: 100%; */
+ }
+
+ #overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    text-align: center;
+    padding-left: 5px;
+    padding-right: 5px;
+ }
+
+
+ .overlayPetpal {
+    /* position: absolute;
+    top: 40%;
+    left: 15%; */
+    font-family: Mochiy Pop One;
+    color: #119899;
+    font-size: 55px;
+    
+ }
+
+ #apply {
+    padding-bottom: 0.5rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    margin-top: 1rem;
+    font-size: 30px;
+    font-weight: 600;
+ }
+
+ .circle {
+    background-color: #D9EDED;
+    border-radius: 50%;
+    border: none;
+    width: 208px;
+    height: 208px;
+    margin-top: 94px;
+    transition: 0.3s;
+    position: relative;
+ }
+
+ .circle:hover {
+    background-color: #BADCDB;
+ }
+
+ .vector {
+    position: absolute;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+ }
+
+ #dog {
+    position: absolute;
+    top: 10%;
+    left: 11%;
+    width: 161px;
+    height: 161px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+ }
+
+ #cat {
+    width: 140px;
+    height: 140px;
+    top: 18%;
+    left: 20.5%;
+ }
+
+ #other {
+    width: 128px;
+    height: 128px;
+    top: 18%;
+    left: 19%;
+ }
+
+ #shelter {
+    width: 123px;
+    height: 123px;
+    top: 18%;
+    left: 20.5%;
+ }
+
+ #vectorButtons {
+    padding-bottom: 5rem;
+ }
+
+ .vectorLabel {
+    font-family: Manrope;
+    font-weight: 600;
+    font-size: 36px;
+    color: #78909C;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+ }
+
+ #quote {
+    font-family: Mochiy Pop One;
+    color: #119899;
+    font-size: 55px;
+ }
+
+ .break {
+    display: inline;
+ }
+
+ @media screen and (max-width: 1000px) {
+    .break {display: none;}
+ }
