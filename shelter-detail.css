@@ -40,6 +40,11 @@
     font-family: Manrope;
     font-size: 32px;
     font-weight: 400;
+    transition: 0.3s;
+ }
+
+ #webpage:hover {
+   color: #FEBF11;
  }
 
  #contact {
@@ -175,6 +180,17 @@
 .carousel .carousel-indicators {
    bottom: -4.5rem;
 }
+
+.carousel, .carousel-inner {
+   width: max-content; 
+   max-width: fit-content;
+}
+
+#carouselPage {
+   width: max-content; 
+   max-width: fit-content;
+}
+
 
 #petsCarousel .carouselIndicator {
    width: 10px;
