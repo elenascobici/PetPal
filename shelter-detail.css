@@ -11,6 +11,15 @@
  @import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap');
  @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
 
+ :root {
+   --dark-blue: #119899;
+   --mid-blue: #48B7AB;
+   --light-blue: #92DAD9;
+   --dark-orange: #F3A133;
+   --mid-orange: #FEBF11;
+   --light-orange: #FEF2CB;
+ }
+
  .main {
     padding-bottom: 351px;
     padding-left: 0px;
@@ -40,9 +49,10 @@
     padding: 3rem;
     border-radius: 20px;
     height: auto;
+    gap: 1rem;
  }
 
- .subtitle {
+ .subtitle, .subtitle2 {
     font-family: Manrope;
     font-size: 30px;
     font-weight: 700;
@@ -59,7 +69,7 @@
     padding: 1rem;
  }
 
- .bi {
+ .icon {
     color: black;
     padding-bottom: 1rem;
  }
@@ -71,10 +81,12 @@
     /* height: 5rem; */
     /* padding-top: 1rem; */
     padding-bottom: 1rem;
+    word-wrap: break-word;
  }
 
  #subtitleRow {
-    height: 1rem;
+    height: 3rem;
+    /* padding-bottom: 1rem; */
  }
 
  .shelterContactInfoLabel {
@@ -85,11 +97,12 @@
     padding-right: 0.5rem;
  }
 
- .shelterContactInfo {
+ .textInfo {
     font-family: Manrope;
     color: #4B4B4B;
     font-size: 30px;
     font-weight: 400;
+    word-wrap: break-word;
  }
 
  .contactImg {
@@ -104,3 +117,182 @@
     height: 3rem;
     line-height: normal;
  }
+
+ #rowGap {
+   display: flex;
+ }
+
+ .subtitle2 {
+   display: flex;
+   flex-direction: row;
+   justify-content: start;
+   align-items: start;
+   padding-top: 5rem;
+   padding-left: 3rem;
+   padding-bottom: 1rem;
+ }
+
+ #mission {
+   padding-left: 3rem;
+ }
+
+ .pet {
+   background-color: #D9EDED;
+   border-radius: 20px;
+   border: none;
+   width: 213px;
+   height: 306px;
+   margin-top: 94px;
+   transition: 0.3s;
+   position: relative;
+   margin-top: 37px;
+}
+
+.petImage {
+   position: absolute;
+   border-top-left-radius: 20px;
+   border-top-right-radius: 20px;
+   border: none;
+   width: 213px;
+   height: 258px;
+   top: 0;
+   left: 0;
+   object-fit: cover;
+}
+
+.petLabel {
+   font-family: Manrope;
+   font-weight: 400;
+   font-size: 28px;
+   color: #4B4B4B;
+   position: absolute;
+   left: 0;
+   right: 0;
+   bottom: 0.3rem;
+   max-height: 48px;
+}
+
+.carousel .carousel-indicators {
+   bottom: -4.5rem;
+}
+
+#petsCarousel .carouselIndicator {
+   width: 10px;
+   height: 10px;
+   border-radius: 50%;
+   background-color: var(--dark-orange);
+   margin: 0px 7px;
+}
+
+.carousel-control-next {
+   right: -6rem;
+}
+
+.carousel-control-prev {
+   left: -6rem;
+}
+
+.carousel-control-next-icon, .carousel-control-prev-icon {
+   color: var(--dark-orange);
+   font-family: Manrope;
+   font-size: 65px;
+   font-weight: 700;
+}
+
+.carousel-control-next-icon::after {
+   content: '>';
+}
+
+.carousel-control-prev-icon::after {
+   content: '<';
+}
+
+#reviews {
+   padding-top: 9rem;
+   padding-right: 6rem;
+   /* overflow: auto; */
+}
+
+#reviewTitleRow {
+   height: 3rem;
+}
+
+.star {
+   color: #FFC011;
+   font-family: Manrope;
+   font-size: 25px;
+   padding-right: 0.3rem;
+}
+
+#reviewSubtitle {
+   padding-top: 0;
+   padding-right: 1rem;
+   padding-bottom: 0;
+   margin-bottom: 0;
+}
+
+.reviewRow {
+   display: flex;
+   flex-flow: row wrap;
+   padding-bottom: 0.5rem;
+}
+
+.reviewClick, .reviewerName {
+   color: #4B4B4B;
+   font-family: Manrope;
+   font-size: 23px;
+   font-weight: 700;
+   text-decoration: none;
+   padding-left: 1rem;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   transition: 0.3s;
+}
+
+.reviewerName {
+   font-weight: 600;
+   font-size: 20px;
+   padding-left: 1rem;
+   padding-top: 1rem;
+   display: flex;
+   justify-content: start;
+}
+
+#reviewBox {
+   background-color: #F9FAFF;
+   margin-top: 1.5rem;
+   margin-left: 3rem;
+   margin-right: 3rem;
+   width: 100%;
+}
+
+.stars {
+   display: flex;
+   flex-flow: row wrap;
+   align-items: center;
+   justify-content: end;
+   padding-right: 1rem;
+}
+
+.reviewText {
+   color: #4B4B4B;
+   font-family: Manrope;
+   font-size: 20px;
+   font-weight: 400;
+   text-decoration: none;
+   padding-left: 1rem;
+   padding-bottom: 1.5rem;
+   padding-right: 1rem;
+   margin-bottom: 1rem;
+}
+
+#seeMore {
+   text-align: right;
+   padding-right: 3rem;
+   padding-top: 1rem;
+}
+
+.reviewClick:hover {
+   color: #AFAFAF;
+}
