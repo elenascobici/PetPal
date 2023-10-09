@@ -5,9 +5,272 @@
  * 
  * University of Toronto
  * Fall 2023
+ * Cassandra Tin Kwon Yuen
  *
  */
  @import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap');
  @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
 
+ .main {
+    padding-top: 0;
+    padding-bottom: 351px;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-bottom: 128px;
+    width: 100%;
+ }
+
+ #mainImg {
+    width: 100%;
+ }
+
+ #mainImgContainer {
+    padding-left: 0;
+    padding-right: 0;
+    position: relative;
+    /* background-image: url(images/main.png);
+    height: 100%; */
+ }
+
+ #overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    text-align: center;
+    padding-left: 5px;
+    padding-right: 5px;
+ }
+
+
+ .overlayPetpal {
+    /* position: absolute;
+    top: 40%;
+    left: 15%; */
+    font-family: Mochiy Pop One;
+    color: #119899;
+    font-size: 55px;
+    
+ }
+
+ #apply {
+    padding-bottom: 0.5rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    
+    font-size: 30px;
+    font-weight: 600;
+    text-decoration: none;
+    /* position: absolute; */
+ }
+
+ #applyToday {
+    margin-top: 1rem;
+ }
+
+ #apply:hover {
+    color: white;
+ }
+
+ .circle {
+    background-color: #D9EDED;
+    border-radius: 50%;
+    border: none;
+    width: 208px;
+    height: 208px;
+    margin-top: 94px;
+    transition: 0.3s;
+    position: relative;
+ }
+
+ .circle:hover {
+    background-color: #BADCDB;
+ }
+
+ .vector {
+    position: absolute;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+ }
+
+ #dog {
+    position: absolute;
+    top: 10%;
+    left: 11%;
+    width: 161px;
+    height: 161px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+ }
+
+ #cat {
+    width: 140px;
+    height: 140px;
+    top: 18%;
+    left: 20.5%;
+ }
+
+ #other {
+    width: 128px;
+    height: 128px;
+    top: 18%;
+    left: 19%;
+ }
+
+ #shelter {
+    width: 123px;
+    height: 123px;
+    top: 18%;
+    left: 20.5%;
+ }
+
+ #vectorButtons {
+    padding-bottom: 5rem;
+ }
+
+ .vectorLabel {
+    font-family: Manrope;
+    font-weight: 600;
+    font-size: 36px;
+    color: #78909C;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+ }
+
+ #quote {
+    font-family: Mochiy Pop One;
+    color: #119899;
+    font-size: 55px;
+    line-height: 1.3;
+ }
+
+ .break {
+    display: inline;
+ }
+
+ .text {
+    font-family: Manrope;
+    font-size: 32px;
+    font-weight: 400;
+    color: #4B4B4B;
+    margin-top: 85px;
+ }
+
+ .pet {
+    background-color: #D9EDED;
+    border-radius: 20px;
+    border: none;
+    width: 213px;
+    height: 306px;
+    margin-top: 94px;
+    transition: 0.3s;
+    position: relative;
+    margin-top: 37px;
+ }
+
+ .petImage {
+    position: absolute;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border: none;
+    width: 213px;
+    height: 258px;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+ }
+
+ .petLabel {
+    font-family: Manrope;
+    font-weight: 400;
+    font-size: 28px;
+    color: #4B4B4B;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0.3rem;
+    max-height: 48px;
+ }
+
+ #morePets {
+    font-family: Manrope;
+    font-weight: 600;
+    font-size: 28px;
+    color: white;
+    text-decoration: none;
+    padding: 20px;
+    background-color: #FFE599;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s;
+ }
+
+ #morePets:hover {
+    background-color: #FFCF43;
+ }
  
+ #morePetsText {
+    font-family: Manrope;
+    font-weight: 600;
+    font-size: 28px;
+    /* padding: 24px; */
+    /* margin-bottom: 20px; */
+    color: white;
+    text-decoration: none;
+    /* position: absolute; */
+    display: flex;
+    transition: 0.3s;
+ }
+
+ #arrow {
+    font-family: Manrope;
+    font-weight: 700;
+    font-size: 35px;
+    color: #FFE599;
+    /* position: absolute; */
+    bottom: 3.5rem;
+    display: none;
+    transition: 0.3s;
+ }
+
+ #morePets:hover #arrow {
+    display: block;
+    color: #FFF1C6;
+    transition: 0.3s;
+ }
+
+ #shelterOrgs {
+    margin-top: 136px;
+    margin-bottom: 40px;
+ }
+
+ #shelters {
+    margin-top: 0;
+    /* height: 80%; */
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    /* gap: 1rem; */
+    /* max-width: 80%; */
+    /* margin-bottom: 120px;
+    height: 120px; */
+ }
+
+ .shelterLogo {
+    /* height: 80%; */
+    object-fit: contain;
+    display: flex;
+    /* flex-wrap: row wrap; */
+    max-height: 200px;
+    padding: 1rem;
+ }
+
+ @media screen and (max-width: 1000px) {
+    .break {display: none;}
+ }

@@ -10,6 +10,15 @@
  @import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap');
  @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
 
+:root {
+  --dark-blue: #119899;
+  --mid-blue: #48B7AB;
+  --light-blue: #92DAD9;
+  --dark-orange: #F3A133;
+  --mid-orange: #FEBF11;
+  --light-orange: #FEF2CB;
+}
+
 body {
     background-color: white;
     text-align: center;
@@ -52,10 +61,12 @@ body {
     font-size: 20px;
     padding: 0.2rem 1rem;
     transition: 0.3s;
+    text-decoration: none;
  }
 
  .yellowButton:hover {
     background-color: #FFA903;
+    color: white;
  }
  
  header {
