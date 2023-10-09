@@ -288,14 +288,26 @@
       <div class="container justify-content-start text-start" id="reviews">
         <div class="reviewRow">
           <h2 class="subtitle2" id="reviewSubtitle">Reviews: </h2>
+          <form class="rating" action="https://postman-echo.com/post" method="post">
+            <input type="radio" id="star5" name="rating" value="5" />
+            <label for="star5" title="5" class="bi bi-star-fill"></label>
+            <input type="radio" id="star4" name="rating" value="4" />
+            <label for="star4" title="4" class="bi bi-star-fill"></label>
+            <input type="radio" id="star3" name="rating" value="3" />
+            <label for="star3" title="3" class="bi bi-star-fill"></label>
+            <input type="radio" id="star2" name="rating" value="2" />
+            <label for="star2" title="2" class="bi bi-star-fill"></label>
+            <input type="radio" id="star1" name="rating" value="1" />
+            <label for="star1" title="1" class="bi bi-star-fill"></label>
+          </form>
+          
+          <!-- <i class="bi bi-star star"></i>
           <i class="bi bi-star star"></i>
           <i class="bi bi-star star"></i>
           <i class="bi bi-star star"></i>
-          <i class="bi bi-star star"></i>
-          <i class="bi bi-star star"></i>
+          <i class="bi bi-star star"></i> -->
           <a href="#" class="reviewClick">Leave a review ></a>
         </div>
-      
       <div class="container justify-content-start text-start" id="reviewBox">
         <div class="row align-middle">
           <div class="col d-flex justify-content-start">
@@ -324,7 +336,7 @@
             <i class="bi bi-star-fill star"></i>
             <i class="bi bi-star-fill star"></i>
             <i class="bi bi-star-fill star"></i>
-            <i class="bi bi-star-half star"></i>
+            <i class="bi bi-star-fill star"></i>
           </div>
         </div>
         <div class="reviewText">
@@ -342,7 +354,7 @@
             <i class="bi bi-star-fill star"></i>
             <i class="bi bi-star-fill star"></i>
             <i class="bi bi-star-fill star"></i>
-            <i class="bi bi-star star"></i>
+            <i class="bi bi-star-fill star emptyStar"></i>
           </div>
         </div>
         <div class="reviewText">
@@ -351,8 +363,31 @@
         </div>
       </div>      
       </div>
-      <div class="container justify-content-end ">
-        <a href="#" class="reviewClick" id="seeMore">See more ></a>
+        <div class="container" id="seeMoreCollapse">
+          <a href="#collapsedReviews" class="btn reviewClick" data-bs-toggle="collapse" role="button" 
+          aria-expanded="false" aria-controls="collapsedReviews" id="seeMore">
+            <div class="text-collapsed">See more <i class="bi bi-chevron-right chevron"></i></div>
+            <div class="text-expanded">See less <i class="bi bi-chevron-up chevron"></i></div>
+          </a>
+        <div class="container justify-content-start text-start collapse" id="collapsedReviews">
+          <div class="container justify-content-start text-start" id="reviewBox">
+            <div class="row align-middle">
+              <div class="col d-flex justify-content-start">
+                <h3 class="reviewerName">Emilia</h3>
+              </div>
+              <div class="col d-flex justify-content-end stars">
+                <i class="bi bi-star-fill star"></i>
+                <i class="bi bi-star-fill star"></i>
+                <i class="bi bi-star-fill star"></i>
+                <i class="bi bi-star-fill star"></i>
+                <i class="bi bi-star-fill star" id="emptyStar"></i>
+              </div>
+            </div>
+            <div class="reviewText">
+              I adopted a new cat, Puck, from this. He is so cute!! Thanks Paw Patrol Rescue!
+            </div>
+          </div>     
+        </div>
       </div>
     </div>
     <footer class="text-center">
