@@ -1,0 +1,115 @@
+/*
+ * application-home.css
+ *
+ * CSC309 PetPal
+ * 
+ * University of Toronto
+ * Fall 2023
+ *
+ */
+ @import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
+ 
+ .adopt-directory {
+    width: 100%;
+    margin-bottom: 3rem;
+ }
+
+ .adopt-title {
+    font-family: Mochiy Pop One;
+    color: #119899;
+    font-size: 4rem;
+    text-align: left;
+    margin-bottom: 2rem;
+ }
+
+ .sofa-dogs {
+    width: 100%;
+    margin-bottom: 2rem;
+ }
+
+ .apply-now-button {
+    background-color: #FFC011;
+    border: 1px solid white; 
+    border-radius: 10px;
+    color: white;
+    font-size: 35px;
+    padding: 0.2rem 1rem;
+    transition: 0.3s;
+    text-decoration: none;
+ }
+
+ .apply-now-button:hover {
+    background-color: #FFA903;
+    color: #D9EDED;
+ }
+
+ .mini-faq {
+    text-align: left;
+    font-family: Manrope;
+    color: #4B4B4B;
+    margin-left: 1rem;
+ }
+
+ .mini-h1 {
+    font-size: 22px;
+    font-weight: 1000;
+ }
+
+ .mini-h2 {
+    font-size: 18px;
+    font-weight: 600;
+ }
+
+ .t-button {
+    background-color: #48B7AB;
+    border: 1px solid white; 
+    border-radius: 10px;
+    color: white;
+    font-size: 20px;
+    padding: 0.2rem 1rem;
+    transition: 0.3s;
+    text-decoration: none;
+ }
+
+ .t-button:hover {
+    background-color: #119899;
+    color: #D9EDED;
+ }
+
+ .explore-more {
+    background-color: #D9EDED;
+    width: 100%;
+ }
+
+ .sub-heading {
+    font-size: 50px;
+    color: #119899;
+    font-family: Manrope;
+    font-weight: 1000;
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+ }
+
+ .pet-img {
+    width: 80%;
+    height: 60%;
+    object-fit: cover;
+    margin-bottom: 3rem;
+ }
+
+ .pet-button {
+    background-color: #0c7f7f;
+    border: 1px solid white; 
+    border-radius: 10px;
+    color: white;
+    font-size: 20px;
+    padding: 1rem 2rem;
+    transition: 0.3s;
+    text-decoration: none;
+ }
+
+ .pet-button:hover {
+    background-color: #92DAD9;
+    color: #119899;
+ }

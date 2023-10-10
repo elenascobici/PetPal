@@ -1,0 +1,134 @@
+/*
+ * pet-create-update.css
+ *
+ * CSC309 PetPal
+ * 
+ * University of Toronto
+ * Fall 2023
+ *
+ */
+ @import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
+
+ .listing-form {
+    text-align: left;
+    width: 100%;
+    font-family: Manrope;
+    color: #4B4B4B;
+  }
+  
+  form {
+    width: 100%;
+  }
+  
+  .field {
+    display: flex;
+    width: 80%;
+    margin-bottom: 0.5rem;
+  }
+  
+  label {
+    height: 100%;
+    width: 20%;
+    text-align: right;
+    margin-right: 1rem;
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end; */
+  }
+  
+  .input-container {
+    display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      width: 100%;
+      text-align: left;
+  }
+  
+  .input-container > div {
+    width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding-bottom: 1rem;
+  }
+  
+  .input-field{
+    width: 70%;
+    display: flex;
+    justify-content: flex-end;
+    height: 35px;
+    padding-left: 0.8rem;
+    padding-top: 0.3rem;
+    box-sizing: border-box;
+    border: 0px solid #ccc;
+    border-radius: 15px;
+    background-color: #EDEDED;
+    color: #575757;
+    font-size: 16px;
+    resize: none;
+  }
+  
+  
+  .input-field-long {
+    width: 70%;
+    height: 150px;
+    display: flex;
+    justify-content: flex-end;
+    padding-left: 0.8rem;
+    padding-top: 0.3rem;
+    box-sizing: border-box;
+    border: 0px solid #ccc;
+    border-radius: 15px;
+    background-color: #EDEDED;
+    color: #575757;
+    font-size: 16px;
+    resize: none;
+  }
+  
+  .mini-h2-long {
+    font-size: 18px;
+    font-weight: 600;
+    height: 100%;
+    margin-bottom: 7rem;
+    /* display: flex;
+    flex-direction: column;
+    justify-content: flex-start; */
+  }
+  .mini-h2-checkboxes {
+    font-size: 18px;
+    font-weight: 600;
+    height: 100%;
+    margin-bottom: 4.5rem;
+    /* display: flex;
+    flex-direction: column;
+    justify-content: flex-start; */
+  }
+  
+  .checkboxes {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  
+  input[type=checkbox] {
+    transform: scale(1.5);
+    margin-right: 1rem;
+    transform-origin: left;
+    width: 14px;
+  }
+  
+  input[type=file] {
+      border-radius: 3px;
+      border: 1px solid #EDEDED;
+      padding: 0.5rem;
+      width: 70%;
+      box-sizing: border-box;
+  }
+  
+  .submit-button {
+    text-align: center;
+  }
+  
