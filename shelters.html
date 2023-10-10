@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="style.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="landing.css">
+  <link rel="stylesheet" href="shelters.css">
 </head>
 <body>
   <div class="page-container">
@@ -48,7 +48,161 @@
       </div>
     </nav>
     <div class="main px-6 pt-5">
-
+      <div class="container-fluid" id="mainImgContainer">
+        <img class="img-fluid" id="mainImg" alt="Responsive image" src="images/shelters-main.jpg">
+      </div>
+      <div id="title">Meet our shelter organizations</div>
+      <form class="formInputs" id="search" method="get">
+        <div class="form-row d-flex justify-content-center" id="searchBar">
+          <div class="form-group col d-flex justify-content-center align-center">
+            <input class="form-control" type="search" placeholder="Search for shelters..">
+            <button class="btn border-0 position-absolute" id="searchButton" type="submit">
+              <i class="bi bi-search" id="searchIcon"></i>
+            </button>
+          </div>
+          
+        </div>
+        <!-- <div class="form-row">
+          <button class="btn searchOptions">
+            Filter
+          </button>
+          <button class="btn searchOptions">
+            Sort
+          </button>
+        </div> -->
+      </form>
+      <div class="container" id="shelterList1">
+      <div class="grid">
+        <div class="grid-header tableHeader">
+          Organization
+        </div>
+        <div class="grid-header tableHeader">
+          Location
+        </div>
+        <div class="grid-header tableHeader">
+          Contact
+        </div>
+        <div class="grid-item">
+          <a href="shelter-detail.html" class="shelterLink">Paw Patrol Rescue</a>
+        </div>
+        <div class="grid-item">Adventure Bay, ON CA</div>
+        <div class="grid-item">
+          <a class="email" href="mailto:pawpatrolrescue@gmail.com">pawpatrolrescue@gmail.com</a> 
+        </div>
+        <div class="grid-item">Just Paws Animal Rescue</div>
+        <div class="grid-item">Richmond Hill, ON CA</div>
+        <div class="grid-item">
+          <a class="email" href="mailto:info.justpaws@gmail.com">info.justpaws@gmail.com</a> 
+        </div>
+        <div class="grid-item">Stray Cat Relief</div>
+        <div class="grid-item">Toronto, ON CA</div>
+        <div class="grid-item">
+          <a class="email" href="mailto:straycatrelief@gmail.com">straycatrelief@gmail.com</a> 
+        </div>
+        <div class="grid-item">Forgotten Ones Cat Rescue</div>
+        <div class="grid-item">Richmond Hill, ON CA</div>
+        <div class="grid-item">
+          (111) 111 - 1111
+        </div>
+        <div class="grid-item">Heart and Home Animal Rescue Foundation</div>
+        <div class="grid-item">Markham, ON CA</div>
+        <div class="grid-item">
+          (222) 222 - 2222
+        </div>
+        <div class="grid-item">Pet House Shelter</div>
+        <div class="grid-item">Toronto, ON CA</div>
+        <div class="grid-item">
+          <a class="email" href="mailto:pethouseshelter@gmail.com">pethouseshelter@gmail.com</a> 
+        </div>
+        <div class="grid-item">Animal Shelter Foundation</div>
+        <div class="grid-item">New Market, ON CA</div>
+        <div class="grid-item">
+          (333) 333 - 3333 
+        </div>
+      </div>
+      </div>
+      <div class="container" id="shelterList2">
+        <div class="grid">
+          <div class="grid-header tableHeader">
+            Organization
+          </div>
+          <div class="grid-header tableHeader">
+            Location
+          </div>
+          <div class="grid-header tableHeader">
+            Contact
+          </div>
+          <div class="grid-item">Rescue Angels</div>
+          <div class="grid-item">Richmond Hill ON CA</div>
+          <div class="grid-item">
+            (647) 293 - 6570
+          </div>
+          <div class="grid-item">MUTTS Dog Rescue</div>
+          <div class="grid-item">Richmond Hill, ON CA</div>
+          <div class="grid-item">
+            <a class="email" href="mailto:muttsdogrescue@gmail.com">muttsdogrescue@gmail.com</a> 
+          </div>
+          <div class="grid-item">North Toronto Cat Rscue</div>
+          <div class="grid-item">Markam, ON CA</div>
+          <div class="grid-item">
+            (905) 940 - 2287
+          </div>
+          <div class="grid-item">Save a Friend Dog Rescue Ontario</div>
+          <div class="grid-item">Concord, ON CA</div>
+          <div class="grid-item">
+          </div>
+          <div class="grid-item">Vaughan Animal Services</div>
+          <div class="grid-item">Vaughan, ON CA</div>
+          <div class="grid-item">
+            (905) 832 - 2281
+          </div>
+          <div class="grid-item">KOCA Dog Rescue</div>
+          <div class="grid-item">Thornhill, ON CA</div>
+          <div class="grid-item">
+            <a class="email" href="mailto:kocadog@gmail.com">kocadog@gmail.com</a> 
+          </div>
+          <div class="grid-item">Paws Above Rescue</div>
+          <div class="grid-item">King City, ON CA</div>
+          <div class="grid-item">
+            <a class="email" href="mailto:pawsaboveadoptions@yahoo.com">pawsaboveadoptions@yahoo.com</a> 
+          </div>
+        </div>
+        </div>
+      <nav>
+        <ul class="pagination">
+          <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+          <li class="page-item"><a class="page-link active" aria-current="page" href="#shelterList1">1          </a></li>
+          <li class="page-item"><a class="page-link" href="#shelterList2">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        </ul>
+      </nav>
+      <!-- <div class="container" id="meetShelters">
+        <div id="shelters">
+          <a href="#">
+            <img src="images/straycatshelter.png" class="shelterLogo">
+          </a>
+          <a href="#">
+            <img src="images/justpawsshelter.jpg" class="shelterLogo">
+          </a>
+          <a href="#">
+            <img src="images/hearthomeshelter.png" class="shelterLogo">
+          </a>
+          <a href="#">
+            <img src="images/pethouseshelter.png" class="shelterLogo">
+          </a>
+          <a href="#">
+            <img src="images/forgottenonesshelter.png" class="shelterLogo">
+          </a>
+          <a href="#">
+            <img src="images/animalshelter.jpg" class="shelterLogo">
+          </a>
+          <a href="shelter-detail.html">
+            <img src="images/pawpatrol.png" class="shelterLogo">
+          </a>
+        </div>
+      </div> -->
+      
     </div>
     <footer class="text-center">
       <div class="container-fluid">

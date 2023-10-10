@@ -42,14 +42,15 @@
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right px-2" id="navButtons">
-            <li><a class="yellowButton me-3" href="sign-up.html">Sign up</a></li>
+            <li><a class="yellowButton me-1" href="shelter-update.html">Profile</a></li>
+            <!-- <li><a class="yellowButton me-3" href="sign-up.html">Sign up</a></li>
             <li><div> </div></li>
-            <li><a class="yellowButton" href="log-in.html">Log in</a></li>
+            <li><a class="yellowButton" href="log-in.html">Log in</a></li> -->
           </ul>
         </div>
       </div>
     </nav>
-    <div class="main px-6 pt-5">
+    <div class="main px-6 pt-6">
       <div id="title">Paw Patrol Rescue</div>
         <a href="https://pawpatrolandfriends.com/" id="webpage" target="_blank">Visit our webpage</a>
         <div class="container" id="contact">
@@ -101,6 +102,7 @@
           <h2 class="subtitle2">Pets from Paw Patrol Rescue:</h2>
         </div>
         <!-- Carousel -->
+        <div class="container" id="carouselContainer">
         <div id="petsCarousel" class="carousel slide" data-bs-ride="false">
           <div class="carousel-indicators">
             <button class="carouselIndicator active" type="button" data-bs-target="#petsCarousel" data-bs-slide-to="0" aria-current="true"></button>
@@ -108,8 +110,16 @@
             <button class="carouselIndicator" type="button" data-bs-target="#petsCarousel" data-bs-slide-to="2"></button>
           </div>
           <div class="carousel-inner">
+            
             <div class="carousel-item active" data-bs-interval="false">
               <div class="container align-middle text-center" id="carouselPage">
+                <!-- Left and right controls/icons -->
+                <button class="carousel-control-prev carousel-btn" type="button" data-bs-target="#petsCarousel" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button class="carousel-control-next carousel-btn" type="button" data-bs-target="#petsCarousel" data-bs-slide="next">
+                  <span class="carousel-control-next-icon"></span>
+                </button>
                 <div class="row align-middle">
                   <div class="col text-center d-flex justify-content-center">
                     <a type="button" class="pet" href="#">
@@ -166,6 +176,13 @@
             </div>
             <div class="carousel-item" data-bs-interval="false">
               <div class="container align-middle text-center" id="carouselPage">
+                <!-- Left and right controls/icons -->
+                <button class="carousel-control-prev carousel-btn" type="button" data-bs-target="#petsCarousel" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button class="carousel-control-next carousel-btn" type="button" data-bs-target="#petsCarousel" data-bs-slide="next">
+                  <span class="carousel-control-next-icon"></span>
+                </button>
                 <div class="row align-middle">
                   <div class="col text-center d-flex justify-content-center">
                     <a type="button" class="pet" href="#">
@@ -222,6 +239,13 @@
             </div>
             <div class="carousel-item" data-bs-interval="false">
               <div class="container align-middle text-center" id="carouselPage">
+                <!-- Left and right controls/icons -->
+                <button class="carousel-control-prev carousel-btn" type="button" data-bs-target="#petsCarousel" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button class="carousel-control-next carousel-btn" type="button" data-bs-target="#petsCarousel" data-bs-slide="next">
+                  <span class="carousel-control-next-icon"></span>
+                </button>
                 <div class="row align-middle">
                   <div class="col text-center d-flex justify-content-center">
                     <a type="button" class="pet" href="#">
@@ -277,25 +301,33 @@
               </div>
             </div>
           </div>
-            <!-- Left and right controls/icons -->
-          <button class="carousel-control-prev" type="button" data-bs-target="#petsCarousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon"></span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#petsCarousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon"></span>
-          </button>
+          
         </div>
+
+      </div>
       <div class="container justify-content-start text-start" id="reviews">
         <div class="reviewRow">
           <h2 class="subtitle2" id="reviewSubtitle">Reviews: </h2>
+          <form class="rating" action="https://postman-echo.com/post" method="post">
+            <input type="radio" id="star5" name="rating" value="5" />
+            <label for="star5" title="5" class="bi bi-star-fill"></label>
+            <input type="radio" id="star4" name="rating" value="4" />
+            <label for="star4" title="4" class="bi bi-star-fill"></label>
+            <input type="radio" id="star3" name="rating" value="3" />
+            <label for="star3" title="3" class="bi bi-star-fill"></label>
+            <input type="radio" id="star2" name="rating" value="2" />
+            <label for="star2" title="2" class="bi bi-star-fill"></label>
+            <input type="radio" id="star1" name="rating" value="1" />
+            <label for="star1" title="1" class="bi bi-star-fill"></label>
+          </form>
+          
+          <!-- <i class="bi bi-star star"></i>
           <i class="bi bi-star star"></i>
           <i class="bi bi-star star"></i>
           <i class="bi bi-star star"></i>
-          <i class="bi bi-star star"></i>
-          <i class="bi bi-star star"></i>
+          <i class="bi bi-star star"></i> -->
           <a href="#" class="reviewClick">Leave a review ></a>
         </div>
-      
       <div class="container justify-content-start text-start" id="reviewBox">
         <div class="row align-middle">
           <div class="col d-flex justify-content-start">
@@ -324,7 +356,7 @@
             <i class="bi bi-star-fill star"></i>
             <i class="bi bi-star-fill star"></i>
             <i class="bi bi-star-fill star"></i>
-            <i class="bi bi-star-half star"></i>
+            <i class="bi bi-star-fill star"></i>
           </div>
         </div>
         <div class="reviewText">
@@ -342,7 +374,7 @@
             <i class="bi bi-star-fill star"></i>
             <i class="bi bi-star-fill star"></i>
             <i class="bi bi-star-fill star"></i>
-            <i class="bi bi-star star"></i>
+            <i class="bi bi-star-fill star emptyStar"></i>
           </div>
         </div>
         <div class="reviewText">
@@ -351,8 +383,31 @@
         </div>
       </div>      
       </div>
-      <div class="container justify-content-end ">
-        <a href="#" class="reviewClick" id="seeMore">See more ></a>
+        <div class="container" id="seeMoreCollapse">
+          <a href="#collapsedReviews" class="btn reviewClick" data-bs-toggle="collapse" role="button" 
+          aria-expanded="false" aria-controls="collapsedReviews" id="seeMore">
+            <div class="text-collapsed">See more <i class="bi bi-chevron-right chevron"></i></div>
+            <div class="text-expanded">See less <i class="bi bi-chevron-up chevron"></i></div>
+          </a>
+        <div class="container justify-content-start text-start collapse" id="collapsedReviews">
+          <div class="container justify-content-start text-start" id="reviewBox">
+            <div class="row align-middle">
+              <div class="col d-flex justify-content-start">
+                <h3 class="reviewerName">Emilia</h3>
+              </div>
+              <div class="col d-flex justify-content-end stars">
+                <i class="bi bi-star-fill star"></i>
+                <i class="bi bi-star-fill star"></i>
+                <i class="bi bi-star-fill star"></i>
+                <i class="bi bi-star-fill star"></i>
+                <i class="bi bi-star-fill star" id="emptyStar"></i>
+              </div>
+            </div>
+            <div class="reviewText">
+              I adopted a new cat, Puck, from this. He is so cute!! Thanks Paw Patrol Rescue!
+            </div>
+          </div>     
+        </div>
       </div>
     </div>
     <footer class="text-center">

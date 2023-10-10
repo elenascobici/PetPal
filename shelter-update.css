@@ -1,0 +1,416 @@
+/*
+ * shelter-detail.css
+ *
+ * CSC309 PetPal
+ * 
+ * University of Toronto
+ * Fall 2023
+ * Cassandra Tin Kwon Yuen
+ *
+ */
+ @import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
+
+ :root {
+   --dark-blue: #119899;
+   --mid-blue: #48B7AB;
+   --light-blue: #92DAD9;
+   --dark-orange: #F3A133;
+   --mid-orange: #FEBF11;
+   --light-orange: #FEF2CB;
+ }
+
+ .main {
+    padding-bottom: 351px;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-bottom: 128px;
+    width: 100%;
+ }
+
+ #title {
+    font-family: Mochiy Pop One;
+    font-size: 55px;
+    color: #009899;
+ }
+
+ #profile {
+    border: none;
+ }
+
+ #shelterLogoEdit {
+    display: flex;
+    flex-direction: row wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    flex-basis: 100%;
+    width: fit-content;
+    max-width: fit-content;
+ }
+
+ #logo {
+    background-color: #F9F9F9;
+    display: flex;
+    width: auto;
+ }
+
+ #shelterLogo, #profileImage {
+    /* max-width: 100%; */
+    /* width: 10rem; */
+    /* max-height: 100%; */
+    max-width: 100%;
+    height: 10rem;
+    object-fit: contain;
+    /* display: flex; */
+    padding: 1rem;
+    background-color: #F9F9F9;
+ }
+
+ #edit {
+    font-family: Manrope;
+    font-weight: 400;
+    font-size: 30px;
+    color: var(--dark-blue);
+    margin-left: 1rem;
+    /* background-color: var(--dark-blue); */
+    /* margin: 0; */
+    padding: 0.5rem;
+    cursor: pointer;
+ }
+
+ #edit:hover {
+    color: #027e7e;
+ }
+
+ #shelterLogoFile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem;
+ }
+
+ #edit > .form-label {
+    margin: 0;
+    padding: 0.5rem;
+    cursor: pointer;
+ }
+
+ #imageUpload
+{
+    display: none;
+}
+
+#profileImage
+{
+    cursor: pointer;
+}
+
+#profileInfo {
+   width: 100%;
+   padding: 0rem 5rem;
+}
+
+.grid {
+   grid-template-columns: auto auto;
+   display: grid;
+   justify-content: center;
+   align-items: start;
+   column-gap: 4rem;
+   row-gap: 2rem;
+   text-align: left;
+   margin-top: 4rem;
+   width: 100%
+}
+
+.gridLabel {
+   font-family: Manrope;
+   font-weight: 700;
+   font-size: 30px;
+   color: #009899;
+}
+
+.gridValue {
+   font-family: Manrope;
+   font-weight: 500;
+   font-size: 26px;
+   color: #4B4B4B;
+   background-color: #F9F9F9;
+   /* padding: 0.5rem 1rem; */
+   border-radius: 10px;
+   display: flex;
+   align-items: right;
+   width: 100%;
+}
+
+
+input[type="tel"], input[type="password"], textarea, select {
+   border: none;
+   padding: 0.5rem 1.25rem;
+   width: 40vw;
+}
+
+.locationType {
+   font-family: Manrope;
+   font-weight: 400;
+   font-size: 20px;
+   color: #686868;
+   padding-left: 0.5rem;
+   padding-top: 0.2rem;
+}
+
+#provinceLabel {
+   margin: 0;
+}
+
+.contactOptions {
+   font-family: Manrope;
+   font-weight: 500;
+   font-size: 26px;
+   color: #4B4B4B;
+   padding-left: 0.5rem;
+   padding-right: 3rem;
+}
+
+input[type="radio"] {
+   transform: scale(1.5);
+}
+
+input[type="radio"]:checked {
+   accent-color: var(--dark-orange);
+}
+
+
+.subtitle {
+   font-family: Manrope;
+   font-size: 30px;
+   font-weight: 700;
+   color: #009899;
+   display: flex;
+   flex-direction: row;
+   justify-content: start;
+   align-items: start;
+   padding-top: 5rem;
+   padding-left: 3rem;
+   padding-bottom: 1rem;
+ }
+
+
+ .textInfo {
+   font-family: Manrope;
+   color: #4B4B4B;
+   font-size: 30px;
+   font-weight: 400;
+   /* word-wrap: break-word; */
+}
+
+#missionBox {
+   background-color: #f9f9f9;
+   padding: 1rem;
+   width: 100%;
+   box-sizing: border-box;
+   /* padding: 0; */
+   margin: 0;
+}
+
+#mission {
+   /* padding: 1rem; */
+   margin-top: 1.5rem;
+   margin-left: 3rem;
+   margin-right: 3rem;
+}
+
+.pet {
+   background-color: #D9EDED;
+   border-radius: 20px;
+   border: none;
+   width: 213px;
+   height: 306px;
+   margin-top: 94px;
+   transition: 0.3s;
+   position: relative;
+   margin-top: 37px;
+   display: flex;
+}
+
+.petImage {
+   position: absolute;
+   border-top-left-radius: 20px;
+   border-top-right-radius: 20px;
+   border: none;
+   width: 213px;
+   height: 258px;
+   top: 0;
+   left: 0;
+   object-fit: cover;
+}
+
+.petLabel {
+   font-family: Manrope;
+   font-weight: 400;
+   font-size: 28px;
+   color: #4B4B4B;
+   position: absolute;
+   left: 0;
+   right: 0;
+   bottom: 0.3rem;
+   max-height: 48px;
+}
+
+#carouselContainer {
+   padding: 0;
+   margin: 0;
+   position: relative;
+}
+
+.carousel .carousel-indicators {
+   bottom: -4.5rem;
+}
+
+/* .carousel, .carousel-inner {
+   width: max-content; 
+   max-width: fit-content;
+} */
+
+/* .carousel {
+   width: max-content; 
+   max-width: fit-content;
+} */
+
+#carouselPage {
+   width: max-content; 
+   max-width: fit-content;
+   position: relative;
+}
+
+
+#petsCarousel .carouselIndicator {
+   width: 10px;
+   height: 10px;
+   border-radius: 50%;
+   background-color: var(--dark-orange);
+   margin: 0px 7px;
+}
+
+.carousel-control-next {
+   right: -6rem;
+   /* justify-content: left;
+   padding-left: 1rem; */
+}
+
+.carousel-control-prev {
+   left: -6rem;
+   /* justify-content: right;
+   padding-right: 1rem; */
+}
+
+.carousel-inner {
+   display: flex;
+   /* width: 90%; */
+}
+
+.carousel-button {
+   display: flex;
+   position: absolute;
+
+}
+
+.carousel-control-next-icon, .carousel-control-prev-icon {
+   color: var(--dark-orange);
+   font-family: Manrope;
+   font-size: 65px;
+   font-weight: 700;
+}
+
+.carousel-control-next-icon::after {
+   content: '>';
+}
+
+.carousel-control-prev-icon::after {
+   content: '<';
+}
+
+.status {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+   width: 213px;
+   font-family: Manrope;
+   font-size: 25px;
+   font-weight: 400;
+   margin-top: 0.5rem;
+   border-radius: 10px;
+   color: white;
+   background-color: #FEBF11;
+   padding: 0;
+   /* appearance: none;
+   position: relative; */
+}
+
+.selectStatus {
+   position: relative;
+
+}
+
+/* .statusOption {
+   padding: 1rem;
+} */
+
+.statusArrow {
+   position: absolute;
+   right: 5px;
+   /* top: 15px; */
+   top: 30%;
+   font-size: 20px;
+   color: white;
+}
+
+.available {
+   /* background-color: #FEBF11; */
+   background-color: white;
+   color: #4B4B4B;
+}
+
+.pending {
+   /* background-color: #F4A133; */
+   background-color: white;
+   color: #4B4B4B;
+}
+
+.adopted {
+   /* background-color: #A3CC5F; */
+   background-color: white;
+   color: #4B4B4B;
+}
+
+.withdrawn {
+   /* background-color: #FB9A84; */
+   background-color: white;
+   color: #4B4B4B;
+}
+
+.status[value="available"] {
+   background-color: #FEBF11;
+}
+
+.buttons {
+   margin-top: 5rem;
+}
+
+.editButton {
+   font-family: Manrope;
+   font-size: 28px;
+   font-weight: 400;
+   padding: 0.5rem 1rem;
+   color: #009899;
+   background-color: white;
+   border: 2px solid #009899;
+   border-radius: 10px;
+   transition: 0.3s;
+   margin: 0 1rem;
+}
+
+.editButton:hover {
+   background-color: #eaedf0;
+}

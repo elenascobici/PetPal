@@ -177,18 +177,30 @@
    max-height: 48px;
 }
 
+#carouselContainer {
+   padding: 0;
+   margin: 0;
+   position: relative;
+}
+
 .carousel .carousel-indicators {
    bottom: -4.5rem;
 }
 
-.carousel, .carousel-inner {
+/* .carousel, .carousel-inner {
    width: max-content; 
    max-width: fit-content;
-}
+} */
+
+/* .carousel {
+   width: max-content; 
+   max-width: fit-content;
+} */
 
 #carouselPage {
    width: max-content; 
    max-width: fit-content;
+   position: relative;
 }
 
 
@@ -202,10 +214,25 @@
 
 .carousel-control-next {
    right: -6rem;
+   /* justify-content: left;
+   padding-left: 1rem; */
 }
 
 .carousel-control-prev {
    left: -6rem;
+   /* justify-content: right;
+   padding-right: 1rem; */
+}
+
+.carousel-inner {
+   display: flex;
+   /* width: 90%; */
+}
+
+.carousel-button {
+   display: flex;
+   position: absolute;
+
 }
 
 .carousel-control-next-icon, .carousel-control-prev-icon {
@@ -240,6 +267,10 @@
    padding-right: 0.3rem;
 }
 
+.emptyStar {
+   color: #ddd;
+}
+
 #reviewSubtitle {
    padding-top: 0;
    padding-right: 1rem;
@@ -270,7 +301,7 @@
    font-weight: 600;
    font-size: 20px;
    padding-left: 1rem;
-   padding-top: 1rem;
+   padding-top: 1.5rem;
    display: flex;
    justify-content: start;
 }
@@ -291,6 +322,50 @@
    padding-right: 1rem;
 }
 
+.rating {
+   float:left;
+}
+
+/* :not(:checked) is a filter, so that browsers that don’t support :checked don’t 
+  follow these rules. Every browser that supports :checked also supports :not(), so
+  it doesn’t make the test unnecessarily selective */
+.rating:not(:checked) > input {
+   position:absolute;
+   top:-9999px;
+   clip:rect(0,0,0,0);
+}
+
+.rating:not(:checked) > label {
+   float: right;
+   width: 1.2em;
+   padding: 0 .1em;
+   overflow: hidden;
+   white-space: nowrap;
+   cursor: pointer;
+   font-size: 180%;
+   line-height: 1.2;
+   color:#ddd;
+}
+
+.rating > input:checked ~ label {
+   color: #FFC011;
+}
+
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label {
+   color: #FFC011;
+}
+
+input[type="radio"]{
+   visibility:hidden;
+}
+
+.rating > label:active {
+   position:relative;
+   top:2px;
+   left:2px;
+}
+ 
 .reviewText {
    color: #4B4B4B;
    font-family: Manrope;
@@ -303,12 +378,55 @@
    margin-bottom: 1rem;
 }
 
+#seeMoreCollapse {
+   position: relative;
+   padding: 0;
+   margin: 0;
+   /* padding-bottom: 6rem; */
+}
+
 #seeMore {
    text-align: right;
    padding-right: 3rem;
    padding-top: 1rem;
+   border: none;
+   width: auto;
+   position: absolute;
+   right: 0;
 }
 
-.reviewClick:hover {
+.reviewClick:hover, .chevron:hover {
    color: #AFAFAF;
+}
+
+#seeMore:focus {
+   outline: 0;
+   box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+}
+
+#seeMore[aria-expanded=false] .text-expanded {
+   display: none;
+}
+
+#seeMore[aria-expanded=true] .text-collapsed {
+   display: none;
+}
+
+.chevron {
+   color: #4B4B4B;
+   font-family: Manrope;
+   font-size: 20px;
+   text-decoration: none;
+   vertical-align: bottom;
+   transition: 0.3s;
+}
+
+.bi-chevron-up {
+   padding-left: 0.5rem;
+}
+
+
+#collapsedReviews {
+   padding-right: 6rem;
+   padding-top: 3rem;
 }
