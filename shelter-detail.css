@@ -177,6 +177,12 @@
    max-height: 48px;
 }
 
+#carouselContainer {
+   padding: 0;
+   margin: 0;
+   position: relative;
+}
+
 .carousel .carousel-indicators {
    bottom: -4.5rem;
 }
@@ -194,6 +200,7 @@
 #carouselPage {
    width: max-content; 
    max-width: fit-content;
+   position: relative;
 }
 
 
@@ -207,10 +214,25 @@
 
 .carousel-control-next {
    right: -6rem;
+   /* justify-content: left;
+   padding-left: 1rem; */
 }
 
 .carousel-control-prev {
    left: -6rem;
+   /* justify-content: right;
+   padding-right: 1rem; */
+}
+
+.carousel-inner {
+   display: flex;
+   /* width: 90%; */
+}
+
+.carousel-button {
+   display: flex;
+   position: absolute;
+
 }
 
 .carousel-control-next-icon, .carousel-control-prev-icon {
