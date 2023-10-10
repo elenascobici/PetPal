@@ -1,5 +1,5 @@
 /*
- * shelter-detail.css
+ * shelter-update.css
  *
  * CSC309 PetPal
  * 
@@ -55,7 +55,7 @@
     width: auto;
  }
 
- #shelterLogo, #profileImage {
+ #profileImage {
     /* max-width: 100%; */
     /* width: 10rem; */
     /* max-height: 100%; */
@@ -83,26 +83,17 @@
     color: #027e7e;
  }
 
- #shelterLogoFile {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0.5rem;
- }
-
  #edit > .form-label {
     margin: 0;
     padding: 0.5rem;
     cursor: pointer;
  }
 
- #imageUpload
-{
+ #imageUpload {
     display: none;
 }
 
-#profileImage
-{
+#profileImage {
     cursor: pointer;
 }
 
