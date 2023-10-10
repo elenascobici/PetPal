@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<!--
+  CSC309 PetPal Phase1
+  
+  University of Toronto
+  Fall 2023
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>PetPal</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="shelter-update.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+</head>
+<body>
+  <div class="page-container">
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid">
+        <a class="navbar-brand px-3 m-0" id="petpal" href="home.html">PetPal</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active px-3" id="navHome" aria-current="page" href="home.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link px-3" id="navSearch" href="#">Search for Pets</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link px-3" id="navApply" href="#">Apply Now</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link px-3" id="navShelters" href="shelters.html">Shelters</a>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right px-2" id="navButtons">
+            <li><a class="yellowButton me-1" href="shelter-update.html">Profile</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="main">
+        <div id="title">Update Shelter Details</div>
+        <div class="container gx-0" id="shelterLogoEdit">
+            <!-- <div id="logo">
+                <img src="images/pawpatrol.png" id="shelterLogo">
+            </div> -->
+            <form action="#" method="post">
+                <div class="form-control" id="profile">
+                    <image id="profileImage" src="images/pawpatrol.png" />
+                    <label class="form-label btn" for="imageUpload" id="edit">Change shelter logo</label>
+                    <!-- <input type="file" name="photo" class="form-control d-none" id="shelterLogoFile" /> -->
+                    <input id="imageUpload" type="file" 
+                        name="profile_photo" placeholder="Photo" required="" capture>
+                </div>
+            
+            <!-- <div class="btn" id="edit">
+                <label class="form-label" for="shelterLogoFile">Change shelter logo</label>
+                <input type="file" name="photo" class="form-control d-none" id="shelterLogoFile" />
+                <image id="profileImage" src="http://lorempixel.com/100/100" />
+                <input id="imageUpload" type="file" 
+                    name="profile_photo" placeholder="Photo" required="" capture>
+            </div> -->
+            </form>
+        </div>
+    </div>
+    <footer class="text-center">
+      <div class="container-fluid">
+        <div class="row gx-0" id="footer">
+          <div class="footerContact col">
+            <div id="connect">Connect with Us!
+              <p id="connectPetPal">PetPal</p>
+            </div>
+          </div>
+          <div class="col-1" id="verticalLineBox">
+            <div id="verticalLine"></div>
+          </div>
+          <div id="contactInfo" class="col">
+            <a id="link" href="mailto:petpal23@gmail.com">petpal23@gmail.com</a>        	
+            <p id="telephone">(987) 654 - 3210</p>
+            <ul class="list-group list-group-horizontal">
+              <li class="list-group-item" id="insta">
+                <a href="#" role="button">
+                  <i class="bi bi-instagram"></i>
+                </a>
+              </li>
+              <li class="list-group-item" id="x">
+                <a href="#" role="button">
+                  <i class="bi bi-twitter-x"></i>
+                </a>
+              </li>
+              <li class="list-group-item" id="fb">
+                <a href="#" role="button">
+                  <i class="bi bi-facebook"></i>
+                </a>
+              </li>
+            </ul>
+          </div> 
+        </div>
+        <div class="row">
+          <div class="copyright">&copy Copyright 2023</div>
+      </div>
+    </div>
+    </footer>
+    <script>
+        $("#profileImage").click(function(e) {
+            $("#imageUpload").click();
+        });
+        function previewProfileImage( uploader ) {   
+        //ensure a file was selected 
+            if (uploader.files && uploader.files[0]) {
+                var imageFile = uploader.files[0];
+                var reader = new FileReader();    
+                reader.onload = function (e) {
+                    //set the image data as source
+                    $('#profileImage').attr('src', e.target.result);
+                }    
+                reader.readAsDataURL( imageFile );
+            }
+        }
+
+        $("#imageUpload").change(function(){
+            previewProfileImage( this );
+        });
+    </script>
+  </div>
+</body>
+</html>

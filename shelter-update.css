@@ -1,0 +1,107 @@
+/*
+ * shelter-detail.css
+ *
+ * CSC309 PetPal
+ * 
+ * University of Toronto
+ * Fall 2023
+ * Cassandra Tin Kwon Yuen
+ *
+ */
+ @import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
+
+ :root {
+   --dark-blue: #119899;
+   --mid-blue: #48B7AB;
+   --light-blue: #92DAD9;
+   --dark-orange: #F3A133;
+   --mid-orange: #FEBF11;
+   --light-orange: #FEF2CB;
+ }
+
+ .main {
+    padding-bottom: 351px;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-bottom: 128px;
+    width: 100%;
+ }
+
+ #title {
+    font-family: Mochiy Pop One;
+    font-size: 55px;
+    color: #009899;
+ }
+
+ #profile {
+    border: none;
+ }
+
+ #shelterLogoEdit {
+    display: flex;
+    flex-direction: row wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    flex-basis: 100%;
+    width: fit-content;
+    max-width: fit-content;
+ }
+
+ #logo {
+    background-color: #F9F9F9;
+    display: flex;
+    width: auto;
+ }
+
+ #shelterLogo, #profileImage {
+    /* max-width: 100%; */
+    /* width: 10rem; */
+    /* max-height: 100%; */
+    max-width: 100%;
+    height: 10rem;
+    object-fit: contain;
+    /* display: flex; */
+    padding: 1rem;
+    background-color: #F9F9F9;
+ }
+
+ #edit {
+    font-family: Manrope;
+    font-weight: 400;
+    font-size: 30px;
+    color: var(--dark-blue);
+    margin-left: 1rem;
+    /* background-color: var(--dark-blue); */
+    /* margin: 0; */
+    padding: 0.5rem;
+    cursor: pointer;
+ }
+
+ #edit:hover {
+    color: #027e7e;
+ }
+
+ #shelterLogoFile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem;
+ }
+
+ #edit > .form-label {
+    margin: 0;
+    padding: 0.5rem;
+    cursor: pointer;
+ }
+
+ #imageUpload
+{
+    display: none;
+}
+
+#profileImage
+{
+    cursor: pointer;
+}
