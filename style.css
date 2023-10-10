@@ -209,6 +209,7 @@ body {
     text-decoration: none;
     color: white;
   }
+
   #link:hover {
     text-decoration: none;
     color: white;
@@ -244,4 +245,50 @@ body {
 
   p {
     margin: 0;
+  }
+
+  .navbar-toggler-icon {
+    font-size: 1.5rem;
+  }
+
+  #menuItems {
+    background-color: #92DAD9;
+  } 
+
+  @media screen and (max-width: 991px) {
+    #navbarList { margin: 0; padding: 0; text-align: right; }
+    #menuItems { width: 100%; text-align: right; padding-bottom: 1rem; text-decoration: none;}
+    #navbarList:focus { color: white; }
+    .nav-link:focus { text-decoration: none; color: white; }
+    .navHome:focus { text-decoration: none; color: white !important; }
+    #headerContainer { padding: 0; }
+    #navButtons { padding: 0 !important; }
+    #navbarList { margin-bottom: 0; }
+    .yellowButton, #signUp, #logIn { 
+      text-align: right; color: #FFA903; background-color: #92DAD9; border: none; padding: 1rem 0; margin: 0; 
+    }
+    #empty { height: 0.5rem; }
+    #logIn { padding: 0; margin-right: 1rem; margin-bottom: 1rem;}
+  }
+
+  @media screen and (max-width:768px) {
+    .main {
+         padding-left: 14vw;
+         padding-right: 14vw;
+         padding-top: 10vw;
+         padding-bottom: 46vw;
+   }
+} 
+
+
+
+  @media screen and (max-width: 409px) {
+    #verticalLine {display: none;}
+    .footerContact {text-align: center; }
+    #connect, #connectPetPal {text-align: center; padding-left: 1rem;}
+    footer { height: 403px;}
+    .footerContact {width: 100%; padding-top: 1rem; display: flex; justify-content: center; align-items: center; height: 10rem;}
+    #contactInfo {
+      padding-top: 2rem; padding-bottom: 2rem; display: flex; justify-content: center; align-items: center; border-top: 1px solid white;
+    }
   }
