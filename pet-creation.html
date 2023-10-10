@@ -63,17 +63,23 @@
               <div class="field">
                 <label for="animal-choice" class="mini-h2-checkboxes"> Type of Pet:</label>
                 <div class="checkboxes">
-                  <div class="field">
-                    <input type="checkbox" id="dog" value="yes">
-                    <label for="dog"> Dog </label>
-                  </div>
-                  <div class="field">
-                    <input type="checkbox" id="cat" value="yes">
-                    <label for="cat"> Cat </label>
-                  </div>
-                  <div class="field">
-                    <input type="checkbox" id="other" value="yes">
-                    <label for="other"> Other </label>
+                  <div class="row">
+                    <div class="col-md-2">
+                      <div class="field">
+                        <input type="checkbox" id="dog" value="yes">
+                        <label for="dog"> Dog </label>
+                      </div>
+                      <div class="field">
+                        <input type="checkbox" id="cat" value="yes">
+                        <label for="cat"> Cat </label>
+                      </div>
+                    </div>
+                    <div class="col-md-2">
+                      <div class="field">
+                        <input type="checkbox" id="other" value="yes">
+                        <label for="other"> Other </label>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -104,6 +110,38 @@
               <div class="field">
                 <label for="insertfile" class="mini-h2"> Images:</label>
                 <input type="file" id="insertfile" name="attachments" required>
+              </div>
+              <div class="field">
+                  <label for="status-choice" class="mini-h2-checkboxes"> Current Status:</label>
+                <div class="checkboxes">
+                  <div class="row">
+                    <div class="col-md-2">
+                      <div class="field">
+                        <input type="checkbox" id="avail" value="yes">
+                        <label for="avail"> Available </label>
+                      </div>
+                      <div class="field">
+                        <input type="checkbox" id="adopted" value="yes">
+                        <label for="adopted"> Adopted </label>
+                      </div>
+                    </div>
+                    <div class="col-md-2">
+                      <div class="field">
+                        <input type="checkbox" id="pend" value="yes">
+                        <label for="pend"> Pending </label>
+                      </div>
+                      <div class="field">
+                        <input type="checkbox" id="unavail" value="yes">
+                        <label for="unavail"> Withdrawn </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="field">
+                <!--  Publication date -->
+                <label for="pub-date" class="mini-h2"> Publication Date: </label>
+                <input type="date" class="input-field" min="2021-09-01" max="2024-12-31" id="pub-date" name="pub-date" required>
               </div>
            </div>
            <div class="submit-button">
