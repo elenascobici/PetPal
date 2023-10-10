@@ -1,5 +1,6 @@
 /*
  * shelter-detail.css
+ * For shelter-detail.html and review.html
  *
  * CSC309 PetPal
  * 
@@ -282,6 +283,7 @@
    display: flex;
    flex-flow: row wrap;
    padding-bottom: 0.5rem;
+   align-items: center;
 }
 
 .reviewClick, .reviewerName {
@@ -430,3 +432,58 @@ input[type="radio"]{
    padding-right: 6rem;
    padding-top: 3rem;
 }
+
+/* review.html */
+.userNameSubtitle {
+   font-family: Manrope;
+   font-size: 30px;
+   font-family: 600;
+   display: flex;
+}
+
+#userReview {
+   padding: 2rem;
+   /* margin: 3rem; */
+   background-color: #F9FAFF;
+}
+
+form {
+   width: 100%;
+   margin: 3rem;
+   padding: 0 3rem;
+}
+
+textarea {
+   font-family: Manrope;
+   font-weight: 500;
+   font-size: 26px;
+   color: #4B4B4B;
+   background-color: #F9FAFF;
+   padding: 0.5rem 1rem;
+   border-radius: 10px;
+   display: flex;
+   align-items: right;
+   width: 100%;
+   border: none;
+}
+
+#submitButton {
+   font-family: Manrope;
+   font-weight: 500;
+   font-size: 26px;
+   color: white;
+   padding: 0.5rem 1rem;
+   border-radius: 10px;
+   background-color: #FFC011;
+   border: none;
+   transition: 0.3s;
+   margin-top: 2rem;
+}
+
+#submitButton:hover {
+   background-color:#FFA903;
+}
+
+/* #reviewRating {
+   display: flex;
+} */
