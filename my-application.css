@@ -30,7 +30,9 @@
 .message-history {
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
-   }
+    transition: padding 0.3s linear;
+}
+   
    .back-button {
       background-color: #FFC011;
       border: 1px solid white; 
@@ -61,6 +63,7 @@
     font-size: 3rem;
     text-align: left;
     margin-bottom: 2rem;
+    transition: font-size 0.3s ease;
   }
   
   .application-details {
@@ -87,7 +90,7 @@
   }
   
   .heading3 {
-    margin-top: 1.5rem; /* to match pet pfp */
+    padding-top: 1.5rem; /* to match pet pfp */
     font-size: 30px;
     font-weight: 600;
     font-family: Manrope;
@@ -164,7 +167,7 @@
     justify-content: flex-end;
     margin-left: 40%;
     width: calc(60% - 1.5rem);
-    margin-right: 1.5rem;
+    /* margin-right: 1.5rem; */
   }
   
   .to-message {
@@ -182,7 +185,9 @@
     padding: 1rem;
     border-radius: 15px;
     color: #FFFFFF;
-    transition: font-size 0.3s ease
+    transition-property: font-size, padding;
+    transition-duration: 0.3s;
+    transition-timing-function: linear;
   }
   
   .msg-text-to {
@@ -192,7 +197,9 @@
     padding: 1rem;
     border-radius: 15px;
     color: #FFFFFF;
-    transition: font-size 0.3s ease
+    transition-property: font-size, padding;
+    transition-duration: 0.3s;
+    transition-timing-function: linear;
   }
   
   .message-tb {
@@ -218,7 +225,7 @@
   }
   
   .msg-pos {
-    max-height: 635px;
+    max-height: 500px;
     overflow-y: auto;
   }
 
@@ -261,6 +268,8 @@
     .main {
       padding-left: 14vw;
       padding-right: 14vw;
+      padding-top: 10vw;
+      padding-bottom: 46vw;
     }
     .info-label {
       font-size: 2.4vw;
@@ -277,19 +286,31 @@
     .to-message {
       margin-left: 2vw;
     }
+    .message-history {
+      width: auto;
+      padding-bottom: 1.5vw;
+    }
+    .type-in {
+      font-size: 2vw;
+    }
+    .message-tb {
+      margin: 2vw;
+      margin-top: 2.5vw;
+    }
   }
 
   @media screen and (min-width:0px) and (max-width:541px) {
     .app-title {
       /* text-align: left; */
       font-size: 5.8vw;
+      margin-bottom: 6vw;
     }
-    .type-in {
+    /* .type-in {
       height: 65px;
     }
     .message-tb {
       height: 65px;
-    }
+    } */
   }
 
   @media screen and (min-width:0px) and (max-width:995px) {
@@ -322,14 +343,22 @@
     }
     .heading3 {
       font-size: 3vw;
+      padding-top: 0px;
       margin-top: 2vw;
       margin-bottom: 2vw;
+      transition: font-size 0.3s ease;
+    }
+    .heading-res {
+      padding-top: 1.5rem;
     }
     .desc {
       font-size: 1.6vw;
     }
     .t-button {
       font-size: 2vw;
+    }
+    .back-button {
+      font-size: 3vw;
     }
 
   }
@@ -371,6 +400,12 @@
     }
     .content-details {
       margin-top: 6vw;
+    }
+    .msg-text-from {
+      padding: 3vw;
+    }
+    .msg-text-to {
+      padding: 3vw;
     }
   }
 
