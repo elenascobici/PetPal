@@ -1,0 +1,212 @@
+/*
+ * shelters.css
+ *
+ * CSC309 PetPal
+ * 
+ * University of Toronto
+ * Fall 2023
+ * Cassandra Tin Kwon Yuen
+ *
+ */
+ #title {
+    font-family: Mochiy Pop One;
+    font-size: 55px;
+    color: #009899;
+ }
+
+ .main {
+    padding-bottom: 351px;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-bottom: 128px;
+    width: 100%;
+ }
+
+ #mainImgContainer {
+    width: 90%;
+    height: 50vh;
+    /* padding-left: 10rem;
+    padding-right: 10rem; */
+    margin-bottom: 3rem;
+    overflow: hidden;
+ }
+
+ #mainImg {
+    object-fit: cover;
+    overflow: hidden;
+ }
+
+ #search {
+    width: 100%;
+    /* padding: 2rem; */
+    margin: 2rem;
+    display: flex;
+    justify-content: center;
+ }
+
+ #searchBar {
+    font-family: Manrope;
+    font-weight: 400;
+    font-size: 3rem;
+    color: #575757;
+    width: 100%;
+    /* padding: 2rem; */
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    /* margin-left: 6rem;
+    margin-right: 6rem; */
+ }
+
+ #searchIcon {
+    color: #575757;
+    font-size: 2rem;
+ }
+
+ #searchButton {
+    position: absolute;
+    right: 3.5rem;
+    top: 0.2rem;    
+    /* top: 50%; */
+ }
+
+ .form-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    position: relative;
+ }
+
+ .form-control {
+    font-size: 25px;
+    padding: 2rem;
+    border-radius: 50px;
+    background-color: #F5F5F5;
+ }
+
+ .formInputs {
+    position: relative;
+ }
+ 
+ .formInputs .form-control{
+    height: 45px; 
+ }
+
+ .formInputs .form-control:focus{
+    box-shadow: none;
+    border: 1px solid #000;
+ }
+
+ /* .form-inputs i{
+    position:absolute;
+    right: 10px;
+    top: 15px;
+ } */
+ 
+ .searchOptions {
+    background-color: var(--dark-blue);
+    font-family: Manrope;
+    font-weight: 500;
+    font-size: 20px;
+    color: white;
+    width: 10rem;
+    border-radius: 10px;
+ }
+
+ .searchOptions:hover {
+    color: white;
+    background-color: #078182;
+ }
+
+ #shelterOrgs {
+    margin-top: 136px;
+    margin-bottom: 40px;
+ }
+
+ #shelters {
+    margin-top: 0;
+    /* height: 80%; */
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    /* gap: 1rem; */
+    /* max-width: 80%; */
+    /* margin-bottom: 120px;
+    height: 120px; */
+ }
+
+ .shelterLogo {
+    /* height: 80%; */
+    object-fit: contain;
+    display: flex;
+    /* flex-wrap: row wrap; */
+    max-height: 200px;
+    padding: 1rem;
+ }
+
+
+ .grid {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    font-family: Manrope;
+    font-weight: 600;
+    font-size: 28px;
+    /* border-radius: 10px; */
+    color: #4B4B4B;
+    /* margin: 0 6rem; */
+    border: 1px solid #bababa;
+    /* width: 100%; */
+    /* background-color: #4B4B4B; */
+ }
+
+ .grid-header {
+    background-color: #FFE599;
+    padding: 1rem;
+    border: 1px solid #bababa;
+ }
+
+ .grid-item {
+    padding: 1rem 2rem;
+    font-weight: 400;
+    font-size: 25px;
+    background-color: white;
+    border: 1px solid #bababa;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+ }
+
+ #shelterList1 {
+    width: 100%;
+    /* margin: 0 3rem; */
+ }
+
+ .page-item {
+    font-family: Manrope;
+    font-weight: 500;
+    font-size: 20px;
+    margin-top: 2rem;
+ }
+
+ .page-item:active {
+    background-color:#047d7d;
+ }
+
+ .page-link {
+    color: #009899;
+ }
+
+ .page-link:hover {
+    color:#047d7d;
+ }
+
+ .page-link:focus {
+    color:#047d7d;
+ }
+ 
+ .pagination li.active a {
+    background-color: #047d7d !important;
+    color: white;
+ }
