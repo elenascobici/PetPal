@@ -89,6 +89,8 @@
     font-weight: 1000;
     margin-top: 4rem;
     margin-bottom: 4rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
  }
 
  .pet-img {
@@ -103,13 +105,97 @@
     border: 1px solid white; 
     border-radius: 10px;
     color: white;
-    font-size: 20px;
-    padding: 1rem 2rem;
     transition: 0.3s;
     text-decoration: none;
+    font-size: 20px;
+    padding: 1rem 2rem;
  }
 
  .pet-button:hover {
     background-color: #92DAD9;
     color: #119899;
+ }
+
+ /* Modifications for responsiveness */
+ .right-side {
+   margin-bottom: 1rem;
+ }
+
+ .pet-opt {
+   padding-bottom: 2rem;
+ }
+
+ @media screen and (max-width: 991px) {
+   .adopt-title {
+      text-align: center;
+   }
+   .right-side {
+      margin-bottom: 2rem;
+   }
+
+   .sub-heading {
+      margin-bottom: 3rem;
+   }
+
+   .pet-img  {
+      width: 60%;
+      height: 70%;
+      margin-bottom: 3rem;
+      margin-top: 1rem;
+   }
+   .pet-opt {
+      margin-bottom: 1rem;
+   }
+   /* .pic-pos-up {
+      object-position: center top;
+   }
+   .pic-pos-down {
+      object-position: center bottom;
+   } */
+ }
+
+ @media screen and (max-width: 745px) {
+   .adopt-title {
+      font-size: 2.8rem;
+   }
+   
+ }
+
+ @media screen and (max-width: 590px) {
+   .apply-now-button {
+      font-size: 30px;
+   }
+   .sub-heading {
+      font-size: 40px;
+      margin-bottom: 3rem;
+   }
+   .pet-opt {
+      margin-bottom: 1rem;
+   }
+   .pet-button {
+      padding: 1rem 1rem;
+   }
+ }
+
+ @media screen and (max-width: 487px) {
+   .apply-now-button {
+      font-size: 25px;
+   }
+   .sub-heading {
+      font-size: 30px;
+      margin-bottom: 3rem;
+   }
+   .adopt-title {
+      font-size: 2rem;
+   }
+   .pet-opt{
+      margin-bottom: 0.5rem;
+   }
+   .pet-img {
+      margin-bottom: 2rem;
+   }
+   .pet-button {
+      font-size: 15px;
+      padding: 0.7rem 0.7rem;
+   }
  }
