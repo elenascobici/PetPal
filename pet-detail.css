@@ -1,0 +1,68 @@
+.custom-rounded {
+  border-radius: 30px;
+}
+
+.custom-rounded-child {
+  border-radius: 20px;
+}
+
+
+#pet-name {
+  font-family: Mochiy Pop One;
+  color: #119899;
+  font-size: 55px;
+  padding: 5px;
+}
+
+#date {
+  font-family: Manrope;
+  font-size: larger;
+  font-weight: bold;
+}
+
+.left {
+  text-align: left;
+}
+
+#subtitle {
+  font-family: Manrope;
+}
+
+.greybox {
+  background: grey;
+}
+
+.description-box {
+  background-color: #f0f0f0; 
+  padding: 20px; 
+  margin-bottom: 20px; 
+  border-radius: 10px; 
+}
+
+.tealButton {
+  background-color: #119899;
+  border: 1px solid white; 
+  border-radius: 10px;
+  color: white;
+  font-size: 20px;
+  padding: 0.2rem 1rem;
+  transition: 0.3s;
+  text-decoration: none;
+
+  padding-bottom: 0.5rem;
+  padding-left: 3rem;
+  padding-right: 3rem;
+  font-size: 20px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+#adopt {
+  padding-bottom: 0.5rem;
+  padding-left: 3rem;
+  padding-right: 3rem;
+  font-size: 20px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
