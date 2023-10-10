@@ -36,7 +36,7 @@
       border: 1px solid white; 
       border-radius: 10px;
       color: white;
-      font-size: 20px;
+      font-size: 30px;
       padding: 0.2rem 1rem;
       transition: 0.3s;
       text-decoration: none;
@@ -52,6 +52,7 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    margin-bottom: 0.5rem;
    }
   
    .app-title {
@@ -77,12 +78,16 @@
   
   .pet-pfp {
     object-fit: cover;
-    width: calc(100% - 1.5rem);
+    width: calc(100% - 3rem);
     margin: 1.5rem;
+    height: 260px;
+    object-position: center 80%;
+    transition: width 0.3s ease;
+    transition: height 0.3s ease;
   }
   
   .heading3 {
-    padding-top: 1.5rem; /* to match pet pfp */
+    margin-top: 1.5rem; /* to match pet pfp */
     font-size: 30px;
     font-weight: 600;
     font-family: Manrope;
@@ -114,6 +119,7 @@
   
   .answer {
     margin-left: 0.5rem;
+    transition: margin-bottom 0.3s ease;
   }
   
   .first-line {
@@ -133,6 +139,7 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    padding-right: 1rem;
   }
   
   .line {
@@ -155,35 +162,37 @@
   .from-message {
     display: flex;
     justify-content: flex-end;
-    margin-left: 60%;
-    width: 40%;
+    margin-left: 40%;
+    width: calc(60% - 1.5rem);
     margin-right: 1.5rem;
   }
   
   .to-message {
     display: flex;
-    justify-content: flex-end;
-    margin-right: 60%;
-    width: 40%;
-    margin-right: 1.5rem;
+    /* justify-content: flex-end; */
+    /* margin-right: 40%; */
+    width: calc(60% - 1.5rem);
+    margin-left: 1.5rem;
   }
   
   .msg-text-from {
     background-color: #FFA903;
     /* margin-top: 1.5rem; */
-    margin-right: 1.5rem;
+    /* margin-right: 1.5rem; */
     padding: 1rem;
     border-radius: 15px;
     color: #FFFFFF;
+    transition: font-size 0.3s ease
   }
   
   .msg-text-to {
     background-color: #FFC011;
     /* margin-top: 1.5rem; */
-    margin-left: 1.5rem;
+    /* margin-left: 1.5rem; */
     padding: 1rem;
     border-radius: 15px;
     color: #FFFFFF;
+    transition: font-size 0.3s ease
   }
   
   .message-tb {
@@ -207,3 +216,162 @@
     font-size: 16px;
     resize: none;
   }
+  
+  .msg-pos {
+    max-height: 635px;
+    overflow-y: auto;
+  }
+
+  .details-pos {
+    padding-right: 1.5rem;
+  }
+
+  .email-break {
+    word-break: break-all
+  }
+
+
+  /* Edits for responsiveness */
+  @media screen and (max-width:768px) {
+    .pet-info > p {
+      padding-left: 1.5rem;
+    }
+    .pet-info > a {
+      margin-left: 1.5rem;
+    }
+    .pet-pfp {
+      margin-bottom: 0px;
+    }
+    .app-title {
+      text-align: center;
+      font-size: 2.5rem;
+    }
+    .msg-text-from {
+      font-size: 2vw;
+    }
+    .msg-text-to {
+      font-size: 2vw;
+    }
+
+    .desc {
+      margin-bottom: 2vw;
+    }
+
+    /* Responsiveness */
+    .main {
+      padding-left: 14vw;
+      padding-right: 14vw;
+    }
+    .info-label {
+      font-size: 2.4vw;
+    }
+    .answer {
+      font-size: 2.4vw;
+    }
+    .answer-long {
+      font-size: 2.4vw;
+    }
+    .from-message {
+      margin-left: 28vw;
+    }
+    .to-message {
+      margin-left: 2vw;
+    }
+  }
+
+  @media screen and (min-width:0px) and (max-width:541px) {
+    .app-title {
+      /* text-align: left; */
+      font-size: 5.8vw;
+    }
+    .type-in {
+      height: 65px;
+    }
+    .message-tb {
+      height: 65px;
+    }
+  }
+
+  @media screen and (min-width:0px) and (max-width:995px) {
+    .line{
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+    .first-line {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+    .line-long {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+    .answer {
+      margin-left: 0px;
+    }
+    .info-label {
+      margin-bottom: 0rem;
+    }
+    .pfp-res {
+      padding-right: 0px;
+    }
+    .pet-pfp {
+      height: 26vw;
+    }
+    .heading3 {
+      font-size: 3vw;
+      margin-top: 2vw;
+      margin-bottom: 2vw;
+    }
+    .desc {
+      font-size: 1.6vw;
+    }
+    .t-button {
+      font-size: 2vw;
+    }
+
+  }
+
+  @media screen and (max-width:345px) {
+    .pet-pfp {
+      height: calc(100% - 1rem);
+      width: calc(100% - 13vw);
+      margin: 6.5vw;
+      margin-top: 1rem;
+      margin-bottom: 0px;
+    }
+    .heading3 {
+      margin-bottom: 0.5rem;
+    }
+    .desc {
+      margin-bottom: 0rem;
+    }
+    .details-pos {
+      padding-right: 2vw;
+    }
+    .line {
+      margin-left: 7vw;
+    }
+    .line-long {
+      margin-left: 7vw;
+    }
+    .first-line {
+      margin-left: 7vw;
+    }
+    .answer {
+      margin-bottom: 4vw;
+    }
+    .details-text {
+      margin: 6.5vw;
+      margin-top: 0px;
+      margin-bottom: 0px;
+      width: calc(100% - 13vw);
+    }
+    .content-details {
+      margin-top: 6vw;
+    }
+  }
+
+
