@@ -188,9 +188,14 @@
     color: var(--dark-orange);
  }
 
- #shelterList1 {
+ #shelterList1, #shelterList2 {
     width: 100%;
     /* margin: 0 3rem; */
+ }
+
+ #shelterList2 {
+    /* visibility: hidden; */
+    display: none;
  }
 
  .page-item {
