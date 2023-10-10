@@ -109,6 +109,7 @@
 #profileInfo {
    width: 100%;
    padding: 0rem 5rem;
+   position: relative;
 }
 
 .grid {
@@ -260,7 +261,7 @@ input[type="radio"]:checked {
 #carouselContainer {
    padding: 0;
    margin: 0;
-   position: relative;
+   /* position: relative; */
 }
 
 .carousel .carousel-indicators {
@@ -348,17 +349,17 @@ input[type="radio"]:checked {
    position: relative; */
 }
 
-.selectStatus {
+/* .selectStatus {
    position: relative;
 
-}
+} */
 
 /* .statusOption {
    padding: 1rem;
 } */
 
 .statusArrow {
-   position: absolute;
+   /* position: absolute; */
    right: 5px;
    /* top: 15px; */
    top: 30%;
@@ -409,8 +410,16 @@ input[type="radio"]:checked {
    border-radius: 10px;
    transition: 0.3s;
    margin: 0 1rem;
+   text-decoration: none;
 }
 
 .editButton:hover {
    background-color: #eaedf0;
+   color: #009899;
+}
+
+#save {
+   position: fixed;
+   top: 90px;
+   right: 1rem;
 }
