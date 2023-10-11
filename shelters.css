@@ -186,6 +186,7 @@
     text-decoration: none;
     color: #4B4B4B;
     transition: 0.3s;
+    cursor: pointer;
  }
 
  .shelterLink:hover {
@@ -225,10 +226,21 @@
     color:#047d7d;
  }
  
- .pagination li.active a {
+ .page-link.active {
+   background-color: #047d7d !important;
+   color: white;
+ }
+
+ .pagination > li.active > a {
     background-color: #047d7d !important;
     color: white;
  }
+ 
+
+ @media screen and (max-height:718px) {
+   #mainImgContainer {height: 360px; width: 100%; margin-bottom: 2rem;}
+   #mainImg {height: 360px; width: 100%; object-position: 0 0;}
+}
 
  @media screen and (max-width:768px) {
    .main {
