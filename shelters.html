@@ -15,19 +15,22 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
   <link rel="stylesheet" href="shelters.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
 </head>
 <body>
   <div class="page-container">
     <nav class="navbar navbar-expand-lg">
-      <div class="container-fluid">
+      <div class="container-fluid" id="headerContainer">
         <a class="navbar-brand px-3 m-0" id="petpal" href="home.html">PetPal</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler navbar-dark" type="button" data-bs-toggle="collapse" 
+          data-bs-target="#menuItems" aria-controls="menuItems" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse">
-          <ul class="nav navbar-nav me-auto mb-2 mb-lg-0">
+        <div class="collapse navbar-collapse" id="menuItems">
+          <ul class="nav navbar-nav me-auto mb-2 mb-lg-0" id="navbarList">
             <li class="nav-item">
-              <a class="nav-link px-3" id="navHome" aria-current="page" href="home.html">Home</a>
+              <a class="nav-link active px-3" id="navHome" aria-current="page" href="home.html">Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link px-3" id="navSearch" href="search.html">Search for Pets</a>
@@ -36,13 +39,13 @@
               <a class="nav-link px-3" id="navApply" href="#">Apply Now</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active px-3" id="navShelters" href="shelters.html">Shelters</a>
+              <a class="nav-link px-3" id="navShelters" href="shelters.html">Shelters</a>
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right px-2" id="navButtons">
-            <li><a class="yellowButton me-3" href="sign-up.html">Sign up</a></li>
-            <li><div> </div></li>
-            <li><a class="yellowButton" href="log-in.html">Log in</a></li>
+            <li><a class="yellowButton me-3" href="sign-up.html" id="signUp">Sign up</a></li>
+            <li><div id="empty"> </div></li>
+            <li><a class="yellowButton" href="log-in.html" id="logIn">Log in</a></li>
           </ul>
         </div>
       </div>
@@ -55,7 +58,7 @@
       <form class="formInputs" id="search" method="get">
         <div class="form-row d-flex justify-content-center" id="searchBar">
           <div class="form-group col d-flex justify-content-center align-center">
-            <input class="form-control" type="search" placeholder="Search for shelters..">
+            <input class="form-control" type="search" placeholder="Search for shelters...">
             <button class="btn border-0 position-absolute" id="searchButton" type="submit">
               <i class="bi bi-search" id="searchIcon"></i>
             </button>
@@ -71,6 +74,17 @@
           </button>
         </div> -->
       </form>
+      <form class="formInputs" id="searchSmall" method="get">
+        <div class="form-row d-flex justify-content-center" id="searchBar">
+          <div class="form-group col d-flex justify-content-center align-center">
+            <input class="form-control" type="search" placeholder="Search">
+            <button class="btn border-0 position-absolute" id="searchButton" type="submit">
+              <i class="bi bi-search" id="searchIcon"></i>
+            </button>
+          </div>
+          
+        </div>
+      </form>
       <div class="container" id="shelterList1">
       <div class="grid">
         <div class="grid-header tableHeader">
@@ -82,41 +96,41 @@
         <div class="grid-header tableHeader">
           Contact
         </div>
-        <div class="grid-item">
+        <div class="grid-item shelterLink">
           <a href="shelter-detail.html" class="shelterLink">Paw Patrol Rescue</a>
         </div>
         <div class="grid-item">Adventure Bay, ON CA</div>
         <div class="grid-item">
           <a class="email" href="mailto:pawpatrolrescue@gmail.com">pawpatrolrescue@gmail.com</a> 
         </div>
-        <div class="grid-item">Just Paws Animal Rescue</div>
+        <div class="grid-item shelterLink">Just Paws Animal Rescue</div>
         <div class="grid-item">Richmond Hill, ON CA</div>
         <div class="grid-item">
           <a class="email" href="mailto:info.justpaws@gmail.com">info.justpaws@gmail.com</a> 
         </div>
-        <div class="grid-item">Stray Cat Relief</div>
+        <div class="grid-item shelterLink">Stray Cat Relief</div>
         <div class="grid-item">Toronto, ON CA</div>
         <div class="grid-item">
           <a class="email" href="mailto:straycatrelief@gmail.com">straycatrelief@gmail.com</a> 
         </div>
-        <div class="grid-item">Forgotten Ones Cat Rescue</div>
+        <div class="grid-item shelterLink">Forgotten Ones Cat Rescue</div>
         <div class="grid-item">Richmond Hill, ON CA</div>
-        <div class="grid-item">
+        <div class="grid-item phone">
           (111) 111 - 1111
         </div>
-        <div class="grid-item">Heart and Home Animal Rescue Foundation</div>
+        <div class="grid-item shelterLink">Heart and Home Animal Rescue Foundation</div>
         <div class="grid-item">Markham, ON CA</div>
-        <div class="grid-item">
+        <div class="grid-item phone">
           (222) 222 - 2222
         </div>
-        <div class="grid-item">Pet House Shelter</div>
+        <div class="grid-item shelterLink">Pet House Shelter</div>
         <div class="grid-item">Toronto, ON CA</div>
         <div class="grid-item">
           <a class="email" href="mailto:pethouseshelter@gmail.com">pethouseshelter@gmail.com</a> 
         </div>
-        <div class="grid-item">Animal Shelter Foundation</div>
+        <div class="grid-item shelterLink">Animal Shelter Foundation</div>
         <div class="grid-item">New Market, ON CA</div>
-        <div class="grid-item">
+        <div class="grid-item phone">
           (333) 333 - 3333 
         </div>
       </div>
@@ -132,36 +146,36 @@
           <div class="grid-header tableHeader">
             Contact
           </div>
-          <div class="grid-item">Rescue Angels</div>
+          <div class="grid-item shelterLink">Rescue Angels</div>
           <div class="grid-item">Richmond Hill ON CA</div>
-          <div class="grid-item">
+          <div class="grid-item phone">
             (647) 293 - 6570
           </div>
-          <div class="grid-item">MUTTS Dog Rescue</div>
+          <div class="grid-item shelterLink">MUTTS Dog Rescue</div>
           <div class="grid-item">Richmond Hill, ON CA</div>
           <div class="grid-item">
             <a class="email" href="mailto:muttsdogrescue@gmail.com">muttsdogrescue@gmail.com</a> 
           </div>
-          <div class="grid-item">North Toronto Cat Rscue</div>
+          <div class="grid-item shelterLink">North Toronto Cat Rscue</div>
           <div class="grid-item">Markam, ON CA</div>
-          <div class="grid-item">
+          <div class="grid-item phone">
             (905) 940 - 2287
           </div>
-          <div class="grid-item">Save a Friend Dog Rescue Ontario</div>
+          <div class="grid-item shelterLink">Save a Friend Dog Rescue Ontario</div>
           <div class="grid-item">Concord, ON CA</div>
           <div class="grid-item">
           </div>
-          <div class="grid-item">Vaughan Animal Services</div>
+          <div class="grid-item shelterLink">Vaughan Animal Services</div>
           <div class="grid-item">Vaughan, ON CA</div>
-          <div class="grid-item">
+          <div class="grid-item phone">
             (905) 832 - 2281
           </div>
-          <div class="grid-item">KOCA Dog Rescue</div>
+          <div class="grid-item shelterLink">KOCA Dog Rescue</div>
           <div class="grid-item">Thornhill, ON CA</div>
           <div class="grid-item">
             <a class="email" href="mailto:kocadog@gmail.com">kocadog@gmail.com</a> 
           </div>
-          <div class="grid-item">Paws Above Rescue</div>
+          <div class="grid-item shelterLink">Paws Above Rescue</div>
           <div class="grid-item">King City, ON CA</div>
           <div class="grid-item">
             <a class="email" href="mailto:pawsaboveadoptions@yahoo.com">pawsaboveadoptions@yahoo.com</a> 
