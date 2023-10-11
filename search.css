@@ -1,0 +1,45 @@
+/*
+ * search.css
+ *
+ * CSC309 PetPal
+ * 
+ * University of Toronto
+ * Fall 2023
+ * Elena Scobici
+ *
+ */
+
+#title {
+  font-family: Mochiy Pop One;
+  font-size: 55px;
+  color: var(--dark-blue);
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+}
+
+#searchBar {
+  height: 60px;
+}
+
+#dropdowns-container {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+}
+
+.checkbox {
+  margin-left: 10px;
+  transform: scale(1.5);
+}
+
+.btn-secondary {
+  background-color: var(--dark-blue) !important;
+  border: 0 !important;
+  font-family: Manrope !important;
+  font-size: 24px !important;
+  width: 150px !important;
+}
