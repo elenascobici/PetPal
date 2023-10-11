@@ -274,7 +274,8 @@
       padding-left: 14vw;
       padding-right: 14vw;
       padding-top: 10vw;
-      padding-bottom: 46vw;
+      /* margin-bottom: 15vw; */
+      /* padding-bottom: 46vw; */
     }
     .info-label {
       font-size: 2.4vw;
@@ -301,6 +302,21 @@
     .message-tb {
       margin: 2vw;
       margin-top: 2.5vw;
+    }
+  }
+
+  @media screen and (min-width:410px) and (max-width:541px) {
+    .footerContact {
+      height: 50vw;
+    }
+    .text-center {
+      height: calc(50vw + 56px);
+    }
+  }
+
+  @media screen and (max-width:409px) {
+    .main {
+      margin-bottom: 14vw;
     }
   }
 

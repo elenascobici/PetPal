@@ -237,12 +237,20 @@
    .pet-opt{
       padding-bottom: 2vw;
    }
-   /*
-   .pet-img {
-      margin-bottom: 2rem;
+
+ }
+
+ @media screen and (min-width:410px) and (max-width:541px) {
+   .footerContact {
+     height: 50vw;
    }
-   .pet-button {
-      font-size: 15px;
-      padding: 0.7rem 0.7rem;
-   } */
+   .text-center {
+     height: calc(50vw + 56px);
+   }
+ }
+
+ @media screen and (max-width:409px) {
+   .main {
+     margin-bottom: 14vw;
+   }
  }

@@ -4,6 +4,8 @@
   
   University of Toronto
   Fall 2023
+  Cassandra Tin Kwon Yuen
+  Search for "cat"
 -->
 <html lang="en">
 <head>
@@ -13,6 +15,7 @@
   <link rel="stylesheet" href="style.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="shelters.css">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 </head>
@@ -28,7 +31,7 @@
         <div class="collapse navbar-collapse" id="menuItems">
           <ul class="nav navbar-nav me-auto mb-2 mb-lg-0" id="navbarList">
             <li class="nav-item">
-              <a class="nav-link active px-3" id="navHome" aria-current="page" href="home.html">Home</a>
+              <a class="nav-link px-3" id="navHome" aria-current="page" href="home.html">Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link px-3" id="navSearch" href="search.html">Search for Pets</a>
@@ -37,7 +40,7 @@
               <a class="nav-link px-3" id="navApply" href="#">Apply Now</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link px-3" id="navShelters" href="shelters.html">Shelters</a>
+              <a class="nav-link active px-3" id="navShelters" href="shelters.html">Shelters</a>
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right px-2" id="navButtons">
@@ -48,14 +51,74 @@
         </div>
       </div>
     </nav>
-    <div class="main">
-      <p class="h1">PetPal</p>
-      <!-- CONTENT GOES HERE -->
+    <div class="main px-6 pt-5">
+      <div class="container-fluid" id="mainImgContainer">
+        <img class="img-fluid" id="mainImg" alt="Responsive image" src="images/shelters-main.jpg">
+      </div>
+      <div id="title">Meet our shelter organizations</div>
+      <form class="formInputs" id="search" method="get">
+        <div class="form-row d-flex justify-content-center" id="searchBar">
+          <div class="form-group col d-flex justify-content-center align-center">
+            <input class="form-control" type="search" placeholder="Search for shelters...">
+            <a class="btn border-0 position-absolute" id="searchButton" type="submit" href="shelters.html#search">
+              <i class="bi bi-search" id="searchIcon"></i>
+            </a>
+          </div>
+        </div>
+      </form>
+      <form class="formInputs" id="searchSmall" method="get">
+        <div class="form-row d-flex justify-content-center" id="searchBar">
+          <div class="form-group col d-flex justify-content-center align-center">
+            <input class="form-control" type="search" placeholder="Search">
+            <button class="btn border-0 position-absolute" id="searchButton" type="submit">
+              <i class="bi bi-search" id="searchIcon"></i>
+            </button>
+          </div>
+          
+        </div>
+      </form>
+      <div class="container" id="shelterList1">
+      <div class="grid">
+        <div class="grid-header tableHeader">
+          Organization
+        </div>
+        <div class="grid-header tableHeader">
+          Location
+        </div>
+        <div class="grid-header tableHeader">
+          Contact
+        </div>
+        <div class="grid-item shelterLink">Stray Cat Relief</div>
+        <div class="grid-item">Toronto, ON CA</div>
+        <div class="grid-item">
+          <a class="email" href="mailto:straycatrelief@gmail.com">straycatrelief@gmail.com</a> 
+        </div>
+        <div class="grid-item shelterLink">Forgotten Ones Cat Rescue</div>
+        <div class="grid-item">Richmond Hill, ON CA</div>
+        <div class="grid-item phone">
+          (111) 111 - 1111
+        </div>
+        <div class="grid-item shelterLink">North Toronto Cat Rscue</div>
+        <div class="grid-item">Markam, ON CA</div>
+        <div class="grid-item phone">
+          (905) 940 - 2287
+        </div>
+      </div>
+      </div>
+      <nav>
+        <ul class="pagination">
+          <li class="page-item disabled"><a class="page-link" href="#search">Previous</a></li>
+          <li class="page-item"><a class="page-link active" aria-current="page" href="#search">1          </a></li>
+          <li class="page-item disabled"><a class="page-link" href="shelters-next-page.html#search">2</a></li>
+          <li class="page-item disabled"><a class="page-link" href="#search">3</a></li>
+          <li class="page-item disabled"><a class="page-link" href="shelters-next-page.html#search">Next</a></li>
+        </ul>
+      </nav>      
     </div>
     <footer class="text-center">
       <div class="container-fluid">
         <div class="row gx-0" id="footer">
-          <div class="footerContact col col-xs-12">
+          <div class="footerContact col">
             <div id="connect">Connect with Us!
               <p id="connectPetPal">PetPal</p>
             </div>
@@ -63,7 +126,7 @@
           <div class="col-1" id="verticalLineBox">
             <div id="verticalLine"></div>
           </div>
-          <div id="contactInfo" class="col col-xs-12">
+          <div id="contactInfo" class="col">
             <a id="link" href="mailto:petpal23@gmail.com">petpal23@gmail.com</a>        	
             <p id="telephone">(987) 654 - 3210</p>
             <ul class="list-group list-group-horizontal">

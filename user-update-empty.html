@@ -71,14 +71,15 @@
                   name="profile_photo" placeholder="Photo" required="" capture>
           </div>
         </div>
-
         <div class="grid">
           <div class="grid-item">
             <label for="firstName" id="firstNameLabel" class="gridLabel">First name</label>
           </div>
           <div class="grid-item">
-            <input id="firstName" type="text" name="firstName" class="gridValue" value="Jack" required>
+            <input id="firstName" type="text" name="firstName" class="gridValue" value="" required>
+            <p class="invalid">Invalid</p>
           </div>
+          
           <div class="grid-item">
             <label for="lastName" id="lastNameLabel" class="gridLabel">Last name</label>
           </div>
@@ -159,7 +160,7 @@
             </datalist>
           </div>
         </div>
-        <a type="submit" class="editButton" href="user-update-empty.html" id="save">Save</a>
+        <a type="submit" class="editButton" href="user-update-username.html" id="save">Save</a>
       </form>      
     </div>
     <footer class="text-center">

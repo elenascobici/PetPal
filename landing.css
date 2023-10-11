@@ -22,6 +22,11 @@
 
  #mainImg {
     width: 100%;
+    object-fit: cover;
+ }
+
+ #mainImg2 {
+   display: none;
  }
 
  #mainImgContainer {
@@ -53,6 +58,10 @@
     
  }
 
+ #meetFriendHidden {
+   display: none;
+ }
+
  #apply {
     padding-bottom: 0.5rem;
     padding-left: 3rem;
@@ -66,6 +75,9 @@
 
  #applyToday {
     margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
  }
 
  #apply:hover {
@@ -273,4 +285,71 @@
 
  @media screen and (max-width: 1000px) {
     .break {display: none;}
+ }
+
+ @media screen and (max-width:768px) {
+   .main {
+        padding-left: 14vw !important;
+        padding-right: 14vw !important;
+        padding-top: 10vw !important;
+        padding-bottom: 46vw !important;
+  }
+} 
+
+ @media screen and (max-width: 991px) {
+   .yellowButton { 
+     text-align: right; 
+     background-color: #FFC011;
+     border: 1px solid white; 
+     border-radius: 10px;
+     color: white;
+     /* display: flex; */
+   }
+   .yellowButton:hover {
+      background-color: #FFA903; color: white;
+   }
+   
+   #apply { padding-top: 8px; display: flex; width: fit-content; font-size: 25px; 
+      height: 3.25rem;  line-height: normal; text-align: center;}
+   .overlayPetpal { font-size: 40px; }
+   #mainImg { height: 350px; object-position: 100% 0; width: 100%; }
+   #quote { font-size: 40px; }
+ }
+
+ @media screen and (max-width: 767px) {
+   #overlay { margin-top: 0; display: flex; justify-content: start !important; padding-top: 20vh;}
+   /* #overlay, #overlay > .overlayPetpal, #overlay #applyToday { display: none; } */
+   /* #meetFriendHidden {display: block; margin-top: 3rem;} */
+   #mainImg {display:none;}
+   #mainImg2 {display: flex; height: 100vh; object-fit: cover; object-position: 100% 0;}
+   .main {position: relative;}
+   #mainImgContainer {width: 100vw; height: 100vh; position: absolute; left: 0; top: 0; padding-bottom: 100vh;}
+   .shelterLogo { object-fit: scale-down; max-width: 100%; max-height: 100%; transform: scale(0.9); }
+   .main {margin-bottom: 390px; padding-bottom: 5rem;}
+   #vectorButtons {padding-top: 50vh !important; padding-left: 0; padding-right: 0;}
+ }
+
+ @media screen and (max-width: 574px) {
+   #overlay {width: 100%;}
+   /* #mainImg { width: 100%; height: 50vw; } */
+ }
+
+ @media screen and (max-width: 409px) {
+   .main {margin-bottom: 403px;}
+   .petImage {width: 164px; height: 200px;}
+   .pet {width: 164px; height: 239px;}
+   .petLabel {font-size: 23px; bottom: 0.2rem;}
+   #dog { width: 80%; height: auto; left: 10%;}
+   #cat { width: 70%; height: auto; left: 17%;}
+   #other { width: 60%; height: auto; left: 19%;}
+   #shelter { width: 60%; height: auto; left: 20%;}
+   #quote {font-size: 35px;}
+   .text, #shelterOrgs {margin-bottom: 0; font-size: 30px;}
+ }
+
+ @media screen and (max-width: 325px) {
+   .main {margin-bottom: 403px;}
+   .petImage {width: 100%; height: 200px;}
+   .pet {width: 164px; height: 239px;}
+   .petLabel {font-size: 23px; bottom: 0.2rem;}
  }
