@@ -289,6 +289,7 @@ body {
 
 
   @media screen and (max-width: 409px) {
+    .main{padding-bottom: 403px;}
     #verticalLine {display: none;}
     .footerContact {text-align: center; }
     #connect, #connectPetPal {text-align: center; padding-left: 1rem;}
