@@ -245,3 +245,9 @@ body {
   p {
     margin: 0;
   }
+
+  .skinny-table {
+    width: 100%; /* Adjust this value according to your design needs */
+    margin-left: 90px;
+    margin-right: auto;
+}

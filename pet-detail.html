@@ -48,87 +48,93 @@
       </div>
     </nav>
     <!-- My code -->
-    <div class="main">
+    <div class="main-pet-detail">
       <div class="container mt-5">
-        <div class="row">
-          <!-- Image Gallery -->
-          <div class="col-12">
-            
-            <!-- Main Image -->
-            <div class="mb-3">
-              <img src="/images/calcifer_main.jpg" alt="Main Image" class="img-fluid custom-rounded">
-            </div>
-            
-            <!-- Sub Images -->
-            <div class="row">
-              <!-- Image 1 -->
-              <div class="col-4">
-                <img src="/images/calcifer_main3.jpg" alt="child image 1" class="img-fluid custom-rounded-child">
+          <div class="row">
+              <!-- Details row -->
+              <div class="col-12 padding">
+                  <h2 id="pet-name">Calcifer</h2>
+                  <h3 id="date">2023 October 20</h3>
               </div>
-              <!-- Image 2 -->
-              <div class="col-4">
-                <img src="/images/calcifer_main2.jpg" alt="child image 2" class="img-fluid custom-rounded-child">
-              </div>
-              <!-- Image 3 -->
-              <div class="col-4">
-                <img src="/images/calcifer_main3.jpg" alt="child image 3" class="img-fluid custom-rounded-child">
-              </div>
-            </div>
 
-            <!-- Pet Details -->
-            <div class="row">
-              <!-- Name and Date-->
-              <div class="col-12">
-                <h2 id="pet-name"> Calcifer </h2>
-                <h3 id="date"> 2023 October 20</h3>
+              <!-- Images row -->
+              <div class="col-12 col-lg-7">
+                  <img src="/images/calcifer_main.jpg" alt="Main Image" class="img-fluid custom-rounded">
+                  <div class="row"> 
+                      <div class="col-4">
+                          <img src="/images/calcifer_main3.jpg" alt="child image 1" class="img-fluid custom-rounded-child">
+                      </div>
+                      <div class="col-4">
+                          <img src="/images/calcifer_main2.jpg" alt="child image 2" class="img-fluid custom-rounded-child">
+                      </div>
+                      <div class="col-4">
+                          <img src="/images/calcifer_main3.jpg" alt="child image 3" class="img-fluid custom-rounded-child"> 
+                      </div>
+                  </div>  
+              </div> 
+              
+              <!-- Table row -->
+              <div class="col-12 col-lg-5 d-flex align-items-center">
+                  <table class="table bg-lightYellow rounded-table m-auto" id="subtitle">
+                      <thead>
+                          <tr>
+                              <th colspan="2" class="text-center">Details</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr> 
+                              <td><strong> Status</strong></td>
+                              <td>Available</td>
+                          </tr>
+                          <tr>
+                              <td><strong>Gender</strong></td>
+                              <td>Female</td>
+                          </tr>
+                          <tr>
+                              <td><strong>Age</strong></td>
+                              <td>0.3 years</td>
+                          </tr>
+                          <tr>
+                              <td><strong>Color</strong></td>
+                              <td>Ginger</td>
+                          </tr>
+                          <tr>
+                              <td><strong>Breed</strong></td>
+                              <td>Tabby</td>
+                          </tr>
+                          <tr>
+                              <td><strong>Location</strong></td>
+                              <td>Montreal</td>
+                          </tr>
+                          <tr>
+                              <td><strong>Size</strong></td>
+                              <td>Small</td>
+                          </tr>
+                          <tr>
+                              <td><strong>Behaviour</strong></td>
+                              <td>Timid</td>
+                          </tr>
+                      </tbody>
+                  </table>
               </div>
-              <!-- Col Detail 1-->
-              <div class="col-6 ">
-                  <p><strong> Gender:</strong> Female </p>
-                  <p><strong> Breed:</strong> Tabby </p>
-                  <p><strong> Color:</strong> Ginger </p>
-
-              </div>
-              <!-- Col Detail 2-->
-              <div class="col-6">
-                  <p><strong> Age:</strong> 0.3 years </p>
-                  <p><strong> Location:</strong> Adventure Bay, TO </p>
-                  <p><strong> Size:</strong> Small </p>
-              </div>
-            </div>
-
-            <!-- Medical + Behaviour -->
-            <!-- <div class="row">
-              <div class="col-12 ">
-                <h2 id="subtitle"> Medical History </h2>
-                <p> Vacinations upto-date, special needs</p>
-                <h2 id="subtitle"> Behaviour </h2>
-                <p> Timid </p>
-              </div>
-            </div> -->
-
-            <!-- Adopt button-->
-            <div class="row">
-              <button class="tealButton"> Adopt!</button>
-            </div>
-
-            <!-- Description -->
-            <div class="row">
-              <div class="col-12 description-box">
-                <h2 id="subtitle"> Description </h2>
-                <p> This confident gal is ready to run your household and make sure mealtime is always on time. She  is initially shy but after a few days warms up and is friendly. </p>
-              </div>
-            </div>
-            
-
           </div>
-
-        </div>
+          <!-- Description row -->
+          <div class="row">
+              <div class="col-12 description-box">
+                  <h2 id="subtitle">Description</h2>
+                  <p>This confident gal is ready to run your household and make sure mealtime is always on time. She is initially shy but after a few days warms up and is friendly.</p>
+              </div>
+              <div class="col-12 description-box">
+                  <h2 id="subtitle">Medical History</h2>
+                  <p>Vaccinated and requires special needs.</p>
+              </div>
+              <div class="col-12">
+                  <button class="tealButton">Adopt!</button>
+              </div>
+          </div>
       </div>
     </div>
-  
-
-
+    <!-- Footer -->
     <footer class="text-center">
       <div class="container-fluid">
         <div class="row gx-0" id="footer">
