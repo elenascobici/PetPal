@@ -63,7 +63,7 @@
   padding: 0.2rem 1rem;
   transition: 0.3s;
   text-decoration: none;
-  margin: 25px;
+
 }
 
 .flex-row {
@@ -84,7 +84,8 @@
   border: none; /* Remove the black line (border) below the heading */
   border-top-right-radius: 15px;
   border-top-left-radius: 15px;
-  font-size: larger;
+  font-size: 1.5rem;
+  font-weight: none;
 }
 
 .table td {
@@ -96,11 +97,7 @@
 }
 
 .padding {
-  padding: 15px;
-}
-
-.skinny-table {
-  padding-left: 40px;
+  padding: 20px;
 }
 
 @media (min-width: 1200px) {
