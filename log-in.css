@@ -28,6 +28,7 @@ body {
   display: flex;
   flex-direction: row;
   padding-top: 40px;
+  padding-bottom: 40px;
   border-radius: 14px;
   justify-content: space-between;
   height: calc(100vh - 125px);
@@ -86,10 +87,11 @@ body {
   border: 0;
   padding: 5px 10px;
   margin-bottom: 20px;
+  width: 50%;
 }
 
 #log-in-btn {
   width: 25%;
   height: 50px;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
