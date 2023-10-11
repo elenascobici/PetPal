@@ -120,6 +120,7 @@
    font-weight: 700;
    font-size: 30px;
    color: #009899;
+   padding-top: 0.5rem;
 }
 
 .gridValue {
@@ -135,8 +136,28 @@
    width: 100%;
 }
 
+.petGrid {
+   grid-template-columns: auto auto auto auto;
+   display: grid;
+   column-gap: 2rem;
+   align-items: center;
+   justify-items: center;
+   place-items: center;
+   margin-top: 0;
+}
 
-input[type="tel"], input[type="password"], textarea, select {
+/* .grid-item {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+} */
+
+.grid-item > .pet {
+   margin-top: 1rem;
+}
+
+
+input[type="tel"], input[type="password"], input[type="text"], textarea, select {
    border: none;
    padding: 0.5rem 1.25rem;
    width: 40vw;
@@ -222,7 +243,6 @@ input[type="radio"]:checked {
    transition: 0.3s;
    position: relative;
    margin-top: 37px;
-   display: flex;
 }
 
 .petImage {
@@ -247,12 +267,13 @@ input[type="radio"]:checked {
    right: 0;
    bottom: 0.3rem;
    max-height: 48px;
+   text-align: center;
 }
 
 #carouselContainer {
    padding: 0;
    margin: 0;
-   /* position: relative; */
+   position: relative;
 }
 
 .carousel .carousel-indicators {
@@ -358,6 +379,7 @@ input[type="radio"]:checked {
    color: white;
 }
 
+
 .available {
    /* background-color: #FEBF11; */
    background-color: white;
@@ -410,7 +432,99 @@ input[type="radio"]:checked {
 }
 
 #save {
-   position: fixed;
-   top: 90px;
+   /* position: fixed; */
+   position: absolute;
+   bottom: 390px;
    right: 1rem;
+}
+
+@media screen and (max-width:1210px) {
+   .petGrid {grid-template-columns: auto auto auto; align-items: center;}
+   .subtitle, .gridLabel, .gridValue, .contactOptions {font-size: 27px;}
+}
+
+@media screen and (max-width:1062px) {
+   #shelterLogo {padding-right: 0;}
+   #title {font-size: 50px;}
+   .subtitle, .gridLabel, .gridValue, .contactOptions {font-size: 25px;}
+   .locationType {font-size: 18px;}
+}
+
+
+@media screen and (max-width:1037px) {
+   .grid {padding-left: 2rem; padding-right: 2rem;}
+   input[type="text"], input[type="password"], input[type="tel"] {width: 100%;}
+}
+
+@media screen and (max-width:1003px) {
+   .petGrid {grid-template-columns: auto auto; align-items: center;}
+   .carousel-control-next {right: -4rem;}
+   .carousel-control-prev {left: -4rem;}
+   #listPets {text-align: center; justify-content: center; padding-left: 0;}
+}
+
+@media screen and (max-width:991px) {
+   #mission {margin: 0;}
+   .subtitle {padding-left: 0;}
+   #edit {font-size: 25px;}
+}
+
+
+@media screen and (max-width:768px) {
+   .petGrid {grid-template-columns: auto; align-items: center;}
+   .carousel-control-next {right: -4rem;}
+   .carousel-control-prev {left: -4rem;}
+   #mission {padding-left: 0;}
+   .editButton {font-size: 25px;}
+   .subtitle, .gridLabel, .gridValue, .contactOptions {font-size: 22px;}
+   input[type="radio"] {transform: scale(1.25);}
+   .contactOptions {padding-left: 0.25rem; padding-right: 1.25rem;}
+   #radioButtons {margin-left: 1rem;}
+   .subtitle {padding-left: 1rem;}
+}
+
+@media screen and (max-width:633px) {
+   #mission {margin-left: 1rem; margin-right: 1rem;}
+   .grid {column-gap: 0.5rem;}
+}
+
+
+@media screen and (max-width:522px) {
+   .grid {grid-template-columns: auto; padding: 0; row-gap: 0.75rem; margin-top: 2rem;}
+   .petImage {width: 164px; height: 200px;}
+   .pet {width: 164px; height: 239px;}
+   .petLabel {font-size: 23px; bottom: 0.2rem;}
+   .carousel-control-next {right: -3rem;}
+   .carousel-control-prev {left: -3rem;}
+   .main {padding-left: 2rem !important; padding-right: 2rem !important;}
+   .gridLabel {padding-top: 1rem;}
+   .gridValue {font-size: 20px; padding-left: 0.75rem;}
+   .locationType {font-size: 16px;}
+   #edit {margin: 0;}
+   #radioButtons {margin-left: 0;}
+   #listPets {padding-bottom: 0; margin-bottom: -1rem;}
+   .status {font-size: 23px; width: 164px;}
+   .editButton {font-size: 22px;}
+   #save {bottom: 380px;}
+}
+
+@media screen and (max-width:448px) {
+   .rating {font-size: 12px;}
+   .star {font-size: 15px;}
+   .carousel-control-next {right: -2rem;}
+   .carousel-control-prev {left: -2rem;}
+   
+   #title {font-size: 35px; line-height: 2.8rem;}
+   .subtitleHeader {width: 100%;}
+   
+}
+
+@media screen and (max-width:409px) {
+   .main {margin-bottom: 201px;}
+   #save {bottom: 430px;}
+}
+
+@media screen and (max-width:399px) {
+   .main {padding-left: 2rem !important; padding-right: 2rem !important;}
+   .editButton {font-size: 20px;}
 }

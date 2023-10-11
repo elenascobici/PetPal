@@ -132,9 +132,16 @@
             <p class="locationType" id="provinceLabel">Province/Territory</p>
           </div>
           <div class="grid-item">
-            <div class="gridLabel">Preferred Contact</div>
+            <label for="websiteLink" id="websiteLinkLabel" class="gridLabel">Website Link</label>
           </div>
           <div class="grid-item">
+            <input id="websiteLink" type="text" name="websiteLink" class="gridValue"
+             value="https://pawpatrolandfriends.com/">
+          </div>
+          <div class="grid-item">
+            <div class="gridLabel">Preferred Contact</div>
+          </div>
+          <div class="grid-item" id="radioButtons">
             <input id="phonePreferred" type="radio" name="contactPreference" value="phone">
             <span class="checkmark"></span>
             <label for="phonePreferred" class="contactOptions">Phone</label>
@@ -153,11 +160,11 @@ We give our animals a proper inspection to ensure they are healthy and ready to 
         </div>        
         </div>
         <div class="container justify-content-start text-start">
-          <h2 class="subtitle">List of Pets:</h2>
+          <h2 class="subtitle" id="listPets">List of Pets:</h2>
         </div>
         <!-- Carousel -->
         <div class="container" id="carouselContainer">
-          <div id="petsCarousel" class="carousel slide" data-bs-ride="false">
+          <div id="petsCarousel" class="carousel slide" data-bs-interval="false">
             <div class="carousel-indicators">
               <button class="carouselIndicator active" type="button" data-bs-target="#petsCarousel" data-bs-slide-to="0" aria-current="true"></button>
               <button class="carouselIndicator" type="button" data-bs-target="#petsCarousel" data-bs-slide-to="1"></button>
@@ -174,8 +181,8 @@ We give our animals a proper inspection to ensure they are healthy and ready to 
                   <button class="carousel-control-next carousel-btn" type="button" data-bs-target="#petsCarousel" data-bs-slide="next">
                     <span class="carousel-control-next-icon"></span>
                   </button>
-                  <div class="row align-middle">
-                    <div class="col text-center d-flex flex-column justify-content-center">
+                  <div class="grid petGrid">
+                    <div class="grid-item">
                       <a type="button" class="pet" href="#">
                         <img class="petImage" src="images/buddy.jpg">
                         <div class="petLabel">Buddy</div>
@@ -189,13 +196,13 @@ We give our animals a proper inspection to ensure they are healthy and ready to 
                         </select>
                       </div>
                     </div>
-                    <div class="col text-center d-flex flex-column justify-content-center">
+                    <div class="grid-item">
                       <a type="button" class="pet" href="#">
                         <img class="petImage" src="images/quokkie.png">
                         <div class="petLabel">Quokkie</div>
                       </a>
                       <div class="selectStatus">
-                        <select name="quokkieStatus" class="status">
+                        <select name="buddyStatus" class="status">
                           <option class="statusOption available" value="available">Available</option>
                           <option class="statusOption pending" value="pending" selected>Pending</option>
                           <option class="statusOption adopted" value="adopted">Adopted</option>
@@ -203,13 +210,13 @@ We give our animals a proper inspection to ensure they are healthy and ready to 
                         </select>
                       </div>
                     </div>
-                    <div class="col text-center d-flex flex-column justify-content-center">
+                    <div class="grid-item">
                       <a type="button" class="pet" href="#">
                         <img class="petImage" src="images/calcifer.jpg">
                         <div class="petLabel">Calcifer</div>
                       </a>
                       <div class="selectStatus">
-                        <select name="calciferStatus" class="status">
+                        <select name="buddyStatus" class="status">
                           <option class="statusOption available" value="available" selected>Available</option>
                           <option class="statusOption pending" value="pending">Pending</option>
                           <option class="statusOption adopted" value="adopted">Adopted</option>
@@ -217,13 +224,13 @@ We give our animals a proper inspection to ensure they are healthy and ready to 
                         </select>
                       </div>
                     </div>
-                    <div class="col text-center d-flex flex-column justify-content-center">
+                    <div class="grid-item">
                       <a type="button" class="pet" href="#">
                         <img class="petImage" src="images/hokey-pokey.jpg">
                         <div class="petLabel">Hokey Pokey</div>
                       </a>
                       <div class="selectStatus">
-                        <select name="hokeypokeyStatus" class="status">
+                        <select name="buddyStatus" class="status">
                           <option class="statusOption available" value="available" selected>Available</option>
                           <option class="statusOption pending" value="pending">Pending</option>
                           <option class="statusOption adopted" value="adopted">Adopted</option>
@@ -231,15 +238,13 @@ We give our animals a proper inspection to ensure they are healthy and ready to 
                         </select>
                       </div>
                     </div>
-                  </div>
-                  <div class="row align-middle">
-                    <div class="col text-center d-flex flex-column justify-content-center">
+                    <div class="grid-item">
                       <a type="button" class="pet" href="#">
                         <img class="petImage" src="images/hamtaro.jpg">
                         <div class="petLabel">Hamtaro</div>
                       </a>
                       <div class="selectStatus">
-                        <select name="hamtaroStatus" class="status">
+                        <select name="buddyStatus" class="status">
                           <option class="statusOption available" value="available">Available</option>
                           <option class="statusOption pending" value="pending">Pending</option>
                           <option class="statusOption adopted" value="adopted">Adopted</option>
@@ -247,13 +252,13 @@ We give our animals a proper inspection to ensure they are healthy and ready to 
                         </select>
                       </div>
                     </div>
-                    <div class="col text-center d-flex flex-column justify-content-center">
+                    <div class="grid-item">
                       <a type="button" class="pet" href="#">
                         <img class="petImage" src="images/jiji.jpg">
                         <div class="petLabel">Jiji</div>
                       </a>
                       <div class="selectStatus">
-                        <select name="jijiStatus" class="status">
+                        <select name="buddyStatus" class="status">
                           <option class="statusOption available" value="available">Available</option>
                           <option class="statusOption pending" value="pending">Pending</option>
                           <option class="statusOption adopted" value="adopted" selected>Adopted</option>
@@ -261,13 +266,13 @@ We give our animals a proper inspection to ensure they are healthy and ready to 
                         </select>
                       </div>
                     </div>
-                    <div class="col text-center d-flex flex-column justify-content-center">
+                    <div class="grid-item">
                       <a type="button" class="pet" href="#">
                         <img class="petImage" src="images/totoro.jpg">
                         <div class="petLabel">Totoro</div>
                       </a>
                       <div class="selectStatus">
-                        <select name="totoroStatus" class="status">
+                        <select name="buddyStatus" class="status">
                           <option class="statusOption available" value="available">Available</option>
                           <option class="statusOption pending" value="pending">Pending</option>
                           <option class="statusOption adopted" value="adopted" selected>Adopted</option>
@@ -275,13 +280,13 @@ We give our animals a proper inspection to ensure they are healthy and ready to 
                         </select>
                       </div>
                     </div>
-                    <div class="col text-center d-flex flex-column justify-content-center">
+                    <div class="grid-item">
                       <a type="button" class="pet" href="#">
                         <img class="petImage" src="images/sadaharu.jpg">
-                        <div class="petLabel">Sadaharu</div>
+                        <div class="petLabel">Buddy</div>
                       </a>
                       <div class="selectStatus">
-                        <select name="sadaharuStatus" class="status">
+                        <select name="buddyStatus" class="status">
                           <option class="statusOption available" value="available">Available</option>
                           <option class="statusOption pending" value="pending">Pending</option>
                           <option class="statusOption adopted" value="adopted" selected>Adopted</option>
@@ -301,8 +306,8 @@ We give our animals a proper inspection to ensure they are healthy and ready to 
                   <button class="carousel-control-next carousel-btn" type="button" data-bs-target="#petsCarousel" data-bs-slide="next">
                     <span class="carousel-control-next-icon"></span>
                   </button>
-                  <div class="row align-middle">
-                    <div class="col text-center d-flex flex-column justify-content-center">
+                  <div class="grid petGrid">
+                    <div class="grid-item">
                       <a type="button" class="pet" href="#">
                         <img class="petImage" src="images/buddy.jpg">
                         <div class="petLabel">Buddy</div>
@@ -316,13 +321,13 @@ We give our animals a proper inspection to ensure they are healthy and ready to 
                         </select>
                       </div>
                     </div>
-                    <div class="col text-center d-flex flex-column justify-content-center">
+                    <div class="grid-item">
                       <a type="button" class="pet" href="#">
                         <img class="petImage" src="images/quokkie.png">
                         <div class="petLabel">Quokkie</div>
                       </a>
                       <div class="selectStatus">
-                        <select name="quokkieStatus" class="status">
+                        <select name="buddyStatus" class="status">
                           <option class="statusOption available" value="available">Available</option>
                           <option class="statusOption pending" value="pending" selected>Pending</option>
                           <option class="statusOption adopted" value="adopted">Adopted</option>
@@ -330,13 +335,13 @@ We give our animals a proper inspection to ensure they are healthy and ready to 
                         </select>
                       </div>
                     </div>
-                    <div class="col text-center d-flex flex-column justify-content-center">
+                    <div class="grid-item">
                       <a type="button" class="pet" href="#">
                         <img class="petImage" src="images/calcifer.jpg">
                         <div class="petLabel">Calcifer</div>
                       </a>
                       <div class="selectStatus">
-                        <select name="calciferStatus" class="status">
+                        <select name="buddyStatus" class="status">
                           <option class="statusOption available" value="available" selected>Available</option>
                           <option class="statusOption pending" value="pending">Pending</option>
                           <option class="statusOption adopted" value="adopted">Adopted</option>
@@ -344,13 +349,13 @@ We give our animals a proper inspection to ensure they are healthy and ready to 
                         </select>
                       </div>
                     </div>
-                    <div class="col text-center d-flex flex-column justify-content-center">
+                    <div class="grid-item">
                       <a type="button" class="pet" href="#">
                         <img class="petImage" src="images/hokey-pokey.jpg">
                         <div class="petLabel">Hokey Pokey</div>
                       </a>
                       <div class="selectStatus">
-                        <select name="hokeypokeyStatus" class="status">
+                        <select name="buddyStatus" class="status">
                           <option class="statusOption available" value="available" selected>Available</option>
                           <option class="statusOption pending" value="pending">Pending</option>
                           <option class="statusOption adopted" value="adopted">Adopted</option>
@@ -358,15 +363,13 @@ We give our animals a proper inspection to ensure they are healthy and ready to 
                         </select>
                       </div>
                     </div>
-                  </div>
-                  <div class="row align-middle">
-                    <div class="col text-center d-flex flex-column justify-content-center">
+                    <div class="grid-item">
                       <a type="button" class="pet" href="#">
                         <img class="petImage" src="images/hamtaro.jpg">
                         <div class="petLabel">Hamtaro</div>
                       </a>
                       <div class="selectStatus">
-                        <select name="hamtaroStatus" class="status">
+                        <select name="buddyStatus" class="status">
                           <option class="statusOption available" value="available">Available</option>
                           <option class="statusOption pending" value="pending">Pending</option>
                           <option class="statusOption adopted" value="adopted">Adopted</option>
@@ -374,13 +377,13 @@ We give our animals a proper inspection to ensure they are healthy and ready to 
                         </select>
                       </div>
                     </div>
-                    <div class="col text-center d-flex flex-column justify-content-center">
+                    <div class="grid-item">
                       <a type="button" class="pet" href="#">
                         <img class="petImage" src="images/jiji.jpg">
                         <div class="petLabel">Jiji</div>
                       </a>
                       <div class="selectStatus">
-                        <select name="jijiStatus" class="status">
+                        <select name="buddyStatus" class="status">
                           <option class="statusOption available" value="available">Available</option>
                           <option class="statusOption pending" value="pending">Pending</option>
                           <option class="statusOption adopted" value="adopted" selected>Adopted</option>
@@ -388,13 +391,13 @@ We give our animals a proper inspection to ensure they are healthy and ready to 
                         </select>
                       </div>
                     </div>
-                    <div class="col text-center d-flex flex-column justify-content-center">
+                    <div class="grid-item">
                       <a type="button" class="pet" href="#">
                         <img class="petImage" src="images/totoro.jpg">
                         <div class="petLabel">Totoro</div>
                       </a>
                       <div class="selectStatus">
-                        <select name="totoroStatus" class="status">
+                        <select name="buddyStatus" class="status">
                           <option class="statusOption available" value="available">Available</option>
                           <option class="statusOption pending" value="pending">Pending</option>
                           <option class="statusOption adopted" value="adopted" selected>Adopted</option>
@@ -402,13 +405,13 @@ We give our animals a proper inspection to ensure they are healthy and ready to 
                         </select>
                       </div>
                     </div>
-                    <div class="col text-center d-flex flex-column justify-content-center">
+                    <div class="grid-item">
                       <a type="button" class="pet" href="#">
                         <img class="petImage" src="images/sadaharu.jpg">
-                        <div class="petLabel">Sadaharu</div>
+                        <div class="petLabel">Buddy</div>
                       </a>
                       <div class="selectStatus">
-                        <select name="sadaharuStatus" class="status">
+                        <select name="buddyStatus" class="status">
                           <option class="statusOption available" value="available">Available</option>
                           <option class="statusOption pending" value="pending">Pending</option>
                           <option class="statusOption adopted" value="adopted" selected>Adopted</option>
@@ -428,8 +431,8 @@ We give our animals a proper inspection to ensure they are healthy and ready to 
                   <button class="carousel-control-next carousel-btn" type="button" data-bs-target="#petsCarousel" data-bs-slide="next">
                     <span class="carousel-control-next-icon"></span>
                   </button>
-                  <div class="row align-middle">
-                    <div class="col text-center d-flex flex-column justify-content-center">
+                  <div class="grid petGrid">
+                    <div class="grid-item">
                       <a type="button" class="pet" href="#">
                         <img class="petImage" src="images/buddy.jpg">
                         <div class="petLabel">Buddy</div>
@@ -443,13 +446,13 @@ We give our animals a proper inspection to ensure they are healthy and ready to 
                         </select>
                       </div>
                     </div>
-                    <div class="col text-center d-flex flex-column justify-content-center">
+                    <div class="grid-item">
                       <a type="button" class="pet" href="#">
                         <img class="petImage" src="images/quokkie.png">
                         <div class="petLabel">Quokkie</div>
                       </a>
                       <div class="selectStatus">
-                        <select name="quokkieStatus" class="status">
+                        <select name="buddyStatus" class="status">
                           <option class="statusOption available" value="available">Available</option>
                           <option class="statusOption pending" value="pending" selected>Pending</option>
                           <option class="statusOption adopted" value="adopted">Adopted</option>
@@ -457,13 +460,13 @@ We give our animals a proper inspection to ensure they are healthy and ready to 
                         </select>
                       </div>
                     </div>
-                    <div class="col text-center d-flex flex-column justify-content-center">
+                    <div class="grid-item">
                       <a type="button" class="pet" href="#">
                         <img class="petImage" src="images/calcifer.jpg">
                         <div class="petLabel">Calcifer</div>
                       </a>
                       <div class="selectStatus">
-                        <select name="calciferStatus" class="status">
+                        <select name="buddyStatus" class="status">
                           <option class="statusOption available" value="available" selected>Available</option>
                           <option class="statusOption pending" value="pending">Pending</option>
                           <option class="statusOption adopted" value="adopted">Adopted</option>
@@ -471,13 +474,13 @@ We give our animals a proper inspection to ensure they are healthy and ready to 
                         </select>
                       </div>
                     </div>
-                    <div class="col text-center d-flex flex-column justify-content-center">
+                    <div class="grid-item">
                       <a type="button" class="pet" href="#">
                         <img class="petImage" src="images/hokey-pokey.jpg">
                         <div class="petLabel">Hokey Pokey</div>
                       </a>
                       <div class="selectStatus">
-                        <select name="hokeypokeyStatus" class="status">
+                        <select name="buddyStatus" class="status">
                           <option class="statusOption available" value="available" selected>Available</option>
                           <option class="statusOption pending" value="pending">Pending</option>
                           <option class="statusOption adopted" value="adopted">Adopted</option>
@@ -485,15 +488,13 @@ We give our animals a proper inspection to ensure they are healthy and ready to 
                         </select>
                       </div>
                     </div>
-                  </div>
-                  <div class="row align-middle">
-                    <div class="col text-center d-flex flex-column justify-content-center">
+                    <div class="grid-item">
                       <a type="button" class="pet" href="#">
                         <img class="petImage" src="images/hamtaro.jpg">
                         <div class="petLabel">Hamtaro</div>
                       </a>
                       <div class="selectStatus">
-                        <select name="hamtaroStatus" class="status">
+                        <select name="buddyStatus" class="status">
                           <option class="statusOption available" value="available">Available</option>
                           <option class="statusOption pending" value="pending">Pending</option>
                           <option class="statusOption adopted" value="adopted">Adopted</option>
@@ -501,13 +502,13 @@ We give our animals a proper inspection to ensure they are healthy and ready to 
                         </select>
                       </div>
                     </div>
-                    <div class="col text-center d-flex flex-column justify-content-center">
+                    <div class="grid-item">
                       <a type="button" class="pet" href="#">
                         <img class="petImage" src="images/jiji.jpg">
                         <div class="petLabel">Jiji</div>
                       </a>
                       <div class="selectStatus">
-                        <select name="jijiStatus" class="status">
+                        <select name="buddyStatus" class="status">
                           <option class="statusOption available" value="available">Available</option>
                           <option class="statusOption pending" value="pending">Pending</option>
                           <option class="statusOption adopted" value="adopted" selected>Adopted</option>
@@ -515,13 +516,13 @@ We give our animals a proper inspection to ensure they are healthy and ready to 
                         </select>
                       </div>
                     </div>
-                    <div class="col text-center d-flex flex-column justify-content-center">
+                    <div class="grid-item">
                       <a type="button" class="pet" href="#">
                         <img class="petImage" src="images/totoro.jpg">
                         <div class="petLabel">Totoro</div>
                       </a>
                       <div class="selectStatus">
-                        <select name="totoroStatus" class="status">
+                        <select name="buddyStatus" class="status">
                           <option class="statusOption available" value="available">Available</option>
                           <option class="statusOption pending" value="pending">Pending</option>
                           <option class="statusOption adopted" value="adopted" selected>Adopted</option>
@@ -529,13 +530,13 @@ We give our animals a proper inspection to ensure they are healthy and ready to 
                         </select>
                       </div>
                     </div>
-                    <div class="col text-center d-flex flex-column justify-content-center">
+                    <div class="grid-item">
                       <a type="button" class="pet" href="#">
                         <img class="petImage" src="images/sadaharu.jpg">
-                        <div class="petLabel">Sadaharu</div>
+                        <div class="petLabel">Buddy</div>
                       </a>
                       <div class="selectStatus">
-                        <select name="sadaharuStatus" class="status">
+                        <select name="buddyStatus" class="status">
                           <option class="statusOption available" value="available">Available</option>
                           <option class="statusOption pending" value="pending">Pending</option>
                           <option class="statusOption adopted" value="adopted" selected>Adopted</option>
@@ -552,8 +553,7 @@ We give our animals a proper inspection to ensure they are healthy and ready to 
         </div>
         <input type="submit" class="editButton" value="Save" id="save">
       </form>
-      <div class="container buttons">
-          
+      <div class="buttons">
         <a href="pet-creation.html" class="editButton">
           Create new pets ⏵
         </a>
