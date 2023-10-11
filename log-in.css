@@ -93,9 +93,3 @@ body {
   height: 50px;
   margin-bottom: 40px;
 }
-
-.account-links {
-  font-size: 24px;
-  text-decoration: underline;
-  color: var(--dark-blue);
-}
