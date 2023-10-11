@@ -39,6 +39,7 @@ body {
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+    z-index: 9999;
  }
 
  .navbar .collapse .nav .nav-item .nav-link {
@@ -279,8 +280,13 @@ body {
          padding-bottom: 46vw;
    }
 } 
+  @media screen and (max-width:589px) and (min-width:428px) {
+    #connect{padding-left: 1rem;}
+  }
 
-
+  @media screen and (max-width:496px) and (min-width:438px) {
+    #connect, #connectPetPal {text-align: center;}
+  }
 
   @media screen and (max-width: 409px) {
     #verticalLine {display: none;}
@@ -291,4 +297,5 @@ body {
     #contactInfo {
       padding-top: 2rem; padding-bottom: 2rem; display: flex; justify-content: center; align-items: center; border-top: 1px solid white;
     }
+    .main {margin-bottom: 403px;}
   }
