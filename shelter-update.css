@@ -1,5 +1,5 @@
 /*
- * shelter-detail.css
+ * shelter-update.css
  *
  * CSC309 PetPal
  * 
@@ -55,7 +55,7 @@
     width: auto;
  }
 
- #shelterLogo, #profileImage {
+ #profileImage {
     /* max-width: 100%; */
     /* width: 10rem; */
     /* max-height: 100%; */
@@ -83,32 +83,24 @@
     color: #027e7e;
  }
 
- #shelterLogoFile {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0.5rem;
- }
-
  #edit > .form-label {
     margin: 0;
     padding: 0.5rem;
     cursor: pointer;
  }
 
- #imageUpload
-{
+ #imageUpload {
     display: none;
 }
 
-#profileImage
-{
+#profileImage {
     cursor: pointer;
 }
 
 #profileInfo {
    width: 100%;
    padding: 0rem 5rem;
+   position: relative;
 }
 
 .grid {
@@ -260,7 +252,7 @@ input[type="radio"]:checked {
 #carouselContainer {
    padding: 0;
    margin: 0;
-   position: relative;
+   /* position: relative; */
 }
 
 .carousel .carousel-indicators {
@@ -348,17 +340,17 @@ input[type="radio"]:checked {
    position: relative; */
 }
 
-.selectStatus {
+/* .selectStatus {
    position: relative;
 
-}
+} */
 
 /* .statusOption {
    padding: 1rem;
 } */
 
 .statusArrow {
-   position: absolute;
+   /* position: absolute; */
    right: 5px;
    /* top: 15px; */
    top: 30%;
@@ -409,8 +401,16 @@ input[type="radio"]:checked {
    border-radius: 10px;
    transition: 0.3s;
    margin: 0 1rem;
+   text-decoration: none;
 }
 
 .editButton:hover {
    background-color: #eaedf0;
+   color: #009899;
+}
+
+#save {
+   position: fixed;
+   top: 90px;
+   right: 1rem;
 }

@@ -31,7 +31,7 @@
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active px-3" id="navHome" aria-current="page" href="home.html">Home</a>
+              <a class="nav-link px-3" id="navHome" aria-current="page" href="home.html">Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link px-3" id="navSearch" href="#">Search for Pets</a>
@@ -45,17 +45,20 @@
           </ul>
           <ul class="nav navbar-nav navbar-right px-2" id="navButtons">
             <li><a class="yellowButton me-1" href="shelter-update.html">Profile</a></li>
+            <li><div> </div></li>
+            <li><a class="yellowButton" href="log-in.html">Log out</a></li>
           </ul>
         </div>
       </div>
     </nav>
     <div class="main">
       <div id="title">Update Shelter Details</div>
+      <form action="#" method="post" id="profileInfo"></form>
       <div class="container gx-0" id="shelterLogoEdit">
           <!-- <div id="logo">
               <img src="images/pawpatrol.png" id="shelterLogo">
           </div> -->
-          <form action="#" method="post">
+          <!-- <form action="#" method="post"> -->
               <div class="form-control" id="profile">
                   <image id="profileImage" src="images/pawpatrol.png" />
                   <label class="form-label btn" for="imageUpload" id="edit">Change shelter logo</label>
@@ -71,9 +74,9 @@
               <input id="imageUpload" type="file" 
                   name="profile_photo" placeholder="Photo" required="" capture>
           </div> -->
-          </form>
+          <!-- </form> -->
       </div>
-      <form action="#" method="post" id="profileInfo">
+      <!-- <form action="#" method="post" id="profileInfo"> -->
         <div class="grid">
           <div class="grid-item">
             <label for="shelterName" id="shelterNameLabel" class="gridLabel">Shelter Name</label>
@@ -81,12 +84,12 @@
           <div class="grid-item">
             <textarea id="shelterName" rows = "1" type="text" name="shelterName" class="gridValue" required>Paw Patrol Rescue</textarea>
           </div>
-          <!-- <div class="grid-item">
-            <label for="shelterName" id="shelterNameLabel" class="gridLabel">Shelter Name</label>
+          <div class="grid-item">
+            <label for="password" id="passwordLabel" class="gridLabel">Password</label>
           </div>
           <div class="grid-item">
-            <input id="shelterName" type="text" name="shelterName" class="gridValue" value="Paw Patrol Rescue" required>
-          </div> -->
+            <input id="password" type="password" name="password" class="gridValue" value="password" required>
+          </div>
           <div class="grid-item">
             <label for="emailAddress" id="emailLabel" class="gridLabel">Email Address</label>
           </div>
@@ -124,12 +127,6 @@
               <option value="yukon">Yukon</option>
             </select>
             <p class="locationType" id="provinceLabel">Province/Territory</p>
-          </div>
-          <div class="grid-item">
-            <label for="password" id="passwordLabel" class="gridLabel">Password</label>
-          </div>
-          <div class="grid-item">
-            <input id="password" type="password" name="password" class="gridValue" value="password" required>
           </div>
           <div class="grid-item">
             <div class="gridLabel">Preferred Contact</div>
@@ -550,15 +547,14 @@ We give our animals a proper inspection to ensure they are healthy and ready to 
             
           </div>
         </div>
-        <div class="container buttons">
-          <input type="submit" class="editButton" value="Save changes">
-          </button>
-          <button href="#" class="editButton">
-            Create new pets ⏵
-          </button>
-        </div>
-        
+        <input type="submit" class="editButton" value="Save" id="save">
       </form>
+      <div class="container buttons">
+          
+        <a href="pet-creation.html" class="editButton">
+          Create new pets ⏵
+        </a>
+      </div>
       
     </div>
     <footer class="text-center">

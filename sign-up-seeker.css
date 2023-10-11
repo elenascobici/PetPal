@@ -1,0 +1,29 @@
+/*
+ * sign-up-seeker.css
+ *
+ * CSC309 PetPal
+ * 
+ * University of Toronto
+ * Fall 2023
+ * Elena Scobici
+ *
+ */
+#pets-img-container {
+  width: 100%;
+  object-fit: contain;
+}
+  
+#pets-img {
+  width: 100%;
+}
+
+@media only screen and (max-height: 770px) {
+  #login-container {
+    height: 100%;
+    margin-bottom: 65px;
+  }
+
+  .page-container {
+    overflow: auto;
+  }
+}
