@@ -61,29 +61,29 @@
                 <textarea class="input-field-long" id="description" name="description" required> Mr. Otter is a fun and loving otter that loves to take pictures. He especially loves wearing hats and other cute accessories. He gets along well with other pets since his previous owners had both cats and dogs. So rest assured he will be a great addition to your household. Mr. Otter prefers to have other furry friends but he also enjoys any type of company. He loves to cuddle.
                 </textarea>
               </div>
-              <div class="field">
+              <div class="field checkbox-field">
                 <label for="animal-choice" class="mini-h2-checkboxes"> Type of Pet:</label>
-                <div class="checkboxes">
-                  <div class="row">
-                    <div class="col-md-2">
-                      <div class="field">
-                        <input type="checkbox" id="dog" value="yes">
-                        <label for="dog"> Dog </label>
-                      </div>
-                      <div class="field">
-                        <input type="checkbox" id="cat" value="yes">
-                        <label for="cat"> Cat </label>
-                      </div>
+              <div class="checkboxes checkbox-container">
+                <div class="row">
+                  <div class="col-xs-4 col-sm-5 col-md-5">
+                    <div class="field">
+                      <input type="checkbox" id="dog" value="yes">
+                      <label for="dog" class="label-checkbox"> Dog </label>
                     </div>
-                    <div class="col-md-2">
-                      <div class="field">
-                        <input type="checkbox" id="other" value="yes" checked>
-                        <label for="other"> Other </label>
-                      </div>
+                    <div class="field">
+                      <input type="checkbox" id="cat" value="yes">
+                      <label for="cat" class="label-checkbox"> Cat </label>
+                    </div>
+                  </div>
+                  <div class="col-xs-4 col-sm-5 col-md-5">
+                    <div class="field">
+                      <input type="checkbox" id="other" value="yes">
+                      <label for="other" class="label-checkbox"> Other </label>
                     </div>
                   </div>
                 </div>
               </div>
+            </div>
               <div class="field">
                 <label for="name" class="mini-h2"> Location: </label>
                 <input class="input-field" id="location" name="location" value="283 Yonge St, Toronto ON, Canada "required>
@@ -112,28 +112,28 @@
                 <label for="insertfile" class="mini-h2"> Images:</label>
                 <input type="file" id="insertfile" name="attachments" required>
               </div>
-              <div class="field">
-                <label for="status-choice" class="mini-h2-checkboxes"> Current Status:</label>
-              <div class="checkboxes">
+              <div class="field checkbox-field">
+                <label for="status-choice" class="mini-h2-checkboxes v2"> Current Status:</label>
+              <div class="checkboxes checkbox-container-2">
                 <div class="row">
-                  <div class="col-md-2">
+                  <div class="col-xs-2 col-sm-5 col-md-5">
                     <div class="field">
                       <input type="checkbox" id="avail" value="yes">
-                      <label for="avail"> Available </label>
+                      <label for="avail" class="label-checkbox"> Available </label>
                     </div>
                     <div class="field">
                       <input type="checkbox" id="adopted" value="yes">
-                      <label for="adopted"> Adopted </label>
+                      <label for="adopted" class="label-checkbox"> Adopted </label>
                     </div>
                   </div>
-                  <div class="col-md-2">
+                  <div class="col-xs-2 col-sm-5 col-md-5 check-pos">
                     <div class="field">
-                      <input type="checkbox" id="pend" value="yes" checked>
-                      <label for="pend"> Pending </label>
+                      <input type="checkbox" id="pend" value="yes">
+                      <label for="pend" class="label-checkbox"> Pending </label>
                     </div>
                     <div class="field">
                       <input type="checkbox" id="unavail" value="yes">
-                      <label for="unavail"> Withdrawn </label>
+                      <label for="unavail" class="label-checkbox"> Withdrawn </label>
                     </div>
                   </div>
                 </div>
