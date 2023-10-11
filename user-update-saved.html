@@ -108,13 +108,13 @@
           </div>
           <div class="grid-item">
             <input id="phoneNumber" type="tel" name="phoneNumber" class="gridValue" required
-             value="(555) 555 - 5555" size="10">
+             value="(555) 555 - 5551" size="10">
           </div>
           <div class="grid-item">
             <label for="location" id="locationLabel" class="gridLabel">Location</label>
           </div>
           <div class="grid-item">
-            <textarea id="location" rows = "1" type="text" name="street" class="gridValue"></textarea>
+            <textarea id="location" rows = "1" type="text" name="street" class="gridValue">123 Toronto St</textarea>
             <p class="locationType">Street</p>
             <textarea rows = "1" type="text" name="city" class="gridValue" required>Toronto</textarea>
             <p class="locationType">City</p>
@@ -139,16 +139,7 @@
             <div class="gridLabel">Preferences</div>
           </div>
           <div class="grid-item">
-            <!-- <select class="selectpicker" name="preferences" multiple data-live-search="true">
-                <option value="dogs" selected>Dogs</option>
-                <option value="cats">Cats</option>
-                <option value="rabbits">Rabbits</option>
-                <option value="hamsters">Hamsters</option>
-                <option value="hedgehogs">Hedgehogs</option>
-                <option value="quokkas">Quokkas</option>
-            </select> -->
-            <!-- <i class="bi bi-chevron-down" id="preferenceArrow"></i> -->
-            <input type="text" list="preferenceList" name="preferences" id="preferences" class="gridValue">
+            <input type="text" list="preferenceList" name="preferences" id="preferences" class="gridValue" value="Dogs">
             <datalist id="preferenceList">
                 <option value="Dogs">Dogs</option>
                 <option value="Cats">Cats</option>
@@ -159,7 +150,8 @@
             </datalist>
           </div>
         </div>
-        <a type="submit" class="editButton" href="user-update-empty.html" id="save">Save</a>
+        <input type="submit" class="editButton" value="Save" id="save">
+        <p class="text">Changes saved!</p>
       </form>      
     </div>
     <footer class="text-center">
