@@ -216,7 +216,7 @@
     padding-left: 9vw;
     padding-right: 9vw;
     padding-top: 10vw;
-    padding-bottom: 46vw;
+    /* padding-bottom: 46vw; */
   }
   .app-title{
     font-size: 3.4vw;
@@ -264,9 +264,24 @@
 }
 
 @media screen and (max-width: 575px) {
-  .row {
+  .row-alt {
     flex-wrap: nowrap!important;
     width: 12vw!important;
   }
 
+}
+
+@media screen and (min-width:410px) and (max-width:541px) {
+  .footerContact {
+    height: 50vw;
+  }
+  .text-center {
+    height: calc(50vw + 56px);
+  }
+}
+
+@media screen and (max-width:409px) {
+  .main {
+    margin-bottom: 14vw;
+  }
 }
