@@ -8,3 +8,77 @@
  * Elena Scobici
  *
  */
+.navbar {
+  background-color: white;
+}
+
+#petpal {
+  color: var(--dark-blue);
+}
+
+#sign-up-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+p {
+  font-size: 48px;
+  font-family: Manrope;
+}
+
+#options-container {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  margin: 20px 0px;
+}
+
+.sign-up-image-container {
+  height: 350px;
+  width: 350px;
+  overflow: hidden;
+}
+
+.sign-up-image {
+  height: 100%;
+  left: 50%;
+  position: relative;
+  transform: translateX(-50%);
+  width: auto;
+}
+
+.account-option {
+  width: 450px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 40px;
+  transition: 0.3s;
+  filter: saturate(80%);
+}
+
+.account-option:hover {
+  filter: saturate(130%);
+}
+
+#account-option-link {
+  width: max-content;
+  height: max-content;
+}
+
+a.account-option-link {
+  text-decoration: none !important;
+}
+
+#pet-seeker-option {
+  background-color: var(--light-blue);
+  color: var(--dark-blue);
+}
+
+#pet-shelter-option {
+  background-color: var(--light-orange);
+  color: var(--dark-orange);
+}
