@@ -15,7 +15,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="user-applications.css">
+  <link rel="stylesheet" href="user-applications-success.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
@@ -23,7 +23,7 @@
     <nav class="navbar navbar-expand-lg">
       <div class="container-fluid" id="headerContainer">
         <a class="navbar-brand px-3 m-0" id="petpal" href="home.html">PetPal</a>
-        <!-- <a id="notifications2" href="notifications.html"><i id="notificationBell2" class="bi bi-bell-fill"></i></a> -->
+        <a id="notifications2" href="notifications.html"><i id="notificationBell2" class="bi bi-bell-fill"></i></a>
         <button class="navbar-toggler navbar-dark" type="button" data-bs-toggle="collapse" 
           data-bs-target="#menuItems" aria-controls="menuItems" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -60,21 +60,13 @@
     </nav>
     <!-- Content -->
     <div class="main-user-applications">
-      
-    <!-- Application Successfully submitted-->
-    <div class="container mt-5">
-      <div class="alert alert-success alert-dismissible manrope" role="Alert"> 
-        Application Successfully Submitted!
-        <button class="btn-close" aria-close="close" data-bs-dismiss="alert"></button>
-      </div>
-    </div>
 
     <!-- Current Applications-->
     <h2 id="title">Application Overview</h2>
   
     <div class="row text-center manrope">
       <!-- Pending Pet -->
-      <div class="col-12 col-lg-4 ">
+      <div class="col-12 col-lg-6 ">
         <div class="card mb-3 rounded-card centered">
           <img src="images/jiji.jpg" class="card-img-top" id="pet-1" alt="adopted pet 1">
           <div class="card-body">
@@ -83,12 +75,12 @@
               <strong>Status:</strong> Pending<br>
               <strong>Applied:</strong> Jan 10, 2023
             </p>
-            <a class="appView" href="my-application.html">View Application</a>
+            <a class="appView" href="#">View Application</a>
           </div>
         </div>
       </div>
       <!-- Approved Pet -->
-      <div class="col-12 col-lg-4">
+      <!-- <div class="col-12 col-lg-4">
         <div class="card mb-3 rounded-card centered">
           <img src="images/calcifer.jpg" class="card-img-top align-self-center" id="pet-1" alt="adopted pet 2">
           <div class="card-body">
@@ -100,9 +92,9 @@
             <a class="appView" href="#">View Application</a>
           </div>
         </div>
-      </div>
+      </div> -->
       <!-- Declined Pet -->
-      <div class="col-12 col-lg-4">
+      <div class="col-12 col-lg-6">
         <div class="card mb-3 rounded-card centered">
           <img src="images/quokkie.png" class="card-img-top" id="pet-1" alt="adopted pet 1">
           <div class="card-body">

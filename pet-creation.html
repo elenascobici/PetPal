@@ -12,6 +12,8 @@
   <title>PetPal</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="pet-create-update.css">
+  <link rel="stylesheet" href="path/to/bootstrap.min.css">
+  <script src="path/to/bootstrap.min.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
@@ -95,28 +97,32 @@
                 </div>
               </div>
               <div class="field">
-                <label for="name" class="mini-h2"> Location: </label>
+                <label for="location" class="mini-h2"> Location: </label>
                 <input class="input-field" id="location" name="location" required>
               </div>
               <div class="field">
-                <label for="name" class="mini-h2"> Breed: </label>
+                <label for="breed" class="mini-h2"> Breed: </label>
                 <input class="input-field" id="breed" name="breed" required>
               </div>
               <div class="field">
-                <label for="name" class="mini-h2"> Age: </label>
+                <label for="age" class="mini-h2"> Age: </label>
                 <input class="input-field" id="age" name="age" required>
               </div>
               <div class="field">
-                <label for="name" class="mini-h2"> Size: </label>
+                <label for="size" class="mini-h2"> Size: </label>
                 <input class="input-field" id="size" name="size" required>
               </div>
               <div class="field">
-                <label for="name" class="mini-h2"> Color: </label>
+                <label for="color" class="mini-h2"> Color: </label>
                 <input class="input-field" id="color" name="color" required>
               </div>
               <div class="field">
-                <label for="name" class="mini-h2"> Gender: </label>
+                <label for="gender" class="mini-h2"> Gender: </label>
                 <input class="input-field" id="gender" name="gender" required>
+              </div>
+              <div class="field">
+                <label for="behave" class="mini-h2"> Behavior: </label>
+                <input class="input-field" id="behave" name="behave" required>
               </div>
               <div class="field">
                 <label for="insertfile" class="mini-h2"> Images:</label>
@@ -156,10 +162,29 @@
               </div>
            </div>
            <div class="submit-button">
-              <button type="submit" class = "t-button"> Submit </button>
+              <button type="submit" class = "t-button" data-bs-toggle="modal" data-bs-target="#errorModal"> Submit </button>
             </div>
+
          </div>
       </form>
+    </div>
+
+    <!-- Set up modal for error -->
+    <div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="errorMsg" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="errorMsg">Incomplete Listing</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p class="modal-text"> Please fill in all the required fields. </p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
     </div>
 
     <footer class="text-center">

@@ -23,7 +23,7 @@
 }
 
 .main {
-   padding-bottom: 351px;
+   padding-bottom: 381px;
    padding-left: 0px;
    padding-right: 0px;
    margin-bottom: 128px;
@@ -168,6 +168,11 @@
    position: relative; */
 }
 
+.statusDisabled {
+   background-color: #dddcdc;
+   color: #dddcdc;
+}
+
 /* .selectStatus {
    position: relative;
 
@@ -274,29 +279,52 @@
    color: white;
 }
 
-
-@media screen and (max-height:718px) {
-   #mainImgContainer {
-      height: 360px;
-      width: 100%;
-      margin-bottom: 2rem;
-   }
-
-   #mainImg {
-      height: 360px;
-      width: 100%;
-      object-position: 0 0;
-   }
+.pagination {
+   display: flex;
+   justify-content: center;
 }
 
-@media screen and (max-width:768px) {
-   .main {
-      padding-left: 14vw;
-      padding-right: 14vw;
-      padding-top: 10vw;
-      padding-bottom: 46vw;
-   }
+.buttons {
+   margin-top: 1rem;
 }
+
+.editButton {
+   font-family: Manrope;
+   font-size: 28px;
+   font-weight: 400;
+   padding: 0.5rem 1rem;
+   color: #009899;
+   background-color: white;
+   border: 2px solid #009899;
+   border-radius: 10px;
+   transition: 0.3s;
+   margin: 0 1rem;
+   text-decoration: none;
+}
+
+.editButton:hover {
+   background-color: #eaedf0;
+   color: #009899;
+}
+
+#save, #saved {
+   /* position: fixed; */
+   position: absolute;
+   bottom: 390px;
+   right: 1rem;
+}
+
+#saved {
+   font-family: Manrope;
+   font-size: 28px;
+   font-weight: 400;
+   display: flex;
+   justify-content: center;
+   right: 9.5rem;
+   color: var(--dark-orange);
+   margin-bottom: 0.7rem;
+}
+
 
 @media screen and (max-width:1210px) {
    #mainImgContainer {
@@ -311,9 +339,13 @@
       margin-left: 0;
       margin-right: 0;
    }
+   .petGrid {grid-template-columns: auto auto auto; align-items: center;}
+
 }
 
-
+@media screen and (max-width:1037px) {
+   .grid {padding-left: 2rem; padding-right: 2rem;}
+}
 
 @media screen and (max-width:1028px) {
    #mainImg {
@@ -321,6 +353,14 @@
       height: 100%;
    }
 }
+
+@media screen and (max-width:1003px) {
+   .petGrid {grid-template-columns: auto auto; align-items: center;}
+   .carousel-control-next {right: -4rem;}
+   .carousel-control-prev {left: -4rem;}
+   #listPets {text-align: center; justify-content: center; padding-left: 0;}
+}
+
 
 @media screen and (max-width:991px) {
    #shelterList1 {
@@ -360,6 +400,8 @@
       top: 0;
       padding-bottom: 50vh;
    }
+
+   #save, #saved {bottom: 260px;}
 
 }
 
@@ -411,6 +453,38 @@
    }
 }
 
+
+
+@media screen and (max-width:768px) {
+   .main {
+      padding-left: 14vw;
+      padding-right: 14vw;
+      padding-top: 10vw;
+      padding-bottom: 400px;
+   }
+   .editButton, #saved {font-size: 25px;}
+   .petGrid {grid-template-columns: auto; align-items: center;}
+}
+
+
+@media screen and (max-height:718px) {
+   #mainImgContainer {
+      height: 360px;
+      width: 100%;
+      margin-bottom: 2rem;
+   }
+
+   #mainImg {
+      height: 360px;
+      width: 100%;
+      object-position: 0 0;
+   }
+}
+
+@media screen and (max-width:633px) {
+   .grid {column-gap: 0.5rem;}
+}
+
 @media screen and (max-width:582px) {
    #search {
       display: none;
@@ -428,14 +502,13 @@
       word-break: break-word;
    }
 
-   .main {
+   /* .main {
       margin-bottom: 200px;
-   }
+   } */
 
    #title {
       font-size: 40px;
    }
-   #subtitle {font-size: 28px;}
 
    .form-control {
       font-size: 20px;
@@ -454,51 +527,6 @@
       right: 0;
    }
 }
-
-@media screen and (max-width:480px) {
-   .grid-item {
-      font-size: 20px;
-   }
-
-   .main {
-      margin-bottom: 300px;
-      padding-left: 60px !important;
-      padding-right: 60px !important;
-   }
-
-   #title {
-      font-size: 30px;
-   }
-   #subtitle {
-      font-size: 23px;
-   }
-}
-
-@media screen and (max-width:1210px) {
-   .petGrid {grid-template-columns: auto auto auto; align-items: center;}
-}
-
-
-@media screen and (max-width:1037px) {
-   .grid {padding-left: 2rem; padding-right: 2rem;}
-}
-
-@media screen and (max-width:1003px) {
-   .petGrid {grid-template-columns: auto auto; align-items: center;}
-   .carousel-control-next {right: -4rem;}
-   .carousel-control-prev {left: -4rem;}
-   #listPets {text-align: center; justify-content: center; padding-left: 0;}
-}
-
-
-@media screen and (max-width:768px) {
-   .petGrid {grid-template-columns: auto; align-items: center;}
-}
-
-@media screen and (max-width:633px) {
-   .grid {column-gap: 0.5rem;}
-}
-
 
 @media screen and (max-width:522px) {
    .grid {grid-template-columns: auto; padding: 0; row-gap: 0.75rem; margin-top: 2rem;}
@@ -507,54 +535,8 @@
    .status {width: 164px; font-size: 20px; text-align: center;}
    .petLabel {font-size: 23px; bottom: 0.2rem;}
    .main {padding-left: 2rem !important; padding-right: 2rem !important;}
-}
-
-
-@media screen and (max-width:399px) {
-   .main {padding-left: 2rem !important; padding-right: 2rem !important;}
-}
-
-@media screen and (max-width:582px) {
-   #search {
-      display: none;
-      margin-left: 0;
-      margin-right: 0;
-   }
-
-   #searchSmall {
-      display: block;
-      margin: 0;
-   }
-
-   .grid-item {
-      word-wrap: break-word;
-      word-break: break-word;
-   }
-
-   .main {
-      margin-bottom: 200px;
-   }
-
-   #title {
-      font-size: 40px;
-   }
-
-   .form-control {
-      font-size: 20px;
-      padding: 1rem;
-   }
-
-   #searchIcon {
-      font-size: 1.25rem;
-   }
-
-   #searchBar {
-      padding: 0;
-   }
-
-   #searchButton {
-      right: 0;
-   }
+   .editButton, #saved {font-size: 22px;}
+   #save, #saved {bottom: 260px;}
 }
 
 @media screen and (max-width:480px) {
@@ -563,7 +545,7 @@
    }
 
    .main {
-      margin-bottom: 300px;
+      padding-bottom: 430px;
       padding-left: 60px !important;
       padding-right: 60px !important;
    }
@@ -574,4 +556,20 @@
    #subtitle {
       font-size: 20px;
    }
+   #save, #saved {bottom: 270px; right: 50vw; transform: translateX(50%); text-align: center; margin: 0;}
+   #save {bottom: 310px;}
+   /* #save {margin-left: 0; text-align: right;} */
 }
+
+@media screen and (max-width:409px) {
+   .main {margin-bottom: 201px;}
+   #save, #saved {bottom: 250px; right: 50vw; transform: translateX(50%); text-align: center; margin: 0;}
+   #save {bottom: 290px;}
+}
+
+@media screen and (max-width:399px) {
+   .main {padding-left: 2rem !important; padding-right: 2rem !important;}
+   .editButton, #saved {font-size: 20px;}
+   /* #save, #saved {display: flex; justify-content: center;} */
+}
+

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<!--
+  CSC309 PetPal Phase1
+  
+  University of Toronto
+  Fall 2023
+  Malaikah Hussain
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>PetPal</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="pet-detail-fail.css">
+</head>
+<body>
+  <div class="page-container">
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid">
+        <a class="navbar-brand px-3 m-0" id="petpal" href="home.html">PetPal</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active px-3" id="navHome" aria-current="page" href="home.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link px-3" id="navSearch" href="search.html">Search for Pets</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link px-3" id="navApply" href="#">Apply Now</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link px-3" id="navShelters" href="shelters.html">Shelters</a>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right px-2" id="navButtons">
+            <li><a class="yellowButton me-3" href="sign-up.html">Sign up</a></li>
+            <li><div> </div></li>
+            <li><a class="yellowButton" href="log-in.html">Log in</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- Content -->
+    <div class="main-pet-detail">
+      <div class="container mt-5">
+          <div class="row">
+              <!-- Details row -->
+              <div class="col-12 padding">
+                  <h2 id="pet-name">Calcifer</h2>
+                  <h3 id="date">2023 October 20</h3>
+              </div>
+
+              <!-- Images row -->
+              <div class="col-12 col-lg-7">
+                  <img src="images/calcifer_main.jpg" alt="Main Image" class="img-fluid custom-rounded">
+                  <div class="row"> 
+                      <div class="col-4">
+                          <img src="images/calcifer_main1.jpg" alt="child image 1" class="img-fluid custom-rounded-child">
+                      </div>
+                      <div class="col-4">
+                          <img src="images/calcifer_main2.jpg" alt="child image 2" class="img-fluid custom-rounded-child">
+                      </div>
+                      <div class="col-4">
+                          <img src="images/calcifer_main3.jpg" alt="child image 3" class="img-fluid custom-rounded-child"> 
+                      </div>
+                  </div>  
+              </div> 
+              
+              <!-- Table row -->
+              <div class="col-12 col-lg-5 d-flex align-items-center">
+                  <table class="table bg-lightYellow rounded-table m-auto" id="subtitle">
+                      <thead>
+                          <tr>
+                              <th colspan="2" class="text-center">Details</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr> 
+                              <td><strong> Status</strong></td>
+                              <td>Available</td>
+                          </tr>
+                          <tr>
+                              <td><strong>Gender</strong></td>
+                              <td>Female</td>
+                          </tr>
+                          <tr>
+                              <td><strong>Age</strong></td>
+                              <td>0.3 years</td>
+                          </tr>
+                          <tr>
+                              <td><strong>Color</strong></td>
+                              <td>Ginger</td>
+                          </tr>
+                          <tr>
+                              <td><strong>Breed</strong></td>
+                              <td>Tabby</td>
+                          </tr>
+                          <tr>
+                              <td><strong>Location</strong></td>
+                              <td>Montreal</td>
+                          </tr>
+                          <tr>
+                              <td><strong>Size</strong></td>
+                              <td>Small</td>
+                          </tr>
+                          <tr>
+                              <td><strong>Behaviour</strong></td>
+                              <td>Timid</td>
+                          </tr>
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+          
+          <!-- Description row -->
+          <div class="row">
+              <div class="col-12 description-box" id="subtitle">
+                  <h4>Description</h4>
+                  <p>This confident gal is ready to run your household and make sure mealtime is always on time. She is initially shy but after a few days warms up and is friendly.</p>
+              </div>
+              <div class="col-12 description-box" id="subtitle">
+                  <h4>Medical History</h4>
+                  <p>Vaccinated and requires special needs.</p>
+              </div>
+              <div class="col-12 padding">
+                <a class="greyButton" href="#">Adopt!</a>
+              </div>
+          </div>
+      </div>
+    </div>
+    <!-- Footer -->
+    <footer class="text-center">
+      <div class="container-fluid">
+        <div class="row gx-0" id="footer">
+          <div class="footerContact col">
+            <div id="connect">Connect with Us!
+              <p id="connectPetPal">PetPal</p>
+            </div>
+          </div>
+          <div class="col-1" id="verticalLineBox">
+            <div id="verticalLine"></div>
+          </div>
+          <div id="contactInfo" class="col">
+            <a id="link" href="mailto:petpal23@gmail.com">petpal23@gmail.com</a>        	
+            <p id="telephone">(987) 654 - 3210</p>
+            <ul class="list-group list-group-horizontal">
+              <li class="list-group-item" id="insta">
+                <a href="#" role="button">
+                  <i class="bi bi-instagram"></i>
+                </a>
+              </li>
+              <li class="list-group-item" id="x">
+                <a href="#" role="button">
+                  <i class="bi bi-twitter-x"></i>
+                </a>
+              </li>
+              <li class="list-group-item" id="fb">
+                <a href="#" role="button">
+                  <i class="bi bi-facebook"></i>
+                </a>
+              </li>
+            </ul>
+          </div> 
+        </div>
+        <div class="row">
+          <div class="copyright">&copy Copyright 2023</div>
+      </div>
+    </div>
+    </footer>
+  </div>
+</body>
+</html>

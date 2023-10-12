@@ -136,7 +136,7 @@
   }
   
   .pet-pfp {
-    object-fit: contain;
+    object-fit: cover;
     /* width: calc(100% - 3rem); */
     margin: 1.5rem;
     height: 260px;
@@ -441,6 +441,7 @@
     }
     .pet-pfp {
       height: 26vw;
+      width: 26vw;
     }
     .heading3 {
       font-size: 3vw;
