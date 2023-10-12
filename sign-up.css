@@ -8,6 +8,11 @@
  * Elena Scobici
  *
  */
+
+ .main {
+  margin-bottom: 0;
+ }
+ 
 .navbar {
   background-color: white;
 }
@@ -81,4 +86,41 @@ a.account-option-link {
 #pet-shelter-option {
   background-color: var(--light-orange);
   color: var(--dark-orange);
+}
+
+@media only screen and (max-width: 1000px) {
+  .main {
+    padding: 5vw;
+  }
+
+  #options-container {
+    flex-direction: column;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  p {
+    font-size: 5vw;
+  }
+
+  #options-container {
+    width: 100%;
+    margin: 0;
+    padding: 2vw;
+  }
+
+  .account-option {
+    padding-top: 1vh;
+    width: 100%;
+    height: calc(100vw * 0.6);
+  }
+
+  .sign-up-image-container {
+    width: 70%;
+  }
+
+  .sign-up-image {
+    width: 100%;
+    height: auto;
+  }
 }
