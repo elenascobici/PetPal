@@ -241,14 +241,14 @@
           </div>
         </div>
         <div class="grid-item">
-          <a type="button" class="pet">
-            <!-- <img class="petImage" src="images/otter.jpeg"> -->
-            <!-- <div class="petLabel">Mr. Otter</div> -->
+          <a type="button" class="pet" href="#">
+            <img class="petImage" src="images/otter.jpeg">
+            <div class="petLabel">Mr. Otter</div>
           </a>
           <div class="selectStatus">
-            <select name="otterStatus" class="status statusDisabled" disabled>
+            <select name="otterStatus" class="status">
               <option class="statusOption available" value="available" selected>Available</option>
-              <option class="statusOption pending" value="pending" >Pending</option>
+              <option class="statusOption pending" value="pending">Pending</option>
               <option class="statusOption adopted" value="adopted">Adopted</option>
               <option class="statusOption withdrawn" value="withdrawn">Withdrawn</option>
             </select>
@@ -264,7 +264,8 @@
           <li class="page-item disabled"><a class="page-link" href="#search">Next</a></li>
         </ul>
       </nav>
-      <a type="submit" class="editButton" href="shelter-pet-listings-saved.html" id="save">Save</a>
+      <a type="submit" class="editButton" href="shelter-update-empty.html" id="save">Save</a>
+      <p id="saved">Pet created!</p>
       </form>
       <div class="buttons">
         <a href="pet-creation.html" class="editButton">
