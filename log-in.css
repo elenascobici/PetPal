@@ -8,6 +8,9 @@
  * Elena Scobici
  *
  */
+#log-in-btn {
+  padding: 10px 20px !important;
+}
 
 body {
   background-color: var(--light-blue);
@@ -32,6 +35,10 @@ body {
   border-radius: 14px;
   justify-content: space-between;
   height: calc(100vh - 125px);
+}
+
+.account-links {
+  margin-top: 10px;
 }
 
 @media only screen and (max-height: 650px) {
@@ -109,7 +116,7 @@ body {
     border: 1px solid white;
     border-radius: 10px;
     color: white;
-    font-size: 20px;
+    font-size: 10px;
     text-align: center;
     line-height: 20px;
     transition: 0.3s;
@@ -137,6 +144,14 @@ body {
 
   .yellowButton {
     width: 100% !important;
+  }
+
+  .alert-danger {
+    font-size: 7vw !important;
+  }
+
+  .account-links {
+    font-size: 5vw;
   }
 }
 
@@ -189,4 +204,8 @@ body {
   width: 25%;
   height: 50px;
   margin-bottom: 20px;
+}
+
+.alert-danger {
+  font-size: 20px !important;
 }
