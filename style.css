@@ -91,6 +91,7 @@ body {
   #notifications {
     padding-left: 0.5rem;
     padding-right: 0.5rem;
+    position: relative;
   }
 
   #notificationBell, #notificationBell2 {
@@ -100,6 +101,7 @@ body {
 
   #notifications2 {
     display: none;
+    position: relative;
   }
 
   .main {
@@ -274,6 +276,17 @@ body {
   font-size: 24px;
   text-decoration: underline;
   color: var(--dark-blue);
+}
+
+#alertSmall, #alert {
+  color: #ff5959;
+  font-size: 1rem;
+  position: absolute;
+  right: 0.2px;
+}
+
+#alertSmall {
+  right: 0;
 }
 
  @media screen and (max-width: 1130px) {
