@@ -163,13 +163,17 @@ input[type="tel"], input[type="password"], input[type="text"], textarea, select 
    width: 40vw;
 }
 
-.locationType {
+.locationType, .invalid {
    font-family: Manrope;
    font-weight: 400;
    font-size: 20px;
    color: #686868;
    padding-left: 0.5rem;
    padding-top: 0.2rem;
+}
+
+.invalid {
+   color: red;
 }
 
 #provinceLabel {
@@ -431,11 +435,22 @@ input[type="radio"]:checked {
    color: #009899;
 }
 
-#save {
+#save, #saved {
    /* position: fixed; */
    position: absolute;
    bottom: 390px;
    right: 1rem;
+}
+
+#saved {
+   font-family: Manrope;
+   font-size: 28px;
+   font-weight: 400;
+   display: flex;
+   justify-content: center;
+   right: 9.5rem;
+   color: var(--dark-orange);
+   margin-bottom: 0.7rem;
 }
 
 @media screen and (max-width:1210px) {
@@ -447,7 +462,7 @@ input[type="radio"]:checked {
    #shelterLogo {padding-right: 0;}
    #title {font-size: 50px;}
    .subtitle, .gridLabel, .gridValue, .contactOptions {font-size: 25px;}
-   .locationType {font-size: 18px;}
+   .locationType, .invalid {font-size: 18px;}
 }
 
 
@@ -475,7 +490,7 @@ input[type="radio"]:checked {
    .carousel-control-next {right: -4rem;}
    .carousel-control-prev {left: -4rem;}
    #mission {padding-left: 0;}
-   .editButton {font-size: 25px;}
+   .editButton, #saved {font-size: 25px;}
    .subtitle, .gridLabel, .gridValue, .contactOptions {font-size: 22px;}
    input[type="radio"] {transform: scale(1.25);}
    .contactOptions {padding-left: 0.25rem; padding-right: 1.25rem;}
@@ -499,13 +514,13 @@ input[type="radio"]:checked {
    .main {padding-left: 2rem !important; padding-right: 2rem !important;}
    .gridLabel {padding-top: 1rem;}
    .gridValue {font-size: 20px; padding-left: 0.75rem;}
-   .locationType {font-size: 16px;}
+   .locationType, .invalid {font-size: 16px;}
    #edit {margin: 0;}
    #radioButtons {margin-left: 0;}
    #listPets {padding-bottom: 0; margin-bottom: -1rem;}
    .status {font-size: 23px; width: 164px;}
-   .editButton {font-size: 22px;}
-   #save {bottom: 380px;}
+   .editButton, #saved {font-size: 22px;}
+   #save, #saved {bottom: 380px;}
 }
 
 @media screen and (max-width:448px) {
@@ -521,10 +536,10 @@ input[type="radio"]:checked {
 
 @media screen and (max-width:409px) {
    .main {margin-bottom: 201px;}
-   #save {bottom: 430px;}
+   #save, #saved {bottom: 430px;}
 }
 
 @media screen and (max-width:399px) {
    .main {padding-left: 2rem !important; padding-right: 2rem !important;}
-   .editButton {font-size: 20px;}
+   .editButton, #saved {font-size: 20px;}
 }

@@ -142,10 +142,10 @@
             <div class="gridLabel">Preferred Contact</div>
           </div>
           <div class="grid-item" id="radioButtons">
-            <input id="phonePreferred" type="radio" name="contactPreference" value="phone">
+            <input id="phonePreferred" type="radio" name="contactPreference" value="phone" checked>
             <span class="checkmark"></span>
             <label for="phonePreferred" class="contactOptions">Phone</label>
-            <input id="emailPreferred" type="radio" name="contactPreference" value="email" checked>
+            <input id="emailPreferred" type="radio" name="contactPreference" value="email">
             <span class="checkmark"></span>
             <label for="emailPreferred" class="contactOptions">Email</label>
           </div>
@@ -217,8 +217,8 @@ We give our animals a proper inspection to ensure they are healthy and ready to 
                       </a>
                       <div class="selectStatus">
                         <select name="buddyStatus" class="status">
-                          <option class="statusOption available" value="available" selected>Available</option>
-                          <option class="statusOption pending" value="pending">Pending</option>
+                          <option class="statusOption available" value="available">Available</option>
+                          <option class="statusOption pending" value="pending" selected>Pending</option>
                           <option class="statusOption adopted" value="adopted">Adopted</option>
                           <option class="statusOption withdrawn" value="withdrawn">Withdrawn</option>
                         </select>
@@ -551,7 +551,8 @@ We give our animals a proper inspection to ensure they are healthy and ready to 
             
           </div>
         </div>
-        <a type="submit" class="editButton" href="shelter-update-empty.html" id="save">Save</a>
+        <a type="submit" class="editButton" href="shelter-update-saved.html" id="save">Save</a>
+        <p id="saved">Changes saved!</p>
       </form>
       <div class="buttons">
         <a href="pet-creation.html" class="editButton">
