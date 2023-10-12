@@ -160,11 +160,13 @@
   align-items: center;
 }
 
-.pet-image-container > p {
+.pet-image-container > p,
+.pet-image-container > a {
   font-family: Manrope;
   color: var(--dark-blue);
   font-size: 20px;
   margin: 0;
+  text-decoration: none;
 }
 
 .pet-image {
