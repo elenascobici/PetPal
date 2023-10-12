@@ -14,7 +14,9 @@
   <link rel="stylesheet" href="style.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="pet-detail.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="user-applications-success.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
   <div class="page-container">
@@ -44,7 +46,7 @@
               <a class="nav-link px-3" id="navShelters" href="shelters.html">Shelters</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link px-3" id="navApplications" href="user-applications.html">My Applications</a>
+              <a class="nav-link active px-3" id="navApplications" href="user-applications.html">My Applications</a>
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right px-2" id="navButtons">
@@ -57,98 +59,73 @@
       </div>
     </nav>
     <!-- Content -->
-    <div class="main-pet-detail">
-      <div class="container mt-5">
-          <div class="row">
-              <!-- Details row -->
-              <div class="col-12 padding">
-                  <h2 id="pet-name">Calcifer</h2>
-                  <h3 id="date">2023 October 20</h3>
-              </div>
-
-              <!-- Images row -->
-              <div class="col-12 col-lg-7">
-                  <img src="images/calcifer_main.jpg" alt="Main Image" class="img-fluid custom-rounded">
-                  <div class="row"> 
-                      <div class="col-4">
-                          <img src="images/calcifer_main1.jpg" alt="child image 1" class="img-fluid custom-rounded-child">
-                      </div>
-                      <div class="col-4">
-                          <img src="images/calcifer_main2.jpg" alt="child image 2" class="img-fluid custom-rounded-child">
-                      </div>
-                      <div class="col-4">
-                          <img src="images/calcifer_main3.jpg" alt="child image 3" class="img-fluid custom-rounded-child"> 
-                      </div>
-                  </div>  
-              </div> 
-              
-              <!-- Table row -->
-              <div class="col-12 col-lg-5 d-flex align-items-center">
-                  <table class="table bg-lightYellow rounded-table m-auto" id="subtitle">
-                      <thead>
-                          <tr>
-                              <th colspan="2" class="text-center">Details</th>
-                          </tr>
-                      </thead>
-                      <tbody>
-                          <tr> 
-                              <td><strong> Status</strong></td>
-                              <td>Available</td>
-                          </tr>
-                          <tr>
-                              <td><strong>Gender</strong></td>
-                              <td>Female</td>
-                          </tr>
-                          <tr>
-                              <td><strong>Age</strong></td>
-                              <td>0.3 years</td>
-                          </tr>
-                          <tr>
-                              <td><strong>Color</strong></td>
-                              <td>Ginger</td>
-                          </tr>
-                          <tr>
-                              <td><strong>Breed</strong></td>
-                              <td>Tabby</td>
-                          </tr>
-                          <tr>
-                              <td><strong>Location</strong></td>
-                              <td>Montreal</td>
-                          </tr>
-                          <tr>
-                              <td><strong>Size</strong></td>
-                              <td>Small</td>
-                          </tr>
-                          <tr>
-                              <td><strong>Behaviour</strong></td>
-                              <td>Timid</td>
-                          </tr>
-                      </tbody>
-                  </table>
-              </div>
-          </div>
-          
-          <!-- Description row -->
-          <div class="row">
-              <div class="col-12 description-box" id="subtitle">
-                  <h4>Description</h4>
-                  <p>This confident gal is ready to run your household and make sure mealtime is always on time. She is initially shy but after a few days warms up and is friendly.</p>
-              </div>
-              <div class="col-12 description-box" id="subtitle">
-                  <h4>Medical History</h4>
-                  <p>Vaccinated and requires special needs.</p>
-              </div>
-              <div class="col-12 padding">
-                <a class="tealButton" href="pet-adoption.html">Adopt!</a>
-              </div>
-          </div>
+    <div class="main-user-applications">
+      
+    <!-- Application Successfully submitted-->
+    <div class="container mt-5">
+      <div class="alert alert-success alert-dismissible manrope" role="Alert"> 
+        Application Approved!
+        <button class="btn-close" aria-close="close" data-bs-dismiss="alert"></button>
       </div>
     </div>
+
+    <!-- Current Applications-->
+    <h2 id="title">Application Overview</h2>
+  
+    <div class="row text-center manrope">
+      <!-- Pending Pet -->
+      <div class="col-12 col-lg-4 ">
+        <div class="card mb-3 rounded-card centered">
+          <img src="images/jiji.jpg" class="card-img-top" id="pet-1" alt="adopted pet 1">
+          <div class="card-body">
+            <h5 class="card-title">Jiji</h5>
+            <p class="card-text">
+              <strong>Status:</strong> Pending<br>
+              <strong>Applied:</strong> Jan 10, 2023
+            </p>
+            <a class="appView" href="#">View Application</a>
+          </div>
+        </div>
+      </div>
+      <!-- Approved Pet -->
+      <div class="col-12 col-lg-4">
+        <div class="card mb-3 rounded-card centered">
+          <img src="images/calcifer.jpg" class="card-img-top align-self-center" id="pet-1" alt="adopted pet 2">
+          <div class="card-body">
+            <h5 class="card-title">Calcifer</h5>
+            <p class="card-text">
+              <strong>Status:</strong> Approved<br>
+              <strong>Applied:</strong> May 10, 2023
+            </p>
+            <a class="appView" href="my-application.html">View Application</a>
+          </div>
+        </div>
+      </div>
+      <!-- Declined Pet -->
+      <div class="col-12 col-lg-4">
+        <div class="card mb-3 rounded-card centered">
+          <img src="images/quokkie.png" class="card-img-top" id="pet-1" alt="adopted pet 1">
+          <div class="card-body">
+            <h5 class="card-title">Quokkie</h5>
+            <p class="card-text">
+              <strong>Status:</strong> Declined <br>
+              <strong>Applied:</strong> June 10, 2023
+            </p>
+            <a class="appView" href="#">View Application</a>
+          </div>
+        </div>
+      </div>
+      <!-- Back to Home -->
+      <div class="col-12">
+        <a class="appButton" href="home.html"> Explore More Pets! </a>
+      </div>
+    </div>
+    
     <!-- Footer -->
     <footer class="text-center">
       <div class="container-fluid">
         <div class="row gx-0" id="footer">
-          <div class="footerContact col">
+          <div class="footerContact col col-xs-12">
             <div id="connect">Connect with Us!
               <p id="connectPetPal">PetPal</p>
             </div>
@@ -156,7 +133,7 @@
           <div class="col-1" id="verticalLineBox">
             <div id="verticalLine"></div>
           </div>
-          <div id="contactInfo" class="col">
+          <div id="contactInfo" class="col col-xs-12">
             <a id="link" href="mailto:petpal23@gmail.com">petpal23@gmail.com</a>        	
             <p id="telephone">(987) 654 - 3210</p>
             <ul class="list-group list-group-horizontal">
