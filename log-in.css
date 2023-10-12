@@ -82,9 +82,10 @@ body {
   }
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 1020px) {
   .text-input {
-    width: 60% !important;
+    width: 90% !important;
+    margin-bottom: 10px !important;
   }
 }
 
@@ -108,7 +109,7 @@ body {
   .text-input {
     width: 100% !important;
     font-size: 7vw !important;
-    margin-bottom: 1vw !important;
+    margin-bottom: 5px !important;
   }
 
   .yellowButton {
@@ -136,6 +137,8 @@ body {
   .main {
     padding-left: 5%;
     padding-right: 5%;
+    margin: 0;
+    transition: 0.3s;
   }
 
   #welcome-back-container > p {
