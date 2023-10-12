@@ -17,6 +17,30 @@
   width: 100%;
 }
 
+.text-input {
+  width: 30vw;
+}
+
+@media only screen and (max-width: 1020px) {
+  .text-input {
+    width: 70% !important;
+  }
+}
+
+@media only screen and (max-width: 620px) {
+  .text-input {
+    width: 100% !important;
+  }
+
+  .account-links {
+    font-size: 5vw;
+  }
+
+  p {
+    font-size: 10vw;
+  }
+}
+
 @media only screen and (max-height: 770px) {
   #login-container {
     height: 100%;
