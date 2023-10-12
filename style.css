@@ -276,6 +276,12 @@ body {
   color: var(--dark-blue);
 }
 
+ @media screen and (max-width: 1130px) {
+  .navbar .collapse .nav .nav-item .nav-link {padding-right: 5px !important; font-size: 18px;}
+  #navbarList { padding-right: 2rem !important; }
+  #signUp, #logIn {font-size: 18px; padding: 0.2rem 0.5rem;}
+ }
+
   @media screen and (max-width: 991px) {
     #navbarList { margin: 0; padding: 0; text-align: right; }
     #menuItems { width: 100%; text-align: right; padding-bottom: 1rem; text-decoration: none;}
