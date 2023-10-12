@@ -16,9 +16,6 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="pet-adoption.css">
-  <!-- Imports for modal -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </head>
 <body>
   <div class="page-container">
@@ -80,28 +77,28 @@
                 <label for="name" class="col-12 col-form-label text-start col-lg-2 text-lg-end"> Adopter's Name</label>
               
                 <div class="col-6 col-lg-5"> 
-                  <input type="text" class="form-control" id="firstName" placeholder="First Name" required>
+                  <input type="text" class="form-control" id="firstName" placeholder="First Name" value="Jack" required>
                 </div>
                 <div class="col-6 col-lg-5">
-                  <input type="text" class="form-control" id="lastName" placeholder="Last Name" required>
+                  <input type="text" class="form-control" id="lastName" placeholder="Last Name" value="Sun" required>
                 </div>
             </div>
             <!-- Applicant Email Id -->
             <div class="row mb-3">
                 <label for="email" class="col-12 col-form-label text-start col-lg-2 text-lg-end">Adopter's Email</label>
                 <div class="col-12 col-lg-10">
-                    <input type="email" class="form-control" id="email" placeholder="ryder@pawpatrol.com" required>
+                    <input type="email" class="form-control" id="email" placeholder="ryder@pawpatrol.com" value="jacksun@gmail.com" required>
                 </div>
             </div>
             <!-- Applicant Phone Number -->
             <div class="row mb-3">
                 <label for="phone" class="col-12 col-form-label text-start col-lg-2 text-lg-end">Phone Number</label>
                 <div class="col-12 mb-2 col-lg-7">
-                    <input type="phoneNumber" class="form-control" id="phoneNumber" placeholder="Number" required></input>
+                    <input type="phoneNumber" class="form-control" id="phoneNumber" placeholder="Number" value="(555) 555 - 5555" required></input>
                 </div>
                 <div class="col-12 mb-2 col-lg-3">        
                   <select class="form-control" id="phoneType" required>
-                    <option value="" selected disabled>Type</option>
+                    <option selected disabled>Home</option>
                     <option value="AB">Work</option>
                     <option value="BC">Home</option>
                 </select>
@@ -111,16 +108,16 @@
             <div class="row mb-3">
               <label for="address" class="col-12 col-form-label text-start col-lg-2 text-lg-end">Address</label>
               <div class="col-12 col-lg-10"> 
-                <input class="form-control mb-2" id="streetAddress1" placeholder="Address Line 1" required></input>
-                <input class="form-control mb-2" id="streetAddress2" placeholder="Address Line 2"></input>
+                <input class="form-control mb-2" id="streetAddress1" placeholder="Address Line 1" value="Apt. 102" required></input>
+                <input class="form-control mb-2" id="streetAddress2" placeholder="Address Line 2" value="24 Queens St" ></input>
         
                 <div class="row"> <!-- Nested row -->
                   <div class="col-12 mb-2 col-lg-4 ">
-                      <input class="form-control" id="city" placeholder="City" required></input>
+                      <input class="form-control" id="city" placeholder="City" value="Toronto" required></input>
                   </div>
                   <div class="col-12 mb-2 col-lg-4">
                     <select class="form-control" id="province" required>
-                      <option value="" selected disabled>Select Province</option>
+                      <option value="" selected disabled>ON</option>
                       <option value="AB">Alberta</option>
                       <option value="BC">British Columbia</option>
                       <option value="MB">Manitoba</option>
@@ -137,7 +134,7 @@
                   </select>
                   </div>
                   <div class="col-12  mb-2 col-lg-4">
-                      <input class="form-control" id="postalCode" placeholder="Postal Code" required></input>
+                      <input class="form-control" id="postalCode" placeholder="Postal Code" value="L7H 4FX" required></input>
                   </div>
                 </div>
             </div>
@@ -147,7 +144,7 @@
               <label for="petChoice" class="col-12 col-form-label text-start col-lg-2 text-lg-end">Pet of Interest</label>
               <div class="col-6 col-lg-5">
                   <select class="form-control" id="petType" required>
-                      <option value="" selected disabled>Select Type</option>
+                      <option value="" selected disabled>Cat</option>
                       <option>Cat</option>
                       <option>Dog</option>
                       <option>HedgeHog</option>
@@ -158,7 +155,7 @@
               </div>
               <div class="col-6 col-lg-5">
                 <select class="form-control" id="petName" required>
-                  <option value="" selected disabled>Select Name</option>
+                  <option value="" selected disabled>Calcifer</option>
                   <option>Buddy</option>
                   <option>Quokkie</option>
                   <option>Calcifer</option>
@@ -171,7 +168,7 @@
           <div class="row mb-3">
               <label for="reason" class="col-12 col-form-label text-start col-lg-2 text-lg-end">Reason for Adoption</label>
               <div class="col-12 col-lg-10">
-                  <textarea class="form-control" id="reason" rows="3" required></textarea>
+                  <textarea class="form-control" id="reason" rows="3" required> I'd love to give Calcifer a warm and safe home! </textarea>
               </div>
           </div>
           
@@ -181,44 +178,25 @@
           <div class="row mb-3">
             <label for="reason" class="col-12 col-form-label text-start col-lg-2 text-lg-end">Currently Owned Pets</label>
             <div class="col-12 col-lg-10">
-                <textarea class="form-control" id="reason" rows="3" placeholder="List the names, ages and types of the pets currently in your household."></textarea>
+                <textarea class="form-control" id="reason" rows="3" placeholder="List the names, ages and types of the pets currently in your household."> Mack, 8 years, Leopard Tortoise</textarea>
             </div>
           </div>
 
           <div class="row mb-3">
             <label for="reason" class="col-12 col-form-label text-start col-lg-2 text-lg-end"> Residents </label>
             <div class="col-12 col-lg-10">
-                <textarea class="form-control" id="reason" rows="3" placeholder="List the names and ages of all permanent residents of your household." required></textarea>
+                <textarea class="form-control" id="reason" rows="3" placeholder="List the names and ages of all permanent residents of your household." required> Sun, 5</textarea>
             </div>
           </div>
 
           <!-- Submit Button -->
           <div class="row mb-3 mt-4">
             <div class="col-12">
-              <a class="yellowButton" id="submit" href="user-applications-success.html"  data-bs-toggle="modal" data-bs-target="#errorModal">Submit</a>
+              <a class="yellowButton" id="submit" href="user-applications-success.html">Submit</a>
             </div>
           </div>
       </form>
     </div>
-
-    <!-- Set up modal for error -->
-    <div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="errorMsg" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="errorMsg">Incomplete Application</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <p class="modal-text"> Please fill in all the required fields. </p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
     
     <!-- Footer -->
     <footer class="text-center">
