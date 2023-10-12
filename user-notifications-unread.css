@@ -13,7 +13,7 @@
 }
 
 .bg-lightYellow {
-  background-color: #FEF2CB;
+  background-color: #eaf7f7;
 }
 
 .notification-box {
@@ -40,16 +40,13 @@
 }
 
 .message-reply {
-  background-color: #ffbb00; 
+  background-color: #f7cf5f; 
   padding-left: 15px;
   padding: 15px;
   padding-bottom: 10px;
   margin-bottom: 10px;
   border-radius: 5px;
   margin-left: 30px;
-  border-color: #ffc011;
-  border-width: thin;
-  border-style:solid;
 }
 
 .no-padding {
@@ -89,4 +86,25 @@
 .message-link:hover {
   text-decoration: none;
   color: #ffc011;
+}
+
+.reply {
+  font-size: medium;
+}
+
+@media (max-width: 491px) {
+ 
+  .main-notifications {
+    display: flex;
+    padding-top: 30px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 128px;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+  }
 }
