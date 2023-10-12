@@ -16,6 +16,9 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="pet-adoption.css">
+  <!-- Imports for modal -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </head>
 <body>
   <div class="page-container">
@@ -192,11 +195,30 @@
           <!-- Submit Button -->
           <div class="row mb-3 mt-4">
             <div class="col-12">
-              <a class="yellowButton" id="submit" href="user-applications-success.html">Submit</a>
+              <a class="yellowButton" id="submit" href="user-applications-success.html"  data-bs-toggle="modal" data-bs-target="#errorModal">Submit</a>
             </div>
           </div>
       </form>
     </div>
+
+    <!-- Set up modal for error -->
+    <div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="errorMsg" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="errorMsg">Incomplete Application</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p class="modal-text"> Please fill in all the required fields. </p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     
     <!-- Footer -->
     <footer class="text-center">
