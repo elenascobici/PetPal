@@ -37,12 +37,13 @@
               Invalid username and password combination.
           </div>
           <p>Log In</p>
-          <form>
+          <form method="post" action="home-user.html">
             <input class="text-input" type="text" name="username" placeholder="username" required>
             <br>
             <input class="text-input" type="password" name="password" placeholder="password" required>
             <br>
-            <a id="log-in-btn" href="log-in-invalid.html" class="yellowButton">Log In</a>
+            <!-- <a id="log-in-btn" href="log-in-invalid.html" class="yellowButton">Log In</a> -->
+            <input id="log-in-btn" type=submit class="yellowButton" value="Log In">
           </form>
           <a class="account-links" href="sign-up.html">Don't have an account? Sign up now!</a>
         </div>
