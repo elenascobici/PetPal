@@ -113,6 +113,9 @@
     width: 20%;
   }
 
+  .modal-text {
+    margin-bottom: 0px!important;
+  }
   .mini-h2-checkboxes {
     /* display: flex;
     flex-direction: column;
