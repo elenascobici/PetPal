@@ -16,18 +16,22 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
   <link rel="stylesheet" href="shelter-detail.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
 </head>
 <body>
   <div class="page-container">
     <nav class="navbar navbar-expand-lg">
-      <div class="container-fluid">
+      <div class="container-fluid" id="headerContainer">
         <a class="navbar-brand px-3 m-0" id="petpal" href="home.html">PetPal</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <a id="notifications2" href="home.html"><i id="notificationBell2" class="bi bi-bell-fill"></i></a>
+        <button class="navbar-toggler navbar-dark" type="button" data-bs-toggle="collapse" 
+          data-bs-target="#menuItems" aria-controls="menuItems" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse">
-          <ul class="nav navbar-nav me-auto mb-2 mb-lg-0">
+        <div class="collapse navbar-collapse" id="menuItems">
+          <ul class="nav navbar-nav me-auto mb-2 mb-lg-0" id="navbarList">
             <li class="nav-item">
               <a class="nav-link px-3" id="navHome" aria-current="page" href="home.html">Home</a>
             </li>
@@ -42,42 +46,59 @@
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right px-2" id="navButtons">
-            <li><a class="yellowButton me-1" href="shelter-update.html">Profile</a></li>
-            <li><div> </div></li>
-            <li><a class="yellowButton" href="log-in.html">Log out</a></li>
-            <!-- <li><a class="yellowButton me-3" href="sign-up.html">Sign up</a></li>
-            <li><div> </div></li>
-            <li><a class="yellowButton" href="log-in.html">Log in</a></li> -->
+            <li><a class="yellowButton me-3" href="user-update.html" id="signUp">Profile</a></li>
+            <li><div id="empty"> </div></li>
+            <li><a class="yellowButton" href="home.html" id="logIn">Log out</a></li>
           </ul>
         </div>
+        <a id="notifications" href="home.html"><i id="notificationBell" class="bi bi-bell-fill"></i></a>
       </div>
     </nav>
     <div class="main px-6 pt-6">
       <div id="title">Leave a Review for Paw Patrol Rescue</div>
-      <form action="shelter-detail.html" method="post">
+      <form action="shelter-detail.html" method="post" id="reviewForm">
         <div class="container justify-content-start text-start" id="userReview">
-            <div class="row align-middle">
-                <div class="col d-flex justify-content-start">
+            <!-- <div class="row align-middle"> -->
+              <div class="grid" id="reviewGrid">
+                <div class="grid-item reviewGridItem" id="userGridItem">
+                  <h2 class="userNameSubtitle">Jack</h2>
+                </div>
+                <div class="grid-item reviewGridItem" id="starsGridItem">
+                  <div class="rating" id="reviewRating">
+                    <input type="radio" id="star5" name="rating" value="5" />
+                    <label for="star5" title="5" class="bi bi-star-fill starReview"></label>
+                    <input type="radio" id="star4" name="rating" value="4" />
+                    <label for="star4" title="4" class="bi bi-star-fill starReview"></label>
+                    <input type="radio" id="star3" name="rating" value="3" />
+                    <label for="star3" title="3" class="bi bi-star-fill starReview"></label>
+                    <input type="radio" id="star2" name="rating" value="2" />
+                    <label for="star2" title="2" class="bi bi-star-fill starReview"></label>
+                    <input type="radio" id="star1" name="rating" value="1" />
+                    <label for="star1" title="1" class="bi bi-star-fill starReview"></label>
+                </div>
+                </div>
+              </div>
+                <!-- <div class="col-md col-xs-12 d-flex justify-content-start">
                     <h2 class="userNameSubtitle">Current User</h2>
                 </div>
-                <div class="col d-flex justify-content-end stars">
+                <div class="col-md col-xs-12 d-flex justify-content-end stars">
                     <div class="rating" id="reviewRating">
                         <input type="radio" id="star5" name="rating" value="5" />
-                        <label for="star5" title="5" class="bi bi-star-fill"></label>
+                        <label for="star5" title="5" class="bi bi-star-fill starReview"></label>
                         <input type="radio" id="star4" name="rating" value="4" />
-                        <label for="star4" title="4" class="bi bi-star-fill"></label>
+                        <label for="star4" title="4" class="bi bi-star-fill starReview"></label>
                         <input type="radio" id="star3" name="rating" value="3" />
-                        <label for="star3" title="3" class="bi bi-star-fill"></label>
+                        <label for="star3" title="3" class="bi bi-star-fill starReview"></label>
                         <input type="radio" id="star2" name="rating" value="2" />
-                        <label for="star2" title="2" class="bi bi-star-fill"></label>
+                        <label for="star2" title="2" class="bi bi-star-fill starReview"></label>
                         <input type="radio" id="star1" name="rating" value="1" />
-                        <label for="star1" title="1" class="bi bi-star-fill"></label>
+                        <label for="star1" title="1" class="bi bi-star-fill starReview"></label>
                     </div>
-                </div>
+                </div> -->
                 <textarea id="review" rows="5" placeholder="Write your review here"></textarea>
-            </div>
+            <!-- </div> -->
         </div>
-        <input type="submit" id="submitButton">
+        <a type="submit" id="submitButton" href="shelter-detail-reviewed.html#reviews">Submit</a>
       </form>
     </div>
     <footer class="text-center">

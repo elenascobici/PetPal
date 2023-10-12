@@ -14,6 +14,10 @@
   position: relative;
  }
 
+ .disable {
+  pointer-events: none;
+ }
+
 #overlay {
   position: absolute;
   top: 0;
@@ -22,8 +26,10 @@
   width: 100%;
   padding-left: 0.8rem;
   padding-top: 0.3rem;
+  pointer-events: none;
 
  }
+
 
  .col-format {
   display: flex;
@@ -37,6 +43,7 @@
   height: 25px;
   /* margin-left: 80%; */
   object-fit: contain;
+  pointer-events: auto;
  }
 
  /* Shared */
@@ -251,6 +258,7 @@
     color: #575757;
     font-size: 16px;
     resize: none;
+    pointer-events: auto;
   }
   
   .msg-pos {
