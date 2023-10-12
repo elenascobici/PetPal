@@ -34,6 +34,8 @@
 .checkbox {
   margin-left: 10px;
   transform: scale(1.5);
+  float: right;
+  margin-top: 6px;
 }
 
 .btn-secondary {
@@ -42,4 +44,45 @@
   font-family: Manrope !important;
   font-size: 24px !important;
   width: 150px !important;
+}
+
+.btn-secondary:focus {
+  box-shadow: none !important;
+}
+
+.dropdown-menu li {
+  position: relative;
+}
+
+.dropdown-menu .dropdown-submenu {
+  display: none;
+  position: absolute;
+  left: 100%;
+  top: -7px;
+}
+
+.dropdown-menu .dropdown-submenu-left {
+  right: 100%;
+  left: auto;
+}
+
+.dropdown-menu>li:hover>.dropdown-submenu {
+  display: block;
+}
+
+.dropdown-bg {
+  font-family: Manrope !important;
+  background-color: var(--dark-blue) !important;
+  padding: 0 !important;
+}
+
+.dropdown-toggle {
+  color: white !important;
+  font-size: 24px !important;
+  width: 150px !important;
+  border-radius: 0 !important;
+}
+
+.navbar-light {
+  background-color: white !important;
 }

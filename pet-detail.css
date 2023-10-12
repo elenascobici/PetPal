@@ -63,7 +63,6 @@
   padding: 0.2rem 1rem;
   transition: 0.3s;
   text-decoration: none;
-
 }
 
 .flex-row {
@@ -80,8 +79,8 @@
 }
 
 .table th {
-  background-color:  #ffc011; /* Darker grey for the heading */
-  border: none; /* Remove the black line (border) below the heading */
+  background-color: #ffc011;
+  border: none; 
   border-top-right-radius: 15px;
   border-top-left-radius: 15px;
   font-size: 1.5rem;

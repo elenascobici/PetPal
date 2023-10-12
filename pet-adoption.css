@@ -51,7 +51,9 @@
   position: relative;
   width: 100%;
   padding-bottom: 30%;  
-  overflow: hidden;        
+  overflow: hidden; 
+  filter: grayscale(0%);
+  transition: filter 0.3s;       
 }
 
 .responsive-image {
@@ -64,9 +66,16 @@
 }
 
 .form-control {
-  background-color: white;
   border: none;
   border-radius: 15px;  
   box-shadow: none; 
-  transition: box-shadow 0.3s ease;  
+    
+}
+
+.image-wrapper:hover {
+  filter: grayscale(100%);
+}
+
+.manrope {
+  font-family: Manrope;
 }
