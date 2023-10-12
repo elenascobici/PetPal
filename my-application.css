@@ -10,6 +10,35 @@
  @import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap');
  @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
 
+ #message-tb-container {
+  position: relative;
+ }
+
+#overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 35px;
+  width: 100%;
+  padding-left: 0.8rem;
+  padding-top: 0.3rem;
+
+ }
+
+ .col-format {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 0px!important;
+  align-items: centef;
+  transition: all 0.3s linear;
+}
+
+ .send-btn-format {
+  height: 25px;
+  /* margin-left: 80%; */
+  object-fit: contain;
+ }
+
  /* Shared */
  .t-button {
     background-color: #48B7AB;
@@ -299,6 +328,13 @@
     .type-in {
       font-size: 2vw;
     }
+    .send-btn-format {
+      height: 3vw;
+      margin-bottom: 2px;
+    }
+    .send-button {
+      align-items: flex-end;
+    }
     .message-tb {
       margin: 2vw;
       margin-top: 2.5vw;
@@ -437,5 +473,14 @@
       padding: 3vw;
     }
   }
+
+  @media (max-width: 576px) {
+    .col-format {
+        display: flex;
+        justify-content: flex-end;
+        padding-right: 0px!important;
+        align-items: flex-end;
+    }
+}
 
 

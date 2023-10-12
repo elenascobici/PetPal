@@ -29,7 +29,7 @@
         <div class="collapse navbar-collapse" id="menuItems">
           <ul class="nav navbar-nav me-auto mb-2 mb-lg-0" id="navbarList">
             <li class="nav-item">
-              <a class="nav-link px-3" id="navHome" aria-current="page" href="home.html">Home</a>
+              <a class="nav-link active px-3" id="navHome" aria-current="page" href="home.html">Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link px-3" id="navSearch" href="search.html">Search for Pets</a>
@@ -42,9 +42,9 @@
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right px-2" id="navButtons">
-            <li><a class="yellowButton me-3" href="user-update.html" id="signUp">Profile</a></li>
+            <li><a class="yellowButton me-3" href="sign-up.html" id="signUp">Sign up</a></li>
             <li><div id="empty"> </div></li>
-            <li><a class="yellowButton" href="home.html" id="logIn">Log out</a></li>
+            <li><a class="yellowButton" href="log-in.html" id="logIn">Log in</a></li>
           </ul>
         </div>
       </div>
@@ -69,21 +69,21 @@
             <div class="details-text">
               <div class="details-pos">
                 <div class="first-line">
-                  <p class="info-label"> Name: </p>
-                  <p class="answer"> Jack Sun </p>
-                </div>
-                <div class="line">
-                  <p class="info-label"> Date of Birth: </p>
-                  <p class="answer"> 09/10/1996 </p>
-                </div>
-                <div class="line">
-                  <p class="info-label"> Email address: </p>
-                  <p class="answer email-break"> jacksun@gmail.com </p>
-                </div>
-                <div class="line">
-                  <p class="info-label"> Phone Number: </p>
-                  <p class="answer"> +1 (555) 555-5555 </p>
-                </div>
+                    <p class="info-label"> Name: </p>
+                    <p class="answer"> Jack Sun </p>
+                  </div>
+                  <div class="line">
+                    <p class="info-label"> Date of Birth: </p>
+                    <p class="answer"> 09/10/1996 </p>
+                  </div>
+                  <div class="line">
+                    <p class="info-label"> Email address: </p>
+                    <p class="answer email-break"> jacksun@gmail.com </p>
+                  </div>
+                  <div class="line">
+                    <p class="info-label"> Phone Number: </p>
+                    <p class="answer"> +1 (555) 555-5555 </p>
+                  </div>
                 <div class="line">
                   <p class="info-label"> Residential Address: </p>
                   <p class="answer"> 3400 Yonge St. M4N 2M7, Toronto, ON, Canada </p>
@@ -132,7 +132,10 @@
                 </div>
                 <div class="from-message">
                   <p class="msg-text-from"> Actually, can I cancel my application, I want another pet because I don't think I will be able to handle an otter.</p>
-                </div>  
+                </div> 
+                <div class="from-message">
+                    <p class="msg-text-from" id="jump-here"> How do I cancel this application? </p>
+                </div> 
               </div>
               <div class="message-tb" id="message-tb-container">
                 <textarea id="type-in" class="type-in" placeholder="Type your message here..."></textarea>
