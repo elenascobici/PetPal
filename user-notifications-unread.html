@@ -4,6 +4,7 @@
   
   University of Toronto
   Fall 2023
+  Malaikah Hussain
 -->
 <html lang="en">
 <head>
@@ -14,7 +15,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="user-notifications.css">
+  <link rel="stylesheet" href="user-notifications-unread.css">
 
 </head>
 <body>
@@ -22,6 +23,7 @@
     <nav class="navbar navbar-expand-lg">
       <div class="container-fluid" id="headerContainer">
         <a class="navbar-brand px-3 m-0" id="petpal" href="home.html">PetPal</a>
+        <!-- <a id="notifications2" href="notifications.html"><i id="notificationBell2" class="bi bi-bell-fill"></i></a> -->
         <button class="navbar-toggler navbar-dark" type="button" data-bs-toggle="collapse" 
           data-bs-target="#menuItems" aria-controls="menuItems" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -29,64 +31,77 @@
         <div class="collapse navbar-collapse" id="menuItems">
           <ul class="nav navbar-nav me-auto mb-2 mb-lg-0" id="navbarList">
             <li class="nav-item">
-              <a class="nav-link active px-3" id="navHome" aria-current="page" href="home.html">Home</a>
+              <a class="nav-link px-3" id="navHome" aria-current="page" href="home.html">Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link px-3" id="navSearch" href="search.html">Search for Pets</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link px-3" id="navApply" href="#">Apply Now</a>
+              <a class="nav-link px-3" id="navApply" href="application-home.html">Apply Now</a>
             </li>
+            <!-- <li class="nav-item">
+              <a class="nav-link px-3" id="navListings" href="shelter-pet-listings.html">Pet Listings</a>
+            </li> -->
             <li class="nav-item">
               <a class="nav-link px-3" id="navShelters" href="shelters.html">Shelters</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link px-3" id="navApplications" href="user-applications.html">My Applications</a>
+            </li>
           </ul>
           <ul class="nav navbar-nav navbar-right px-2" id="navButtons">
-            <li><a class="yellowButton me-3" href="user-update.html" id="profile">Profile</a></li>
+            <li><a class="yellowButton me-3" href="user-update.html" id="signUp">Profile</a></li>
             <li><div id="empty"> </div></li>
-            <li><a class="yellowButton" href="home.html" id="logout">Logout</a></li>
+            <li><a class="yellowButton" href="home.html" id="logIn">Log out</a></li>
           </ul>
         </div>
+        <a id="notifications" href="user-notifications-unread.html"><i id="notificationBell" class="bi bi-bell-fill"></i></a>
       </div>
     </nav>
     <!-- CONTENT-->
-    <div class="main">
+    <div class="main bg-lightYellow manrope">
       <!-- Content-->
     <div class="main-notifications manrope">
       <div class="container mt-5 notification-box">
 
         <!-- Title and count-->
-        <div class="row mb-4">
-          <div class="col-4 text-start">
-            <h2> Notifications </h2>
+        <div class="row mb-4 text-start">
+          <div class="col-12 col-md-5 d-flex align-items-center">
+              <h2 class="me-3">Notifications</h2>
+              <span class="badge noti-yellow ">3</span>
           </div>
-          <div class="col-1 text-start no-padding"> 
-            <span class="badge noti-yellow">3</span>
-          </div>
-          <div class="col-7 text-end"> 
-            <p>Mark all as read</p>
+          <div class="col-12 col-md-7 text-md-end mt-2 mt-md-0">
+              <p>Mark all as read</p>
           </div>
         </div>
-
         <!-- Notifications -->
         <div class="row">
           <div class="col-12">
+            <a href="user-applications.html" class="message-link">
+              <div class="message-box text-start">
+                <p class="no-margin"> <strong>Paw Patrol</strong> has moved your application status for Calcifer!</p>
+                <p class="small"> 5m ago</p>
+              </div>
+            </a>
 
-            <div class="message-box">
-              <p> Shelter owner, Paw Patrol has moved your application status!</p>
-            </div>
+            <a href="user-applications.html" class="message-link">
+              <div class="message-box text-start">
+                <p class="no-margin"> <strong>Just Paws Animal Rescue</strong> has sent you a follow up message.</p>
+                <p class="small"> 10m ago</p>
+              </div>
+            </a>
 
-            <div class="message-box">
-              <p>Human Society has sent you a message.</p>
-            </div>
+              <div class="message-reply text-start">
+                <p class="no-margin"> Hi Jack, when would you like to pick up Jiji? </p>
+                <!-- <input class="form-control" id="reply"> -->
+              </div>
 
-            <div class="message-reply">
-              <p>Human Society has sent you a message.</p>
-            </div>
-
-            <div class="message-box">
-                <p>Based on your preferences, check out these new animals you might want to adopt!</p>
-            </div>
+            <a href="user-applications.html" class="message-link">
+              <div class="message-box text-start">
+                <p class="no-margin"> <strong>PetPal</strong> has received 2 new pets that match your preferences! Check em' out!</p>
+                <p class="small"> Last week</p>
+              </div>
+            </a>
 
           </div> 
         </div> 
