@@ -30,6 +30,9 @@
 
  }
 
+ .choice-buttons {
+  margin-bottom: 2vw;
+ }
 
  .col-format {
   display: flex;
@@ -61,6 +64,23 @@
 .t-button:hover {
     background-color: #119899;
     color: #D9EDED;
+}
+
+.r-button {
+  background-color: #ec4141;
+  border: 1px solid white; 
+  border-radius: 10px;
+  color: white;
+  font-size: 20px;
+  padding: 0.2rem 1rem;
+  transition: 0.3s;
+  text-decoration: none;
+  margin-left: 1rem;
+}
+
+.r-button:hover {
+  background-color: #a41616;
+  color: #D9EDED;
 }
 
 .message-history {
@@ -282,6 +302,10 @@
 
   /* Edits for responsiveness */
   @media screen and (max-width:768px) {
+    .choice-buttons {
+      display: flex;
+      justify-content: center;
+    }
     .pet-info > p {
       padding-left: 1.5rem;
     }
@@ -294,6 +318,7 @@
     .app-title {
       text-align: center;
       font-size: 2.5rem;
+      margin-bottom: 5vw;
     }
     .msg-text-from {
       font-size: 2vw;
@@ -347,6 +372,9 @@
       margin: 2vw;
       margin-top: 2.5vw;
     }
+    .r-button {
+      margin-left: 2vw;
+    }
   }
 
   @media screen and (min-width:410px) and (max-width:541px) {
@@ -368,7 +396,7 @@
     .app-title {
       /* text-align: left; */
       font-size: 5.8vw;
-      margin-bottom: 6vw;
+      /* margin-bottom: 6vw; */
     }
     .pet-summary {
       flex-direction: column;
@@ -430,6 +458,10 @@
     .t-button {
       font-size: 2vw;
     }
+    .r-button {
+      font-size: 2vw;
+    }
+
     .back-button {
       font-size: 3vw;
     }
