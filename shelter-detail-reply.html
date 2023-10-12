@@ -473,6 +473,23 @@
           </div> -->
 
         </div>
+        <div class="container justify-content-start text-start" id="reviewBox">
+          <div class="row align-middle">
+            <div class="col d-flex justify-content-start">
+              <h3 class="reviewerName">Jack</h3>
+            </div>
+            <div class="col d-flex justify-content-end stars">
+              <i class="bi bi-star-fill star"></i>
+              <i class="bi bi-star-fill star"></i>
+              <i class="bi bi-star-fill star"></i>
+              <i class="bi bi-star-fill star"></i>
+              <i class="bi bi-star-fill star"></i>
+            </div>
+          </div>
+          <div class="reviewText noReply">
+            Thanks Paw Patrol!
+          </div>
+        </div>
       <div class="container justify-content-start text-start" id="reviewBox">
         <div class="row align-middle">
           <div class="col d-flex justify-content-start">
@@ -496,6 +513,16 @@
             Reply >
           </a>
       </div>
+      </div>
+      <div class="container justify-content-start text-start noReply" id="replyBox">
+        <div class="row align-middle">
+          <div class="col d-flex justify-content-start">
+            <h3 class="reviewerName">Jack</h3>
+          </div>
+        </div>
+        <div class="reviewText">
+          So cute!
+        </div>
       </div>
       <div class="container justify-content-start text-start collapse replyBox" id="replyForm">
             <div class="col d-flex justify-content-start">
@@ -565,30 +592,6 @@
         </form>    
       </div>
       
-      <div class="container justify-content-start text-start" id="reviewBox">
-        <div class="row align-middle">
-          <div class="col d-flex justify-content-start">
-            <h3 class="reviewerName">Zura</h3>
-          </div>
-          <div class="col d-flex justify-content-end stars">
-            <i class="bi bi-star-fill star"></i>
-            <i class="bi bi-star-fill star"></i>
-            <i class="bi bi-star-fill star"></i>
-            <i class="bi bi-star-fill star"></i>
-            <i class="bi bi-star-fill star emptyStar"></i>
-          </div>
-        </div>
-        <div class="reviewText">
-          Met my new best friend Elizabeth the duck. She’s well-behaved but it wasn’t a super easy 
-          process to adopt her from the shelter. I still love her though!
-        </div>
-        <div class="container" id="replyCollapse">
-          <a class="btn reply" data-bs-toggle="collapse" role="button" 
-          aria-expanded="false" aria-controls="replyForm" id="replyButton">
-            Reply >
-          </a>
-        </div>
-      </div>      
       </div>
         <div class="container" id="seeMoreCollapse">
           <a data-bs-target="#collapsedReviews" class="btn reviewClick" data-bs-toggle="collapse" role="button" 
@@ -596,7 +599,34 @@
             <div class="text-collapsed">See more <i class="bi bi-chevron-right chevron"></i></div>
             <div class="text-expanded">See less <i class="bi bi-chevron-up chevron"></i></div>
           </a>
-        <div class="container justify-content-start text-start collapse" id="collapsedReviews">
+          <div class="container justify-content-start text-start collapse" id="collapsedReviews">
+            <div class="container justify-content-start text-start" id="reviewBox">
+              <div class="row align-middle">
+                <div class="col d-flex justify-content-start">
+                  <h3 class="reviewerName">Zura</h3>
+                </div>
+                <div class="col d-flex justify-content-end stars">
+                  <i class="bi bi-star-fill star"></i>
+                  <i class="bi bi-star-fill star"></i>
+                  <i class="bi bi-star-fill star"></i>
+                  <i class="bi bi-star-fill star"></i>
+                  <i class="bi bi-star-fill star emptyStar"></i>
+                </div>
+              </div>
+              <div class="reviewText">
+                Met my new best friend Elizabeth the duck. 
+                She’s well-behaved but it wasn’t a super easy process to adopt her from the shelter. 
+                I still love her though!
+              </div>
+              <div class="container" id="replyCollapse">
+                <a class="btn reply" data-bs-toggle="collapse" role="button" 
+                aria-expanded="false" aria-controls="replyForm" id="replyButton">
+                  Reply >
+                </a>
+              </div>
+            </div>     
+          </div>     
+        <div class="container justify-content-start text-start collapse lastReview" id="collapsedReviews">
           <div class="container justify-content-start text-start" id="reviewBox">
             <div class="row align-middle">
               <div class="col d-flex justify-content-start">
@@ -607,7 +637,7 @@
                 <i class="bi bi-star-fill star"></i>
                 <i class="bi bi-star-fill star"></i>
                 <i class="bi bi-star-fill star"></i>
-                <i class="bi bi-star-fill star" id="emptyStar"></i>
+                <i class="bi bi-star-fill star"></i>
               </div>
             </div>
             <div class="reviewText">
