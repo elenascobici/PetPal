@@ -88,6 +88,20 @@ body {
     padding-right: 2rem;
   }
 
+  #notifications {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  #notificationBell, #notificationBell2 {
+    color: #ffd86d;
+    font-size: 28px;
+  }
+
+  #notifications2 {
+    display: none;
+  }
+
   .main {
     display: flex;
     padding-top: 78px;
@@ -276,6 +290,9 @@ body {
     }
     #empty { height: 0.5rem; }
     #logIn { padding: 0; margin-right: 1rem; margin-bottom: 1rem;}
+    #notifications {display: none;}
+    #headerContainer {position: relative;}
+    #notifications2 {display: block; position: absolute; right: 4rem; top: 0.25rem;}
   }
 
   @media screen and (max-width:768px) {
