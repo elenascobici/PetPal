@@ -23,7 +23,13 @@
 
 @media only screen and (max-width: 1020px) {
   .text-input {
-    width: 70% !important;
+    width: 90% !important;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .text-input {
+    width: 90% !important;
   }
 }
 
@@ -41,7 +47,7 @@
   }
 }
 
-@media only screen and (max-height: 770px) {
+@media only screen and (max-height: 840px) {
   #login-container {
     height: 100%;
     margin-bottom: 65px;
