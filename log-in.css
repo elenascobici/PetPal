@@ -73,7 +73,71 @@ body {
     transition: 0.3s;
     text-decoration: none;
   }
+}
 
+@media only screen and (max-width: 800px) {
+  .text-input {
+    width: 70% !important;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  #login-container {
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    margin-bottom: 10%;
+    padding: 20px;
+  }
+
+  #welcome-back-container {
+    width: 100% !important;
+  }
+
+  #log-in-info-container {
+    width: 100% !important;
+  }
+
+  .text-input {
+    width: 100% !important;
+    font-size: 7vw !important;
+    margin-bottom: 1vw !important;
+  }
+
+  .yellowButton {
+    background-color: #FFC011;
+    border: 1px solid white;
+    border-radius: 10px;
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    line-height: 20px;
+    transition: 0.3s;
+    text-decoration: none;
+  }
+
+  #puppy-waving-img-container {
+    width: 100%;
+    height: auto !important;
+  }
+
+  #puppy-waving-img {
+    width: 100%;
+    height: auto !important;
+  }
+
+  .main {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+
+  #welcome-back-container > p {
+    font-size: 10vw !important;
+  }
+
+  .yellowButton {
+    width: 100% !important;
+  }
 }
 
 #welcome-back-container {
