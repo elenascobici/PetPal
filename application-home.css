@@ -156,8 +156,9 @@
 
  @media screen and (max-width: 991px) {
    .adopt-title {
-      font-size: 5vw;
+      font-size: 6.5vw;
       margin-bottom: 3vw;
+      text-align: center;
    }
    .pet-button {
       font-size: 2.5vw;
@@ -211,6 +212,36 @@
    .main {
       padding-top: 10vw;
    }
+   .mini-faq {
+      font-size: 13px;
+   }
+   .mini-h1 {
+      font-size: 16px;
+   }
+   .mini-h2 {
+      font-size: 15px;
+   }
+   .main-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    .sofa-dogs {
+      width: 100%;
+    }
+    .apply-now-button {
+      font-size: 20px ;
+      margin-bottom: 1rem;
+    }
+
+    .t-button {
+      font-size: 13px;
+    }
+
+    .apply-pos {
+      margin-bottom: 0.7rem!important;
+    }
    
  }
 
