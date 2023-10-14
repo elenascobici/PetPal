@@ -598,6 +598,10 @@ input[type="radio"]{
    background-color: #F9FAFF;
 }
 
+#underlined {
+   text-decoration: underline;
+}
+
 form {
    width: 100%;
    margin: 3rem;
