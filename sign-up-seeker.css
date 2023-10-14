@@ -47,6 +47,12 @@
   }
 }
 
+@media only screen and (max-width: 500px) {
+  .yellowButton {
+    font-size: 5vw;
+  }
+}
+
 @media only screen and (max-height: 840px) {
   #login-container {
     height: 100%;
