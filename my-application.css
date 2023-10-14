@@ -376,8 +376,12 @@
   }
 
   @media screen and (min-width:0px) and (max-width:541px) {
+    .pet-pfp {
+      width: 40vw!important;
+      height: 40vw!important;
+    }
     .app-title {
-      font-size: 5.8vw;
+      font-size: 6.5vw;
     }
     .pet-summary {
       flex-direction: column;
@@ -385,6 +389,30 @@
     }
     .summarized-info {
       margin-left: 6.5vw;
+    }
+    .heading3 {
+      font-size: 18px!important;
+    }
+    .desc {
+      font-size: 13px!important;
+    }
+    .t-button {
+      font-size: 13px!important;
+    }
+    .info-label {
+      font-size: 14px;
+    }
+    .answer {
+      font-size: 14px;
+    }
+    .answer-long {
+      font-size: 14px;
+    }
+    .msg-text-from {
+      font-size: 13px;
+    }
+    .msg-text-to {
+      font-size: 13px;
     }
   }
 
