@@ -14,9 +14,7 @@
   <link rel="stylesheet" href="style.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="user-notifications-unread.css">
-
+  <link rel="stylesheet" href="pet-detail-adopted.css">
 </head>
 <body>
   <div class="page-container">
@@ -58,60 +56,99 @@
         <a id="notifications" href="user-notifications-unread.html"><i id="notificationBell" class="bi bi-bell-fill"></i></a>
       </div>
     </nav>
-    <!-- CONTENT-->
-    <div class="main bg-lightYellow manrope">
-      <!-- Content-->
-    <div class="main-notifications manrope">
-      <div class="container mt-5 notification-box">
+    <!-- Content -->
+    <div class="main-pet-detail">
+      <div class="container mt-5">
+          <div class="row">
+              <!-- Details row -->
+              <div class="col-12 padding">
+                  <h2 id="pet-name">Totoro</h2>
+                  <h3 id="date">2023 October 20</h3>
+              </div>
 
-        <!-- Title and count-->
-        <div class="row mb-4 text-start">
-          <div class="col-12 col-md-5 d-flex flex-column flex-md-row align-items-start">
-              <h2 class="mb-2 mb-md-0 me-md-3">Notifications</h2>
-              <span class="badge noti-yellow">1</span>
+              <!-- Images row -->
+              <div class="col-12 col-lg-7">
+                  <img src="images/rabbit_main.jpg" alt="Main Image" class="img-fluid custom-rounded">
+                  <div class="row"> 
+                      <div class="col-4">
+                          <img src="images/rabbit_main1.jpg" alt="child image 1" class="img-fluid custom-rounded-child">
+                      </div>
+                      <div class="col-4">
+                          <img src="images/rabbit_main2.jpg" alt="child image 2" class="img-fluid custom-rounded-child">
+                      </div>
+                      <div class="col-4">
+                          <img src="images/rabbit_main.jpg" alt="child image 3" class="img-fluid custom-rounded-child"> 
+                      </div>
+                  </div>  
+              </div> 
+              
+              <!-- Table row -->
+              <div class="col-12 col-lg-5 d-flex align-items-center">
+                  <table class="table bg-lightYellow rounded-table m-auto" id="subtitle">
+                      <thead>
+                          <tr>
+                              <th colspan="2" class="text-center">Details</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr> 
+                              <td><strong> Status</strong></td>
+                              <td>Adopted</td>
+                          </tr>
+                          <tr>
+                              <td><strong>Gender</strong></td>
+                              <td>Male</td>
+                          </tr>
+                          <tr>
+                              <td><strong>Age</strong></td>
+                              <td>6 years</td>
+                          </tr>
+                          <tr>
+                              <td><strong>Color</strong></td>
+                              <td>White</td>
+                          </tr>
+                          <tr>
+                              <td><strong>Breed</strong></td>
+                              <td>Dutch</td>
+                          </tr>
+                          <tr>
+                              <td><strong>Location</strong></td>
+                              <td>Quebec</td>
+                          </tr>
+                          <tr>
+                              <td><strong>Size</strong></td>
+                              <td>Medium</td>
+                          </tr>
+                          <tr>
+                              <td><strong>Behaviour</strong></td>
+                              <td>Bold</td>
+                          </tr>
+                      </tbody>
+                  </table>
+              </div>
           </div>
-          <div class="col-12 col-md-7 text-md-end mt-2 mt-md-0">
-              <a class="manrope link" href="user-notifications-read.html">Mark all as read</p>
+          
+          <!-- Description row -->
+          <div class="row">
+              <div class="col-12 description-box" id="subtitle">
+                  <h4>Description</h4>
+                  <p>This confident bunny is ready to run your household and make sure mealtime is always on time. She is initially shy but after a few days warms up and is friendly.</p>
+              </div>
+              <div class="col-12 description-box" id="subtitle">
+                  <h4>Medical History</h4>
+                  <p>Vaccinated.</p>
+              </div>
+              <div class="col-12 padding">
+                <a class="greyButton" href="#">Adopt!</a>
+              </div>
           </div>
-        </div>
-        <!-- Notifications -->
-        <div class="row">
-          <div class="col-12">
-            <a href="user-applications-approved.html" class="message-link">
-              <div class="message-box text-start">
-                <p class="no-margin"> <strong>Paw Patrol</strong> has moved your application status for Calcifer!</p>
-                <p class="small"> 5m ago</p>
-              </div>
-            </a>
-
-            <a href="my-application.html" class="message-link">
-              <div class="message-box-read text-start">
-                <p class="no-margin"> <strong>Just Paws Animal Rescue</strong> has sent you a follow up message.</p>
-                <p class="small"> 10m ago</p>
-              </div>
-            </a>
-
-              <div class="message-reply text-start">
-                <p class="reply no-margin"> Hi Jack, when would you like to pick up Jiji? </p>
-                <!-- <input class="form-control" id="reply"> -->
-              </div>
-
-            <a href="home.html" class="message-link">
-              <div class="message-box-read text-start">
-                <p class="no-margin"> <strong>PetPal</strong> has received 2 new pets that match your preferences! Check em' out!</p>
-                <p class="small"> Last week</p>
-              </div>
-            </a>
-
-          </div> 
-        </div> 
       </div>
     </div>
-    </div>
+    <!-- Footer -->
     <footer class="text-center">
       <div class="container-fluid">
         <div class="row gx-0" id="footer">
-          <div class="footerContact col col-xs-12">
+          <div class="footerContact col">
             <div id="connect">Connect with Us!
               <p id="connectPetPal">PetPal</p>
             </div>
@@ -119,7 +156,7 @@
           <div class="col-1" id="verticalLineBox">
             <div id="verticalLine"></div>
           </div>
-          <div id="contactInfo" class="col col-xs-12">
+          <div id="contactInfo" class="col">
             <a id="link" href="mailto:petpal23@gmail.com">petpal23@gmail.com</a>        	
             <p id="telephone">(987) 654 - 3210</p>
             <ul class="list-group list-group-horizontal">

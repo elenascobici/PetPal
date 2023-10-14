@@ -598,6 +598,10 @@ input[type="radio"]{
    background-color: #F9FAFF;
 }
 
+#underlined {
+   text-decoration: underline;
+}
+
 form {
    width: 100%;
    margin: 3rem;
@@ -863,6 +867,7 @@ textarea {
    .main {padding-left: 2rem !important; padding-right: 2rem !important;}
    .reviewLink {font-size: 20px;}
    #userGridItem, #starsGridItem {justify-self: center;}
+   #reviewRating {padding-right: 0;}
 }
 
 @media screen and (max-width:367px) {
