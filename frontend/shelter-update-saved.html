@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<!--
+  CSC309 PetPal Phase1
+  
+  University of Toronto
+  Fall 2023
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>PetPal</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <!-- <link rel="stylesheet" href="shelter-detail.css"> -->
+  <link rel="stylesheet" href="shelter-update.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+</head>
+<body>
+  <div class="page-container">
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid" id="headerContainer">
+        <a class="navbar-brand px-3 m-0" id="petpal" href="home.html">PetPal</a>
+        <a id="notifications2" href="notifications.html"><i id="notificationBell2" class="bi bi-bell-fill"></i></a>
+        <button class="navbar-toggler navbar-dark" type="button" data-bs-toggle="collapse" 
+          data-bs-target="#menuItems" aria-controls="menuItems" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="menuItems">
+          <ul class="nav navbar-nav me-auto mb-2 mb-lg-0" id="navbarList">
+            <li class="nav-item">
+              <a class="nav-link px-3" id="navHome" aria-current="page" href="home.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link px-3" id="navSearch" href="search.html">Search for Pets</a>
+            </li>
+            <!-- <li class="nav-item">
+              <a class="nav-link px-3" id="navApply" href="application-home.html">Apply Now</a>
+            </li> -->
+            <li class="nav-item">
+              <a class="nav-link px-3" id="navListings" href="shelter-pet-listings.html">Pet Listings</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link px-3" id="navShelters" href="shelters.html">Shelters</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link px-3" id="navApplications" href="shelter-applications.html">Applications</a>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right px-2" id="navButtons">
+            <li><a class="yellowButton me-3" href="shelter-update.html" id="signUp">Profile</a></li>
+            <li><div id="empty"> </div></li>
+            <li><a class="yellowButton" href="home.html" id="logIn">Log out</a></li>
+          </ul>
+        </div>
+        <a id="notifications" href="shelter-notifications-unread.html"><i id="notificationBell" class="bi bi-bell-fill"></i></a>
+      </div>
+    </nav>
+    <div class="main">
+      <div id="title">Update Shelter Details</div>
+      <form action="#" method="post" id="profileInfo"></form>
+      <div class="container gx-0" id="shelterLogoEdit">
+          <!-- <div id="logo">
+              <img src="images/pawpatrol.png" id="shelterLogo">
+          </div> -->
+          <!-- <form action="#" method="post"> -->
+              <div class="form-control" id="profile">
+                  <image id="profileImage" src="images/pawpatrol.png" />
+                  <label class="form-label btn" for="imageUpload" id="edit">Change shelter logo</label>
+                  <!-- <input type="file" name="photo" class="form-control d-none" id="shelterLogoFile" /> -->
+                  <input id="imageUpload" type="file" 
+                      name="profile_photo" placeholder="Photo" required="" capture>
+              </div>
+          
+          <!-- <div class="btn" id="edit">
+              <label class="form-label" for="shelterLogoFile">Change shelter logo</label>
+              <input type="file" name="photo" class="form-control d-none" id="shelterLogoFile" />
+              <image id="profileImage" src="http://lorempixel.com/100/100" />
+              <input id="imageUpload" type="file" 
+                  name="profile_photo" placeholder="Photo" required="" capture>
+          </div> -->
+          <!-- </form> -->
+      </div>
+      <!-- <form action="#" method="post" id="profileInfo"> -->
+        <div class="grid">
+          <div class="grid-item">
+            <label for="shelterName" id="shelterNameLabel" class="gridLabel">Shelter Name</label>
+          </div>
+          <div class="grid-item">
+            <textarea id="shelterName" rows = "1" type="text" name="shelterName" class="gridValue" required>Paw Patrol Rescue</textarea>
+          </div>
+          <div class="grid-item">
+            <label for="password" id="passwordLabel" class="gridLabel">Password</label>
+          </div>
+          <div class="grid-item">
+            <input id="password" type="password" name="password" class="gridValue" value="password" required>
+          </div>
+          <div class="grid-item">
+            <label for="emailAddress" id="emailLabel" class="gridLabel">Email Address</label>
+          </div>
+          <div class="grid-item">
+            <textarea id="emailAddress" rows = "1" type="text" name="emailAddress" class="gridValue" required>pawpatrolrescue@gmail.com</textarea>
+          </div>
+          <div class="grid-item">
+            <label for="phoneNumber" id="phoneNumberLabel" class="gridLabel">Phone Number</label>
+          </div>
+          <div class="grid-item">
+            <input id="phoneNumber" type="tel" name="phoneNumber" class="gridValue" required
+             value="(987) 654 - 3210" size="10">
+          </div>
+          <div class="grid-item">
+            <label for="location" id="locationLabel" class="gridLabel">Location</label>
+          </div>
+          <div class="grid-item">
+            <textarea id="location" rows = "1" type="text" name="street" class="gridValue">123 Pup Street</textarea>
+            <p class="locationType">Street</p>
+            <textarea rows = "1" type="text" name="city" class="gridValue" required>Adventure Bay</textarea>
+            <p class="locationType">City</p>
+            <select name="province" class="gridValue" required>
+              <option value="alberta">Alberta</option>
+              <option value="britishColumbia">British Columbia</option>
+              <option value="manitoba">Manitoba</option>
+              <option value="newBrunswick">New Brunswick</option>
+              <option value="newfoundland">Newfoundland and Labrador</option>
+              <option value="northwest">Northwest Territories</option>
+              <option value="novaScotia">Nova Scotia</option>
+              <option value="nunavut">Nunavut</option>
+              <option value="ontario" selected>Ontario</option>
+              <option value="pei">Prince Edward Island</option>
+              <option value="quebec">Quebec</option>
+              <option value="saskatchewan">Saskatchewan</option>
+              <option value="yukon">Yukon</option>
+            </select>
+            <p class="locationType" id="provinceLabel">Province/Territory</p>
+          </div>
+          <div class="grid-item">
+            <label for="websiteLink" id="websiteLinkLabel" class="gridLabel">Website Link</label>
+          </div>
+          <div class="grid-item">
+            <input id="websiteLink" type="text" name="websiteLink" class="gridValue"
+             value="https://pawpatrolandfriends.com/">
+          </div>
+          <div class="grid-item">
+            <div class="gridLabel">Preferred Contact</div>
+          </div>
+          <div class="grid-item" id="radioButtons">
+            <input id="phonePreferred" type="radio" name="contactPreference" value="phone" checked>
+            <span class="checkmark"></span>
+            <label for="phonePreferred" class="contactOptions">Phone</label>
+            <input id="emailPreferred" type="radio" name="contactPreference" value="email">
+            <span class="checkmark"></span>
+            <label for="emailPreferred" class="contactOptions">Email</label>
+          </div>
+        </div>
+        <div class="container justify-content-start text-start">
+          <h2 class="subtitle">Mission Statement:</h2>
+          <div id="mission">
+          <textarea rows = "8" type="text" name="mission" class="gridValue" id="missionBox">No job is too big, no pup is too small!
+
+The rescuers at Paw Patrol Rescue commit themselves to saving all animals in Ontario and provide them with the care and shelter they deserve.
+We give our animals a proper inspection to ensure they are healthy and ready to find their new homes!</textarea>  
+        </div>        
+        </div>
+        <div class="container justify-content-start text-start">
+          <h2 class="subtitle" id="listPets">List of Pets:</h2>
+        </div>
+        <!-- Carousel -->
+        <div class="container" id="carouselContainer">
+          <div id="petsCarousel" class="carousel slide" data-bs-interval="false">
+            <div class="carousel-indicators">
+              <button class="carouselIndicator active" type="button" data-bs-target="#petsCarousel" data-bs-slide-to="0" aria-current="true"></button>
+              <button class="carouselIndicator" type="button" data-bs-target="#petsCarousel" data-bs-slide-to="1"></button>
+              <button class="carouselIndicator" type="button" data-bs-target="#petsCarousel" data-bs-slide-to="2"></button>
+            </div>
+            <div class="carousel-inner">
+              
+              <div class="carousel-item active" data-bs-interval="false">
+                <div class="container align-middle text-center" id="carouselPage">
+                  <!-- Left and right controls/icons -->
+                  <button class="carousel-control-prev carousel-btn" type="button" data-bs-target="#petsCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                  </button>
+                  <button class="carousel-control-next carousel-btn" type="button" data-bs-target="#petsCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                  </button>
+                  <div class="grid petGrid">
+                    <div class="grid-item">
+                      <a type="button" class="pet" href="#">
+                        <img class="petImage" src="images/buddy.jpg">
+                        <div class="petLabel">Buddy</div>
+                      </a>
+                      <div class="selectStatus">
+                        <select name="buddyStatus" class="status">
+                          <option class="statusOption available" value="available" selected>Available</option>
+                          <option class="statusOption pending" value="pending">Pending</option>
+                          <option class="statusOption adopted" value="adopted">Adopted</option>
+                          <option class="statusOption withdrawn" value="withdrawn">Withdrawn</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="grid-item">
+                      <a type="button" class="pet" href="#">
+                        <img class="petImage" src="images/quokkie.png">
+                        <div class="petLabel">Quokkie</div>
+                      </a>
+                      <div class="selectStatus">
+                        <select name="buddyStatus" class="status">
+                          <option class="statusOption available" value="available">Available</option>
+                          <option class="statusOption pending" value="pending" selected>Pending</option>
+                          <option class="statusOption adopted" value="adopted">Adopted</option>
+                          <option class="statusOption withdrawn" value="withdrawn">Withdrawn</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="grid-item">
+                      <a type="button" class="pet" href="#">
+                        <img class="petImage" src="images/calcifer.jpg">
+                        <div class="petLabel">Calcifer</div>
+                      </a>
+                      <div class="selectStatus">
+                        <select name="buddyStatus" class="status">
+                          <option class="statusOption available" value="available">Available</option>
+                          <option class="statusOption pending" value="pending" selected>Pending</option>
+                          <option class="statusOption adopted" value="adopted">Adopted</option>
+                          <option class="statusOption withdrawn" value="withdrawn">Withdrawn</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="grid-item">
+                      <a type="button" class="pet" href="#">
+                        <img class="petImage" src="images/hokey-pokey.jpg">
+                        <div class="petLabel">Hokey Pokey</div>
+                      </a>
+                      <div class="selectStatus">
+                        <select name="buddyStatus" class="status">
+                          <option class="statusOption available" value="available" selected>Available</option>
+                          <option class="statusOption pending" value="pending">Pending</option>
+                          <option class="statusOption adopted" value="adopted">Adopted</option>
+                          <option class="statusOption withdrawn" value="withdrawn">Withdrawn</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="grid-item">
+                      <a type="button" class="pet" href="#">
+                        <img class="petImage" src="images/hamtaro.jpg">
+                        <div class="petLabel">Hamtaro</div>
+                      </a>
+                      <div class="selectStatus">
+                        <select name="buddyStatus" class="status">
+                          <option class="statusOption available" value="available">Available</option>
+                          <option class="statusOption pending" value="pending">Pending</option>
+                          <option class="statusOption adopted" value="adopted">Adopted</option>
+                          <option class="statusOption withdrawn" value="withdrawn" selected>Withdrawn</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="grid-item">
+                      <a type="button" class="pet" href="#">
+                        <img class="petImage" src="images/jiji.jpg">
+                        <div class="petLabel">Jiji</div>
+                      </a>
+                      <div class="selectStatus">
+                        <select name="buddyStatus" class="status">
+                          <option class="statusOption available" value="available">Available</option>
+                          <option class="statusOption pending" value="pending">Pending</option>
+                          <option class="statusOption adopted" value="adopted" selected>Adopted</option>
+                          <option class="statusOption withdrawn" value="withdrawn">Withdrawn</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="grid-item">
+                      <a type="button" class="pet" href="#">
+                        <img class="petImage" src="images/totoro.jpg">
+                        <div class="petLabel">Totoro</div>
+                      </a>
+                      <div class="selectStatus">
+                        <select name="buddyStatus" class="status">
+                          <option class="statusOption available" value="available">Available</option>
+                          <option class="statusOption pending" value="pending">Pending</option>
+                          <option class="statusOption adopted" value="adopted" selected>Adopted</option>
+                          <option class="statusOption withdrawn" value="withdrawn">Withdrawn</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="grid-item">
+                      <a type="button" class="pet" href="#">
+                        <img class="petImage" src="images/sadaharu.jpg">
+                        <div class="petLabel">Buddy</div>
+                      </a>
+                      <div class="selectStatus">
+                        <select name="buddyStatus" class="status">
+                          <option class="statusOption available" value="available">Available</option>
+                          <option class="statusOption pending" value="pending">Pending</option>
+                          <option class="statusOption adopted" value="adopted" selected>Adopted</option>
+                          <option class="statusOption withdrawn" value="withdrawn">Withdrawn</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item" data-bs-interval="false">
+                <div class="container align-middle text-center" id="carouselPage">
+                  <!-- Left and right controls/icons -->
+                  <button class="carousel-control-prev carousel-btn" type="button" data-bs-target="#petsCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                  </button>
+                  <button class="carousel-control-next carousel-btn" type="button" data-bs-target="#petsCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                  </button>
+                  <div class="grid petGrid">
+                    <div class="grid-item">
+                      <a type="button" class="pet" href="#">
+                        <img class="petImage" src="images/buddy.jpg">
+                        <div class="petLabel">Buddy</div>
+                      </a>
+                      <div class="selectStatus">
+                        <select name="buddyStatus" class="status">
+                          <option class="statusOption available" value="available" selected>Available</option>
+                          <option class="statusOption pending" value="pending">Pending</option>
+                          <option class="statusOption adopted" value="adopted">Adopted</option>
+                          <option class="statusOption withdrawn" value="withdrawn">Withdrawn</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="grid-item">
+                      <a type="button" class="pet" href="#">
+                        <img class="petImage" src="images/quokkie.png">
+                        <div class="petLabel">Quokkie</div>
+                      </a>
+                      <div class="selectStatus">
+                        <select name="buddyStatus" class="status">
+                          <option class="statusOption available" value="available">Available</option>
+                          <option class="statusOption pending" value="pending" selected>Pending</option>
+                          <option class="statusOption adopted" value="adopted">Adopted</option>
+                          <option class="statusOption withdrawn" value="withdrawn">Withdrawn</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="grid-item">
+                      <a type="button" class="pet" href="#">
+                        <img class="petImage" src="images/calcifer.jpg">
+                        <div class="petLabel">Calcifer</div>
+                      </a>
+                      <div class="selectStatus">
+                        <select name="buddyStatus" class="status">
+                          <option class="statusOption available" value="available" selected>Available</option>
+                          <option class="statusOption pending" value="pending">Pending</option>
+                          <option class="statusOption adopted" value="adopted">Adopted</option>
+                          <option class="statusOption withdrawn" value="withdrawn">Withdrawn</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="grid-item">
+                      <a type="button" class="pet" href="#">
+                        <img class="petImage" src="images/hokey-pokey.jpg">
+                        <div class="petLabel">Hokey Pokey</div>
+                      </a>
+                      <div class="selectStatus">
+                        <select name="buddyStatus" class="status">
+                          <option class="statusOption available" value="available" selected>Available</option>
+                          <option class="statusOption pending" value="pending">Pending</option>
+                          <option class="statusOption adopted" value="adopted">Adopted</option>
+                          <option class="statusOption withdrawn" value="withdrawn">Withdrawn</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="grid-item">
+                      <a type="button" class="pet" href="#">
+                        <img class="petImage" src="images/hamtaro.jpg">
+                        <div class="petLabel">Hamtaro</div>
+                      </a>
+                      <div class="selectStatus">
+                        <select name="buddyStatus" class="status">
+                          <option class="statusOption available" value="available">Available</option>
+                          <option class="statusOption pending" value="pending">Pending</option>
+                          <option class="statusOption adopted" value="adopted">Adopted</option>
+                          <option class="statusOption withdrawn" value="withdrawn" selected>Withdrawn</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="grid-item">
+                      <a type="button" class="pet" href="#">
+                        <img class="petImage" src="images/jiji.jpg">
+                        <div class="petLabel">Jiji</div>
+                      </a>
+                      <div class="selectStatus">
+                        <select name="buddyStatus" class="status">
+                          <option class="statusOption available" value="available">Available</option>
+                          <option class="statusOption pending" value="pending">Pending</option>
+                          <option class="statusOption adopted" value="adopted" selected>Adopted</option>
+                          <option class="statusOption withdrawn" value="withdrawn">Withdrawn</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="grid-item">
+                      <a type="button" class="pet" href="#">
+                        <img class="petImage" src="images/totoro.jpg">
+                        <div class="petLabel">Totoro</div>
+                      </a>
+                      <div class="selectStatus">
+                        <select name="buddyStatus" class="status">
+                          <option class="statusOption available" value="available">Available</option>
+                          <option class="statusOption pending" value="pending">Pending</option>
+                          <option class="statusOption adopted" value="adopted" selected>Adopted</option>
+                          <option class="statusOption withdrawn" value="withdrawn">Withdrawn</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="grid-item">
+                      <a type="button" class="pet" href="#">
+                        <img class="petImage" src="images/sadaharu.jpg">
+                        <div class="petLabel">Buddy</div>
+                      </a>
+                      <div class="selectStatus">
+                        <select name="buddyStatus" class="status">
+                          <option class="statusOption available" value="available">Available</option>
+                          <option class="statusOption pending" value="pending">Pending</option>
+                          <option class="statusOption adopted" value="adopted" selected>Adopted</option>
+                          <option class="statusOption withdrawn" value="withdrawn">Withdrawn</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item" data-bs-interval="false">
+                <div class="container align-middle text-center" id="carouselPage">
+                  <!-- Left and right controls/icons -->
+                  <button class="carousel-control-prev carousel-btn" type="button" data-bs-target="#petsCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                  </button>
+                  <button class="carousel-control-next carousel-btn" type="button" data-bs-target="#petsCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                  </button>
+                  <div class="grid petGrid">
+                    <div class="grid-item">
+                      <a type="button" class="pet" href="#">
+                        <img class="petImage" src="images/buddy.jpg">
+                        <div class="petLabel">Buddy</div>
+                      </a>
+                      <div class="selectStatus">
+                        <select name="buddyStatus" class="status">
+                          <option class="statusOption available" value="available" selected>Available</option>
+                          <option class="statusOption pending" value="pending">Pending</option>
+                          <option class="statusOption adopted" value="adopted">Adopted</option>
+                          <option class="statusOption withdrawn" value="withdrawn">Withdrawn</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="grid-item">
+                      <a type="button" class="pet" href="#">
+                        <img class="petImage" src="images/quokkie.png">
+                        <div class="petLabel">Quokkie</div>
+                      </a>
+                      <div class="selectStatus">
+                        <select name="buddyStatus" class="status">
+                          <option class="statusOption available" value="available">Available</option>
+                          <option class="statusOption pending" value="pending" selected>Pending</option>
+                          <option class="statusOption adopted" value="adopted">Adopted</option>
+                          <option class="statusOption withdrawn" value="withdrawn">Withdrawn</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="grid-item">
+                      <a type="button" class="pet" href="#">
+                        <img class="petImage" src="images/calcifer.jpg">
+                        <div class="petLabel">Calcifer</div>
+                      </a>
+                      <div class="selectStatus">
+                        <select name="buddyStatus" class="status">
+                          <option class="statusOption available" value="available" selected>Available</option>
+                          <option class="statusOption pending" value="pending">Pending</option>
+                          <option class="statusOption adopted" value="adopted">Adopted</option>
+                          <option class="statusOption withdrawn" value="withdrawn">Withdrawn</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="grid-item">
+                      <a type="button" class="pet" href="#">
+                        <img class="petImage" src="images/hokey-pokey.jpg">
+                        <div class="petLabel">Hokey Pokey</div>
+                      </a>
+                      <div class="selectStatus">
+                        <select name="buddyStatus" class="status">
+                          <option class="statusOption available" value="available" selected>Available</option>
+                          <option class="statusOption pending" value="pending">Pending</option>
+                          <option class="statusOption adopted" value="adopted">Adopted</option>
+                          <option class="statusOption withdrawn" value="withdrawn">Withdrawn</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="grid-item">
+                      <a type="button" class="pet" href="#">
+                        <img class="petImage" src="images/hamtaro.jpg">
+                        <div class="petLabel">Hamtaro</div>
+                      </a>
+                      <div class="selectStatus">
+                        <select name="buddyStatus" class="status">
+                          <option class="statusOption available" value="available">Available</option>
+                          <option class="statusOption pending" value="pending">Pending</option>
+                          <option class="statusOption adopted" value="adopted">Adopted</option>
+                          <option class="statusOption withdrawn" value="withdrawn" selected>Withdrawn</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="grid-item">
+                      <a type="button" class="pet" href="#">
+                        <img class="petImage" src="images/jiji.jpg">
+                        <div class="petLabel">Jiji</div>
+                      </a>
+                      <div class="selectStatus">
+                        <select name="buddyStatus" class="status">
+                          <option class="statusOption available" value="available">Available</option>
+                          <option class="statusOption pending" value="pending">Pending</option>
+                          <option class="statusOption adopted" value="adopted" selected>Adopted</option>
+                          <option class="statusOption withdrawn" value="withdrawn">Withdrawn</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="grid-item">
+                      <a type="button" class="pet" href="#">
+                        <img class="petImage" src="images/totoro.jpg">
+                        <div class="petLabel">Totoro</div>
+                      </a>
+                      <div class="selectStatus">
+                        <select name="buddyStatus" class="status">
+                          <option class="statusOption available" value="available">Available</option>
+                          <option class="statusOption pending" value="pending">Pending</option>
+                          <option class="statusOption adopted" value="adopted" selected>Adopted</option>
+                          <option class="statusOption withdrawn" value="withdrawn">Withdrawn</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="grid-item">
+                      <a type="button" class="pet" href="#">
+                        <img class="petImage" src="images/sadaharu.jpg">
+                        <div class="petLabel">Buddy</div>
+                      </a>
+                      <div class="selectStatus">
+                        <select name="buddyStatus" class="status">
+                          <option class="statusOption available" value="available">Available</option>
+                          <option class="statusOption pending" value="pending">Pending</option>
+                          <option class="statusOption adopted" value="adopted" selected>Adopted</option>
+                          <option class="statusOption withdrawn" value="withdrawn">Withdrawn</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+        <a type="submit" class="editButton" href="shelter-update-saved.html" id="save">Save</a>
+        <p id="saved">Changes saved!</p>
+      </form>
+      <div class="buttons">
+        <a href="pet-creation.html" class="editButton">
+          Create new pets ⏵
+        </a>
+      </div>
+      
+    </div>
+    <footer class="text-center">
+      <div class="container-fluid">
+        <div class="row gx-0" id="footer">
+          <div class="footerContact col">
+            <div id="connect">Connect with Us!
+              <p id="connectPetPal">PetPal</p>
+            </div>
+          </div>
+          <div class="col-1" id="verticalLineBox">
+            <div id="verticalLine"></div>
+          </div>
+          <div id="contactInfo" class="col">
+            <a id="link" href="mailto:petpal23@gmail.com">petpal23@gmail.com</a>        	
+            <p id="telephone">(987) 654 - 3210</p>
+            <ul class="list-group list-group-horizontal">
+              <li class="list-group-item" id="insta">
+                <a href="#" role="button">
+                  <i class="bi bi-instagram"></i>
+                </a>
+              </li>
+              <li class="list-group-item" id="x">
+                <a href="#" role="button">
+                  <i class="bi bi-twitter-x"></i>
+                </a>
+              </li>
+              <li class="list-group-item" id="fb">
+                <a href="#" role="button">
+                  <i class="bi bi-facebook"></i>
+                </a>
+              </li>
+            </ul>
+          </div> 
+        </div>
+        <div class="row">
+          <div class="copyright">&copy Copyright 2023</div>
+      </div>
+    </div>
+    </footer>
+    <!-- <script>
+        $("#profileImage").click(function(e) {
+            $("#imageUpload").click();
+        });
+        function previewProfileImage( uploader ) {   
+        //ensure a file was selected 
+            if (uploader.files && uploader.files[0]) {
+                var imageFile = uploader.files[0];
+                var reader = new FileReader();    
+                reader.onload = function (e) {
+                    //set the image data as source
+                    $('#profileImage').attr('src', e.target.result);
+                }    
+                reader.readAsDataURL( imageFile );
+            }
+        }
+
+        $("#imageUpload").change(function(){
+            previewProfileImage( this );
+        });
+
+        $('#phoneNumber').keyup(function(e){
+            var ph = this.value.replace(/\D/g,'').substring(0,10);
+            // Backspace and Delete keys
+            var deleteKey = (e.keyCode == 8 || e.keyCode == 46);
+            var len = ph.length;
+            if(len==0){
+                ph=ph;
+            }else if(len<3){
+                ph='('+ph;
+            }else if(len==3){
+                ph = '('+ph + (deleteKey ? '' : ') ');
+            }else if(len<6){
+                ph='('+ph.substring(0,3)+') '+ph.substring(3,6);
+            }else if(len==6){
+                ph='('+ph.substring(0,3)+') '+ph.substring(3,6)+ (deleteKey ? '' : '-');
+            }else{
+                ph='('+ph.substring(0,3)+') '+ph.substring(3,6)+'-'+ph.substring(6,10);
+            }
+            this.value = ph;
+        });
+    </script> -->
+  </div>
+</body>
+</html>

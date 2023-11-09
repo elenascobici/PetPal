@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!--
+    CSC309 PetPal Phase1
+
+    University of Toronto
+    Fall 2023
+    Elena Scobici
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>PetPal</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="sign-up.css">
+</head>
+<body>
+  <div class="page-container">
+    <nav class="navbar">
+      <div class="container-fluid">
+        <a class="navbar-brand px-3 m-0" id="petpal" href="home.html">PetPal</a>
+      </div>
+    </nav>
+    <div class="main">
+      <div id="sign-up-container">
+        <p id="sign-up-text">What kind of acount would you like to create?</p>
+        <div id="options-container">
+          <a class="account-option-link" href="sign-up-seeker.html">
+            <div class="account-option" id="pet-seeker-option">
+              <p class="pet-option-text" id="pet-seeker-text">Pet Seeker</p>
+              <div class="sign-up-image-container" id="pet-seeker-image-container">
+                <img class="sign-up-image" id="pet-seeker-image" src="images/pet-seeker-image.jpg">
+              </div>
+            </div> 
+          </a>
+          <a class="account-option-link" href="sign-up-shelter.html">
+            <div class="account-option" id="pet-shelter-option">              
+              <p class="pet-option-text" id="pet-shelter-text">Pet Shelter</p>
+              <div class="sign-up-image-container" id="pet-shelter-image-container">
+                <img class="sign-up-image" id="pet-shelter-image" src="images/pet-shelter-image.jpg">
+              </div>
+            </div>
+          </a>
+        </div>
+        <a class="account-links" href="log-in.html">Already have an account? Sign in now!</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

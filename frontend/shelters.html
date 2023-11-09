@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<!--
+  CSC309 PetPal Phase1
+  
+  University of Toronto
+  Fall 2023
+  Cassandra Tin Kwon Yuen
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>PetPal</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="shelters.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+</head>
+<body>
+  <div class="page-container">
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid" id="headerContainer">
+        <a class="navbar-brand px-3 m-0" id="petpal" href="home.html">PetPal</a>
+        <!-- <a id="notifications2" href="notifications.html"><i id="notificationBell2" class="bi bi-bell-fill"></i></a> -->
+        <button class="navbar-toggler navbar-dark" type="button" data-bs-toggle="collapse" 
+          data-bs-target="#menuItems" aria-controls="menuItems" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="menuItems">
+          <ul class="nav navbar-nav me-auto mb-2 mb-lg-0" id="navbarList">
+            <li class="nav-item">
+              <a class="nav-link px-3" id="navHome" aria-current="page" href="home.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link px-3" id="navSearch" href="search.html">Search for Pets</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link px-3" id="navApply" href="application-home.html">Apply Now</a>
+            </li>
+            <!-- <li class="nav-item">
+              <a class="nav-link px-3" id="navListings" href="shelter-pet-listings.html">Pet Listings</a>
+            </li> -->
+            <li class="nav-item">
+              <a class="nav-link active px-3" id="navShelters" href="shelters.html">Shelters</a>
+            </li>
+            <!-- <li class="nav-item">
+              <a class="nav-link px-3" id="navApplications" href="user-applications.html">My Applications</a>
+            </li> -->
+          </ul>
+          <ul class="nav navbar-nav navbar-right px-2" id="navButtons">
+            <li><a class="yellowButton me-3" href="sign-up.html" id="signUp">Sign up</a></li>
+            <li><div id="empty"> </div></li>
+            <li><a class="yellowButton" href="log-in.html" id="logIn">Log in</a></li>
+          </ul>
+        </div>
+        <!-- <a id="notifications" href="user-notifications-unread.html"><i id="notificationBell" class="bi bi-bell-fill"></i></a> -->
+      </div>
+    </nav>
+    <div class="main px-6 pt-5">
+      <div class="container-fluid" id="mainImgContainer">
+        <img class="img-fluid" id="mainImg" alt="Responsive image" src="images/shelters-main.jpg">
+      </div>
+      <div id="title">Meet our shelter organizations</div>
+      <form class="formInputs" id="search" method="get">
+        <div class="form-row d-flex justify-content-center" id="searchBar">
+          <div class="form-group col d-flex justify-content-center align-center">
+            <input class="form-control" type="search" placeholder="Search for shelters...">
+            <a class="btn border-0 position-absolute" id="searchButton" type="submit" href="shelters-search.html#search">
+              <i class="bi bi-search" id="searchIcon"></i>
+            </a>
+          </div>
+          
+        </div>
+      </form>
+      <form class="formInputs" id="searchSmall" method="get">
+        <div class="form-row d-flex justify-content-center" id="searchBar">
+          <div class="form-group col d-flex justify-content-center align-center">
+            <input class="form-control" type="search" placeholder="Search">
+            <button class="btn border-0 position-absolute" id="searchButton" type="submit">
+              <i class="bi bi-search" id="searchIcon"></i>
+            </button>
+          </div>
+        </div>
+      </form>
+      <div class="container" id="shelterList1">
+      <div class="grid">
+        <div class="grid-header tableHeader">
+          Organization
+        </div>
+        <div class="grid-header tableHeader">
+          Location
+        </div>
+        <div class="grid-header tableHeader">
+          Contact
+        </div>
+        <div class="grid-item shelterLink">
+          <a href="shelter-detail.html" class="shelterLink">Paw Patrol Rescue</a>
+        </div>
+        <div class="grid-item">Adventure Bay, ON CA</div>
+        <div class="grid-item">
+          <a class="email" href="mailto:pawpatrolrescue@gmail.com">pawpatrolrescue@gmail.com</a> 
+        </div>
+        <div class="grid-item shelterLink">Just Paws Animal Rescue</div>
+        <div class="grid-item">Richmond Hill, ON CA</div>
+        <div class="grid-item">
+          <a class="email" href="mailto:info.justpaws@gmail.com">info.justpaws@gmail.com</a> 
+        </div>
+        <div class="grid-item shelterLink">Stray Cat Relief</div>
+        <div class="grid-item">Toronto, ON CA</div>
+        <div class="grid-item">
+          <a class="email" href="mailto:straycatrelief@gmail.com">straycatrelief@gmail.com</a> 
+        </div>
+        <div class="grid-item shelterLink">Forgotten Ones Cat Rescue</div>
+        <div class="grid-item">Richmond Hill, ON CA</div>
+        <div class="grid-item phone">
+          (111) 111 - 1111
+        </div>
+        <div class="grid-item shelterLink">Heart and Home Animal Rescue Foundation</div>
+        <div class="grid-item">Markham, ON CA</div>
+        <div class="grid-item phone">
+          (222) 222 - 2222
+        </div>
+        <div class="grid-item shelterLink">Pet House Shelter</div>
+        <div class="grid-item">Toronto, ON CA</div>
+        <div class="grid-item">
+          <a class="email" href="mailto:pethouseshelter@gmail.com">pethouseshelter@gmail.com</a> 
+        </div>
+        <div class="grid-item shelterLink">Animal Shelter Foundation</div>
+        <div class="grid-item">New Market, ON CA</div>
+        <div class="grid-item phone">
+          (333) 333 - 3333 
+        </div>
+      </div>
+      </div>
+      <div class="container" id="shelterList2">
+        <div class="grid">
+          <div class="grid-header tableHeader">
+            Organization
+          </div>
+          <div class="grid-header tableHeader">
+            Location
+          </div>
+          <div class="grid-header tableHeader">
+            Contact
+          </div>
+          <div class="grid-item shelterLink">Rescue Angels</div>
+          <div class="grid-item">Richmond Hill ON CA</div>
+          <div class="grid-item phone">
+            (647) 293 - 6570
+          </div>
+          <div class="grid-item shelterLink">MUTTS Dog Rescue</div>
+          <div class="grid-item">Richmond Hill, ON CA</div>
+          <div class="grid-item">
+            <a class="email" href="mailto:muttsdogrescue@gmail.com">muttsdogrescue@gmail.com</a> 
+          </div>
+          <div class="grid-item shelterLink">North Toronto Cat Rscue</div>
+          <div class="grid-item">Markam, ON CA</div>
+          <div class="grid-item phone">
+            (905) 940 - 2287
+          </div>
+          <div class="grid-item shelterLink">Save a Friend Dog Rescue Ontario</div>
+          <div class="grid-item">Concord, ON CA</div>
+          <div class="grid-item">
+          </div>
+          <div class="grid-item shelterLink">Vaughan Animal Services</div>
+          <div class="grid-item">Vaughan, ON CA</div>
+          <div class="grid-item phone">
+            (905) 832 - 2281
+          </div>
+          <div class="grid-item shelterLink">KOCA Dog Rescue</div>
+          <div class="grid-item">Thornhill, ON CA</div>
+          <div class="grid-item">
+            <a class="email" href="mailto:kocadog@gmail.com">kocadog@gmail.com</a> 
+          </div>
+          <div class="grid-item shelterLink">Paws Above Rescue</div>
+          <div class="grid-item">King City, ON CA</div>
+          <div class="grid-item">
+            <a class="email" href="mailto:pawsaboveadoptions@yahoo.com">pawsaboveadoptions@yahoo.com</a> 
+          </div>
+        </div>
+        </div>
+      <nav>
+        <ul class="pagination">
+          <li class="page-item disabled"><a class="page-link" href="#search">Previous</a></li>
+          <li class="page-item"><a class="page-link active" aria-current="page" href="#search">1          </a></li>
+          <li class="page-item"><a class="page-link" href="shelters-next-page.html#search">2</a></li>
+          <li class="page-item"><a class="page-link" href="#search">3</a></li>
+          <li class="page-item"><a class="page-link" href="shelters-next-page.html#search">Next</a></li>
+        </ul>
+      </nav>
+      <!-- <div class="container" id="meetShelters">
+        <div id="shelters">
+          <a href="#">
+            <img src="images/straycatshelter.png" class="shelterLogo">
+          </a>
+          <a href="#">
+            <img src="images/justpawsshelter.jpg" class="shelterLogo">
+          </a>
+          <a href="#">
+            <img src="images/hearthomeshelter.png" class="shelterLogo">
+          </a>
+          <a href="#">
+            <img src="images/pethouseshelter.png" class="shelterLogo">
+          </a>
+          <a href="#">
+            <img src="images/forgottenonesshelter.png" class="shelterLogo">
+          </a>
+          <a href="#">
+            <img src="images/animalshelter.jpg" class="shelterLogo">
+          </a>
+          <a href="shelter-detail.html">
+            <img src="images/pawpatrol.png" class="shelterLogo">
+          </a>
+        </div>
+      </div> -->
+      
+    </div>
+    <footer class="text-center">
+      <div class="container-fluid">
+        <div class="row gx-0" id="footer">
+          <div class="footerContact col">
+            <div id="connect">Connect with Us!
+              <p id="connectPetPal">PetPal</p>
+            </div>
+          </div>
+          <div class="col-1" id="verticalLineBox">
+            <div id="verticalLine"></div>
+          </div>
+          <div id="contactInfo" class="col">
+            <a id="link" href="mailto:petpal23@gmail.com">petpal23@gmail.com</a>        	
+            <p id="telephone">(987) 654 - 3210</p>
+            <ul class="list-group list-group-horizontal">
+              <li class="list-group-item" id="insta">
+                <a href="#" role="button">
+                  <i class="bi bi-instagram"></i>
+                </a>
+              </li>
+              <li class="list-group-item" id="x">
+                <a href="#" role="button">
+                  <i class="bi bi-twitter-x"></i>
+                </a>
+              </li>
+              <li class="list-group-item" id="fb">
+                <a href="#" role="button">
+                  <i class="bi bi-facebook"></i>
+                </a>
+              </li>
+            </ul>
+          </div> 
+        </div>
+        <div class="row">
+          <div class="copyright">&copy Copyright 2023</div>
+      </div>
+    </div>
+    </footer>
+  </div>
+</body>
+</html>

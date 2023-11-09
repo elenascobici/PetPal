@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<!--
+    CSC309 PetPal Phase1
+
+    University of Toronto
+    Fall 2023
+    Elena Scobici
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>PetPal</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="log-in.css">
+  <link rel="stylesheet" href="sign-up-seeker.css">
+</head>
+<body>
+  <div class="page-container">
+    <nav class="navbar">
+      <div class="container-fluid">
+        <a class="navbar-brand px-3 m-0" id="petpal" href="home.html">PetPal</a>
+      </div>
+    </nav>
+    <div class="main">
+      <div id="login-container">
+        <div id="welcome-back-container">
+          <p>Welcome</p>
+          <p>to PetPal!</p>
+          <div id="pets-img-container">
+            <img id="pets-img" src="images/sign-up-animals.jpg">
+          </div>
+        </div>
+        <div id="log-in-info-container">
+          <p>Create a <b>Pet Seeker</b> Account</p>
+          <form method="post" action="home-user.html">
+            <input class="text-input" type="text" name="firstname" placeholder="first name" required>
+            <input class="text-input" type="text" name="lastname" placeholder="last name" required>
+            <input class="text-input" type="text" name="username" placeholder="username" required>
+            <input class="text-input" type="email" name="email" placeholder="email address" required>
+            <input class="text-input" type="password" name="password" placeholder="password" required>
+            <input class="text-input" type="password" placeholder="confirm password" required>
+            <br>
+            <button id="log-in-btn" class="yellowButton" type="submit">Sign Up</button>
+          </form>
+          <a class="account-links" href="log-in.html">Already have an account? Sign in now!</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
