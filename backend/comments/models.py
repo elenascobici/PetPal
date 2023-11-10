@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
-from accounts.models.models import Shelter, ParentUser
+from accounts.models.ParentUserModel import ParentUser
+from accounts.models.ShelterModel import Shelter
 
 class Comment(models.Model):
     text = models.TextField(max_length=600)

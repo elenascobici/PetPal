@@ -1,13 +1,13 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractUser
 
 """
-Define the ParentUserModel class.
+Define the ParentUser model class.
 
 Author: Elena Scobici
 """
 
-class ParentUser(User):
+class ParentUser(AbstractUser):
     username = models.CharField(max_length=20)
     password = models.CharField(max_length=20)
     email = models.EmailField()
