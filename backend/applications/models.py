@@ -39,13 +39,13 @@ class Application(models.Model):
         ('TIN', 'Tiny House'), 
         ('MAN', 'Mansion'),
         ('BUN', 'Bungalow'),
-        ('LOG', 'Log House')
+        ('LOG', 'Log House'),
         ('FLO', 'Floating Home'),
         ('IGL', 'Igloo')
     ]
 
-    adopter_id = models.ForeignKey(Seeker)
-    pet_id = models.ForeignKey(Pet)
+    # adopter_id = models.ForeignKey(Seeker)
+    # pet_id = models.ForeignKey(Pet)
     status = models.CharField(max_length=1, choices=status_choices)
     email = models.EmailField()
     phone = models.PositiveBigIntegerField()
@@ -74,14 +74,14 @@ class Application(models.Model):
             self.last_update = timezone.now()
         super(Application, self).save(*args, **kwargs)
 
-class Message(models.Model):
-    sender = models.ForeignKey(ParentUser)
-    content = models.TextField(null=False, blank=False)
-    application = models.ForeignKey(Application)
-    creation_time = models.DateTimeField()
+# class Message(models.Model):
+#     sender = models.ForeignKey(ParentUser)
+#     content = models.TextField(null=False, blank=False)
+#     application = models.ForeignKey(Application)
+#     creation_time = models.DateTimeField()
 
-    def save(self, *args, **kwargs):
-        self.creation_time = timezone.now()
-        # Always update Application last_update time
-        self.application.last_update = self.creation_time
-        super(Message, self).save(*args, **kwargs)
+#     def save(self, *args, **kwargs):
+#         self.creation_time = timezone.now()
+#         # Always update Application last_update time
+#         self.application.last_update = self.creation_time
+#         super(Message, self).save(*args, **kwargs)

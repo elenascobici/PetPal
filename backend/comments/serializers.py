@@ -1,6 +1,7 @@
 from rest_framework import serializers
-from accounts.models.models import Shelter, ParentUser
-from .models import Comment, Review, Reply, Rating
+from accounts.models.ParentUserModel import ParentUser
+from accounts.models.ShelterModel import Shelter
+from .models import Comment, Review, Reply, Rating, Message
 
 class ReviewSerializer(serializers.ModelSerializer):
     class Meta:
@@ -8,7 +9,7 @@ class ReviewSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class CommentDetailSerializer(serializers.ModelSerializer):
-    text = serializers.TextField(max_length=600, required=False)
+    text = serializers.CharField(max_length=600, required=True)
     rating = serializers.IntegerField(min_value=1, max_value=5, required=False)
 
 class ReplySerializer(serializers.ModelSerializer):
@@ -19,4 +20,9 @@ class ReplySerializer(serializers.ModelSerializer):
 class RatingSerializer(serializers.ModelSerializer):
     class Meta:
         model = Rating
+        fields = '__all__'
+
+class MessageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Message
         fields = '__all__'
