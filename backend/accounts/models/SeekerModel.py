@@ -9,6 +9,4 @@ Author: Elena Scobici
 """
 
 class Seeker(ParentUser):
-    first_name = models.CharField(max_length=50)
-    last_name = models.CharField(max_length=50)
     preferences = models.CharField(null=True, blank=True, max_length=100)

@@ -11,6 +11,8 @@ Author: Elena Scobici
 class Shelter(ParentUser):
     name = models.CharField(max_length=30)
     website_link = models.URLField(null=True, blank=True)
-    preferred_contact = models.CharField(choices=['Phone', 'Email']
-                                         , default='Email')
+    preferred_contact = models.CharField(choices=[('Phone', 'Phone'),
+                                            ('Email', 'Email')], 
+                                            max_length=5
+                                            , default='Email')
     mission_statement = models.TextField(null=True, blank=True)

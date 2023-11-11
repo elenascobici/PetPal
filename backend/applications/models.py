@@ -1,5 +1,7 @@
 from django.db import models
 from django.utils import timezone
+from accounts.models.SeekerModel import Seeker
+from accounts.models.ParentUserModel import ParentUser
 
 # Create your models here.
 class Application(models.Model):
@@ -40,11 +42,12 @@ class Application(models.Model):
         ('MAN', 'Mansion'),
         ('BUN', 'Bungalow'),
         ('LOG', 'Log House'),
+        ('LOG', 'Log House'),
         ('FLO', 'Floating Home'),
         ('IGL', 'Igloo')
     ]
 
-    # adopter_id = models.ForeignKey(Seeker)
+    adopter_id = models.ForeignKey(Seeker, on_delete=models.CASCADE)
     # pet_id = models.ForeignKey(Pet)
     status = models.CharField(max_length=1, choices=status_choices)
     email = models.EmailField()
