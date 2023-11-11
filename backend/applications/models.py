@@ -1,5 +1,7 @@
 from django.db import models
 from django.utils import timezone
+from accounts.models.SeekerModel import Seeker
+from accounts.models.ParentUserModel import ParentUser
 
 # Create your models here.
 class Application(models.Model):
@@ -39,13 +41,13 @@ class Application(models.Model):
         ('TIN', 'Tiny House'), 
         ('MAN', 'Mansion'),
         ('BUN', 'Bungalow'),
-        ('LOG', 'Log House')
+        ('LOG', 'Log House'),
         ('FLO', 'Floating Home'),
         ('IGL', 'Igloo')
     ]
 
-    adopter_id = models.ForeignKey(Seeker)
-    pet_id = models.ForeignKey(Pet)
+    adopter_id = models.ForeignKey(Seeker, on_delete=models.CASCADE)
+    # pet_id = models.ForeignKey(Pet)
     status = models.CharField(max_length=1, choices=status_choices)
     email = models.EmailField()
     phone = models.PositiveBigIntegerField()
@@ -75,9 +77,9 @@ class Application(models.Model):
         super(Application, self).save(*args, **kwargs)
 
 class Message(models.Model):
-    sender = models.ForeignKey(ParentUser)
+    sender = models.ForeignKey(ParentUser, on_delete=models.SET_NULL, null=True)
     content = models.TextField(null=False, blank=False)
-    application = models.ForeignKey(Application)
+    application = models.ForeignKey(Application, on_delete=models.CASCADE)
     creation_time = models.DateTimeField()
 
     def save(self, *args, **kwargs):

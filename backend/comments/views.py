@@ -4,7 +4,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.pagination import PageNumberPagination
 from .models import Review, Reply, Comment
 from .serializers import ReviewSerializer, ReplySerializer, CommentDetailSerializer
-from ..accounts.models import Shelter
+from accounts.models.ShelterModel import Shelter
 
 
 class CommentPagination(PageNumberPagination):

@@ -13,9 +13,9 @@ class Comment(models.Model):
         abstract = True
 
 class Rating(models.Model):
-    user = models.ForeignKey(ParentUser, related_name="rating",
+    user = models.ForeignKey(ParentUser, related_name="user_rating",
                                      on_delete=models.CASCADE)
-    shelter = models.ForeignKey(Shelter, related_name="rating",
+    shelter = models.ForeignKey(Shelter, related_name="shelter_rating",
                                      on_delete=models.CASCADE)
     value = models.PositiveIntegerField(
         choices=[
