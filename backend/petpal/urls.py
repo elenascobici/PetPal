@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
+    path('application/', include('applications.urls', namespace='application')),
     path('admin/', admin.site.urls),
     path('shelter/', include('comments.urls', namespace='comments')),
 ]
