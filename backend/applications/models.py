@@ -47,8 +47,9 @@ class Application(models.Model):
         ('IGL', 'Igloo')
     ]
 
-    adopter_id = models.ForeignKey(Seeker, on_delete=models.CASCADE)
-    pet_id = models.ForeignKey(Pet)
+    # should not be deleted unless the pet itself is gone.
+    adopter_id = models.ForeignKey(Seeker, on_delete=models.SET_DEFAULT, default='deleted_user') # seeker never can access their page so this won't be a problem, shelter will just see deleted_user
+    pet_id = models.ForeignKey(Pet, on_delete=models.CASCADE)
     status = models.CharField(max_length=1, choices=status_choices)
     email = models.EmailField()
     phone = models.PositiveBigIntegerField()
@@ -67,6 +68,7 @@ class Application(models.Model):
     vet_contact = models.PositiveBigIntegerField(null=True, blank=True)
     notes = models.TextField(null=True, blank=True)
     last_update = models.DateTimeField()
+    creation_time = models.DateTimeField()
 
     def save(self, *args, **kwargs):
         # Should only be true if the Application is first being made, 
@@ -75,4 +77,6 @@ class Application(models.Model):
         # of the message.
         if (self.last_update == None): 
             self.last_update = timezone.now()
+        if (self.creation_time == None):
+            self.creation_time = timezone.now()
         super(Application, self).save(*args, **kwargs)
