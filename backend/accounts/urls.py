@@ -8,4 +8,5 @@ urlpatterns = [
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('register/seeker/', views.RegisterSeekerView.as_view(), name='register_seeker'),
+    path('register/shelter/', views.RegisterShelterView.as_view(), name='register_shelter'),
 ]
