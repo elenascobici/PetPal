@@ -10,5 +10,4 @@ urlpatterns = [
     # path('user/<int:pk/modification/', views, name="modification"),
     # path('user/<int:pk>/list/time/<str:type>/', views, name='recent'),
     # path('creation/', views, name='creation'),
-    # path('<int:pk>/<int:user_id>/messages', views, name='messages')
 ]

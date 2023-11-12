@@ -48,7 +48,7 @@ class Application(models.Model):
     ]
 
     adopter_id = models.ForeignKey(Seeker, on_delete=models.CASCADE)
-    # pet_id = models.ForeignKey(Pet)
+    pet_id = models.ForeignKey(Pet)
     status = models.CharField(max_length=1, choices=status_choices)
     email = models.EmailField()
     phone = models.PositiveBigIntegerField()
@@ -76,15 +76,3 @@ class Application(models.Model):
         if (self.last_update == None): 
             self.last_update = timezone.now()
         super(Application, self).save(*args, **kwargs)
-
-# class Message(models.Model):
-#     sender = models.ForeignKey(ParentUser)
-#     content = models.TextField(null=False, blank=False)
-#     application = models.ForeignKey(Application)
-#     creation_time = models.DateTimeField()
-
-#     def save(self, *args, **kwargs):
-#         self.creation_time = timezone.now()
-#         # Always update Application last_update time
-#         self.application.last_update = self.creation_time
-#         super(Message, self).save(*args, **kwargs)

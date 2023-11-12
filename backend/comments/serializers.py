@@ -3,16 +3,27 @@ from accounts.models.ParentUserModel import ParentUser
 from accounts.models.ShelterModel import Shelter
 from .models import Comment, Review, Reply, Rating, Message
 
-class ReviewSerializer(serializers.ModelSerializer):
+class CommentSerializer(serializers.ModelSerializer):
+    commenter_display_name = serializers.SerializerMethodField()
+    
+    class Meta:
+        model = Comment
+        fields = '__all__'
+    
+    def get_commenter_display_name(self, comment):
+        if not comment.commenter.is_active:
+            return "Deleted User"
+        user = comment.commenter
+        if isinstance(user, Shelter):
+            return user.name
+        return user.username
+
+class ReviewSerializer(CommentSerializer):
     class Meta:
         model = Review
         fields = '__all__'
 
-class CommentDetailSerializer(serializers.ModelSerializer):
-    text = serializers.CharField(max_length=600, required=True)
-    rating = serializers.IntegerField(min_value=1, max_value=5, required=False)
-
-class ReplySerializer(serializers.ModelSerializer):
+class ReplySerializer(CommentSerializer):
     class Meta:
         model = Reply
         fields = '__all__'

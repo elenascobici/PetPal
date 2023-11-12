@@ -19,7 +19,11 @@ from django.urls import path, include
 
 urlpatterns = [
     path('application/', include('applications.urls', namespace='application')),
+<<<<<<< HEAD
     path('shelter/', include('comments.urls', namespace='comments')),
     path('accounts/', include('accounts.urls', namespace='accounts')),
+=======
+    path('/', include('comments.urls', namespace='comments')),
+>>>>>>> 683066dca585b44eff87e15282dfc742db851d8f
     path('admin/', admin.site.urls),
 ]
