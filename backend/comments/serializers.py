@@ -34,6 +34,15 @@ class RatingSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class MessageSerializer(serializers.ModelSerializer):
+    sender_name = serializers.SerializerMethodField()
     class Meta:
         model = Message
         fields = '__all__'
+
+    def get_sender_name(self, message):
+        if not message.sender.is_active:
+            return "Deleted User"
+        user = message.sender
+        if isinstance(user, Shelter):
+            return user.name
+        return user.username
