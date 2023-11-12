@@ -6,9 +6,6 @@ from applications.models import Application
 class Comment(models.Model):
     text = models.TextField(max_length=600)
     time = models.DateTimeField(auto_now_add=True)
-    
-    class Meta:
-        abstract = True
 
 class Rating(models.Model):
     user = models.ForeignKey(ParentUser, related_name="user_rating",
