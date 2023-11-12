@@ -4,7 +4,7 @@ from accounts.models.ShelterModel import Shelter
 from applications.models import Application
 
 class Comment(models.Model):
-    text = models.TextField(max_length=600)
+    text = models.TextField()
     time = models.DateTimeField(auto_now_add=True)
 
 class Rating(models.Model):
