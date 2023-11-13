@@ -1,5 +1,7 @@
 from django.urls import path
 from .views import PetViewSet
+from django.conf import settings
+from django.conf.urls.static import static
 
 app_name='pet'
 urlpatterns = [
@@ -13,3 +15,7 @@ urlpatterns = [
     'delete': 'destroy',
   }), name='pet-detail')
 ]
+
+# handle image uploads
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
