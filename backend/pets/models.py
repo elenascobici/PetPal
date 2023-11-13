@@ -12,6 +12,8 @@ class PetDetail(models.Model):
     status_choices = [
         ('AVAILABLE', 'Available'),
         ('ADOPTED', 'Adopted'),
+        ('PENDING', 'Pending'),
+        ('WITHDRAWN', 'Withdrawn'),
     ]
 
     gender_choices = [
