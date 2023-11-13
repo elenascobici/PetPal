@@ -1,7 +1,7 @@
 from .serializers import ApplicationSerializer
 from rest_framework.generics import CreateAPIView, ListAPIView, RetrieveUpdateAPIView
 from django.shortcuts import get_object_or_404
-from .models import Pet
+from pets.models.PetDetailModel import PetDetail
 from accounts.models.SeekerModel import Seeker
 from accounts.models.ShelterModel import Shelter
 from applications.models import Application
@@ -28,7 +28,7 @@ class ApplicationCreateView(CreateAPIView):
         user_data['adopter_id'] = self.request.user.id
 
         # Check if pet exists and modify its status:
-        pet = get_object_or_404(Pet, id=self.kwargs['pet_id'])
+        pet = get_object_or_404(PetDetail, id=self.kwargs['pet_id'])
 
         # Do not let anyone else adopt if set to Unavailable
         if pet.status == 'UNAVAILABLE':
