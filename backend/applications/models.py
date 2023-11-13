@@ -51,7 +51,7 @@ class Application(models.Model):
 
     # should not be deleted unless the pet itself is gone.
     adopter_id = models.ForeignKey(Seeker, on_delete=models.SET_DEFAULT, default='deleted_user') # seeker never can access their page so this won't be a problem, shelter will just see deleted_user
-    pet_id = models.ForeignKey(Pet, on_delete=models.CASCADE, null=True)
+    pet_id = models.ForeignKey(PetDetail, on_delete=models.CASCADE, null=True)
     status = models.CharField(max_length=1, choices=status_choices)
     email = models.EmailField()
     phone = models.PositiveBigIntegerField()

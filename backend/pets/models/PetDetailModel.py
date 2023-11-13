@@ -1,7 +1,7 @@
 from django.db import models
 from accounts.models.ShelterModel import Shelter
 
-class Pet(models.Model):
+class PetDetail(models.Model):
     
     status_choices = [
         ('AVAILABLE', 'Available'),

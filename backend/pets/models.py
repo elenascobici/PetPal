@@ -6,6 +6,7 @@ class Pet(models.Model):
     status_choices = [
         ('AVAILABLE', 'Available'),
         ('ADOPTED', 'Adopted'),
+        ('UNAVAILABLE', 'Unavailable'),
     ]
 
     gender_choices = [
