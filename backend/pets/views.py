@@ -1,3 +1,9 @@
-from django.shortcuts import render
+from rest_framework import viewsets
+from .models.PetDetailModel import PetDetail
+from .serializers import PetSerializer
+from rest_framework.views import APIView
 
-# Create your views here.
+
+class PetViewSet(viewsets.ModelViewSet):
+  queryset = PetDetail.objects.all()
+  serializer_class = PetSerializer
