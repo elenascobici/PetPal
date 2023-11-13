@@ -63,39 +63,6 @@ class ApplicationListView(ListAPIView):
             # return forbidden access response
             return Response({'detail': "This web page doesn't exist"}, status=404)
 
-class ApplicationListSortView(ListAPIView):
-    serializer_class = ApplicationSerializer
-
-    def get_queryset(self):
-        if (self.kwargs['user_type'] == 'seeker'):
-            # Check if user is a seeker
-            if not isinstance(self.request.user, Seeker):
-                return Response({"detail": "Shelters cannot submit applications"}, status=403)
-            
-            # only return the applications where the adopter_id is the seeker
-            queryset = Application.objects.filter(adopter_id=self.request.user.pk)
-        elif (self.kwargs['user_type'] == 'shelter'):
-            # Check if user is a shelter
-            if not isinstance(self.request.user, Shelter):
-                return Response({"detail": "Shelters cannot submit applications"}, status=403)
-            
-            queryset = Application.objects.filter(pet__shelter__id = self.request.user.pk)
-        else:
-            return Response({'detail': "This web page doesn't exist"}, status=404)
-
-        # validate ordering field
-        type = self.kwargs['type'] # should only be able to store "creation_time" or "last_update"
-        
-        if type == 'creation-time':
-            field = 'creation_time'
-        elif type == 'last-update':
-            field = 'last_update'
-        else:
-            return Response({'detail': "Invalid field to sort. Please choose between creation-time or last-update."})
-
-        queryset = queryset.order_by(field)
-        return queryset
-
 
 class ApplicationListFilterView(ListAPIView):
     serializer_class = ApplicationSerializer
@@ -103,37 +70,71 @@ class ApplicationListFilterView(ListAPIView):
     def get_queryset(self):
         status = self.kwargs['status']
 
-        #validate status:
-        if status == 'Pending':
-            status_code = 'P'
-        elif status == 'Accepted':
-            status_code = 'Y'
-        elif status == 'Declined':
-            status_code = 'D'
-        elif status == 'Withdrawn':
-            status_code = 'W'
-        else:
-            #Some error
-            return Response({'detail': "Invalid status, no such filter exists."}, status=404)
-    
-
-        if (self.kwargs['user_type'] == 'seeker'):
-            # Check if user is a seeker
-            if not isinstance(self.request.user, Seeker):
-                return Response({"detail": "Shelters cannot submit applications"}, status=403)
-            
-            # only return the applications where the adopter_id is the seeker
-            queryset = Application.objects.filter(adopter_id=self.request.user.pk, status=status_code)
-            
-        elif (self.kwargs['user_type'] == 'shelter'):
-            # Check if user is a shelter
-            if not isinstance(self.request.user, Shelter):
-                return Response({"detail": "Shelters cannot submit applications"}, status=403)
-            
-            queryset = Application.objects.filter(pet__shelter__id = self.request.user.pk, status=status_code)
-        else:
-            return Response({'detail': "This web page doesn't exist."}, status=404)
+        if status != 'none':
+            #validate status:
+            if status == 'pending':
+                status_code = 'P'
+            elif status == 'accepted':
+                status_code = 'Y'
+            elif status == 'declined':
+                status_code = 'D'
+            elif status == 'withdrawn':
+                status_code = 'W'
+            else:
+                #Some error
+                return Response({'detail': "Invalid status, no such filter exists."}, status=404)
         
+
+            if (self.kwargs['user_type'] == 'seeker'):
+                # Check if user is a seeker
+                if not isinstance(self.request.user, Seeker):
+                    return Response({"detail": "Shelters cannot submit applications"}, status=403)
+                
+                # only return the applications where the adopter_id is the seeker
+                queryset = Application.objects.filter(adopter_id=self.request.user.pk, status=status_code)
+                
+            elif (self.kwargs['user_type'] == 'shelter'):
+                # Check if user is a shelter
+                if not isinstance(self.request.user, Shelter):
+                    return Response({"detail": "Shelters cannot submit applications"}, status=403)
+                
+                queryset = Application.objects.filter(pet__shelter__id = self.request.user.pk, status=status_code)
+            else:
+                return Response({'detail': "This web page doesn't exist."}, status=404)
+        else:
+
+            if (self.kwargs['user_type'] == 'seeker'):
+            # Check if user is a seeker
+                if not isinstance(self.request.user, Seeker):
+                    return Response({"detail": "Shelters cannot submit applications"}, status=403)
+            
+                # only return the applications where the adopter_id is the seeker
+                queryset = Application.objects.filter(adopter_id=self.request.user.pk)
+        
+            elif (self.kwargs['user_type'] == 'shelter'):
+                # Check if user is a shelter
+                if not isinstance(self.request.user, Shelter):
+                    return Response({"detail": "Shelters cannot submit applications"}, status=403)
+            
+                queryset = Application.objects.filter(pet__shelter__id = self.request.user.pk)
+            else:
+                #return forbidden access response
+                return Response({'detail': "This web page doesn't exist"}, status=404)
+
+        # validate ordering field
+        type = self.kwargs['type'] # should only be able to store "creation_time" or "last_update" or "none"
+        if type != 'none':
+        
+            if type == 'creation-time':
+                field = 'creation_time'
+            elif type == 'last-update':
+                field = 'last_update'
+            else:
+                return Response({'detail': "Invalid field to sort. Please choose between creation-time or last-update."})
+
+            queryset = queryset.order_by(field)
+        # else if none then do nothing.
+    
         return queryset
     
 class ApplicationRetrieveUpdateView(RetrieveUpdateAPIView):
@@ -169,3 +170,40 @@ class ApplicationRetrieveUpdateView(RetrieveUpdateAPIView):
                 return Response(serializer.data)
         else: 
             return Response({'detail': "This webpage does not exist."}, status=404)
+        
+
+
+
+
+# class ApplicationListSortView(ListAPIView):
+#     serializer_class = ApplicationSerializer
+
+#     def get_queryset(self):
+#         if (self.kwargs['user_type'] == 'seeker'):
+#             # Check if user is a seeker
+#             if not isinstance(self.request.user, Seeker):
+#                 return Response({"detail": "Shelters cannot submit applications"}, status=403)
+            
+#             # only return the applications where the adopter_id is the seeker
+#             queryset = Application.objects.filter(adopter_id=self.request.user.pk)
+#         elif (self.kwargs['user_type'] == 'shelter'):
+#             # Check if user is a shelter
+#             if not isinstance(self.request.user, Shelter):
+#                 return Response({"detail": "Shelters cannot submit applications"}, status=403)
+            
+#             queryset = Application.objects.filter(pet__shelter__id = self.request.user.pk)
+#         else:
+#             return Response({'detail': "This web page doesn't exist"}, status=404)
+
+#         # validate ordering field
+#         type = self.kwargs['type'] # should only be able to store "creation_time" or "last_update"
+        
+#         if type == 'creation-time':
+#             field = 'creation_time'
+#         elif type == 'last-update':
+#             field = 'last_update'
+#         else:
+#             return Response({'detail': "Invalid field to sort. Please choose between creation-time or last-update."})
+
+#         queryset = queryset.order_by(field)
+#         return queryset
