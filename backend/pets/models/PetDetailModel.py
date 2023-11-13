@@ -25,7 +25,7 @@ class PetDetail(models.Model):
         ('AGGRESSIVE', 'Aggressive'),
     ]
 
-    shelter_id = models.ForeignKey(Shelter, on_delete=models.CASCADE)
+    shelter = models.ForeignKey(Shelter, on_delete=models.CASCADE)
     name = models.CharField(max_length=20)
     status = models.CharField(max_length=20, choices=status_choices, default='AVAILABLE')
     gender = models.CharField(max_length=20, choices=gender_choices, default='N/A')
@@ -37,4 +37,9 @@ class PetDetail(models.Model):
     behaviour = models.CharField(max_length=20, choices=behaviour_choices, default='N/A')
     description = models.TextField(blank=True, null=True)
     medical_history = models.TextField(blank=True, null=True)
+
+    pet_image1 = models.ImageField(upload_to='pets/')
+    pet_image2 = models.ImageField(upload_to='pets/')
+    pet_image3 = models.ImageField(upload_to='pets/')
+    pet_image4 = models.ImageField(upload_to='pets/')
 
