@@ -3,12 +3,13 @@ from accounts.models.ShelterModel import Shelter
 from django.conf import settings
 import os
 
+
+# Add a placeholder image when image not provided by shelter
+def get_placeholder_image():
+    return 'pets/placeholder.png'
+
 class PetDetail(models.Model):
 
-    # Add a placeholder image when image not provided by shelter
-    def get_placeholder_image():
-        return os.path.join(settings.MEDIA_ROOT, 'pets/placeholder.png')
-    
     status_choices = [
         ('AVAILABLE', 'Available'),
         ('ADOPTED', 'Adopted'),
