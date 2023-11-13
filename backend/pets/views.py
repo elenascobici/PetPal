@@ -1,4 +1,4 @@
-from rest_framework import viewsets
+from rest_framework import viewsets, exceptions
 from .models.PetDetailModel import PetDetail
 from .serializers import PetSerializer
 from rest_framework.response import Response
@@ -15,11 +15,11 @@ class PetViewSet(viewsets.ModelViewSet):
 
     # Only shelters can submit applications
     if not isinstance(self.request.user, Shelter):
-      return Response({"detail": "Seekers cannot submit applications"}, status=403)
+      raise exceptions.PermissionDenied({"detail": "Seekers cannot submit applications"})
 
     # A shelter must be signed in to create a pet-listing
-    if not self.request.user.is_autheticated:
-      return Response({"detail": "Authetication failed"}, status=403)
+    if not self.request.user.is_authenticated:
+      raise exceptions.PermissionDenied({"detail": "Authetication failed"})
 
     # A shelter cannot create/list the same pet
     name = serializer.validated_data['name']
@@ -27,7 +27,7 @@ class PetViewSet(viewsets.ModelViewSet):
     shelter = serializer.validated_data['shelter']
 
     if PetDetail.objects.filter(name=name, breed=breed, shelter=shelter).exists():
-      return Response({"detail": "This shelter already has a pet with this name and breed. Duplicate pet postings not allowed."}, status=403)
+      raise exceptions.PermissionDenied({"detail": "This shelter already has a pet with this name and breed. Duplicate pet postings not allowed."})
     
     # if all conditions are met, save 
     serializer.save()

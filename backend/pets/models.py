@@ -1,8 +1,5 @@
 from django.db import models
 from accounts.models.ShelterModel import Shelter
-from django.conf import settings
-import os
-
 
 # Add a placeholder image when image not provided by shelter
 def get_placeholder_image():
@@ -37,20 +34,21 @@ class PetDetail(models.Model):
     shelter = models.ForeignKey(Shelter, on_delete=models.CASCADE)
     name = models.CharField(max_length=20)
     status = models.CharField(max_length=20, choices=status_choices, default='AVAILABLE')
-    gender = models.CharField(max_length=20, choices=gender_choices, default='N/A')
-    age = models.IntegerField(default='N/A')
-    colour = models.CharField(max_length=20, default='N/A')
-    breed = models.CharField(max_length=20, default='N/A')
-    location = models.CharField(max_length=30, default='N/A')
-    size = models.CharField(max_length=20, choices=size_choices, default='N/A')
-    behaviour = models.CharField(max_length=20, choices=behaviour_choices, default='N/A')
+    gender = models.CharField(max_length=20, choices=gender_choices)
+    age = models.PositiveIntegerField(default=0)
+    colour = models.CharField(max_length=20)
+    breed = models.CharField(max_length=20)
+    location = models.CharField(max_length=30)
+    size = models.CharField(max_length=20, choices=size_choices)
+    behaviour = models.CharField(max_length=20, choices=behaviour_choices)
     description = models.TextField(blank=True, null=True)
     medical_history = models.TextField(blank=True, null=True)
 
-    pet_image1 = models.ImageField(upload_to='pets/', default=get_placeholder_image)
-    pet_image2 = models.ImageField(upload_to='pets/', default=get_placeholder_image)
-    pet_image3 = models.ImageField(upload_to='pets/', default=get_placeholder_image)
-    pet_image4 = models.ImageField(upload_to='pets/', default=get_placeholder_image)
+    pet_image1 = models.ImageField(upload_to='pets/')
+    # pet_image1 = models.ImageField(upload_to='pets/', default=get_placeholder_image)
+    # pet_image2 = models.ImageField(upload_to='pets/', default=get_placeholder_image)
+    # pet_image3 = models.ImageField(upload_to='pets/', default=get_placeholder_image)
+    # pet_image4 = models.ImageField(upload_to='pets/', default=get_placeholder_image)
 
 
 
