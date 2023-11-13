@@ -9,4 +9,5 @@ urlpatterns = [
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('register/seeker/', views.RegisterSeekerView.as_view(), name='register_seeker'),
     path('register/shelter/', views.RegisterShelterView.as_view(), name='register_shelter'),
+    path('update/seeker/', views.UpdateSeekerView.as_view(), name='update_seeker'),
 ]
