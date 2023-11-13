@@ -1,7 +1,13 @@
 from django.db import models
 from accounts.models.ShelterModel import Shelter
+from django.conf import settings
+import os
 
 class PetDetail(models.Model):
+
+    # Add a placeholder image when image not provided by shelter
+    def get_placeholder_image():
+        return os.path.join(settings.MEDIA_ROOT, 'pets/placeholder.png')
     
     status_choices = [
         ('AVAILABLE', 'Available'),
@@ -38,8 +44,10 @@ class PetDetail(models.Model):
     description = models.TextField(blank=True, null=True)
     medical_history = models.TextField(blank=True, null=True)
 
-    pet_image1 = models.ImageField(upload_to='pets/')
-    pet_image2 = models.ImageField(upload_to='pets/')
-    pet_image3 = models.ImageField(upload_to='pets/')
-    pet_image4 = models.ImageField(upload_to='pets/')
+    pet_image1 = models.ImageField(upload_to='pets/', default=get_placeholder_image)
+    pet_image2 = models.ImageField(upload_to='pets/', default=get_placeholder_image)
+    pet_image3 = models.ImageField(upload_to='pets/', default=get_placeholder_image)
+    pet_image4 = models.ImageField(upload_to='pets/', default=get_placeholder_image)
+
+
 
