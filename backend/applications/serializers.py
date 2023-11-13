@@ -1,6 +1,7 @@
 from rest_framework.serializers import ModelSerializer, CharField, PrimaryKeyRelatedField, ChoiceField
 from applications.models import Application 
 from django.shortcuts import get_object_or_404
+from pets.models.PetDetailModel import PetDetail
 
 # All the validation is done in the view, all you do here is to handle how to display
 class ApplicationSerializer(ModelSerializer):
@@ -61,7 +62,7 @@ class ApplicationSerializer(ModelSerializer):
 
     def __init__(self, *args, **kwargs):
         pet_id = self.context.get('pet_id')
-        pet = get_object_or_404(Pet, id=pet_id)
+        pet = get_object_or_404(PetDetail, id=pet_id)
         super(ApplicationSerializer, self).__init__(*args, **kwargs)
 
         self.fields['pet_name'].default = pet.name
