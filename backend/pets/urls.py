@@ -4,6 +4,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 app_name='pet'
+
 urlpatterns = [
   path('create/', PetViewSet.as_view({
     'post':'create'
