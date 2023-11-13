@@ -1,5 +1,5 @@
 from django.urls import path
-from backend.applications.views import ApplicationListView, ApplicationCreateView, ApplicationListFilterView, ApplicationRetrieveUpdateView
+from applications.views import ApplicationListView, ApplicationCreateView, ApplicationListFilterView, ApplicationRetrieveUpdateView
 
 # Make sure endpoints only have nouns to indicate it is stateless (RESTful convention)
 app_name = 'application'
