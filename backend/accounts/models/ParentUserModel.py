@@ -31,4 +31,5 @@ class ParentUser(AbstractUser):
             ('YT', 'Yukon')
         ], max_length=25)
     profile_picture = models.ImageField(null=True, blank=True)
+    user_type = models.CharField(default="NONE", max_length=6)
     

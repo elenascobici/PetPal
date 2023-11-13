@@ -1,22 +1,30 @@
-from rest_framework.views import APIView
-from rest_framework.generics import GenericAPIView, UpdateAPIView, CreateAPIView
+from rest_framework.generics import UpdateAPIView, CreateAPIView
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from accounts.models.SeekerModel import Seeker
+from accounts.models.ShelterModel import Shelter
 
-from accounts.serializers import SeekerSerializer, ShelterSerializer, RegisterSeekerSerializer, RegisterShelterSerializer, UpdateSeekerSerializer
+from accounts import serializers
 
 class RegisterSeekerView(CreateAPIView):
-    serializer_class = RegisterSeekerSerializer
+    serializer_class = serializers.RegisterSeekerSerializer
     permission_classes = [AllowAny]
     
 class RegisterShelterView(CreateAPIView):
-    serializer_class = RegisterShelterSerializer
+    serializer_class = serializers.RegisterShelterSerializer
     permission_classes = [AllowAny]
     
-class UpdateSeekerView(UpdateAPIView):
-    serializer_class = UpdateSeekerSerializer
+class UpdateAccountView(UpdateAPIView):
+    def get_serializer_class(self):
+        if self.request.user.user_type == 'Seeker':
+            return serializers.UpdateSeekerSerializer
+        return serializers.UpdateShelterSerializer
+    
+    def get_queryset(self):
+        if self.request.user.user_type == 'Seeker':
+            return Seeker.objects.all()
+        return Shelter.objects.all()
+    
     permission_classes = [IsAuthenticated]
-    queryset = Seeker.objects.all()
     
     def get_object(self):
         return self.get_queryset().get(id=self.request.user.id)
