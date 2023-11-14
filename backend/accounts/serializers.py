@@ -79,12 +79,14 @@ class UpdateSeekerSerializer(ModelSerializer):
     password = serializers.CharField(required=False)
     email = serializers.CharField(required=False)
     province = serializers.CharField(required=False)
+    
+    # Username should be returned but cannot be changed.
+    username = serializers.CharField(required=False, read_only=True)
 
     class Meta:
         model = Seeker
-        # User should not be able to change their username.
-        fields = ['password', 'email', 'province', 'phone', 'street', 
-                  'city', 'profile_picture', 'preferences']
+        fields = ['username', 'password', 'email', 'province', 'phone', 
+                  'street', 'city', 'profile_picture', 'preferences']
     
     def update(self, instance, validated_data):
         for attr, value in validated_data.items():
@@ -101,10 +103,12 @@ class UpdateShelterSerializer(ModelSerializer):
     province = serializers.CharField(required=False)
     name = serializers.CharField(required=False)
 
+    # Username should be returned but cannot be changed.
+    username = serializers.CharField(required=False, read_only=True)
+
     class Meta:
         model = Shelter
-        # User should not be able to change their username.
-        fields = ['password', 'email', 'province', 'name', 
+        fields = ['username', 'password', 'email', 'province', 'name', 
                   'website_link', 'preferred_contact', 
                   'mission_statement']
     
