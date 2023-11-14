@@ -4,9 +4,19 @@ from accounts.models.SeekerModel import Seeker
 from accounts.models.ShelterModel import Shelter
 
 class RegisterSeekerSerializer(ModelSerializer):
+    # Require the user to provide the password and confirm it, do not
+    # include these fields in the JSON response.
+    password1 = serializers.CharField(required=True, write_only=True)
+    password2 = serializers.CharField(required=True, write_only=True)
+
+    # Do not allow the user to write straight to the password field,
+    # but include it in the JSON response.
+    password = serializers.CharField(required=False, read_only=True)
+
     class Meta:
         model = Seeker
-        fields = ['id', 'username', 'password', 'email', 'province', 'phone', 
+        fields = ['id', 'username', 'password', 'password1', 
+                  'password2', 'email', 'province', 'phone', 
                   'street', 'city', 'profile_picture', 'preferences',
                   'first_name', 'last_name']
         extra_kwargs = {
@@ -14,35 +24,53 @@ class RegisterSeekerSerializer(ModelSerializer):
         }
     
     def create(self, validated_data):
+        # Validate passwords
+        if validated_data['password1'] != validated_data['password2']:
+            raise serializers.ValidationError({'password1': 'password1 and password2 do not match.'})
+        
+        # Create the Seeker object
         Seeker.objects.create_user(validated_data['username'])
         newUser = Seeker.objects.get(username=validated_data['username'])
+        newUser.set_password(validated_data['password1']) # hash password
         newUser.user_type = 'Seeker'
         for attr, value in validated_data.items():
-            if attr == 'password':
-                newUser.set_password(value) # hash password
-            elif attr != 'user_type' and attr != 'id':
+            if attr not in ['user_type', 'id', 'username', 'password1', 'password2']:
                 setattr(newUser, attr, value)
         newUser.save()
         return newUser
-    
+
 class RegisterShelterSerializer(ModelSerializer):
+    # Require the user to provide the password and confirm it, do not
+    # include these fields in the JSON response.
+    password1 = serializers.CharField(required=True, write_only=True)
+    password2 = serializers.CharField(required=True, write_only=True)
+
+    # Do not allow the user to write straight to the password field,
+    # but include it in the JSON response.
+    password = serializers.CharField(required=False, read_only=True)
+
     class Meta:
         model = Shelter
-        fields = ['id', 'username', 'password', 'email', 'province', 'name', 
-                  'website_link', 'preferred_contact', 
+        fields = ['id', 'username', 'password', 'password1', 
+                  'password2', 'email', 'province', 'profile_picture', 
+                  'name', 'website_link', 'preferred_contact', 
                   'mission_statement']
         extra_kwargs = {
             'password': {'write_only': True},
         }
-
+    
     def create(self, validated_data):
+        # Validate passwords
+        if validated_data['password1'] != validated_data['password2']:
+            raise serializers.ValidationError({'password1': 'password1 and password2 do not match.'})
+        
+        # Create the Shelter object
         Shelter.objects.create_user(validated_data['username'])
         newUser = Shelter.objects.get(username=validated_data['username'])
+        newUser.set_password(validated_data['password1']) # hash password
         newUser.user_type = 'Shelter'
         for attr, value in validated_data.items():
-            if attr == 'password':
-                newUser.set_password(value) # hash password
-            elif attr != 'user_type' and attr != 'id':
+            if attr not in ['user_type', 'id', 'username', 'password1', 'password2']:
                 setattr(newUser, attr, value)
         newUser.save()
         return newUser
