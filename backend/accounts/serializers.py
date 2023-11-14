@@ -77,7 +77,7 @@ class RegisterShelterSerializer(ModelSerializer):
 
 class UpdateSeekerSerializer(ModelSerializer):
     password = serializers.CharField(required=False)
-    email = serializers.CharField(required=False)
+    email = serializers.EmailField(required=False)
     province = serializers.CharField(required=False)
     
     # Username should be returned but cannot be changed.
@@ -99,7 +99,7 @@ class UpdateSeekerSerializer(ModelSerializer):
     
 class UpdateShelterSerializer(ModelSerializer):
     password = serializers.CharField(required=False)
-    email = serializers.CharField(required=False)
+    email = serializers.EmailField(required=False)
     province = serializers.CharField(required=False)
     name = serializers.CharField(required=False)
 
