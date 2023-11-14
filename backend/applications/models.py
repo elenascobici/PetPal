@@ -43,21 +43,20 @@ class Application(models.Model):
         ('MAN', 'Mansion'),
         ('BUN', 'Bungalow'),
         ('LOG', 'Log House'),
-        ('LOG', 'Log House'),
         ('FLO', 'Floating Home'),
         ('IGL', 'Igloo')
     ]
 
     # should not be deleted unless the pet itself is gone.
-    adopter_id = models.ForeignKey(Seeker, on_delete=models.SET_DEFAULT, default='deleted_user') # seeker never can access their page so this won't be a problem, shelter will just see deleted_user
-    pet_id = models.ForeignKey(PetDetail, on_delete=models.CASCADE, null=True)
+    adopter = models.ForeignKey(Seeker, on_delete=models.SET_DEFAULT, default='deleted_user') # seeker never can access their page so this won't be a problem, shelter will just see deleted_user
+    pet = models.ForeignKey(PetDetail, on_delete=models.CASCADE)
     status = models.CharField(max_length=1, choices=status_choices)
     email = models.EmailField()
     phone = models.PositiveBigIntegerField()
-    street = models.CharField(max_length=50, null=True, blank=True)
-    city = models.CharField(max_length=50, null=True, blank=True)
+    street = models.CharField(max_length=50)
+    city = models.CharField(max_length=50)
     province = models.CharField(max_length=2, choices=province_choices)
-    pet_name = models.CharField(max_length=20) #in form overwrite to be choicefield too
+    # pet_name = models.CharField(max_length=20) #in form overwrite to be choicefield too
     reason = models.TextField()
     residents = models.TextField()
     home = models.CharField(max_length=3, choices=home_types)
@@ -68,7 +67,7 @@ class Application(models.Model):
     vet_name = models.TextField(null=True, blank=True) # vet reference
     vet_contact = models.PositiveBigIntegerField(null=True, blank=True)
     notes = models.TextField(null=True, blank=True)
-    last_update = models.DateTimeField()
+    last_update = models.DateTimeField(default=timezone.now)
     creation_time = models.DateTimeField(default=timezone.now)
 
     def save(self, *args, **kwargs):
