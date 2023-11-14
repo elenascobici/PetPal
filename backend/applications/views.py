@@ -1,7 +1,7 @@
 from .serializers import ApplicationSerializer
 from rest_framework.generics import CreateAPIView, ListAPIView, RetrieveUpdateAPIView
 from django.shortcuts import get_object_or_404
-from pets.models.PetDetailModel import PetDetail
+from pets.models import PetDetail
 from accounts.models.SeekerModel import Seeker
 from accounts.models.ShelterModel import Shelter
 from applications.models import Application

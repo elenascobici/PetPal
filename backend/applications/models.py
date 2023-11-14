@@ -2,7 +2,7 @@ from django.db import models
 from django.utils import timezone
 from accounts.models.SeekerModel import Seeker
 from accounts.models.ParentUserModel import ParentUser
-from pets.models.PetDetailModel import PetDetail
+from pets.models import PetDetail
 
 # Create your models here.
 class Application(models.Model):

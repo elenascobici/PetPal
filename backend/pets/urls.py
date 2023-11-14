@@ -6,15 +6,22 @@ from django.conf.urls.static import static
 app_name = 'pet'
 
 urlpatterns = [
-    path('shelter/<int:shelter_id>/create/', PetViewSet.as_view({
+    path('shelter/<int:shelter_id>/pet/', PetViewSet.as_view({
         'post': 'create'
-    }), name='pet-create'),
+    })),
 
-    path('<int:pk>/', PetViewSet.as_view({
-        'get': 'retrieve',
+    path('shelter/<int:shelter_id>/pet/<int:pet_id>/', PetViewSet.as_view({  'delete': 'destroy',
         'put': 'update',
-        'delete': 'destroy',
-    }), name='pet-detail')
+        'delete': 'destroy'
+    })),
+
+    path('shelter/<int:shelter_id>/pets/', PetViewSet.as_view({
+        'get': 'list'
+    })),
+
+    path('shelter/pets/', PetViewSet.as_view({
+        'get': 'list'
+    })),
 ]
 
 if settings.DEBUG:

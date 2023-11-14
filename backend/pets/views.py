@@ -1,82 +1,134 @@
-from rest_framework import viewsets, exceptions
-from .models.PetDetailModel import PetDetail
+from rest_framework import viewsets
+from .models import PetDetail
 from .serializers import PetSerializer
 from rest_framework.response import Response
 from accounts.models.ShelterModel import Shelter
-from django.shortcuts import get_object_or_404
-
+from rest_framework.exceptions import NotFound, PermissionDenied
+from rest_framework.permissions import AllowAny
 
 class PetViewSet(viewsets.ModelViewSet):
   queryset = PetDetail.objects.all()
   serializer_class = PetSerializer
 
-  def create(self, request, *args, **kwargs):
-    # Note: 4 images of the animal are required and all fields (except medical history and description) are required
+  def get_permissions(self):
+    if self.action == 'list':
+        return [AllowAny()]
+    else:
+        return super().get_permissions()
 
-    # A shelter must be signed in to create a pet-listing
+  def create(self, request, *args, **kwargs):
+
+    # shelter must be signed-in to create a pet-listing
     if not request.user.is_authenticated:
       return Response({"detail": "Authentication failed"}, status=401)
     
-    shelter_id = kwargs.get('shelter_id')
-    shelter = get_object_or_404(Shelter, pk=shelter_id)
-
-    # Only shelters can submit applications
-    if not request.user.shelter_set.filter(id=shelter.id).exists():
-      return Response({"detail": "You do not have permission to add pets for this shelter."}, status=403)
+    # only shelters can create a pet
+    shelter_id = self.kwargs.get('shelter_id')
+    try:
+        shelter = Shelter.objects.get(pk=shelter_id)
+    except Shelter.DoesNotExist:
+        return Response({"detail": "Only shelters create pet listings."}, status=404)
     
-    # A shelter cannot create/list the same pet
     serializer = self.get_serializer(data=request.data)
     serializer.is_valid(raise_exception=True)
     
-    name = serializer.validated_data['name']
-    breed = serializer.validated_data['breed']
-    gender = serializer.validated_data['gender']
+    # shelter cannot create the same pet
+    name = serializer.validated_data.get('name')
+    breed = serializer.validated_data.get('breed')
+    gender = serializer.validated_data.get('gender')
 
-    # get the primary key from Shelter 
     if PetDetail.objects.filter(name=name, breed=breed, gender=gender, shelter=shelter).exists():
-      return Response({"detail": "This shelter already has a pet with this name, gender and breed. Duplicate pet postings not allowed."}, status=403)
+      return Response({"detail": "This shelter already has a pet with this name, gender and breed. Duplicate pet postings not allowed."}, status=400)
+    
+    serializer.save(shelter=shelter)
     
     # if all conditions are met, save 
     headers = self.get_success_headers(serializer.data)
     return Response(serializer.data, status=201, headers=headers)
+
+  def update(self, request, *args, **kwargs):
+
+    # shelter must be signed-in to create a pet-listing
+    if not request.user.is_authenticated:
+      return Response({"detail": "Authentication failed"}, status=401)
+
+    # retrieve the shelter_id and pet id
+    shelter_id = self.kwargs.get('shelter_id')
+    pet_id = self.kwargs.get('pet_id')
+
+    # only shelters can update listings
+    try:
+        shelter = Shelter.objects.get(pk=shelter_id)
+    except Shelter.DoesNotExist:
+        return Response({"detail": "Only shelters can update pet-listings"}, status=404)
+    
+    # the pet in this shelter does not exist
+    try:
+        pet = PetDetail.objects.get(pk=pet_id, shelter=shelter)
+    except PetDetail.DoesNotExist:
+        return Response({"detail": "The pet you are trying you update doesn't exist"}, status=404)
+    
+    # the name, breed and gender can't be updated
+    for field in ['name', 'breed', 'gender']:
+      if field in request.data:
+          return Response({"detail": f"{field} of a pet cannot be updated."}, status=401)
+
+    serializer = self.get_serializer(pet, data=request.data)
+    serializer.is_valid(raise_exception=True)
+
+    serializer.save()
+
+    # return a response with the updated pet details
+    return Response(serializer.data, status=200)
+
+  def get_queryset(self):
+
+    user = self.request.user
+
+    shelter_id = self.kwargs.get('shelter_id')
+
+    # if the shelter is authenticated, show only *their* pet listings
+    if shelter_id is not None:
+      if user.is_authenticated:
+        # shelters cannot view other shelter's pets after authentication
+        if shelter_id != int(user.id):
+          raise PermissionDenied({"detail": "You can only access your own pets."})
+        
+        shelter = Shelter.objects.get(pk=shelter_id)
+        return PetDetail.objects.filter(shelter=shelter)
+      else: # shelter must be authenticated
+        raise PermissionDenied({"detail": "Authentication credentials were not provided."})
+
+    # if the shelter is None, show all pets
+    return PetDetail.objects.filter()
   
-  # def perform_update(self, serializer):
-  #   pet_instance = self.get_object()
+  def destroy(self, request, *args, **kwargs):
 
-  #   # Only shelters can update applications
-  #   if not isinstance(self.request.user, Shelter):
-  #     raise exceptions.PermissionDenied({"detail": "Seekers cannot update applications"})
+    # shelter must be signed-in to delete a pet-listing
+    if not request.user.is_authenticated:
+      return Response({"detail": "Authentication failed"}, status=401)
 
-  #   # A shelter must be signed in to update a pet-listing 
-  #   if not self.request.user.is_authenticated:
-  #     raise exceptions.PermissionDenied({"detail": "Authetication failed"})
+    # retrieve the shelter_id and pet_id
+    shelter_id = self.kwargs.get('shelter_id')
+    pet_id = self.kwargs.get('pet_id')
+
+    # only shelters can delete listings
+    try:
+        shelter = Shelter.objects.get(pk=shelter_id)
+    except Shelter.DoesNotExist:
+        return Response({"detail": "Only shelters can delete pet listings"}, status=404)
     
-  #   # A shelter must only update their own listing
-  #   if pet_instance.shelter.user != self.request.user:
-  #     raise exceptions.PermissionDenied({"detail": "You can only update your own pet listing"})
+    # the pet in this shelter does not exist
+    try:
+        pet = PetDetail.objects.get(pk=pet_id, shelter=shelter)
+    except PetDetail.DoesNotExist:
+        return Response({"detail": "The pet you are trying you delete doesn't exist"}, status=404)
     
-  #   # Once changes are made, they should not match an already existing pet this shelter owns
-  #   name = serializer.validated_data.get('name', pet_instance.name)
-  #   breed = serializer.validated_data.get('breed', pet_instance.breed)
-  #   gender = serializer.validated_data.get('gender', pet_instance.gender)
-    
-  #   duplicate_pets = PetDetail.objects.filter(name=name, breed=breed, gender=gender)
-  #   duplicate_pets_exclude = duplicate_pets.exclude(id=pet_instance.id)
+    # shelters can only delete their own listings
+    if pet.shelter != request.user.shelter:
+      return Response({"detail": "You can only delete your own pet listings."}, status=403)
 
-  #   if duplicate_pets_exclude.exists():
-  #     raise exceptions.ValidationError({"detail": "This is a duplicate pet. You already have a pet with the same name, breed and gender."})
-
-  # def get_queryset(self):
-
-  #   # if shelter, must be logged in and can only see their own listings
-  #   user = self.request.user
-
-  #   if user.is_autheticated and isinstance(self.request.user, Shelter):
-  #     return PetDetail.objects.filter(shelter=user)
-  #   else: # a non-logged in user can see all the listings 
-  #     PetDetail.objects.all()
-
-
-
-  
+    # destroy
+    self.perform_destroy(pet)
+    return Response(status=204)
     
