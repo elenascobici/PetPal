@@ -17,7 +17,6 @@ class ApplicationCreateView(CreateAPIView):
         if not self.request.user.is_authenticated:
             raise NotAuthenticated(detail="Authentication failed")
         # Check if user is a seeker
-        print(self.request.user.user_type)
         if self.request.user.user_type.strip() != 'Seeker':
             raise PermissionDenied(detail="Shelters cannot submit applications")
 
@@ -32,7 +31,6 @@ class ApplicationCreateView(CreateAPIView):
         pet = get_object_or_404(PetDetail, id=self.kwargs['pet_id'])
 
         # Do not let anyone else adopt if set to Unavailable
-        print(pet.status)
         if pet.status == 'UNAVAILABLE':
             raise PermissionDenied(detail="Pet is not available to adopt")
         elif pet.status == 'ADOPTED':
@@ -126,6 +124,9 @@ class ApplicationRetrieveUpdateView(RetrieveUpdateAPIView):
         return application
     
     def perform_update(self, serializer):
+        if not self.request.user.is_authenticated:
+            raise NotAuthenticated(detail="Authentication failed")
+        
         application = self.get_object()
         user_data = serializer.validated_data # contains data supplied by the user
 
@@ -138,7 +139,6 @@ class ApplicationRetrieveUpdateView(RetrieveUpdateAPIView):
 
                 
             if (application.status == 'P' or application.status == 'Y') and user_data['status'] == 'W':
-                print(user_data['status'])
                 serializer.save()
                 return Response(serializer.data)
             
@@ -148,10 +148,8 @@ class ApplicationRetrieveUpdateView(RetrieveUpdateAPIView):
                 if field != 'status': # cus we want to let them modify the status
                     if getattr(application, application._meta.get_field(field).attname) != user_data[field]:
                         raise PermissionDenied(detail='Cannot modify this field')
-            print('this:' + application.status)
             
             if application.status == 'P' and (user_data['status'] == 'D' or user_data['status'] == 'Y'):
-                print('jere?')
                 serializer.save()
                 return Response(serializer.data)
         else: 
