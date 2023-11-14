@@ -30,6 +30,6 @@ class ParentUser(AbstractUser):
             ('SK', 'Saskatchewan'),
             ('YT', 'Yukon')
         ], max_length=25)
-    profile_picture = models.ImageField(null=True, blank=True)
+    profile_picture = models.ImageField(default='accounts/default_profile.jpg', upload_to='accounts/')
     user_type = models.CharField(default="NONE", max_length=6)
     
