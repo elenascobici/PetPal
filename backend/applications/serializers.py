@@ -6,8 +6,8 @@ from pets.models.PetDetailModel import PetDetail
 # All the validation is done in the view, all you do here is to handle how to display
 class ApplicationSerializer(ModelSerializer):
 
-    # adopter_id = PrimaryKeyRelatedField(read_only = True)
-    # pet_id = PrimaryKeyRelatedField(read_only = True)
+    adopter = PrimaryKeyRelatedField(read_only=True)
+    pet= PrimaryKeyRelatedField(read_only=True)
 
     status_choices = [
             ('P', 'Pending'),

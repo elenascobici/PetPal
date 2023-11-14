@@ -49,13 +49,13 @@ class Application(models.Model):
     ]
 
     # should not be deleted unless the pet itself is gone.
-    adopter_id = models.ForeignKey(Seeker, on_delete=models.SET_DEFAULT, default='deleted_user') # seeker never can access their page so this won't be a problem, shelter will just see deleted_user
-    pet_id = models.ForeignKey(PetDetail, on_delete=models.CASCADE, null=False)
+    adopter = models.ForeignKey(Seeker, on_delete=models.SET_DEFAULT, default='deleted_user') # seeker never can access their page so this won't be a problem, shelter will just see deleted_user
+    pet = models.ForeignKey(PetDetail, on_delete=models.CASCADE)
     status = models.CharField(max_length=1, choices=status_choices)
     email = models.EmailField()
     phone = models.PositiveBigIntegerField()
-    street = models.CharField(max_length=50, null=False, blank=False)
-    city = models.CharField(max_length=50, null=False, blank=False)
+    street = models.CharField(max_length=50)
+    city = models.CharField(max_length=50)
     province = models.CharField(max_length=2, choices=province_choices)
     # pet_name = models.CharField(max_length=20) #in form overwrite to be choicefield too
     reason = models.TextField()

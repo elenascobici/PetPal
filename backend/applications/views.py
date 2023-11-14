@@ -6,27 +6,26 @@ from accounts.models.SeekerModel import Seeker
 from accounts.models.ShelterModel import Shelter
 from applications.models import Application
 from rest_framework.response import Response
+from rest_framework.exceptions import NotAuthenticated, PermissionDenied
+
 
 class ApplicationCreateView(CreateAPIView):
     serializer_class = ApplicationSerializer
 
-    def create(self, request, *args, **kwargs):
-        serializer = self.get_serializer(data=request.data)
-        return self.perform_create(serializer)
+    # def create(self, request, *args, **kwargs):
+    #     serializer = self.get_serializer(data=request.data)
+    #     return self.perform_create(serializer)
 
     def perform_create(self, serializer):
         if not self.request.user.is_authenticated:
-            print("Auth fails")
-            return Response({"detail": "Authentication failed"}, status=401)
+            raise NotAuthenticated(detail="Authentication failed")
         # Check if user is a seeker
         print(self.request.user.user_type)
         if self.request.user.user_type.strip() != 'Seeker':
-            print("Your a Seeker")
-            return Response({"detail": "Shelters cannot submit applications"}, status=403)
+            raise PermissionDenied(detail="Shelters cannot submit applications")
 
         # ^ What do I want to let the user modify?
         # ^ everything but the status
-        print("Lets continue")
         serializer.is_valid()
         user_data = serializer.validated_data 
 
@@ -35,26 +34,28 @@ class ApplicationCreateView(CreateAPIView):
         # add more data as needed
         # pet = get_object_or_404(Pet, self.kwargs['pet_id'])
         adopter = get_object_or_404(Seeker, id=self.request.user.pk)
-        user_data['adopter_id'] = self.request.user.pk
+        # user_data['adopter_id'] = self.request.user.pk
 
         # Check if pet exists and modify its status:
         pet = get_object_or_404(PetDetail, id=self.kwargs['pet_id'])
-        user_data['pet_id'] = self.kwargs['pet_id']
+        # user_data['pet_id'] = self.kwargs['pet_id']
 
         # Do not let anyone else adopt if set to Unavailable
         print(pet.status)
         if pet.status == 'UNAVAILABLE':
-            return Response({"detail": "Pet is not available to adopt"}, status=403)
+            raise PermissionDenied(detail="Pet is not available to adopt")
         elif pet.status == 'ADOPTED':
-            return Response({'detail': 'Pet has already been adopted'}, status=403)
-        else:
-            pet.status = 'UNAVAILABLE'
-            pet.save()
+            raise PermissionDenied(detail='Pet has already been adopted')
 
-        print(pet)
-        print(adopter)
-        print(pet.status)
-        serializer.save()
+        # print(pet)
+        # print(adopter)
+        # print(pet.status)
+        serializer.is_valid()
+        serializer.save(adopter=adopter, pet=pet)
+
+        pet = get_object_or_404(PetDetail, id=self.kwargs['pet_id'])
+        pet.status = 'UNAVAILABLE'
+        pet.save()
         return Response(serializer.data, status=201)
 
 class ApplicationListView(ListAPIView):
@@ -62,6 +63,7 @@ class ApplicationListView(ListAPIView):
 
     def get_queryset(self): 
         if (self.request.user.user_type == 'Seeker'):
+            print('Seeker id=' + str(self.request.user.pk))
             # Check if user is a seeker
             # if not isinstance(self.request.user, Seeker):
             #     return Response({"detail": "Shelters cannot submit applications"}, status=403)
@@ -73,8 +75,8 @@ class ApplicationListView(ListAPIView):
             # Check if user is a shelter
             # if not isinstance(self.request.user, Shelter):
             #     return Response({"detail": "Shelters cannot submit applications"}, status=403)
-            
-            return Application.objects.filter(pet__shelter__id = self.request.user.pk)
+            print('Shelter id=' + str(self.request.user.pk))
+            return Application.objects.filter(pet_id__shelter__pk = self.request.user.pk)
         else:
             # return forbidden access response
             return Response({'detail': "Only seekers and shelters can have applications."}, status=403)
