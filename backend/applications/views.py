@@ -10,34 +10,52 @@ from rest_framework.response import Response
 class ApplicationCreateView(CreateAPIView):
     serializer_class = ApplicationSerializer
 
-    def perform_create(self, serializer):
-        # Check if user is a seeker
-        if self.request.user.user_type == 'Seeker':
-            return Response({"detail": "Shelters cannot submit applications"}, status=403)
-        #^ What do I want to let the user modify?
-        #^ everything but the status
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        return self.perform_create(serializer)
 
+    def perform_create(self, serializer):
+        if not self.request.user.is_authenticated:
+            print("Auth fails")
+            return Response({"detail": "Authentication failed"}, status=401)
+        # Check if user is a seeker
+        print(self.request.user.user_type)
+        if self.request.user.user_type.strip() != 'Seeker':
+            print("Your a Seeker")
+            return Response({"detail": "Shelters cannot submit applications"}, status=403)
+
+        # ^ What do I want to let the user modify?
+        # ^ everything but the status
+        print("Lets continue")
+        serializer.is_valid()
         user_data = serializer.validated_data 
 
         # Do not let user modify status aka anything they write will be overriden
         user_data['status'] = 'P'
         # add more data as needed
-        user_data['pet_id'] = self.kwargs['pet_id']
-        user_data['adopter_id'] = self.request.user.id
+        # pet = get_object_or_404(Pet, self.kwargs['pet_id'])
+        adopter = get_object_or_404(Seeker, id=self.request.user.pk)
+        user_data['adopter_id'] = self.request.user.pk
 
         # Check if pet exists and modify its status:
         pet = get_object_or_404(PetDetail, id=self.kwargs['pet_id'])
+        user_data['pet_id'] = self.kwargs['pet_id']
 
         # Do not let anyone else adopt if set to Unavailable
+        print(pet.status)
         if pet.status == 'UNAVAILABLE':
             return Response({"detail": "Pet is not available to adopt"}, status=403)
         elif pet.status == 'ADOPTED':
             return Response({'detail': 'Pet has already been adopted'}, status=403)
         else:
             pet.status = 'UNAVAILABLE'
-        
-        serializer.is_valid()
+            pet.save()
+
+        print(pet)
+        print(adopter)
+        print(pet.status)
         serializer.save()
+        return Response(serializer.data, status=201)
 
 class ApplicationListView(ListAPIView):
     serializer_class = ApplicationSerializer
