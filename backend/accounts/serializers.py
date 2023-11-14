@@ -6,32 +6,46 @@ from accounts.models.ShelterModel import Shelter
 class RegisterSeekerSerializer(ModelSerializer):
     class Meta:
         model = Seeker
-        fields = '__all__'
+        fields = ['id', 'username', 'password', 'email', 'province', 'phone', 
+                  'street', 'city', 'profile_picture', 'preferences',
+                  'first_name', 'last_name']
         extra_kwargs = {
             'password': {'write_only': True},
         }
-
+    
     def create(self, validated_data):
-        user = Seeker.objects.create_user(validated_data['username'], password=validated_data['password'])
-        user.is_active = True
-        user.user_type = 'Seeker'
-        user.save()
-        return user
+        Seeker.objects.create_user(validated_data['username'])
+        newUser = Seeker.objects.get(username=validated_data['username'])
+        newUser.user_type = 'Seeker'
+        for attr, value in validated_data.items():
+            if attr == 'password':
+                newUser.set_password(value) # hash password
+            elif attr != 'user_type' and attr != 'id':
+                setattr(newUser, attr, value)
+        newUser.save()
+        return newUser
     
 class RegisterShelterSerializer(ModelSerializer):
     class Meta:
         model = Shelter
-        fields = '__all__'
+        fields = ['username', 'password', 'email', 'province', 'name', 
+                  'website_link', 'preferred_contact', 
+                  'mission_statement']
         extra_kwargs = {
             'password': {'write_only': True},
         }
 
     def create(self, validated_data):
-        user = Shelter.objects.create_user(validated_data['username'], password=validated_data['password'])
-        user.is_active = True
-        user.user_type = 'Shelter'
-        user.save()
-        return user
+        Shelter.objects.create_user(validated_data['username'])
+        newUser = Shelter.objects.get(username=validated_data['username'])
+        newUser.user_type = 'Shelter'
+        for attr, value in validated_data.items():
+            if attr == 'password':
+                newUser.set_password(value) # hash password
+            elif attr != 'user_type':
+                setattr(newUser, attr, value)
+        newUser.save()
+        return newUser
 
 class UpdateSeekerSerializer(ModelSerializer):
     password = serializers.CharField(required=False)
