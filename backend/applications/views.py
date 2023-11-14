@@ -7,14 +7,11 @@ from accounts.models.ShelterModel import Shelter
 from applications.models import Application
 from rest_framework.response import Response
 from rest_framework.exceptions import NotAuthenticated, PermissionDenied
+from rest_framework.pagination import PageNumberPagination
 
 
 class ApplicationCreateView(CreateAPIView):
     serializer_class = ApplicationSerializer
-
-    # def create(self, request, *args, **kwargs):
-    #     serializer = self.get_serializer(data=request.data)
-    #     return self.perform_create(serializer)
 
     def perform_create(self, serializer):
         if not self.request.user.is_authenticated:
@@ -24,21 +21,15 @@ class ApplicationCreateView(CreateAPIView):
         if self.request.user.user_type.strip() != 'Seeker':
             raise PermissionDenied(detail="Shelters cannot submit applications")
 
-        # ^ What do I want to let the user modify?
-        # ^ everything but the status
         serializer.is_valid()
         user_data = serializer.validated_data 
 
         # Do not let user modify status aka anything they write will be overriden
         user_data['status'] = 'P'
-        # add more data as needed
-        # pet = get_object_or_404(Pet, self.kwargs['pet_id'])
         adopter = get_object_or_404(Seeker, id=self.request.user.pk)
-        # user_data['adopter_id'] = self.request.user.pk
 
         # Check if pet exists and modify its status:
         pet = get_object_or_404(PetDetail, id=self.kwargs['pet_id'])
-        # user_data['pet_id'] = self.kwargs['pet_id']
 
         # Do not let anyone else adopt if set to Unavailable
         print(pet.status)
@@ -46,10 +37,7 @@ class ApplicationCreateView(CreateAPIView):
             raise PermissionDenied(detail="Pet is not available to adopt")
         elif pet.status == 'ADOPTED':
             raise PermissionDenied(detail='Pet has already been adopted')
-
-        # print(pet)
-        # print(adopter)
-        # print(pet.status)
+        
         serializer.is_valid()
         serializer.save(adopter=adopter, pet=pet)
 
@@ -58,37 +46,18 @@ class ApplicationCreateView(CreateAPIView):
         pet.save()
         return Response(serializer.data, status=201)
 
+class ApplicationPagination(PageNumberPagination):
+    page_size = 3
+    page_size_query_param = 'page_size'
+
 class ApplicationListView(ListAPIView):
     serializer_class = ApplicationSerializer
-
-    def get_queryset(self): 
-        if (self.request.user.user_type == 'Seeker'):
-            print('Seeker id=' + str(self.request.user.pk))
-            # Check if user is a seeker
-            # if not isinstance(self.request.user, Seeker):
-            #     return Response({"detail": "Shelters cannot submit applications"}, status=403)
-            
-            # only return the applications where the adopter_id is the seeker
-            return Application.objects.filter(adopter_id=self.request.user.pk)
-        
-        elif (self.request.user.user_type == 'Shelter'):
-            # Check if user is a shelter
-            # if not isinstance(self.request.user, Shelter):
-            #     return Response({"detail": "Shelters cannot submit applications"}, status=403)
-            print('Shelter id=' + str(self.request.user.pk))
-            return Application.objects.filter(pet_id__shelter__pk = self.request.user.pk)
-        else:
-            # return forbidden access response
-            return Response({'detail': "Only seekers and shelters can have applications."}, status=403)
-
-
-class ApplicationListFilterView(ListAPIView):
-    serializer_class = ApplicationSerializer
+    pagination_class = ApplicationPagination
 
     def get_queryset(self):
-        status = self.kwargs['status']
+        status = self.request.query_params.get('status')
 
-        if status != 'none':
+        if status != None:
             #validate status:
             if status == 'pending':
                 status_code = 'P'
@@ -100,55 +69,39 @@ class ApplicationListFilterView(ListAPIView):
                 status_code = 'W'
             else:
                 #Some error
-                return Response({'detail': "Invalid status, no such filter exists."}, status=404)
+                raise PermissionDenied(detail="No such status filter exists.")
         
 
             if (self.request.user.user_type == 'Seeker'):
-                # Check if user is a seeker
-                # if not isinstance(self.request.user, Seeker):
-                #     return Response({"detail": "Shelters cannot submit applications"}, status=403)
-                
                 # only return the applications where the adopter_id is the seeker
                 queryset = Application.objects.filter(adopter_id=self.request.user.pk, status=status_code)
                 
             elif (self.request.user.user_type == 'Shelter'):
-                # Check if user is a shelter
-                # if not isinstance(self.request.user, Shelter):
-                #     return Response({"detail": "Shelters cannot submit applications"}, status=403)
-                
-                queryset = Application.objects.filter(pet__shelter__id = self.request.user.pk, status=status_code)
+                queryset = Application.objects.filter(pet__shelter__pk = self.request.user.pk, status=status_code)
             else:
-                return Response({'detail': "Only seekers and shelters can have applications."}, status=403)
+                raise PermissionDenied(detail="Invalid user")
         else:
 
             if (self.request.user.user_type == 'Seeker'):
-            # Check if user is a seeker
-                # if not isinstance(self.request.user, Seeker):
-                #     return Response({"detail": "Shelters cannot submit applications"}, status=403)
-            
                 # only return the applications where the adopter_id is the seeker
                 queryset = Application.objects.filter(adopter_id=self.request.user.pk)
         
             elif (self.request.user.user_type == 'Shelter'):
-                # Check if user is a shelter
-                # if not isinstance(self.request.user, Shelter):
-                #     return Response({"detail": "Shelters cannot submit applications"}, status=403)
-            
                 queryset = Application.objects.filter(pet__shelter__id = self.request.user.pk)
             else:
                 #return forbidden access response
-                return Response({'detail': "Only seekers and shelters can have applications."}, status=404)
+                raise PermissionDenied(detail="Invalid user")
 
         # validate ordering field
-        type = self.kwargs['type'] # should only be able to store "creation_time" or "last_update" or "none"
-        if type != 'none':
+        type = self.request.query_params.get('type') # should only be able to store "creation_time" or "last_update" or "none"
+        if type != None:
         
             if type == 'creation-time':
                 field = 'creation_time'
             elif type == 'last-update':
                 field = 'last_update'
             else:
-                return Response({'detail': "Invalid field to sort. Please choose between creation-time or last-update."})
+                raise PermissionDenied(detail="Invalid field to sort by")
 
             queryset = queryset.order_by(field)
         # else if none then do nothing.
@@ -159,76 +112,48 @@ class ApplicationRetrieveUpdateView(RetrieveUpdateAPIView):
     serializer_class = ApplicationSerializer
 
     def get_object(self):
-        return get_object_or_404(Application, id=self.kwargs['app_id'])
+        application = get_object_or_404(Application, id=self.kwargs['app_id'])
+        # Check if the current user is allowed to view this application:
+        if (self.request.user.user_type == 'Seeker'):
+            if (application.adopter.id != self.request.user.pk):
+                raise PermissionDenied(detail="Cannot view someone else's application")
+        elif (self.request.user.user_type == 'Shelter'):
+            if (application.pet.shelter.id != self.request.user.pk):
+                raise PermissionDenied(detail="Cannot view someone else's application")
+        else: 
+            raise PermissionDenied(detail='Invalid user')
+        
+        return application
     
     def perform_update(self, serializer):
         application = self.get_object()
         user_data = serializer.validated_data # contains data supplied by the user
 
         if (self.request.user.user_type == 'Seeker'):
-            # Check if user is a seeker
-            # if not isinstance(self.request.user, Seeker):
-            #     return Response({"detail": "Shelters cannot submit applications"}, status=403)
-
-            if serializer.is_valid():
-                # Check that user doesn't try to modify anything else
-                for field in user_data:
-                    if field != 'status': # cus we want to let them modify the status
-                        if application.get(field) != user_data[field]:
-                            return Response({'detail': "Cannot modify this field"}, status=403)
+            serializer.is_valid()
+            for field in user_data:
+                if field != 'status': # cus we want to let them modify the status
+                    if getattr(application, application._meta.get_field(field).attname) != user_data[field]:
+                        raise PermissionDenied(detail='Cannot modify this field')
 
                 
-                if application.status == 'P' or application.status == 'Y' and user_data['status'] == 'W':
-                    #serializer = self.get_serializer(application, data=user_data) # serializes data
-                    serializer.save()
-                    return Response(serializer.data)
+            if (application.status == 'P' or application.status == 'Y') and user_data['status'] == 'W':
+                print(user_data['status'])
+                serializer.save()
+                return Response(serializer.data)
             
         elif self.request.user.user_type == 'Shelter':
-            # Check if user is a shelter
-            # if not isinstance(self.request.user, Shelter):
-            #     return Response({"detail": "Shelters cannot submit applications"}, status=403)
+            serializer.is_valid()
+            for field in user_data:
+                if field != 'status': # cus we want to let them modify the status
+                    if getattr(application, application._meta.get_field(field).attname) != user_data[field]:
+                        raise PermissionDenied(detail='Cannot modify this field')
+            print('this:' + application.status)
             
-            if application.status == 'P' and user_data['status'] == 'D':
-                #serializer = self.get_serializer(application, data=user_data) # serializes data
-                serializer.is_valid()
+            if application.status == 'P' and (user_data['status'] == 'D' or user_data['status'] == 'Y'):
+                print('jere?')
                 serializer.save()
                 return Response(serializer.data)
         else: 
-            return Response({'detail': "Only seekers and shelters can have applications."}, status=403)
+            raise PermissionDenied(detail='Invalid user')
         
-
-
-
-
-# class ApplicationListSortView(ListAPIView):
-#     serializer_class = ApplicationSerializer
-
-#     def get_queryset(self):
-#         if (self.kwargs['user_type'] == 'seeker'):
-#             # Check if user is a seeker
-#             if not isinstance(self.request.user, Seeker):
-#                 return Response({"detail": "Shelters cannot submit applications"}, status=403)
-            
-#             # only return the applications where the adopter_id is the seeker
-#             queryset = Application.objects.filter(adopter_id=self.request.user.pk)
-#         elif (self.kwargs['user_type'] == 'shelter'):
-#             # Check if user is a shelter
-#             if not isinstance(self.request.user, Shelter):
-#                 return Response({"detail": "Shelters cannot submit applications"}, status=403)
-            
-#             queryset = Application.objects.filter(pet__shelter__id = self.request.user.pk)
-#         else:
-#             return Response({'detail': "This web page doesn't exist"}, status=404)
-
-#         # validate ordering field
-#         type = self.kwargs['type'] # should only be able to store "creation_time" or "last_update"
-        
-#         if type == 'creation-time':
-#             field = 'creation_time'
-#         elif type == 'last-update':
-#             field = 'last_update'
-#         else:
-#             return Response({'detail': "Invalid field to sort. Please choose between creation-time or last-update."})
-
-#         queryset = queryset.order_by(field)
-#         return queryset
