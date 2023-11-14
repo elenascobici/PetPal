@@ -11,10 +11,8 @@ class ApplicationCreateView(CreateAPIView):
     serializer_class = ApplicationSerializer
 
     def perform_create(self, serializer):
-        # ALL BUSINESS LOGIC AND VALIDATION GOES IN HERE
-
         # Check if user is a seeker
-        if not isinstance(self.request.user, Seeker):
+        if self.request.user.user_type == 'Seeker':
             return Response({"detail": "Shelters cannot submit applications"}, status=403)
         #^ What do I want to let the user modify?
         #^ everything but the status
@@ -45,23 +43,23 @@ class ApplicationListView(ListAPIView):
     serializer_class = ApplicationSerializer
 
     def get_queryset(self): 
-        if (self.kwargs['user_type'] == 'seeker'):
+        if (self.request.user.user_type == 'Seeker'):
             # Check if user is a seeker
-            if not isinstance(self.request.user, Seeker):
-                return Response({"detail": "Shelters cannot submit applications"}, status=403)
+            # if not isinstance(self.request.user, Seeker):
+            #     return Response({"detail": "Shelters cannot submit applications"}, status=403)
             
             # only return the applications where the adopter_id is the seeker
             return Application.objects.filter(adopter_id=self.request.user.pk)
         
-        elif (self.kwargs['user_type'] == 'shelter'):
+        elif (self.request.user.user_type == 'Shelter'):
             # Check if user is a shelter
-            if not isinstance(self.request.user, Shelter):
-                return Response({"detail": "Shelters cannot submit applications"}, status=403)
+            # if not isinstance(self.request.user, Shelter):
+            #     return Response({"detail": "Shelters cannot submit applications"}, status=403)
             
             return Application.objects.filter(pet__shelter__id = self.request.user.pk)
         else:
             # return forbidden access response
-            return Response({'detail': "This web page doesn't exist"}, status=404)
+            return Response({'detail': "Only seekers and shelters can have applications."}, status=403)
 
 
 class ApplicationListFilterView(ListAPIView):
@@ -85,41 +83,41 @@ class ApplicationListFilterView(ListAPIView):
                 return Response({'detail': "Invalid status, no such filter exists."}, status=404)
         
 
-            if (self.kwargs['user_type'] == 'seeker'):
+            if (self.request.user.user_type == 'Seeker'):
                 # Check if user is a seeker
-                if not isinstance(self.request.user, Seeker):
-                    return Response({"detail": "Shelters cannot submit applications"}, status=403)
+                # if not isinstance(self.request.user, Seeker):
+                #     return Response({"detail": "Shelters cannot submit applications"}, status=403)
                 
                 # only return the applications where the adopter_id is the seeker
                 queryset = Application.objects.filter(adopter_id=self.request.user.pk, status=status_code)
                 
-            elif (self.kwargs['user_type'] == 'shelter'):
+            elif (self.request.user.user_type == 'Shelter'):
                 # Check if user is a shelter
-                if not isinstance(self.request.user, Shelter):
-                    return Response({"detail": "Shelters cannot submit applications"}, status=403)
+                # if not isinstance(self.request.user, Shelter):
+                #     return Response({"detail": "Shelters cannot submit applications"}, status=403)
                 
                 queryset = Application.objects.filter(pet__shelter__id = self.request.user.pk, status=status_code)
             else:
-                return Response({'detail': "This web page doesn't exist."}, status=404)
+                return Response({'detail': "Only seekers and shelters can have applications."}, status=403)
         else:
 
-            if (self.kwargs['user_type'] == 'seeker'):
+            if (self.request.user.user_type == 'Seeker'):
             # Check if user is a seeker
-                if not isinstance(self.request.user, Seeker):
-                    return Response({"detail": "Shelters cannot submit applications"}, status=403)
+                # if not isinstance(self.request.user, Seeker):
+                #     return Response({"detail": "Shelters cannot submit applications"}, status=403)
             
                 # only return the applications where the adopter_id is the seeker
                 queryset = Application.objects.filter(adopter_id=self.request.user.pk)
         
-            elif (self.kwargs['user_type'] == 'shelter'):
+            elif (self.request.user.user_type == 'Shelter'):
                 # Check if user is a shelter
-                if not isinstance(self.request.user, Shelter):
-                    return Response({"detail": "Shelters cannot submit applications"}, status=403)
+                # if not isinstance(self.request.user, Shelter):
+                #     return Response({"detail": "Shelters cannot submit applications"}, status=403)
             
                 queryset = Application.objects.filter(pet__shelter__id = self.request.user.pk)
             else:
                 #return forbidden access response
-                return Response({'detail': "This web page doesn't exist"}, status=404)
+                return Response({'detail': "Only seekers and shelters can have applications."}, status=404)
 
         # validate ordering field
         type = self.kwargs['type'] # should only be able to store "creation_time" or "last_update" or "none"
@@ -147,21 +145,28 @@ class ApplicationRetrieveUpdateView(RetrieveUpdateAPIView):
         application = self.get_object()
         user_data = serializer.validated_data # contains data supplied by the user
 
-        if (self.kwargs['user_type'] == 'seeker'):
+        if (self.request.user.user_type == 'Seeker'):
             # Check if user is a seeker
-            if not isinstance(self.request.user, Seeker):
-                return Response({"detail": "Shelters cannot submit applications"}, status=403)
+            # if not isinstance(self.request.user, Seeker):
+            #     return Response({"detail": "Shelters cannot submit applications"}, status=403)
+
+            if serializer.is_valid():
+                # Check that user doesn't try to modify anything else
+                for field in user_data:
+                    if field != 'status': # cus we want to let them modify the status
+                        if application.get(field) != user_data[field]:
+                            return Response({'detail': "Cannot modify this field"}, status=403)
+
+                
+                if application.status == 'P' or application.status == 'Y' and user_data['status'] == 'W':
+                    #serializer = self.get_serializer(application, data=user_data) # serializes data
+                    serializer.save()
+                    return Response(serializer.data)
             
-            if application.status == 'P' or application.status == 'Y' and user_data['status'] == 'W':
-                #serializer = self.get_serializer(application, data=user_data) # serializes data
-                serializer.is_valid()
-                serializer.save()
-                return Response(serializer.data)
-            
-        elif self.kwargs['user_type'] == 'shelter':
+        elif self.request.user.user_type == 'Shelter':
             # Check if user is a shelter
-            if not isinstance(self.request.user, Shelter):
-                return Response({"detail": "Shelters cannot submit applications"}, status=403)
+            # if not isinstance(self.request.user, Shelter):
+            #     return Response({"detail": "Shelters cannot submit applications"}, status=403)
             
             if application.status == 'P' and user_data['status'] == 'D':
                 #serializer = self.get_serializer(application, data=user_data) # serializes data
@@ -169,7 +174,7 @@ class ApplicationRetrieveUpdateView(RetrieveUpdateAPIView):
                 serializer.save()
                 return Response(serializer.data)
         else: 
-            return Response({'detail': "This webpage does not exist."}, status=404)
+            return Response({'detail': "Only seekers and shelters can have applications."}, status=403)
         
 
 
