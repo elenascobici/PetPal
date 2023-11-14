@@ -6,7 +6,7 @@ from accounts.models.ShelterModel import Shelter
 class RegisterSeekerSerializer(ModelSerializer):
     class Meta:
         model = Seeker
-        fields = ['username', 'password', 'email', 'province', 'phone', 
+        fields = ['id', 'username', 'password', 'email', 'province', 'phone', 
                   'street', 'city', 'profile_picture', 'preferences',
                   'first_name', 'last_name']
         extra_kwargs = {
@@ -20,7 +20,7 @@ class RegisterSeekerSerializer(ModelSerializer):
         for attr, value in validated_data.items():
             if attr == 'password':
                 newUser.set_password(value) # hash password
-            elif attr != 'user_type':
+            elif attr != 'user_type' and attr != 'id':
                 setattr(newUser, attr, value)
         newUser.save()
         return newUser
