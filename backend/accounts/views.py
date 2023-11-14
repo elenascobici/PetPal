@@ -43,7 +43,7 @@ class RetrieveUpdateDestroyAccount(RetrieveUpdateDestroyAPIView):
     
     def get_permissions(self):
         match self.request.method:
-            case 'PUT' | 'PATCH':
+            case 'PUT' | 'PATCH' | 'DELETE':
                 return [IsAuthenticated()]
             case 'GET':
                 return [IsAuthenticated(), ProfileViewPermissions()]
@@ -54,6 +54,8 @@ class RetrieveUpdateDestroyAccount(RetrieveUpdateDestroyAPIView):
                 return self.get_queryset().get(id=self.request.user.id)
             case 'GET':
                 return super().get_object()
+            case 'DELETE':
+                return self.request.user
     
     def perform_update(self, serializer):
         if serializer is None:
