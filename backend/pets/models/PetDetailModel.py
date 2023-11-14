@@ -29,7 +29,7 @@ class PetDetail(models.Model):
     name = models.CharField(max_length=20)
     status = models.CharField(max_length=20, choices=status_choices, default='AVAILABLE')
     gender = models.CharField(max_length=20, choices=gender_choices, default='N/A')
-    age = models.IntegerField(default='N/A')
+    age = models.IntegerField(default=0)
     colour = models.CharField(max_length=20, default='N/A')
     breed = models.CharField(max_length=20, default='N/A')
     location = models.CharField(max_length=30, default='N/A')
