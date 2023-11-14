@@ -51,7 +51,7 @@ class ApplicationCreateView(CreateAPIView):
         # print(adopter)
         # print(pet.status)
         serializer.is_valid()
-        serializer.save(adopter_id=adopter, pet_id=pet)
+        serializer.save(adopter=adopter, pet=pet)
 
         pet = get_object_or_404(PetDetail, id=self.kwargs['pet_id'])
         pet.status = 'UNAVAILABLE'
@@ -63,6 +63,7 @@ class ApplicationListView(ListAPIView):
 
     def get_queryset(self): 
         if (self.request.user.user_type == 'Seeker'):
+            print('Seeker id=' + str(self.request.user.pk))
             # Check if user is a seeker
             # if not isinstance(self.request.user, Seeker):
             #     return Response({"detail": "Shelters cannot submit applications"}, status=403)
@@ -74,8 +75,8 @@ class ApplicationListView(ListAPIView):
             # Check if user is a shelter
             # if not isinstance(self.request.user, Shelter):
             #     return Response({"detail": "Shelters cannot submit applications"}, status=403)
-            
-            return Application.objects.filter(pet__shelter__id = self.request.user.pk)
+            print('Shelter id=' + str(self.request.user.pk))
+            return Application.objects.filter(pet_id__shelter__pk = self.request.user.pk)
         else:
             # return forbidden access response
             return Response({'detail': "Only seekers and shelters can have applications."}, status=403)
