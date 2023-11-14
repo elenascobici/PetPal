@@ -28,7 +28,7 @@ class RegisterSeekerSerializer(ModelSerializer):
 class RegisterShelterSerializer(ModelSerializer):
     class Meta:
         model = Shelter
-        fields = ['username', 'password', 'email', 'province', 'name', 
+        fields = ['id', 'username', 'password', 'email', 'province', 'name', 
                   'website_link', 'preferred_contact', 
                   'mission_statement']
         extra_kwargs = {
@@ -42,7 +42,7 @@ class RegisterShelterSerializer(ModelSerializer):
         for attr, value in validated_data.items():
             if attr == 'password':
                 newUser.set_password(value) # hash password
-            elif attr != 'user_type':
+            elif attr != 'user_type' and attr != 'id':
                 setattr(newUser, attr, value)
         newUser.save()
         return newUser
