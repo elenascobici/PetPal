@@ -122,10 +122,9 @@ class MessagePermission(BasePermission):
         application_id = view.kwargs.get('pk')
         application = get_object_or_404(Application, pk=application_id)
 
-        # HAVE TO CHANGE pet_id TO pet AND adopter_id TO adopter
-        if hasattr(application, 'pet_id') and hasattr(application.pet_id, 'shelter') and hasattr(application, 'adopter_id'):
-            shelter = application.pet_id.shelter
-            adopter = application.adopter_id
+        if hasattr(application, 'pet') and hasattr(application.pet_id, 'shelter') and hasattr(application, 'adopter'):
+            shelter = application.pet.shelter
+            adopter = application.adopter
 
             if user.id == adopter.id or user.id == shelter.id:
                 return True
