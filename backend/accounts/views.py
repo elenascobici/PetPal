@@ -1,4 +1,4 @@
-from rest_framework.generics import UpdateAPIView, CreateAPIView, RetrieveAPIView
+from rest_framework.generics import CreateAPIView, ListAPIView
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from accounts.models.SeekerModel import Seeker
 from accounts.models.ShelterModel import Shelter
@@ -15,6 +15,13 @@ class RegisterSeekerView(CreateAPIView):
 class RegisterShelterView(CreateAPIView):
     serializer_class = serializers.RegisterShelterSerializer
     permission_classes = [AllowAny]
+
+class ListShelters(ListAPIView):
+    serializer_class = serializers.ViewShelterSerializer
+    permission_classes = [AllowAny]
+
+    def get_queryset(self):
+        return Shelter.objects.all()
 
 class RetrieveUpdateDestroyAccount(RetrieveUpdateDestroyAPIView):
     def get_serializer_class(self):
