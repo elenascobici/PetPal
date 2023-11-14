@@ -43,7 +43,6 @@ class Application(models.Model):
         ('MAN', 'Mansion'),
         ('BUN', 'Bungalow'),
         ('LOG', 'Log House'),
-        ('LOG', 'Log House'),
         ('FLO', 'Floating Home'),
         ('IGL', 'Igloo')
     ]

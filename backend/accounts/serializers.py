@@ -116,6 +116,20 @@ class UpdateShelterSerializer(ModelSerializer):
                 setattr(instance, attr, value)
         instance.save()
         return instance
+    
+class ViewSeekerSerializer(ModelSerializer):
+    class Meta:
+        model = Seeker
+        fields = ['username', 'email', 'province', 'phone', 
+                  'street', 'city', 'profile_picture', 'preferences',
+                  'first_name', 'last_name']
+
+class ViewShelterSerializer(ModelSerializer):
+    class Meta:
+        model = Shelter
+        fields = ['username', 'email', 'province', 'profile_picture', 
+                  'name', 'website_link', 'preferred_contact', 
+                  'mission_statement']
 
 
     

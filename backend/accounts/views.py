@@ -1,7 +1,9 @@
-from rest_framework.generics import UpdateAPIView, CreateAPIView
+from rest_framework.generics import UpdateAPIView, CreateAPIView, RetrieveAPIView
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from accounts.models.SeekerModel import Seeker
 from accounts.models.ShelterModel import Shelter
+from accounts.permissions import ProfileViewPermissions
+from accounts.models.ParentUserModel import ParentUser
 
 from accounts import serializers
 
@@ -36,3 +38,20 @@ class UpdateAccountView(UpdateAPIView):
             serializer.save()
         else:
             print(serializer.errors)
+
+class ViewProfileView(RetrieveAPIView):    
+    permission_classes = [IsAuthenticated, ProfileViewPermissions]
+
+    def get_serializer_class(self):
+        match ParentUser.objects.get(id=self.kwargs['pk']).user_type:
+            case 'Seeker':
+                return serializers.ViewSeekerSerializer
+            case 'Shelter':
+                return serializers.ViewShelterSerializer
+    
+    def get_queryset(self):
+        match ParentUser.objects.get(id=self.kwargs['pk']).user_type:
+            case 'Seeker':
+                return Seeker.objects.all()
+            case 'Shelter':
+                return Shelter.objects.all()

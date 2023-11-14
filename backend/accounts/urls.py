@@ -11,6 +11,7 @@ urlpatterns = [
     path('register/seeker/', views.RegisterSeekerView.as_view(), name='register_seeker'),
     path('register/shelter/', views.RegisterShelterView.as_view(), name='register_shelter'),
     path('update/', views.UpdateAccountView.as_view(), name='update_account'),
+    path('profile/<int:pk>/', views.ViewProfileView.as_view(), name='view_profile'),
 ]
 
 if settings.DEBUG:
