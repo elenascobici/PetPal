@@ -7,6 +7,20 @@ class Comment(models.Model):
     text = models.TextField()
     time = models.DateTimeField(auto_now_add=True)
 
+    def get_commented_shelter(self):
+        if hasattr(self, "review"):
+            return self.review.commented_shelter
+        elif hasattr(self, "reply"):
+            return self._get_shelter_from_reply(self.reply)
+        return None
+        
+    def _get_shelter_from_reply(self, reply):
+        while reply:
+            if hasattr(reply, "review"):
+                return reply.review.commented_shelter
+            reply = reply.comment
+        return None
+
 class Rating(models.Model):
     user = models.ForeignKey(ParentUser, related_name="user_rating", null=True,
                                      on_delete=models.SET_NULL)

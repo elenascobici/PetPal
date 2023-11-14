@@ -5,6 +5,7 @@ from .models import Comment, Review, Reply, Rating, Message
 
 class CommentSerializer(serializers.ModelSerializer):
     commenter_display_name = serializers.SerializerMethodField()
+    replies = serializers.SerializerMethodField()
     
     class Meta:
         model = Comment
@@ -14,19 +15,32 @@ class CommentSerializer(serializers.ModelSerializer):
         if not comment.commenter.is_active:
             return "Deleted User"
         user = comment.commenter
-        if isinstance(user, Shelter):
-            return user.name
+        if user.user_type == "Shelter":
+            return Shelter.objects.get(pk=user.id).name
+            # return user.name
         return user.username
+    
+    def get_replies(self, comment):
+        replies = comment.replies.all()
+        reply_serializer = ReplySerializer(replies, many=True)
+
+        for reply_data in reply_serializer.data:
+            reply = Reply.objects.get(pk=reply_data['id'])
+            reply_data['replies'] = self.get_replies(reply)
+
+        return reply_serializer.data
 
 class ReviewSerializer(CommentSerializer):
     class Meta:
         model = Review
         fields = '__all__'
+        extra_kwargs = {'commented_shelter': {'required': False}}
 
 class ReplySerializer(CommentSerializer):
     class Meta:
         model = Reply
         fields = '__all__'
+        extra_kwargs = {'comment': {'required': False}}
 
 class RatingSerializer(serializers.ModelSerializer):
     class Meta:
