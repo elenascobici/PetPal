@@ -7,6 +7,5 @@ urlpatterns = [
     # to redirect/reverse, format is 'namespace:name'
     path('pet/<int:pet_id>/', ApplicationCreateView.as_view(), name='create_application'),
     path('list/', ApplicationListView.as_view(), name='list_applications'),
-    # path('list/status/<str:status>/time/<str:type>/', ApplicationListFilterView.as_view(), name='list_filter'),
     path('<int:app_id>/', ApplicationRetrieveUpdateView.as_view(), name='view_application'),
 ]
