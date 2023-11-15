@@ -15,20 +15,20 @@ urlpatterns = [
         'delete': 'destroy'
     }), name='shelter-pet-update-delete'),
 
-    path('shelter/<int:shelter_id>/pets/', PetViewSet.as_view({
+    path('shelter/<int:shelter_id>/pets/', PetViewSet.as_view({ # shelter can see all pets they own
         'get': 'list'
     }), name='shelter-pet-list'),
 
-    path('pets/', PetViewSet.as_view({
+    path('pets/', PetViewSet.as_view({ # seeker can see all pets
         'get': 'list'
     }), name='pet-list'),
 
-    path('<int:pet_id>/', PetViewSet.as_view({
+    path('<int:pet_id>/', PetViewSet.as_view({  # seeker can see any pet individually
         'get': 'list'
     }), name='pet-detail'),
 
     path('search/', PetViewSet.as_view({
-        'get': 'list'
+        'get': 'filter_pet'
     }), name='pet-search'),
 ]
 
