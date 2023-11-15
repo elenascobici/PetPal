@@ -72,7 +72,7 @@ class ApplicationListView(ListAPIView):
             if status == 'pending':
                 status_code = 'P'
             elif status == 'accepted':
-                status_code = 'Y'
+                status_code = 'A'
             elif status == 'declined':
                 status_code = 'D'
             elif status == 'withdrawn':
@@ -151,7 +151,7 @@ class ApplicationRetrieveUpdateView(RetrieveUpdateAPIView):
                         raise PermissionDenied(detail='Cannot modify this field')
 
                 
-            if (application.status == 'P' or application.status == 'Y') and user_data['status'] == 'W':
+            if (application.status == 'P' or application.status == 'A') and user_data['status'] == 'W':
                 event = serializer.save()
 
                 name = self.request.user.username
@@ -167,7 +167,7 @@ class ApplicationRetrieveUpdateView(RetrieveUpdateAPIView):
                     if getattr(application, application._meta.get_field(field).attname) != user_data[field]:
                         raise PermissionDenied(detail='Cannot modify this field')
             
-            if application.status == 'P' and (user_data['status'] == 'D' or user_data['status'] == 'Y'):
+            if application.status == 'P' and (user_data['status'] == 'D' or user_data['status'] == 'A'):
                 event = serializer.save()
 
                 shelter = get_object_or_404(Shelter, pk=self.request.user.id)
@@ -183,7 +183,7 @@ class ApplicationRetrieveUpdateView(RetrieveUpdateAPIView):
 
 
                 # If someones application was accepted, decline everyone else's
-                if (user_data['status'] == 'Y'):
+                if (user_data['status'] == 'A'):
                     # Set the pet to adopted
                     application.pet.status = 'Adopted'
                     application.pet.save()
@@ -192,7 +192,7 @@ class ApplicationRetrieveUpdateView(RetrieveUpdateAPIView):
 
                     for app in queryset:
                         # Check if the app was the one that was accepted
-                        if (app.status != 'Y' and app.status != 'W'):
+                        if (app.status != 'A' and app.status != 'W'):
                             app.status = 'D'
                             app.save()
 

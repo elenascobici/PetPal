@@ -14,18 +14,18 @@ class NotificationPagination(PageNumberPagination):
 
 class NotificationListView(ListAPIView):
     serializer_class = NotificationSerializer
-    permission_classes = [IsAuthenticated, NotificationPermission]
+    permission_classes = [IsAuthenticated]
     pagination_class = NotificationPagination
 
     def get_queryset(self):
         sort = self.request.query_params.get('sort')
         filter = self.request.query_params.get('filter')
         if filter == 'read':
-            queryset = Notification.objects.filter(user=self.request.user.pk, read = True)
+            queryset = Notification.objects.filter(user=self.request.user.id, read = True)
         elif filter == 'unread':
-            queryset = Notification.objects.filter(user=self.request.user.pk, read = False)
+            queryset = Notification.objects.filter(user=self.request.user.id, read = False)
         elif filter == None:
-            queryset = Notification.objects.filter(user=self.request.user.pk)
+            queryset = Notification.objects.filter(user=self.request.user.id)
         else:
             raise PermissionDenied(detail="No such filter exists.")
         
