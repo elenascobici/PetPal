@@ -5,6 +5,7 @@ from rest_framework.response import Response
 from accounts.models.ShelterModel import Shelter
 from rest_framework.exceptions import NotFound, PermissionDenied
 from rest_framework.permissions import AllowAny
+from rest_framework.generics import ListAPIView
 
 class PetViewSet(viewsets.ModelViewSet):
   queryset = PetDetail.objects.all()
@@ -34,11 +35,11 @@ class PetViewSet(viewsets.ModelViewSet):
     
     # shelter cannot create the same pet
     name = serializer.validated_data.get('name')
-    breed = serializer.validated_data.get('breed')
+    type = serializer.validated_data.get('type')
     gender = serializer.validated_data.get('gender')
 
-    if PetDetail.objects.filter(name=name, breed=breed, gender=gender, shelter=shelter).exists():
-      return Response({"detail": "This shelter already has a pet with this name, gender and breed. Duplicate pet postings not allowed."}, status=400)
+    if PetDetail.objects.filter(name=name, type=type, gender=gender, shelter=shelter).exists():
+      return Response({"detail": "This shelter already has a pet with this name, gender and type. Duplicate pet postings not allowed."}, status=400)
     
     serializer.save(shelter=shelter)
     
@@ -68,8 +69,8 @@ class PetViewSet(viewsets.ModelViewSet):
     except PetDetail.DoesNotExist:
         return Response({"detail": "The pet you are trying you update doesn't exist"}, status=404)
     
-    # the name, breed and gender can't be updated
-    for field in ['name', 'breed', 'gender']:
+    # the name, type and gender can't be updated
+    for field in ['name', 'type', 'gender']:
       if field in request.data:
           return Response({"detail": f"{field} of a pet cannot be updated."}, status=401)
 
@@ -131,4 +132,3 @@ class PetViewSet(viewsets.ModelViewSet):
     # destroy
     self.perform_destroy(pet)
     return Response(status=204)
-    

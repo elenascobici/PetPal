@@ -8,20 +8,28 @@ app_name = 'pet'
 urlpatterns = [
     path('shelter/<int:shelter_id>/pet/', PetViewSet.as_view({
         'post': 'create'
-    })),
+    }), name='shelter-pet-create'),
 
-    path('shelter/<int:shelter_id>/pet/<int:pet_id>/', PetViewSet.as_view({  'delete': 'destroy',
+    path('shelter/<int:shelter_id>/pet/<int:pet_id>/', PetViewSet.as_view({ 
         'put': 'update',
         'delete': 'destroy'
-    })),
+    }), name='shelter-pet-update-delete'),
 
     path('shelter/<int:shelter_id>/pets/', PetViewSet.as_view({
         'get': 'list'
-    })),
+    }), name='shelter-pet-list'),
 
-    path('shelter/pets/', PetViewSet.as_view({
+    path('pets/', PetViewSet.as_view({
         'get': 'list'
-    })),
+    }), name='pet-list'),
+
+    path('<int:pet_id>/', PetViewSet.as_view({
+        'get': 'list'
+    }), name='pet-detail'),
+
+    path('search/', PetViewSet.as_view({
+        'get': 'list'
+    }), name='pet-search'),
 ]
 
 if settings.DEBUG:
