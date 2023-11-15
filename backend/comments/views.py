@@ -98,7 +98,9 @@ class ReviewCreate(CreateAPIView):
         shelter_id = self.kwargs.get('shelter_id')
         shelter = get_object_or_404(Shelter, pk=shelter_id)
         serializer.is_valid()
-        serializer.save(commenter=self.request.user, commented_shelter=shelter)
+        event = serializer.save(commenter=self.request.user, commented_shelter=shelter)
+        Notification.objects.create(user=shelter, sender=self.request.user, event=event, 
+                                    text=f"{self.request.user.username} left a review")
     
     def create(self, request, *args, **kwargs):
         if self.request.user.get_user_type() == "Shelter":
@@ -160,5 +162,11 @@ class MessageListCreate(ListCreateAPIView):
         except KeyError:
             pass
         serializer.is_valid()
-        serializer.save(sender=self.request.user, application=application)
+        event = serializer.save(sender=self.request.user, application=application)
+        if self.request.user.get_user_type() == "Shelter":
+            name = application.pet.shelter.name
+        else:
+            name = self.request.user.username
+        Notification.objects.create(user=application.adopter, sender=self.request.user, event=event, 
+                                    text=f"{name} messaged you regarding the application for {application.pet.name}")
     
