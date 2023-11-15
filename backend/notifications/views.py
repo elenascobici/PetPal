@@ -30,17 +30,20 @@ class NotificationListView(ListAPIView):
             raise PermissionDenied(detail="No such filter exists.")
         
         if sort == "creation-time":
-            queryset = queryset.order_by('time')
+            queryset = queryset.order_by('-time')
         elif sort != None:
             raise PermissionDenied(detail="Invalid field to sort by.")
         
         return queryset
-
-
-class NotificationGetView(RetrieveAPIView):
-    serializer_class = NotificationGetSerializer
+    
+class NotificationGetUpdateDeleteView(RetrieveUpdateDestroyAPIView):
     permission_classes = [IsAuthenticated, NotificationPermission]
     queryset = Notification.objects.all()
+
+    def get_serializer_class(self):
+        if self.request.method == 'GET':
+            return NotificationGetSerializer
+        return NotificationSerializer
 
     def get(self, request, *args, **kwargs):
         notification_id = kwargs['pk']
@@ -51,10 +54,6 @@ class NotificationGetView(RetrieveAPIView):
         notification.save()
         return super().get(request, *args, **kwargs)
     
-class NotificationUpdateDelete(RetrieveUpdateDestroyAPIView):
-    serializer_class = NotificationSerializer
-    permission_classes = [IsAuthenticated, NotificationPermission]
-
     def delete(self, request, *args, **kwargs):
         return super().delete(request, *args, **kwargs)
     
