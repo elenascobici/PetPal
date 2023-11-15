@@ -6,6 +6,8 @@ from rest_framework.pagination import PageNumberPagination, CursorPagination
 from rest_framework.response import Response
 from rest_framework.exceptions import PermissionDenied, NotFound
 from rest_framework import status
+
+from notifications.models import Notification
 from .models import Review, Reply, Comment, Message
 from .serializers import CommentSerializer, ReviewSerializer, ReplySerializer, RatingSerializer, MessageSerializer
 from accounts.models.ShelterModel import Shelter
@@ -61,7 +63,7 @@ class CommentListCreate(ListCreateAPIView):
         if isinstance(serializer, RatingSerializer):
             if request.user.user_type == "Shelter":
                 return Response({"detail": "Shelters cannot give ratings"}, status=403)
-            serializer.save(user=request.user,shelter=shelter)
+            event = serializer.save(user=request.user,shelter=shelter)
         elif isinstance(serializer, ReplySerializer):
             if request.user.user_type == "Shelter" and request.user.id != shelter.id:
                 return Response({"detail": "Shelters cannot reply on another shelter's comments"}, status=403)
@@ -73,9 +75,11 @@ class CommentListCreate(ListCreateAPIView):
             commented_shelter = comment.get_commented_shelter()
             if commented_shelter == None or commented_shelter.id != shelter_id:
                 return Response({"detail": "This comment is not for the specified shelter"}, status=403)
-            serializer.save(commenter=request.user, comment=comment)
+            event = serializer.save(commenter=request.user, comment=comment)
 
         headers = self.get_success_headers(serializer.data)
+        Notification.objects.create(user=comment.get_commenter(), sender=request.user, event=event, 
+                                    text=" replied to your comment")
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
 
     # def perform_create(self, serializer):
