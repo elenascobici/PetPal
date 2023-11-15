@@ -1,6 +1,6 @@
 from django.db import models
 from accounts.models.ShelterModel import Shelter
-from django.utils import timezone
+from datetime import date
 
 class PetDetail(models.Model):
 
@@ -28,12 +28,12 @@ class PetDetail(models.Model):
         ('Aggressive', 'Aggressive'),
     ]
 
-    pet_type_choices = [
+    type_choices = [
         ('Cat', 'Cat'),
         ('Dog', 'Dog'),
         ('Aquatic', 'Aquatic'),
         ('Birds', 'Birds'),
-        ('Other', 'Other'),
+        ('Other', 'Other')
     ]
 
     shelter = models.ForeignKey(Shelter, on_delete=models.CASCADE)
@@ -42,13 +42,13 @@ class PetDetail(models.Model):
     gender = models.CharField(max_length=20, choices=gender_choices)
     age = models.PositiveIntegerField(default=0)
     colour = models.CharField(max_length=20)
-    type = models.CharField(max_length=20, choices=pet_type_choices, default='Other')
+    type = models.CharField(max_length=20, choices=type_choices, default='Other')
     location = models.CharField(max_length=30)
     size = models.CharField(max_length=20, choices=size_choices)
     behaviour = models.CharField(max_length=20, choices=behaviour_choices)
     description = models.TextField(blank=True, null=True)
     medical_history = models.TextField(blank=True, null=True)
-    deadline = models.DateField(default=timezone.now)
+    deadline = models.DateField(default=date.today)
     pet_image_1 = models.ImageField(upload_to='pets/')
 
 
