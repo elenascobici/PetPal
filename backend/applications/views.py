@@ -153,11 +153,10 @@ class ApplicationRetrieveUpdateView(RetrieveUpdateAPIView):
 
                 
             if (application.status == 'P' or application.status == 'Y') and user_data['status'] == 'W':
-                serializer.last_update = timezone.now()
                 event = serializer.save()
 
                 application = self.get_object() # to get the updated data
-                application.last_update = timezone.now()
+                # application.last_update = timezone.now()
                 application.save()
 
                 name = self.request.user.username
@@ -178,14 +177,18 @@ class ApplicationRetrieveUpdateView(RetrieveUpdateAPIView):
 
 
                 application = self.get_object() # to get the updated data
-                application.last_update = timezone.now()
+                # application.last_update = timezone.now()
                 application.save()
 
                 shelter = get_object_or_404(Shelter, pk=self.request.user.id)
                 name = shelter.name
 
-                Notification.objects.create(user=application.adopter, sender=self.request.user, event=event, 
+                if(user_data['status'] == 'Y'):
+                    Notification.objects.create(user=application.adopter, sender=self.request.user, event=event, 
                                                         text=f"{name} approved your application")
+                else:
+                    Notification.objects.create(user=application.adopter, sender=self.request.user, event=event, 
+                                                        text=f"{name} declined your application")
 
 
 
@@ -202,13 +205,13 @@ class ApplicationRetrieveUpdateView(RetrieveUpdateAPIView):
                         # Check if the app was the one that was accepted
                         if (app.status != 'Y' and app.status != 'W'):
                             app.status = 'D'
-                            app.last_update = timezone.now()
+                            # app.last_update = timezone.now()
                             app.save()
 
                             event = app
 
                             Notification.objects.create(user=app.adopter, sender=self.request.user, event=event, 
-                                                        text=f"{name} updated your application status")
+                                                        text=f"{name} has declined your application")
                             
 
 
