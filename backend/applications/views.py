@@ -107,9 +107,9 @@ class ApplicationListView(ListAPIView):
         if type != None:
         
             if type == 'creation-time':
-                field = 'creation_time'
+                field = '-creation_time'
             elif type == 'last-update':
-                field = 'last_update'
+                field = '-last_update'
             else:
                 raise PermissionDenied(detail="Invalid field to sort by")
 
