@@ -48,3 +48,4 @@ class NotificationGetView(RetrieveAPIView):
         notification.read = True
         notification.save()
         return super().get(request, *args, **kwargs)
+    

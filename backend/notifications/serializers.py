@@ -5,6 +5,7 @@ from applications.models import Application
 from comments.models import Comment
 from pets.models import PetDetail
 from django.urls import reverse
+from django.contrib.contenttypes.models import ContentType
 
 
 class NotificationSerializer(ModelSerializer):
@@ -24,13 +25,15 @@ class NotificationGetSerializer(ModelSerializer):
         fields = ['text', 'time', 'read', 'url']
 
     def get_url(self):
-        associated_event = self.event
+        event_type = self.event_type
+        event_id = self.id_event
+        event = self.event
         url = ''
-        if isinstance(associated_event, type(Application)):
-            url = reverse('applications:view_application', {'app_id':associated_event.id})
-        elif isinstance(associated_event, type(Comment)):
-            shelter_id = associated_event.get_commented_shelter().id
-            url = reverse('comments:comment', {'shelter_id': shelter_id, 'user_id': associated_event.id})
-        elif isinstance(associated_event, type(PetDetail)):
-            url = reverse('pets:pet-detail', {'pet_id': associated_event.id})
+        if event_type == ContentType.objects.get_for_model(Application):
+            url = reverse('applications:view_application', {'app_id': event_id})
+        elif event_type == ContentType.objects.get_for_model(Comment):
+            shelter_id = event.get_commented_shelter().id
+            url = reverse('comments:comment', {'shelter_id': shelter_id, 'user_id': event_id})
+        elif event_type == ContentType.objects.get_for_model(PetDetail):
+            url = reverse('pets:pet-detail', {'pet_id': event_id})
         return url
