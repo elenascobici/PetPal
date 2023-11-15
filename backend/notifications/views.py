@@ -1,9 +1,11 @@
 from django.shortcuts import render
-from rest_framework.generics import CreateAPIView, ListAPIView, RetrieveUpdateAPIView
+from rest_framework.generics import CreateAPIView, ListAPIView, RetrieveAPIView
 from notifications.models import Notification
-from notifications.serializers import NotificationSerializer
+from notifications.serializers import NotificationSerializer, NotificationGetSerializer
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.exceptions import NotAuthenticated, PermissionDenied
+from rest_framework.permissions import IsAuthenticated
+from permissions import NotificationPermission
 
 # Create your views here.
 class NotificationPagination(PageNumberPagination):
@@ -32,3 +34,17 @@ class NotificationListView(ListAPIView):
             raise PermissionDenied(detail="Invalid field to sort by.")
         
         return queryset
+
+
+class NotificationGetView(RetrieveAPIView):
+    serializer_class = NotificationGetSerializer
+    permission_classes = [IsAuthenticated, NotificationPermission]
+
+    def get(self, request, *args, **kwargs):
+        notification_id = kwargs['pk']
+        notification = Notification.objects.first(id=notification_id)
+        if not notification:
+            raise FileNotFoundError
+        notification.read = True
+        notification.save()
+        return super().get(request, *args, **kwargs)
