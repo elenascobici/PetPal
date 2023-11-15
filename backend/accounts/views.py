@@ -16,14 +16,14 @@ class RegisterShelterView(CreateAPIView):
     serializer_class = serializers.RegisterShelterSerializer
     permission_classes = [AllowAny]
 
-class ListShelters(ListAPIView):
+class ListSheltersView(ListAPIView):
     serializer_class = serializers.ViewShelterSerializer
     permission_classes = [AllowAny]
 
     def get_queryset(self):
         return Shelter.objects.all()
 
-class RetrieveUpdateDestroyAccount(RetrieveUpdateDestroyAPIView):
+class RetrieveUpdateDestroyAccountView(RetrieveUpdateDestroyAPIView):
     def get_serializer_class(self):
         match self.request.method:
             case 'PUT' | 'PATCH':
