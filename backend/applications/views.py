@@ -9,6 +9,7 @@ from rest_framework.response import Response
 from rest_framework.exceptions import NotAuthenticated, PermissionDenied
 from rest_framework.pagination import PageNumberPagination
 from django.utils import timezone
+from notifications.models import Notification
 
 
 class ApplicationCreateView(CreateAPIView):
@@ -130,6 +131,7 @@ class ApplicationRetrieveUpdateView(RetrieveUpdateAPIView):
             raise PermissionDenied(detail='Invalid user')
         
         return application
+
     
     def perform_update(self, serializer):
         if not self.request.user.is_authenticated:
@@ -164,11 +166,19 @@ class ApplicationRetrieveUpdateView(RetrieveUpdateAPIView):
                         raise PermissionDenied(detail='Cannot modify this field')
             
             if application.status == 'P' and (user_data['status'] == 'D' or user_data['status'] == 'Y'):
-                serializer.save()
+                event = serializer.save()
+
 
                 application = self.get_object() # to get the updated data
                 application.last_update = timezone.now()
                 application.save()
+
+                shelter = get_object_or_404(Shelter, pk=self.request.user.id)
+                name = shelter.name
+
+                Notification.objects.create(user=application.adopter, sender=self.request.user, event=event, 
+                                                        text=f"{name} approved your application")
+
 
 
                 # If someones application was accepted, decline everyone else's
@@ -186,6 +196,13 @@ class ApplicationRetrieveUpdateView(RetrieveUpdateAPIView):
                             app.status = 'D'
                             app.last_update = timezone.now()
                             app.save()
+
+                            event = app
+
+                            Notification.objects.create(user=app.adopter, sender=self.request.user, event=event, 
+                                                        text=f"{name} updated your application status")
+                            
+
 
                 return Response(serializer.data)
         else: 
