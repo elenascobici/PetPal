@@ -8,6 +8,7 @@ from applications.models import Application
 from rest_framework.response import Response
 from rest_framework.exceptions import NotAuthenticated, PermissionDenied
 from rest_framework.pagination import PageNumberPagination
+from django.utils import timezone
 
 
 class ApplicationCreateView(CreateAPIView):
@@ -39,8 +40,8 @@ class ApplicationCreateView(CreateAPIView):
             raise PermissionDenied(detail='Deadline has passed')
         
         # Check if the user already applied for the pet before
-        queryset = Application.objects.filter(adopter = self.request.user.pk, pet = self.kwargs['pet_id'])
-        if not queryset.exists():
+        queryset = Application.objects.filter(adopter__id = self.request.user.pk, pet__id = self.kwargs['pet_id'])
+        if queryset.exists():
             raise PermissionDenied(detail='Cannot adopt the same pet again.')
         
         serializer.is_valid()
@@ -146,7 +147,13 @@ class ApplicationRetrieveUpdateView(RetrieveUpdateAPIView):
 
                 
             if (application.status == 'P' or application.status == 'Y') and user_data['status'] == 'W':
+                serializer.last_update = timezone.now()
                 serializer.save()
+
+                application = self.get_object() # to get the updated data
+                application.last_update = timezone.now()
+                application.save()
+
                 return Response(serializer.data)
             
         elif self.request.user.user_type == 'Shelter':
@@ -159,19 +166,27 @@ class ApplicationRetrieveUpdateView(RetrieveUpdateAPIView):
             if application.status == 'P' and (user_data['status'] == 'D' or user_data['status'] == 'Y'):
                 serializer.save()
 
+                application = self.get_object() # to get the updated data
+                application.last_update = timezone.now()
+                application.save()
+
+
                 # If someones application was accepted, decline everyone else's
                 if (user_data['status'] == 'Y'):
                     # Set the pet to adopted
                     application.pet.status = 'Adopted'
                     application.pet.save()
 
+
                     queryset = Application.objects.filter(pet = application.pet)
 
                     for app in queryset:
                         # Check if the app was the one that was accepted
-                        if (app.status == 'Y'):
+                        if (app.status != 'Y' and app.status != 'W'):
                             app.status = 'D'
+                            app.last_update = timezone.now()
                             app.save()
+
                 return Response(serializer.data)
         else: 
             raise PermissionDenied(detail='Invalid user')
