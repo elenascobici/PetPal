@@ -24,7 +24,9 @@ class ApplicationCreateView(CreateAPIView):
 
         serializer.is_valid()
         user_data = serializer.validated_data 
-
+        # Do not let user modify some fields
+        user_data['last_update'] = None
+        user_data['creation_time'] = None
         # Do not let user modify status aka anything they write will be overriden
         user_data['status'] = 'P'
         adopter = get_object_or_404(Seeker, id=self.request.user.pk)
@@ -52,9 +54,6 @@ class ApplicationCreateView(CreateAPIView):
         Notification.objects.create(user=pet.shelter, sender=self.request.user, event=event, 
                                                         text=f"{name} has sent in an application")
 
-        # pet = get_object_or_404(PetDetail, id=self.kwargs['pet_id'])
-        # pet.status = 'Withdrawn'
-        # pet.save()
         return Response(serializer.data, status=201)
 
 class ApplicationPagination(PageNumberPagination):
@@ -155,10 +154,6 @@ class ApplicationRetrieveUpdateView(RetrieveUpdateAPIView):
             if (application.status == 'P' or application.status == 'Y') and user_data['status'] == 'W':
                 event = serializer.save()
 
-                application = self.get_object() # to get the updated data
-                # application.last_update = timezone.now()
-                application.save()
-
                 name = self.request.user.username
                 Notification.objects.create(user=application.pet.shelter, sender=self.request.user, event=event, 
                                                         text=f"{name} has withdrawn their application")
@@ -174,11 +169,6 @@ class ApplicationRetrieveUpdateView(RetrieveUpdateAPIView):
             
             if application.status == 'P' and (user_data['status'] == 'D' or user_data['status'] == 'Y'):
                 event = serializer.save()
-
-
-                application = self.get_object() # to get the updated data
-                # application.last_update = timezone.now()
-                application.save()
 
                 shelter = get_object_or_404(Shelter, pk=self.request.user.id)
                 name = shelter.name
@@ -198,14 +188,12 @@ class ApplicationRetrieveUpdateView(RetrieveUpdateAPIView):
                     application.pet.status = 'Adopted'
                     application.pet.save()
 
-
                     queryset = Application.objects.filter(pet = application.pet)
 
                     for app in queryset:
                         # Check if the app was the one that was accepted
                         if (app.status != 'Y' and app.status != 'W'):
                             app.status = 'D'
-                            # app.last_update = timezone.now()
                             app.save()
 
                             event = app
