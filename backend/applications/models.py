@@ -75,8 +75,8 @@ class Application(models.Model):
         # else the time should be updated with the creation of the most 
         # recent message and make the time the same as the creation time 
         # of the message.
-        if (self.last_update == None): 
-            self.last_update = timezone.now()
+        self.last_update = timezone.now()
+        
         if (self.creation_time == None):
             self.creation_time = timezone.now()
         super(Application, self).save(*args, **kwargs)

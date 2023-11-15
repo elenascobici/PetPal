@@ -33,3 +33,9 @@ class ParentUser(AbstractUser):
     profile_picture = models.ImageField(default='accounts/default_profile.jpg', upload_to='accounts/')
     user_type = models.CharField(default="NONE", max_length=6)
     
+    def get_user_type(self):
+        if hasattr(self, "shelter"):
+            return "Shelter"
+        elif hasattr(self, "seeker"):
+            return "Seeker"
+        

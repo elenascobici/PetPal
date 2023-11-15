@@ -22,6 +22,6 @@ urlpatterns = [
     path('', include('comments.urls', namespace='comments')),
     path('accounts/', include('accounts.urls', namespace='accounts')),
     path('pet/', include('pets.urls', namespace='pet')),
-    # path('<int:pk>/notifications', include('notifications.urls',namespace='notifications')),
+    path('notifications/', include('notifications.urls',namespace='notifications')),
     path('admin/', admin.site.urls),
 ]

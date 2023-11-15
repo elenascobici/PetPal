@@ -20,6 +20,13 @@ class Comment(models.Model):
                 return reply.review.commented_shelter
             reply = reply.comment
         return None
+    
+    def get_commenter(self):
+        if hasattr(self, "review"):
+            return self.review.commenter
+        elif hasattr(self, "reply"):
+            return self.reply.commenter
+        return None
 
 class Rating(models.Model):
     user = models.ForeignKey(ParentUser, related_name="user_rating", null=True,

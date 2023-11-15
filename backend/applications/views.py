@@ -8,6 +8,8 @@ from applications.models import Application
 from rest_framework.response import Response
 from rest_framework.exceptions import NotAuthenticated, PermissionDenied
 from rest_framework.pagination import PageNumberPagination
+from django.utils import timezone
+from notifications.models import Notification
 
 
 class ApplicationCreateView(CreateAPIView):
@@ -39,12 +41,16 @@ class ApplicationCreateView(CreateAPIView):
             raise PermissionDenied(detail='Deadline has passed')
         
         # Check if the user already applied for the pet before
-        queryset = Application.objects.filter(adopter = self.request.user.pk, pet = self.kwargs['pet_id'])
-        if not queryset.exists():
+        queryset = Application.objects.filter(adopter__id = self.request.user.pk, pet__id = self.kwargs['pet_id'])
+        if queryset.exists():
             raise PermissionDenied(detail='Cannot adopt the same pet again.')
         
         serializer.is_valid()
-        serializer.save(adopter=adopter, pet=pet)
+        event = serializer.save(adopter=adopter, pet=pet)
+        name = self.request.user.username
+
+        Notification.objects.create(user=pet.shelter, sender=self.request.user, event=event, 
+                                                        text=f"{name} has sent in an application")
 
         # pet = get_object_or_404(PetDetail, id=self.kwargs['pet_id'])
         # pet.status = 'Withdrawn'
@@ -129,6 +135,7 @@ class ApplicationRetrieveUpdateView(RetrieveUpdateAPIView):
             raise PermissionDenied(detail='Invalid user')
         
         return application
+
     
     def perform_update(self, serializer):
         if not self.request.user.is_authenticated:
@@ -146,7 +153,16 @@ class ApplicationRetrieveUpdateView(RetrieveUpdateAPIView):
 
                 
             if (application.status == 'P' or application.status == 'Y') and user_data['status'] == 'W':
-                serializer.save()
+                event = serializer.save()
+
+                application = self.get_object() # to get the updated data
+                # application.last_update = timezone.now()
+                application.save()
+
+                name = self.request.user.username
+                Notification.objects.create(user=application.pet.shelter, sender=self.request.user, event=event, 
+                                                        text=f"{name} has withdrawn their application")
+
                 return Response(serializer.data)
             
         elif self.request.user.user_type == 'Shelter':
@@ -157,7 +173,24 @@ class ApplicationRetrieveUpdateView(RetrieveUpdateAPIView):
                         raise PermissionDenied(detail='Cannot modify this field')
             
             if application.status == 'P' and (user_data['status'] == 'D' or user_data['status'] == 'Y'):
-                serializer.save()
+                event = serializer.save()
+
+
+                application = self.get_object() # to get the updated data
+                # application.last_update = timezone.now()
+                application.save()
+
+                shelter = get_object_or_404(Shelter, pk=self.request.user.id)
+                name = shelter.name
+
+                if(user_data['status'] == 'Y'):
+                    Notification.objects.create(user=application.adopter, sender=self.request.user, event=event, 
+                                                        text=f"{name} approved your application")
+                else:
+                    Notification.objects.create(user=application.adopter, sender=self.request.user, event=event, 
+                                                        text=f"{name} declined your application")
+
+
 
                 # If someones application was accepted, decline everyone else's
                 if (user_data['status'] == 'Y'):
@@ -165,13 +198,23 @@ class ApplicationRetrieveUpdateView(RetrieveUpdateAPIView):
                     application.pet.status = 'Adopted'
                     application.pet.save()
 
+
                     queryset = Application.objects.filter(pet = application.pet)
 
                     for app in queryset:
                         # Check if the app was the one that was accepted
-                        if (app.status == 'Y'):
+                        if (app.status != 'Y' and app.status != 'W'):
                             app.status = 'D'
+                            # app.last_update = timezone.now()
                             app.save()
+
+                            event = app
+
+                            Notification.objects.create(user=app.adopter, sender=self.request.user, event=event, 
+                                                        text=f"{name} has declined your application")
+                            
+
+
                 return Response(serializer.data)
         else: 
             raise PermissionDenied(detail='Invalid user')

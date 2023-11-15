@@ -6,6 +6,10 @@ from rest_framework.pagination import PageNumberPagination, CursorPagination
 from rest_framework.response import Response
 from rest_framework.exceptions import PermissionDenied, NotFound
 from rest_framework import status
+from urllib.parse import urlparse, parse_qs
+
+
+from notifications.models import Notification
 from .models import Review, Reply, Comment, Message
 from .serializers import CommentSerializer, ReviewSerializer, ReplySerializer, RatingSerializer, MessageSerializer
 from accounts.models.ShelterModel import Shelter
@@ -51,7 +55,6 @@ class CommentListCreate(ListCreateAPIView):
         # Check if shelter exists
         shelter_id = kwargs.get('shelter_id')
         shelter = get_object_or_404(Shelter, pk=shelter_id)
-        
 
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
@@ -61,9 +64,9 @@ class CommentListCreate(ListCreateAPIView):
         if isinstance(serializer, RatingSerializer):
             if request.user.user_type == "Shelter":
                 return Response({"detail": "Shelters cannot give ratings"}, status=403)
-            serializer.save(user=request.user,shelter=shelter)
+            event = serializer.save(user=request.user,shelter=shelter)
         elif isinstance(serializer, ReplySerializer):
-            if request.user.user_type == "Shelter" and request.user.id != shelter.id:
+            if request.user.get_user_type() == "Shelter" and request.user.id != shelter.id:
                 return Response({"detail": "Shelters cannot reply on another shelter's comments"}, status=403)
             # comment_id = self.kwargs.get('comment_id')
             comment_id = self.request.query_params.get('comment_id')
@@ -73,9 +76,15 @@ class CommentListCreate(ListCreateAPIView):
             commented_shelter = comment.get_commented_shelter()
             if commented_shelter == None or commented_shelter.id != shelter_id:
                 return Response({"detail": "This comment is not for the specified shelter"}, status=403)
-            serializer.save(commenter=request.user, comment=comment)
+            event = serializer.save(commenter=request.user, comment=comment)
 
         headers = self.get_success_headers(serializer.data)
+        if request.user.get_user_type() == "Shelter":
+            name = shelter.name
+        else:
+            name = request.user.username
+        Notification.objects.create(user=comment.get_commenter(), sender=request.user, event=event, 
+                                    text=f"{name} replied to your comment")
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
 
     # def perform_create(self, serializer):
@@ -89,10 +98,12 @@ class ReviewCreate(CreateAPIView):
         shelter_id = self.kwargs.get('shelter_id')
         shelter = get_object_or_404(Shelter, pk=shelter_id)
         serializer.is_valid()
-        serializer.save(commenter=self.request.user, commented_shelter=shelter)
+        event = serializer.save(commenter=self.request.user, commented_shelter=shelter)
+        Notification.objects.create(user=shelter, sender=self.request.user, event=event, 
+                                    text=f"{self.request.user.username} left a review")
     
     def create(self, request, *args, **kwargs):
-        if self.request.user.user_type == "Shelter":
+        if self.request.user.get_user_type() == "Shelter":
             return Response({"detail": "Shelters cannot leave reviews"}, status=403)
         return super().create(request, *args, **kwargs)
 
@@ -101,20 +112,16 @@ class MessagePagination(CursorPagination):
     page_size = 10
     ordering = "-creation_time"
 
-    def paginate_queryset(self, queryset, request, view=None):
-        self.cursor = request.query_params.get('cursor'), None
-        return super().paginate_queryset(queryset, request, view)
-    
     def get_paginated_response(self, data):
-        next_cursor = None
-        if len(data) == self.page_size:
-            next_cursor = data[-1]['creation_time']
-
+        next_url = self.get_next_link()
+        parsed_url = urlparse(next_url)
+        parsed_query = parse_qs(parsed_url.query)
+        next_cursor = parsed_query.get('cursor', [None])[0]
         return Response({
             'next_cursor': next_cursor,
             'results': data
         })
-
+    
 
 class MessagePermission(BasePermission):
     def has_permission(self, request, view):
@@ -155,5 +162,11 @@ class MessageListCreate(ListCreateAPIView):
         except KeyError:
             pass
         serializer.is_valid()
-        serializer.save(sender=self.request.user, application=application)
+        event = serializer.save(sender=self.request.user, application=application)
+        if self.request.user.get_user_type() == "Shelter":
+            name = application.pet.shelter.name
+        else:
+            name = self.request.user.username
+        Notification.objects.create(user=application.adopter, sender=self.request.user, event=event, 
+                                    text=f"{name} messaged you regarding the application for {application.pet.name}")
     

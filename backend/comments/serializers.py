@@ -15,7 +15,7 @@ class CommentSerializer(serializers.ModelSerializer):
         if not comment.commenter.is_active:
             return "Deleted User"
         user = comment.commenter
-        if user.user_type == "Shelter":
+        if user.get_user_type() == "Shelter":
             return Shelter.objects.get(pk=user.id).name
             # return user.name
         return user.username
@@ -52,11 +52,13 @@ class MessageSerializer(serializers.ModelSerializer):
     class Meta:
         model = Message
         fields = '__all__'
+        extra_kwargs = {'sender': {'required': False},
+                        'application': {'required': False}}
 
     def get_sender_name(self, message):
         if not message.sender.is_active:
             return "Deleted User"
         user = message.sender
-        if isinstance(user, Shelter):
+        if user.get_user_type() == "Shelter":
             return user.name
         return user.username
