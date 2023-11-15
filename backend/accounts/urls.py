@@ -10,8 +10,8 @@ urlpatterns = [
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('seeker/', views.RegisterSeekerView.as_view(), name='register_seeker'),
     path('shelter/', views.RegisterShelterView.as_view(), name='register_shelter'),
-    path('profile/<int:pk>/', views.RetrieveUpdateDestroyAccount.as_view(), name='profile'),
-    path('shelter-list/', views.ListShelters.as_view(), name='list_shelters'),
+    path('profile/<int:pk>/', views.RetrieveUpdateDestroyAccountView.as_view(), name='profile'),
+    path('shelter-list/', views.ListSheltersView.as_view(), name='list_shelters'),
 ]
 
 if settings.DEBUG:
