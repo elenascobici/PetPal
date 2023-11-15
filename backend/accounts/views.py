@@ -4,7 +4,7 @@ from accounts.models.SeekerModel import Seeker
 from accounts.models.ShelterModel import Shelter
 from accounts.permissions import ProfileViewPermissions
 from accounts.models.ParentUserModel import ParentUser
-from rest_framework.generics import RetrieveUpdateDestroyAPIView
+from rest_framework.generics import RetrieveUpdateDestroyAPIView, DestroyAPIView
 
 from accounts import serializers
 
