@@ -59,4 +59,14 @@ class NotificationUpdateDelete(RetrieveUpdateDestroyAPIView):
         return super().delete(request, *args, **kwargs)
     
     def update(self, request, *args, **kwargs):
-        return super().update(request, *args, **kwargs)
+        notification = self.get_object()
+
+        status = request.data.get('read', None)
+
+        if status is False and notification.read:
+            raise PermissionDenied(detail="Notification can't be changed from 'read' to 'unread'")
+
+        if status == True or status is None:
+            return super().update(request, *args, **kwargs)
+
+        raise PermissionDenied(detail="Notification status is already 'unread'")
