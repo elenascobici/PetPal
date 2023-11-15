@@ -18,7 +18,7 @@ class RegisterShelterView(CreateAPIView):
 
 class ListSheltersView(ListAPIView):
     serializer_class = serializers.ViewShelterSerializer
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
         return Shelter.objects.all()
