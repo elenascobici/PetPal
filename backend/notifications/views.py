@@ -30,7 +30,7 @@ class NotificationListView(ListAPIView):
             raise PermissionDenied(detail="No such filter exists.")
         
         if sort == "creation-time":
-            queryset = queryset.order_by('time')
+            queryset = queryset.order_by('-time')
         elif sort != None:
             raise PermissionDenied(detail="Invalid field to sort by.")
         
