@@ -12,10 +12,27 @@ class NotificationSerializer(ModelSerializer):
     user = PrimaryKeyRelatedField(read_only=True)
     sender = PrimaryKeyRelatedField(read_only=True)
     event = PrimaryKeyRelatedField(read_only=True)
+    # read_only_fields = ['user', 'sender', 'event', 'text']
 
     class Meta:
         model = Notification
         fields = '__all__'
+    
+    # def update(self, instance, validated_data):
+    #     validated_data.pop('text', None)
+    #     return super().update(instance, validated_data)
+
+class NotificationUpdateSerializer(ModelSerializer):
+    user = PrimaryKeyRelatedField(read_only=True)
+    sender = PrimaryKeyRelatedField(read_only=True)
+    event = PrimaryKeyRelatedField(read_only=True)
+    read_only_fields = ['user', 'sender', 'event', 'text']
+
+    class Meta:
+        model = Notification
+        fields = '__all__'
+        extra_kwargs = {'text': {'required': False}}
+    
 
 class NotificationGetSerializer(ModelSerializer):
     url = serializers.SerializerMethodField()

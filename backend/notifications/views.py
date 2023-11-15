@@ -1,11 +1,13 @@
 from django.shortcuts import get_object_or_404, render
 from rest_framework.generics import CreateAPIView, ListAPIView, RetrieveAPIView, RetrieveUpdateDestroyAPIView
 from notifications.models import Notification
-from notifications.serializers import NotificationSerializer, NotificationGetSerializer
+from notifications.serializers import NotificationSerializer, NotificationGetSerializer, NotificationUpdateSerializer
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.exceptions import NotAuthenticated, PermissionDenied
 from rest_framework.permissions import IsAuthenticated
 from notifications.permissions import NotificationPermission
+from rest_framework.response import Response
+
 
 # Create your views here.
 class NotificationPagination(PageNumberPagination):
@@ -43,7 +45,9 @@ class NotificationGetUpdateDeleteView(RetrieveUpdateDestroyAPIView):
     def get_serializer_class(self):
         if self.request.method == 'GET':
             return NotificationGetSerializer
-        return NotificationSerializer
+        elif self.request.method == 'DELETE':
+            return NotificationSerializer
+        return NotificationUpdateSerializer
 
     def get(self, request, *args, **kwargs):
         notification_id = kwargs['pk']
@@ -57,15 +61,14 @@ class NotificationGetUpdateDeleteView(RetrieveUpdateDestroyAPIView):
     def delete(self, request, *args, **kwargs):
         return super().delete(request, *args, **kwargs)
     
+    
     def update(self, request, *args, **kwargs):
         notification = self.get_object()
-
         status = request.data.get('read', None)
-
-        if status is False and notification.read:
-            raise PermissionDenied(detail="Notification can't be changed from 'read' to 'unread'")
-
-        if status == True or status is None:
-            return super().update(request, *args, **kwargs)
-
-        raise PermissionDenied(detail="Notification status is already 'unread'")
+        print(status)
+        
+        if status == True or status == False:
+            notification.read=status
+            notification.save()
+            return Response(request.data, status=200)
+        return Response({"detail": "Invalid"}, status=403)
