@@ -28,7 +28,7 @@ class NotificationListView(ListAPIView):
         
         if sort == "creation-time":
             queryset = queryset.order_by('time')
-        else:
+        elif sort != None:
             raise PermissionDenied(detail="Invalid field to sort by.")
         
         return queryset
