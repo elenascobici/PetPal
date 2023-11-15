@@ -79,12 +79,13 @@ class CommentListCreate(ListCreateAPIView):
             event = serializer.save(commenter=request.user, comment=comment)
 
         headers = self.get_success_headers(serializer.data)
-        if request.user.get_user_type() == "Shelter":
-            name = shelter.name
-        else:
-            name = request.user.username
-        Notification.objects.create(user=comment.get_commenter(), sender=request.user, event=event, 
-                                    text=f"{name} replied to your comment")
+        if comment.get_commenter().id != request.user.id:
+            if request.user.get_user_type() == "Shelter":
+                name = shelter.name
+            else:
+                name = request.user.username
+            Notification.objects.create(user=comment.get_commenter(), sender=request.user, event=event, 
+                                        text=f"{name} replied to your comment")
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
 
     # def perform_create(self, serializer):
@@ -165,8 +166,10 @@ class MessageListCreate(ListCreateAPIView):
         event = serializer.save(sender=self.request.user, application=application)
         if self.request.user.get_user_type() == "Shelter":
             name = application.pet.shelter.name
+            user = application.adopter
         else:
             name = self.request.user.username
-        Notification.objects.create(user=application.adopter, sender=self.request.user, event=event, 
+            user = application.pet.shelter
+        Notification.objects.create(user=user, sender=self.request.user, event=event, 
                                     text=f"{name} messaged you regarding the application for {application.pet.name}")
     
