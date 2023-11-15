@@ -9,4 +9,4 @@ Author: Elena Scobici
 """
 
 class Seeker(ParentUser):
-    preferences = models.CharField(null=True, blank=True, max_length=100)
+    preferences = models.BooleanField(default=False)
