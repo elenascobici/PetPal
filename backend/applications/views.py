@@ -72,7 +72,7 @@ class ApplicationListView(ListAPIView):
 
             if (self.request.user.user_type == 'Seeker'):
                 # only return the applications where the adopter_id is the seeker
-                queryset = Application.objects.filter(adopter_id=self.request.user.pk, status=status_code)
+                queryset = Application.objects.filter(adopter=self.request.user.pk, status=status_code)
                 
             elif (self.request.user.user_type == 'Shelter'):
                 queryset = Application.objects.filter(pet__shelter__pk = self.request.user.pk, status=status_code)
@@ -82,7 +82,7 @@ class ApplicationListView(ListAPIView):
 
             if (self.request.user.user_type == 'Seeker'):
                 # only return the applications where the adopter_id is the seeker
-                queryset = Application.objects.filter(adopter_id=self.request.user.pk)
+                queryset = Application.objects.filter(adopter=self.request.user.pk)
         
             elif (self.request.user.user_type == 'Shelter'):
                 queryset = Application.objects.filter(pet__shelter__id = self.request.user.pk)
