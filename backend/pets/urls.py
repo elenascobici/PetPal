@@ -10,7 +10,7 @@ urlpatterns = [
         'post': 'create'
     })),
 
-    path('shelter/<int:shelter_id>/pet/<int:pet_id>/', PetViewSet.as_view({  'delete': 'destroy',
+    path('shelter/<int:shelter_id>/pet/<int:pet_id>/', PetViewSet.as_view({ 
         'put': 'update',
         'delete': 'destroy'
     })),
