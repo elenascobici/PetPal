@@ -28,7 +28,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='petdetail',
             name='type',
-            field=models.CharField(choices=[('Cat', 'Cat'), ('Dog', 'Dog'), ('Aquatic', 'Aquatic'), ('Birds', 'Birds')], default=None, max_length=20),
-            preserve_default=False,
+            field=models.CharField(choices=[('Cat', 'Cat'), ('Dog', 'Dog'), ('Aquatic', 'Aquatic'), ('Birds', 'Birds'), ('Other', 'Other')], default='Other', max_length=20),
         ),
     ]

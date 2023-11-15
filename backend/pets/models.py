@@ -33,6 +33,7 @@ class PetDetail(models.Model):
         ('Dog', 'Dog'),
         ('Aquatic', 'Aquatic'),
         ('Birds', 'Birds'),
+        ('Other', 'Other'),
     ]
 
     shelter = models.ForeignKey(Shelter, on_delete=models.CASCADE)
@@ -41,7 +42,7 @@ class PetDetail(models.Model):
     gender = models.CharField(max_length=20, choices=gender_choices)
     age = models.PositiveIntegerField(default=0)
     colour = models.CharField(max_length=20)
-    type = models.CharField(max_length=20, choices=pet_type_choices)
+    type = models.CharField(max_length=20, choices=pet_type_choices, default='Other')
     location = models.CharField(max_length=30)
     size = models.CharField(max_length=20, choices=size_choices)
     behaviour = models.CharField(max_length=20, choices=behaviour_choices)
