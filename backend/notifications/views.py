@@ -54,3 +54,9 @@ class NotificationGetView(RetrieveAPIView):
 class NotificationUpdateDelete(RetrieveUpdateDestroyAPIView):
     serializer_class = NotificationSerializer
     permission_classes = [IsAuthenticated, NotificationPermission]
+
+    def delete(self, request, *args, **kwargs):
+        return super().delete(request, *args, **kwargs)
+    
+    def update(self, request, *args, **kwargs):
+        return super().update(request, *args, **kwargs)
