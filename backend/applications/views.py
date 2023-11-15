@@ -46,7 +46,11 @@ class ApplicationCreateView(CreateAPIView):
             raise PermissionDenied(detail='Cannot adopt the same pet again.')
         
         serializer.is_valid()
-        serializer.save(adopter=adopter, pet=pet)
+        event = serializer.save(adopter=adopter, pet=pet)
+        name = self.request.user.username
+
+        Notification.objects.create(user=pet.shelter, sender=self.request.user, event=event, 
+                                                        text=f"{name} has sent in an application")
 
         # pet = get_object_or_404(PetDetail, id=self.kwargs['pet_id'])
         # pet.status = 'Withdrawn'
