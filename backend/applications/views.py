@@ -31,17 +31,24 @@ class ApplicationCreateView(CreateAPIView):
         pet = get_object_or_404(PetDetail, id=self.kwargs['pet_id'])
 
         # Do not let anyone else adopt if set to Unavailable
-        if pet.status == 'UNAVAILABLE':
+        if pet.status == 'Withdrawn':
             raise PermissionDenied(detail="Pet is not available to adopt")
-        elif pet.status == 'ADOPTED':
+        elif pet.status == 'Adopted':
             raise PermissionDenied(detail='Pet has already been adopted')
+        elif pet.status == 'Pending':
+            raise PermissionDenied(detail='Deadline has passed')
+        
+        # Check if the user already applied for the pet before
+        queryset = Application.objects.filter(adopter = self.request.user.pk, pet = self.kwargs['pet_id'])
+        if not queryset.exists():
+            raise PermissionDenied(detail='Cannot adopt the same pet again.')
         
         serializer.is_valid()
         serializer.save(adopter=adopter, pet=pet)
 
-        pet = get_object_or_404(PetDetail, id=self.kwargs['pet_id'])
-        pet.status = 'UNAVAILABLE'
-        pet.save()
+        # pet = get_object_or_404(PetDetail, id=self.kwargs['pet_id'])
+        # pet.status = 'Withdrawn'
+        # pet.save()
         return Response(serializer.data, status=201)
 
 class ApplicationPagination(PageNumberPagination):
@@ -151,6 +158,20 @@ class ApplicationRetrieveUpdateView(RetrieveUpdateAPIView):
             
             if application.status == 'P' and (user_data['status'] == 'D' or user_data['status'] == 'Y'):
                 serializer.save()
+
+                # If someones application was accepted, decline everyone else's
+                if (user_data['status'] == 'Y'):
+                    # Set the pet to adopted
+                    application.pet.status = 'Adopted'
+                    application.pet.save()
+
+                    queryset = Application.objects.filter(pet = application.pet)
+
+                    for app in queryset:
+                        # Check if the app was the one that was accepted
+                        if (app.status == 'Y'):
+                            app.status = 'D'
+                            app.save()
                 return Response(serializer.data)
         else: 
             raise PermissionDenied(detail='Invalid user')
