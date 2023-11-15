@@ -150,11 +150,15 @@ class ApplicationRetrieveUpdateView(RetrieveUpdateAPIView):
                 
             if (application.status == 'P' or application.status == 'Y') and user_data['status'] == 'W':
                 serializer.last_update = timezone.now()
-                serializer.save()
+                event = serializer.save()
 
                 application = self.get_object() # to get the updated data
                 application.last_update = timezone.now()
                 application.save()
+
+                name = self.request.user.username
+                Notification.objects.create(user=application.pet.shelter, sender=self.request.user, event=event, 
+                                                        text=f"{name} has withdrawn their application")
 
                 return Response(serializer.data)
             
