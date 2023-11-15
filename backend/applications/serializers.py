@@ -9,7 +9,7 @@ class ApplicationSerializer(ModelSerializer):
 
     status_choices = [
             ('P', 'Pending'),
-            ('Y', 'Accepted'),
+            ('A', 'Accepted'),
             ('D', 'Declined'),
             ('W', 'Withdrawn'),
     ]
