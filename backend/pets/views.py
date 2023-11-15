@@ -3,10 +3,12 @@ from .models import PetDetail
 from .serializers import PetSerializer
 from rest_framework.response import Response
 from accounts.models.ShelterModel import Shelter
+from accounts.models.SeekerModel import Seeker
 from rest_framework.exceptions import NotFound, PermissionDenied
 from rest_framework.permissions import AllowAny
 from rest_framework.generics import ListAPIView
 from rest_framework.pagination import PageNumberPagination
+from notifications.models import Notification
 
 class SearchPagination(PageNumberPagination):
     page_size = 8
@@ -45,8 +47,15 @@ class PetViewSet(viewsets.ModelViewSet):
 
     if PetDetail.objects.filter(name=name, type=type, gender=gender, shelter=shelter).exists():
       return Response({"detail": "This shelter already has a pet with this name, gender and type. Duplicate pet postings not allowed."}, status=400)
-    
+       
     serializer.save(shelter=shelter)
+
+    # Notifications
+    # find all seekers that have preference as true and create notifications for each of them
+    seekers_queryset = Seeker.objects.filter(preference=True)
+    event=serializer.save()
+    for seeker in seekers_queryset:
+      Notification.objects.create(user=seeker, sender=shelter, event=event, text=f"A new pet, {name}, has been created!")
     
     # if all conditions are met, save 
     headers = self.get_success_headers(serializer.data)
