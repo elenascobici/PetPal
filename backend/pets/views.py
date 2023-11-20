@@ -52,7 +52,7 @@ class PetViewSet(viewsets.ModelViewSet):
 
     # Notifications
     # find all seekers that have preference as true and create notifications for each of them
-    seekers_queryset = Seeker.objects.filter(preference=True)
+    seekers_queryset = Seeker.objects.filter(preferences=True)
     event=serializer.save()
     for seeker in seekers_queryset:
       Notification.objects.create(user=seeker, sender=shelter, event=event, text=f"A new pet, {name}, has been created!")
