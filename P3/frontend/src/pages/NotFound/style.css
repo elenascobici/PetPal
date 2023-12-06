@@ -20,8 +20,9 @@
 .error404-image {
     height: auto;
     width: calc(5rem + 10vw);
+    margin-bottom: 1rem;
 }
 
-@media screen and (max-width: 409px) {
-    #error404-main > .main { padding-bottom: 0; margin-bottom: 300px;}
+@media screen and (max-width: 453px) {
+    #error404-main { padding-bottom: 0; margin-bottom: 400px;}
 }
