@@ -7,11 +7,9 @@ import './style.css';
 
 const Layout = () => {
     return <>
-        <div class="page-container">
+        <div className="page-container">
             <NavBar />
-            <main>
                 <Outlet />
-            </main>
             <Footer />
         </div>
     </>

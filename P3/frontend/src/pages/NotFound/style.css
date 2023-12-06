@@ -1,0 +1,27 @@
+.error404 {
+    margin-top: 3rem;
+    height: fit-content;
+    padding-bottom: 3rem;
+    width: 100%;
+}
+
+.error404-title {
+    padding: 0 1rem;
+    font-size: calc(2rem + 1vw);
+}
+
+.error404-text {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    padding: 1rem;
+    font-size: calc(1rem + 0.5vw);
+}
+
+.error404-image {
+    height: auto;
+    width: calc(5rem + 10vw);
+}
+
+@media screen and (max-width: 409px) {
+    #error404-main > .main { padding-bottom: 0; margin-bottom: 300px;}
+}

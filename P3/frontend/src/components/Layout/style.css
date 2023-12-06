@@ -337,6 +337,18 @@ body {
     #connect, #connectPetPal {text-align: center;}
   }
 
+  @media screen and (max-width:453px) {
+    .main {margin-bottom: 203px;}
+    .footerContact {text-align: center; }
+    #verticalLine {display: none;}
+    #connect, #connectPetPal {text-align: center; padding-left: 1rem;}
+    footer { height: 403px;}
+    .footerContact {width: 100%; padding-top: 1rem; display: flex; justify-content: center; align-items: center; height: 10rem;}
+    #contactInfo {
+      padding-top: 2rem; padding-bottom: 2rem; display: flex; justify-content: center; align-items: center; border-top: 1px solid white;
+    }
+  }
+
   @media screen and (max-width: 409px) {
     .main{padding-bottom: 403px;}
     #verticalLine {display: none;}
@@ -348,6 +360,13 @@ body {
       padding-top: 2rem; padding-bottom: 2rem; display: flex; justify-content: center; align-items: center; border-top: 1px solid white;
     }
     .main {margin-bottom: 403px;}
+  }
+
+  @media screen and (max-width: 350px) {
+    #connect {
+      font-size: 30px;
+      padding-bottom: 1rem;
+    }
   }
 
   
