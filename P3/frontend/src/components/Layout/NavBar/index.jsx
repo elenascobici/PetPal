@@ -2,7 +2,9 @@ import { useContext } from "react";
 import { Outlet, Link, useLocation } from "react-router-dom"
 import NavLink from "./NavLink";
 import NavButtons from "./NavButtons";
+
 import '../style.css';
+import 'bootstrap'
 
 const NavBar = () => {
     const links = [
@@ -14,7 +16,7 @@ const NavBar = () => {
         { to: "/application/list", idName: "Applications", label: "Applications", allowedUsers: ["shelter", "seeker"] },
     ];
 
-    return <>
+    return (
         <nav className="navbar navbar-expand-lg">
             <div className="container-fluid" id="headerContainer">
                 <Link to="/" className="navbar-brand px-3 m-0" id="petpal" >PetPal</Link>
@@ -33,7 +35,7 @@ const NavBar = () => {
                 </div>
             </div>
         </nav>
-        </>
+        )
 }
 
 export default NavBar;
