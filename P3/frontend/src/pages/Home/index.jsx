@@ -13,11 +13,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 const Home = () => {
-    const dummyCurrUser = { type: "seeker" };
-    const currentUser = dummyCurrUser;
-    const bannerText1 = currentUser === "shelter" ? "Help a friend" : "Meet a new";
-    const bannerText2 = currentUser === "shelter" ? "find a home" : "best friend";
-    const buttonText = currentUser === "shelter" ? "View applications" : "Apply today";
+    const userType = localStorage.getItem('user_type');
+    const userId = localStorage.getItem('id');
+    const bannerText1 = userType === "Shelter" ? "Help a friend" : "Meet a new";
+    const bannerText2 = userType === "Shelter" ? "find a home" : "best friend";
+    const buttonText = userType === "Shelter" ? "View applications" : "Apply today";
 
     return <>
         <div class="main" id="home">
@@ -37,13 +37,13 @@ const Home = () => {
         <p class="text">Pets available to adopt today</p>
       </div>
       <div class="container align-middle text-center">
-        <PetImages />
+        <PetImages userType={userType} userId={userId} />
       </div>
       <div class="container">
         <p class="text" id="shelterOrgs">Meet our shelter organizations</p>
       </div>
       <div class="container" id="meetShelters">
-        <ShelterOrgs />
+        <ShelterOrgs userType={userType} userId={userId} />
       </div>
     </div>
     </>
