@@ -12,12 +12,7 @@
  @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
 
  .main {
-    padding-top: 0;
-    padding-bottom: 351px;
-    padding-left: 0px;
-    padding-right: 0px;
-    margin-bottom: 128px;
-    width: 100%;
+   padding-bottom: 0 !important;
  }
 
  #mainImg {
@@ -33,8 +28,6 @@
     padding-left: 0;
     padding-right: 0;
     position: relative;
-    /* background-image: url(images/main.png);
-    height: 100%; */
  }
 
  #overlay {
@@ -49,9 +42,6 @@
 
 
  .overlayPetpal {
-    /* position: absolute;
-    top: 40%;
-    left: 15%; */
     font-family: Mochiy Pop One;
     color: #119899;
     font-size: 55px;
@@ -63,11 +53,9 @@
     padding-bottom: 0.5rem;
     padding-left: 3rem;
     padding-right: 3rem;
-    
     font-size: 30px;
     font-weight: 600;
     text-decoration: none;
-    /* position: absolute; */
  }
 
  #applyToday {
@@ -227,11 +215,8 @@
     font-family: Manrope;
     font-weight: 600;
     font-size: 28px;
-    /* padding: 24px; */
-    /* margin-bottom: 20px; */
     color: white;
     text-decoration: none;
-    /* position: absolute; */
     display: flex;
     transition: 0.3s;
  }
@@ -241,7 +226,6 @@
     font-weight: 700;
     font-size: 35px;
     color: #FFE599;
-    /* position: absolute; */
     bottom: 3.5rem;
     display: none;
     transition: 0.3s;
@@ -260,22 +244,15 @@
 
  #shelters {
     margin-top: 0;
-    /* height: 80%; */
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
     align-items: center;
-    /* gap: 1rem; */
-    /* max-width: 80%; */
-    /* margin-bottom: 120px;
-    height: 120px; */
  }
 
  .shelterLogo {
-    /* height: 80%; */
     object-fit: contain;
     display: flex;
-    /* flex-wrap: row wrap; */
     max-height: 200px;
     padding: 1rem;
  }
@@ -284,15 +261,6 @@
     .break {display: none;}
  }
 
- @media screen and (max-width:768px) {
-   .main {
-        padding-left: 14vw !important;
-        padding-right: 14vw !important;
-        padding-top: 10vw !important;
-        padding-bottom: 46vw !important;
-  }
-} 
-
  @media screen and (max-width: 991px) {
    .yellowButton { 
      text-align: right; 
@@ -300,7 +268,6 @@
      border: 1px solid white; 
      border-radius: 10px;
      color: white;
-     /* display: flex; */
    }
    .yellowButton:hover {
       background-color: #FFA903; color: white;
@@ -319,18 +286,19 @@
    #mainImg2 {display: flex; height: 100vh; object-fit: cover; object-position: 100% 0;}
    .main {position: relative;}
    #mainImgContainer {width: 100vw; height: 100vh; position: absolute; left: 0; top: 0; padding-bottom: 100vh;}
-   .shelterLogo { object-fit: scale-down; max-width: 100%; max-height: 100%; transform: scale(0.9); }
+   .shelterLogo { object-fit: scale-down; max-width: 100%; max-height: 50vw; transform: scale(0.9); }
    .main {margin-bottom: 390px; padding-bottom: 5rem;}
    #vectorButtons {padding-top: 50vh !important; padding-left: 0; padding-right: 0;}
+   #home {padding: 0;}
  }
 
  @media screen and (max-width: 574px) {
    #overlay {width: 100%;}
-   /* #mainImg { width: 100%; height: 50vw; } */
+   .main {margin-bottom: 50px !important;}
  }
 
  @media screen and (max-width: 409px) {
-   .main {margin-bottom: 403px;}
+   .main {margin-bottom: 100px !important;}
    .petImage {width: 164px; height: 200px;}
    .pet {width: 164px; height: 239px;}
    .petLabel {font-size: 23px; bottom: 0.2rem;}
@@ -340,6 +308,7 @@
    #shelter { width: 60%; height: auto; left: 20%;}
    #quote {font-size: 35px;}
    .text, #shelterOrgs {margin-bottom: 0; font-size: 30px;}
+   .shelterLogo { max-height: 100%; }
  }
 
  @media screen and (max-width: 325px) {
