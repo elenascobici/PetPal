@@ -1,7 +1,7 @@
 import '../../style.css';
 import React, { useState } from 'react';
 
-function Name(){
+function Name({required}){
     const [empty, setEmpty] = useState({
       first: false,
       last: false
@@ -11,7 +11,7 @@ function Name(){
         const content = event.target.value;
         setEmpty({
           ...empty,
-          [field]: content.trim() === ''});
+          [field]: required === "true" && content.trim() === ''});
     }
     
     return <>

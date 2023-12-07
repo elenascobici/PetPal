@@ -1,13 +1,13 @@
 import '../../style.css';
 import React, { useState } from 'react';
 
-function Phone(){
+function Phone({required}){
 
     const [empty, setEmpty] = useState(false);
   
     const inputCheck = (event) => {
         const content = event.target.value;
-        setEmpty(content.trim() === '');
+        setEmpty(required === "true" && content.trim() === '');
     }
 
     return <>
