@@ -2,6 +2,21 @@ from rest_framework.serializers import ModelSerializer
 from rest_framework import serializers
 from accounts.models.SeekerModel import Seeker
 from accounts.models.ShelterModel import Shelter
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+
+class LoginSerializer(TokenObtainPairSerializer):
+    # Override the TokenObtainPairSerializer to add a field for the
+    # user_type to the response data.
+    @classmethod
+    def get_token(cls, user):
+        token = super().get_token(user)
+        token['user_type'] = user.user_type
+        return token
+    
+    def validate(self, attrs):
+        data = super().validate(attrs)
+        data['user_type'] = self.user.user_type
+        return data
 
 class RegisterSeekerSerializer(ModelSerializer):
     # Require the user to provide the password and confirm it, do not
@@ -126,14 +141,14 @@ class ViewSeekerSerializer(ModelSerializer):
         model = Seeker
         fields = ['username', 'email', 'province', 'phone', 
                   'street', 'city', 'profile_picture', 'preferences',
-                  'first_name', 'last_name']
+                  'first_name', 'last_name', 'user_type']
 
 class ViewShelterSerializer(ModelSerializer):
     class Meta:
         model = Shelter
         fields = ['username', 'email', 'province', 'profile_picture', 
                   'name', 'website_link', 'preferred_contact', 
-                  'mission_statement']
+                  'mission_statement', 'user_type']
 
 
     

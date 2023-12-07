@@ -7,7 +7,6 @@ export const Login = () => {
     
     const submit = (e) => {
         e.preventDefault();
-        console.log(JSON.stringify({username: username, password: password}));
 
         fetch('http://localhost:8000/accounts/api/token/', {
             method: 'POST',
@@ -23,6 +22,7 @@ export const Login = () => {
                 localStorage.clear();
                 localStorage.setItem('access_token', data.access);
                 localStorage.setItem('refresh_token', data.refresh);
+                localStorage.setItem('user_type', data.user_type);
                 axios.defaults.headers.common['Authorization'] = 
                                                 `Bearer ${data['access']}`;
             })
