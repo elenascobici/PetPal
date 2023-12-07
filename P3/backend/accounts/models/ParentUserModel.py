@@ -29,7 +29,7 @@ class ParentUser(AbstractUser):
             ('QC', 'Quebec'),
             ('SK', 'Saskatchewan'),
             ('YT', 'Yukon')
-        ], max_length=25)
+        ], null=True, blank=True, max_length=25)
     profile_picture = models.ImageField(default='accounts/default_profile.jpg', upload_to='accounts/')
     user_type = models.CharField(default="NONE", max_length=6)
     
