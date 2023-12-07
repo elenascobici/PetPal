@@ -3,6 +3,7 @@ import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import SignUp from './pages/SignUp/SignUp';
+import { Login } from './pages/LogIn/LogIn';
 import Layout from './components/Layout'
 import NotFound from './pages/NotFound';
 import ApplicationForm from './pages/ApplicationForm';
@@ -14,6 +15,7 @@ function App() {
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
         <Route path="sign-up/" element={<SignUp />} />
+        <Route path="log-in/" element={<Login />} />
         <Route path="*" element={<NotFound />} /> 
         <Route path="application/form" element={<ApplicationForm />} />
         <Route path="*" element={<NotFound />} /> 
