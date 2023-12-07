@@ -10,7 +10,7 @@ function SignUp() {
             <div id="sign-up-container">
                 <p id="sign-up-text">What kind of acount would you like to create?</p>
                 <div id="options-container">
-                <a class="account-option-link" href="sign-up-seeker.html">
+                <a class="account-option-link" href="/sign-up-seeker">
                     <div class="account-option" id="pet-seeker-option">
                     <p class="pet-option-text" id="pet-seeker-text">Pet Seeker</p>
                     <div class="sign-up-image-container" id="pet-seeker-image-container">
@@ -18,7 +18,7 @@ function SignUp() {
                     </div>
                     </div> 
                 </a>
-                <a class="account-option-link" href="sign-up-shelter.html">
+                <a class="account-option-link" href="/sign-up-shelter">
                     <div class="account-option" id="pet-shelter-option">              
                     <p class="pet-option-text" id="pet-shelter-text">Pet Shelter</p>
                     <div class="sign-up-image-container" id="pet-shelter-image-container">

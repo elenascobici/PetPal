@@ -1,0 +1,65 @@
+/*
+ * Styling for Seeker Signup
+ *
+ * CSC309 PetPal
+ * 
+ * University of Toronto
+ * Fall 2023
+ * Elena Scobici
+ *
+ */
+#pets-img-container {
+    width: 100%;
+    object-fit: contain;
+}
+
+#pets-img {
+    width: 100%;
+}
+
+.text-input {
+    width: 30vw;
+}
+
+@media only screen and (max-width: 1020px) {
+    .text-input {
+        width: 90% !important;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .text-input {
+        width: 90% !important;
+    }
+}
+
+@media only screen and (max-width: 620px) {
+    .text-input {
+        width: 100% !important;
+    }
+
+    .account-links {
+        font-size: 5vw;
+    }
+
+    p {
+        font-size: 10vw;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .yellowButton {
+        font-size: 5vw;
+    }
+}
+
+@media only screen and (max-height: 840px) {
+    #login-container {
+        height: 100%;
+        margin-bottom: 65px;
+    }
+
+    .page-container {
+        overflow: auto;
+    }
+}
