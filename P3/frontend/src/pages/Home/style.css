@@ -58,9 +58,6 @@
     
  }
 
- #meetFriendHidden {
-   display: none;
- }
 
  #apply {
     padding-bottom: 0.5rem;
@@ -318,8 +315,6 @@
 
  @media screen and (max-width: 767px) {
    #overlay { margin-top: 0; display: flex; justify-content: start !important; padding-top: 20vh;}
-   /* #overlay, #overlay > .overlayPetpal, #overlay #applyToday { display: none; } */
-   /* #meetFriendHidden {display: block; margin-top: 3rem;} */
    #mainImg {display:none;}
    #mainImg2 {display: flex; height: 100vh; object-fit: cover; object-position: 100% 0;}
    .main {position: relative;}

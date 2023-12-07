@@ -303,7 +303,7 @@ body {
  }
 
   @media screen and (max-width: 991px) {
-    #navbarList { margin: 0; padding: 0; text-align: right; }
+    #navbarList { margin: 0 !important; padding: 1rem 1rem 0.5rem 0 !important; text-align: right; }
     #menuItems { width: 100%; text-align: right; padding-bottom: 1rem; text-decoration: none;}
     #navbarList:focus { color: white; }
     .nav-link:focus { text-decoration: none; color: white; }
@@ -311,7 +311,7 @@ body {
     #headerContainer { padding: 0; }
     #navButtons { padding: 0 !important; }
     #navbarList { margin-bottom: 0; }
-    .yellowButton, #signUp, #logIn { 
+    #signUp, #logIn { 
       text-align: right; color: #FFA903; background-color: #92DAD9; border: none; padding: 1rem 0; margin: 0; 
     }
     #empty { height: 0.5rem; }
