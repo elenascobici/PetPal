@@ -257,12 +257,30 @@
     padding: 1rem;
  }
 
+ @media screen and (max-width: 1050px) {
+   .yellowButton { 
+      text-align: right; 
+      background-color: #FFC011;
+      border: 1px solid white; 
+      border-radius: 10px;
+      color: white;
+    }
+    .yellowButton:hover {
+       background-color: #FFA903; color: white;
+    }
+    
+    #apply { padding-top: 8px; display: flex; width: fit-content; font-size: 25px; 
+       height: 3.25rem;  line-height: normal; text-align: center; width: fit-content !important;}
+    .overlayPetpal { font-size: 40px; }
+    #mainImg { height: 350px; object-position: 100% 0; width: 100%; }
+ }
+
  @media screen and (max-width: 1000px) {
     .break {display: none;}
  }
 
  @media screen and (max-width: 991px) {
-   .yellowButton { 
+   .yellowButton, #apply { 
      text-align: right; 
      background-color: #FFC011;
      border: 1px solid white; 

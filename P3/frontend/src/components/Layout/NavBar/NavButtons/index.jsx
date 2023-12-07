@@ -1,12 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-const NavButtons = ({ currentUser }) => {
-    // Can change to seeker to test the links (WILL REMOVE) 
-    // const dummyCurrUser = { type: "shelter" };
-    // currentUser = dummyCurrUser;
-    // console.log(currentUser);
-
+const NavButtons = ({ userType }) => {
     const [isAuth, setIsAuth] = useState(false);
 
     useEffect(() => {
@@ -17,7 +12,7 @@ const NavButtons = ({ currentUser }) => {
 
     return (
         <ul className="nav navbar-nav navbar-right px-2" id="navButtons">
-            {currentUser ? (
+            {userType ? (
                 <>
                 <li><Link to="/profile" className="yellowButton me-3" id="signUp">Profile</Link></li>
                 <li><div id="empty"> </div></li>
