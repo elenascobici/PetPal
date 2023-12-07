@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 
 const NavLink = ({ link, idName, label, users, currentUser }) => {
     // Can change to seeker to test the links (WILL REMOVE) 
-    const dummyCurrUser = { type: "seeker" };
+    const dummyCurrUser = { type: "shelter" };
     currentUser = dummyCurrUser;
     console.log(currentUser);
 

@@ -1,6 +1,11 @@
 import React from "react";
 import "./style.css";
 import Banner from "./Banner";
+import VectorButtons from "./VectorButtons";
+import Dog from "../../assets/images/dog.png";
+import Cat from "../../assets/images/cat.png";
+import Other from "../../assets/images/other.png";
+import Shelter from "../../assets/images/shelter.png";
 
 function Home() {
     const dummyCurrUser = { type: "seeker" };
@@ -13,30 +18,10 @@ function Home() {
       <Banner bannerText1={bannerText1} bannerText2={bannerText2} buttonText={buttonText}/>
       <div class="container align-middle gx-5 pt-3" id="vectorButtons">
         <div class="row align-middle gx-2 pt-1 px-0" id="vectorButtons">
-          <div class="col-xl-3 col-lg-6 col-md-6 col-xs-12 text-center d-flex justify-content-center">
-            <a type="button" class="circle" href="#">
-              <img class="vector" id="dog" src="images/dog.png" />
-              <div class="vectorLabel">Dogs</div>
-            </a>
-          </div>
-          <div class="col-xl-3 col-lg-6 col-md-6 col-xs-12 text-center d-flex justify-content-center">
-            <a type="button" class="circle" href="search-filter-cats.html">
-              <img class="vector" id="cat" src="images/cat.png" />
-              <div class="vectorLabel">Cats</div>
-            </a>
-          </div>
-          <div class="col-xl-3 col-lg-6 col-md-6 col-xs-12 text-center d-flex justify-content-center">
-            <a type="button" class="circle" href="#">
-              <img class="vector" id="other" src="images/other.png" />
-              <div class="vectorLabel">Other</div>
-            </a>
-          </div>
-          <div class="col-xl-3 col-lg-6 col-md-6 col-xs-12 text-center d-flex justify-content-center">
-            <a type="button" class="circle" href="shelters.html">
-              <img class="vector" id="shelter" src="images/shelter.png" />
-              <div class="vectorLabel">Shelters</div>
-            </a>
-          </div>
+          <VectorButtons link="/search" label="Dogs" id="dog" image={Dog} />
+          <VectorButtons link="/search" label="Cats" id="cat" image={Cat} />
+          <VectorButtons link="/search" label="Other" id="other" image={Other} />
+          <VectorButtons link="/accounts/shelter-list" label="Shelters" id="shelter" image={Shelter} />
         </div>
       </div>
       <div class="container text-center">
