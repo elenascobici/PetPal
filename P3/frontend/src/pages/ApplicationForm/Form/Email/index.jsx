@@ -1,21 +1,50 @@
 import '../../style.css';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-function Email({value, check}){
+function Email({value, check, tofill, fill}){
     const [empty, setEmpty] = useState(true);
     const [valid, setValid] = useState(false);
-  
-    const inputCheck = (event) => {
-        const content = event.target.value;
-        const regex = /^(?![a-zA-Z0-9\.!%+-]*\.\.)[a-zA-Z0-9\.!%+-]+@[\w-]+(\.\w+){1,}$/;
-        setEmpty(content.trim() === '');
-        setValid(regex.test(content));
+    const [storage, setValues] = useState({
+        content: "",
+    })
 
+    useEffect (() => {
+        // console.log("ya empty?" + empty);
         if (!empty && valid){
+            // console.log("WHY YALL NOT HERE");
             check({...value, email: true});
         } else {
             check({...value, email: false});
         }
+
+         // Put into parent
+         if(!empty){
+            // console.log("GIRL U BETTER COME IN HERE" + storage.content);
+            fill({
+                ...tofill,
+                email: storage.content
+            })
+            // console.log("CHECK FILL: " + tofill.email);
+        } else {
+            fill({
+                ...tofill,
+                email: ''
+            })
+        }
+    }, [storage, empty]);
+  
+    const inputCheck = (event) => {
+        const content = event.target.value;
+        const regex = /^(?![a-zA-Z0-9\.!%+-]*\.\.)[a-zA-Z0-9\.!%+-]+@[\w-]+(\.\w+){1,}$/;
+        // console.log('email? ' + content.trim());
+        setEmpty(content.trim() === '');
+        // console.log(empty);
+        setValid(regex.test(content));
+        // if (valid){
+            setValues({content: content});
+        // }
+
+        // console.log('email? ' + content.trim());
     }
 
     return <>

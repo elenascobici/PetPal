@@ -1,6 +1,14 @@
 import '../../../style.css';
 
-function Fence(){
+function Fence({tofill, fill}){
+  
+    const change = (event) => {
+      const val = event.input.value;
+
+      fill({...tofill, 
+          fenced_yard: val === "true"
+      })
+    }
     return <>
         <div class="row mb-3">
             <label for="fence" class="col-12 col-form-label text-start col-lg-2 text-lg-end"> Do you have a fenced yard?</label>

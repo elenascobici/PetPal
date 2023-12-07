@@ -1,6 +1,6 @@
 import '../../../style.css';
 
-function ProvinceDropdown(){
+function ProvinceDropdown({tofill, fill}){
 
     const provinceOptions = [
         {value: 'AL', label: 'Alberta'},
@@ -17,9 +17,20 @@ function ProvinceDropdown(){
         {value: 'NU', label:'Nunavut'},
         {value: 'YK', label:'Yukon'},
     ]
+
+    const storeInput = (event) => {
+        const choice = event.target.value;
+
+        // Put into parent
+            fill({
+                ...tofill,
+                province: choice
+            })
+            // console.log("CHECK FILL: " + tofill.province);
+    }
     
     return <>
-        <select class="form-control" id="province" required>
+        <select class="form-control" id="province" onChange={storeInput} required>
             <option value="" selected disabled>Select Province</option>
             {provinceOptions.map((province) => (
                 <option key={province.value} value={province.value}>

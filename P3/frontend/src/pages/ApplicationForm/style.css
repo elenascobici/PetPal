@@ -100,12 +100,23 @@
   }
 
   .required-error {
+    font-size: 15px;
     font-family: Manrope;
     color: red;
     display: flex;
     justify-content: flex-start;
   }
+
+  .final-error {
+    display: flex;
+    justify-content: center;
+  }
   
+  .modal-text {
+    color: red;
+    font-size: 20px;
+  }
+
   .image-wrapper:hover {
     filter: grayscale(100%);
   }
