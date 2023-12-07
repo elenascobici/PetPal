@@ -22,9 +22,9 @@ function AdopterDetails(){
     }
 
     return <>
-            <Name />
+            <Name required="true"/>
             <Email />
-            <Phone />
+            <Phone required="true"/>
             <div class="row mb-3">
               <label for="address" class="col-12 col-form-label text-start col-lg-2 text-lg-end">Address</label>
               <div class="col-12 col-lg-10"> 
