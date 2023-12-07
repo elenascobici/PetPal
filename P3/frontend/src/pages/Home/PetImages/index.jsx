@@ -49,7 +49,13 @@ const PetImages = ( {userType, userId } ) => {
                     return;
                 }
                 const data = await response.json();
-                setPets(data.results.slice(0, 4));
+                const filteredPets = data.results.filter(pet => pet.pet_image_1 && pet.pet_image_1 !== "http://localhost:8000/media/http%3A/127.0.0.1%3A8000/media/pets/IMG-2805_eTxDIx6.jpg");
+                if (filteredPets.length > 0) {
+                    setPets(filteredPets.slice(0, 4));
+                } else {
+                    setPets(dummyPets);
+                }
+                
             } catch (error) {
                 setPets(dummyPets);
             }

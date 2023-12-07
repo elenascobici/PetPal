@@ -65,7 +65,12 @@ const ShelterOrgs = ( {userType, userId } ) => {
                     return;
                 }
                 const data = await response.json();
-                setShelters(data.slice(0, 7));
+                const filteredShelters = data.filter(shelter => shelter.profile_picture && shelter.profile_picture !== "http://localhost:8000/media/accounts/default_profile.jpg");
+                if (filteredShelters.length > 0) {
+                    setShelters(filteredShelters.slice(0, 7));
+                } else {
+                    setShelters(dummyShelters);
+                }
             } catch (error) {
                 console.log(error);
                 setShelters(dummyShelters);
