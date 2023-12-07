@@ -11,11 +11,13 @@ class LoginSerializer(TokenObtainPairSerializer):
     def get_token(cls, user):
         token = super().get_token(user)
         token['user_type'] = user.user_type
+        token['id'] = user.id
         return token
     
     def validate(self, attrs):
         data = super().validate(attrs)
         data['user_type'] = self.user.user_type
+        data['id'] = self.user.id
         return data
 
 class RegisterSeekerSerializer(ModelSerializer):
