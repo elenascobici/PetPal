@@ -5,6 +5,8 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import SignUp from './pages/SignUp/SignUp';
+import SignUpSeeker from './pages/SignUpSeeker/SignUpSeeker';
+import SignUpShelter from './pages/SignUpShelter/SignUpShelter';
 import { Login } from './pages/LogIn/LogIn';
 import Layout from './components/Layout'
 import NotFound from './pages/NotFound';
@@ -17,6 +19,8 @@ function App() {
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
         <Route path="sign-up/" element={<SignUp />} />
+        <Route path="sign-up-seeker/" element={<SignUpSeeker />} />
+        <Route path="sign-up-shelter/" element={<SignUpShelter />} />
         <Route path="log-in/" element={<Login />} />
         <Route path="*" element={<NotFound />} /> 
         <Route path="application/form" element={<ApplicationForm />} />

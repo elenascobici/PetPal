@@ -5,8 +5,12 @@ from accounts.models.ShelterModel import Shelter
 from accounts.permissions import ProfileViewPermissions
 from accounts.models.ParentUserModel import ParentUser
 from rest_framework.generics import RetrieveUpdateDestroyAPIView
+from rest_framework_simplejwt.views import TokenObtainPairView
 
 from accounts import serializers
+
+class LoginView(TokenObtainPairView):
+    serializer_class = serializers.LoginSerializer
 
 class RegisterSeekerView(CreateAPIView):
     serializer_class = serializers.RegisterSeekerSerializer

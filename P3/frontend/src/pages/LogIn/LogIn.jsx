@@ -1,5 +1,7 @@
 import axios from "axios";
 import {useState} from "react";
+import "./style.css"
+import PuppyWavingImage from "../../assets/images/puppy-waving.jpg"
 
 export const Login = () => {
     const [username, setUsername] = useState('');
@@ -7,7 +9,6 @@ export const Login = () => {
     
     const submit = (e) => {
         e.preventDefault();
-        console.log(JSON.stringify({username: username, password: password}));
 
         fetch('http://localhost:8000/accounts/api/token/', {
             method: 'POST',
@@ -23,6 +24,8 @@ export const Login = () => {
                 localStorage.clear();
                 localStorage.setItem('access_token', data.access);
                 localStorage.setItem('refresh_token', data.refresh);
+                localStorage.setItem('user_type', data.user_type);
+                localStorage.setItem('id', data.id);
                 axios.defaults.headers.common['Authorization'] = 
                                                 `Bearer ${data['access']}`;
             })
@@ -39,7 +42,7 @@ export const Login = () => {
                 <p>Welcome</p>
                 <p>Back!</p>
                 <div id="puppy-waving-img-container">
-                    <img id="puppy-waving-img" src="images/puppy-waving.jpg"/>
+                    <img id="puppy-waving-img" src={PuppyWavingImage}/>
                 </div>
                 </div>
                 <div id="log-in-info-container">
