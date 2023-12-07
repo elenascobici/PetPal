@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 const NavButtons = ({ currentUser }) => {
@@ -6,6 +6,14 @@ const NavButtons = ({ currentUser }) => {
     // const dummyCurrUser = { type: "shelter" };
     // currentUser = dummyCurrUser;
     // console.log(currentUser);
+
+    const [isAuth, setIsAuth] = useState(false);
+
+    useEffect(() => {
+        if (localStorage.getItem('access_token')) {
+            setIsAuth(true); 
+        }
+    }, [isAuth]);
 
     return (
         <ul className="nav navbar-nav navbar-right px-2" id="navButtons">

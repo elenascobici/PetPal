@@ -1,7 +1,8 @@
 {
   "dependencies": {
-    "django": "^1.0.0",
     "bootstrap": "^5.0.0",
-    "bootstrap-icons": "^1.11.2"
+    "bootstrap-icons": "^1.11.2",
+    "cors": "^2.8.5",
+    "django": "^1.0.0"
   }
 }
