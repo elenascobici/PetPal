@@ -8,18 +8,18 @@ function ApplicationForm(){
     // - Validation and changing CSS
     // - When submit is clicked, send an ajax req.
     // - navigate to the list page with a message on the top (can be clicked out so maybe an element in list and if shown then onclick x remove and hide?)
-    
+    //! RETRIEVE PET ID SOMEHOW
 
     return <>
        <div class="image-wrapper">
-            <img class="responsive-image" src={catImg} alt="cat for adoption"/>
+            <img className="responsive-image" src={catImg} alt="cat for adoption"/>
        </div>
 
-       <div class="main-pet-adoption manrope">
-            <div class="container mt-5">
-                <h2 class="text-start mb-4 mt-4 title">General Pet Adoption Application</h2>
-                <h4 class="text-start mb-4">Adopter's Details</h4>
-               <Form />
+       <div className="main-pet-adoption manrope">
+            <div className="container mt-5">
+                <h2 className="text-start mb-4 mt-4 title">General Pet Adoption Application</h2>
+                <h4 className="text-start mb-4">Adopter's Details</h4>
+               <Form petID={4}/>
             </div>
        </div>
      </>;

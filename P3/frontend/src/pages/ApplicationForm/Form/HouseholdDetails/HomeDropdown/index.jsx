@@ -1,6 +1,6 @@
 import '../../../style.css';
 
-function HomeDropdown(){
+function HomeDropdown({tofill, fill}){
     const homeOptions = [
         {value: 'SFH', label: 'Single-Family Home'},
         {value: 'APT', label:'Apartment'},
@@ -16,6 +16,17 @@ function HomeDropdown(){
         {value: 'FLO', label:'Floating Home'},
         {value: 'IGL', label:'Igloo'},
     ]
+
+    const storeInput = (event) => {
+        const choice = event.target.value;
+
+        // Put into parent
+        fill({
+            ...tofill,
+            home: choice
+        })
+        // console.log("CHECK FILL: " + tofill.province);
+    }
     
     return <>
         <select class="form-control" id="homeType" required>

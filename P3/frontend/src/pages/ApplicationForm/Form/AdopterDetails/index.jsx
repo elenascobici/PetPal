@@ -6,7 +6,7 @@ import ProvinceDropdown from "./ProvinceDropdown";
 import '../../style.css';
 import React, { useEffect, useState } from 'react';
 
-function AdopterDetails({valid, validCheck}){
+function AdopterDetails({valid, validCheck, tofill, fill}){
     const [fieldState, setField] = useState({
       name: false,
       email: false,
@@ -20,32 +20,47 @@ function AdopterDetails({valid, validCheck}){
 
     const inputCheck = (event, field) => {
       const content = event.target.value;
+
       setEmpty({
         ...empty,
         [field]: content.trim() === ''});
       
+      // Put the value into parent:
+      fill({
+        ...tofill,
+        [field]: content.trim()
+      })
+
+      // console.log("CHECK FILL: " + tofill.street);
+      
     }
 
     useEffect (() => {
-      if (fieldState.name && fieldState.email && fieldState.phone && empty.address && empty.city){
+      if (fieldState.name && fieldState.email && fieldState.phone && !empty.address && !empty.city){
         validCheck({...valid, adopterDetails: true});
       } else {
         validCheck({...valid, adopterDetails: false});
       }
+      // console.log("Adopter: " + valid.adopterDetails);
+      // console.log("Name: " + fieldState.name);
+      // console.log("Email: " + fieldState.email);
+      // console.log("Phone: " + fieldState.phone);
+      // console.log("addr: " + !empty.address);
+      // console.log("city: " + !empty.city);
 
-    }, [fieldState]);
+    }, [fieldState, empty]);
 
     return <>
-            <Name required="true" value= {fieldState} check={setField}/>
-            <Email value= {fieldState} check={setField}/>
-            <Phone required="true" value= {fieldState} check={setField}/>
+            <Name required="true" value= {fieldState} check={setField} tofill={tofill} fill={fill}/>
+            <Email value= {fieldState} check={setField} tofill={tofill} fill={fill}/>
+            <Phone required="true" value= {fieldState} check={setField} tofill={tofill} fill={fill}/>
             <div class="row mb-3">
               <label for="address" class="col-12 col-form-label text-start col-lg-2 text-lg-end">Address</label>
               <div class="col-12 col-lg-10"> 
                 <input class="form-control mb-2" id="streetAddress1" placeholder="Address Line 1" 
                 onChange={(event) => inputCheck(event, "address")} style={{ borderColor: empty.address ? 'red' : '' }} required></input>
                 {empty.address &&  <p class="required-error"> * This field is required </p>}
-                <input class="form-control mb-2" id="streetAddress2" placeholder="Address Line 2"></input>
+                <input class="form-control mb-2" id="streetAddress2" placeholder="Address Line 2" onChange={(event) => inputCheck(event, "address2")}></input>
         
                 <div class="row"> 
                   <div class="col-12 mb-2 col-lg-6 ">
@@ -54,7 +69,7 @@ function AdopterDetails({valid, validCheck}){
                       {empty.city &&  <p class="required-error"> * This field is required </p>}
                   </div>
                   <div class="col-12 mb-2 col-lg-6">
-                    <ProvinceDropdown />
+                    <ProvinceDropdown tofill={tofill} fill={fill}/>
                   </div>
                 </div>
               </div>
