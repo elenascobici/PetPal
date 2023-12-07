@@ -1,7 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Home from './pages/Home/Home';
+import Home from './pages/Home';
 import Layout from './components/Layout'
 import NotFound from './pages/NotFound';
 import ApplicationForm from './pages/ApplicationForm';
@@ -11,9 +13,9 @@ function App() {
    <BrowserRouter>
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route index element={<Home />} />
-        <Route path="*" element={<NotFound />} /> 
+        <Route index element={<Home />} /> 
         <Route path="application/form" element={<ApplicationForm />} />
+        <Route path="*" element={<NotFound />} /> 
       </Route>
     </Routes>
   </BrowserRouter>

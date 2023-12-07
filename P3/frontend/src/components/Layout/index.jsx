@@ -11,7 +11,7 @@ const Layout = () => {
             <NavBar />
         </header>
         <div className="page-container">
-                <Outlet />
+            <Outlet />
         </div>
         <footer>
             <Footer />
