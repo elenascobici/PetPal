@@ -1,10 +1,10 @@
 import '../../style.css';
 import React, { useState } from 'react';
 
-function Name({required}){
+function Name({required, value, check}){
     const [empty, setEmpty] = useState({
-      first: false,
-      last: false
+      first: true,
+      last: true
     });
 
     const inputCheck = (event, field) => {
@@ -12,6 +12,13 @@ function Name({required}){
         setEmpty({
           ...empty,
           [field]: required === "true" && content.trim() === ''});
+
+        // Check if valid input
+        if (required === "true" && !empty.first && !empty.last){
+          check({...value, name: true});
+        } else {
+          check({...value, name: false});
+        }
     }
     
     return <>

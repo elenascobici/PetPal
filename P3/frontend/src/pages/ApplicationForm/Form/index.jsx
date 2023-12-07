@@ -11,15 +11,25 @@ import PetDetails from "./PetDetails";
 import Veterinarian from "./Veterinarian";
 import '../style.css';
 
-// import React, { useState } from 'react';
+import React, { useState } from 'react';
 
 // Will also include validation.
 function Form(){
 
+    const [valid, setValid] = useState({
+        adopterDetails: false,
+        reason: false,
+      });
+
+
+    const onSubmit = () => {
+
+    }
+
     return <>
         <form action="#" method="post">
             {/* Basic Applicant Info */}
-            <AdopterDetails />
+            <AdopterDetails valid = {valid} validCheck={setValid}/>
             <TextArea info = {{label: "Reason for Adoption",placeholder: "Please explain your reason for this adoption."}} required='true'/>
             <HouseholdDetails />
 
