@@ -25,6 +25,16 @@
     background-color: #D9EDED;
   }
 
+  .form-check-label {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .fence-padding {
+    padding-top: 7px;
+    padding-bottom: 7px;
+  }
+
   .title {
     font-family: Manrope;
     color: #119899;
@@ -51,12 +61,17 @@
 
   #submit {
     padding-bottom: 0.5rem;
+    padding-top: 0.5rem;
     padding-left: 3rem;
     padding-right: 3rem;
-    font-size: 15px;
+    font-size: 20px;
     font-weight: 600;
     text-decoration: none;
     border: none;
+  }
+  .submit-col {
+    padding-bottom: 0.5rem;
+    padding-top: 0.5rem;
   }
   
   .image-wrapper {
@@ -78,10 +93,17 @@
   }
   
   .form-control {
-    border: none;
+    /* border: none; */
     border-radius: 15px;  
     box-shadow: none; 
       
+  }
+
+  .required-error {
+    font-family: Manrope;
+    color: red;
+    display: flex;
+    justify-content: flex-start;
   }
   
   .image-wrapper:hover {
