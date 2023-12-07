@@ -1,11 +1,14 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 import { useContext } from "react";
 import { Outlet, Link, useLocation } from "react-router-dom"
 import NavLink from "./NavLink";
 import NavButtons from "./NavButtons";
 
 import '../style.css';
-import 'bootstrap'
-import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 const NavBar = () => {
     const links = [
