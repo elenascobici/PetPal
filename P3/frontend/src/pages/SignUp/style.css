@@ -16,6 +16,8 @@ body {
 }
 
 #sign-up-text {
+    font-size: 48px;
+    font-family: Manrope;
     margin-top: 30px;
 }
 
@@ -25,7 +27,7 @@ body {
     align-items: center;
 }
 
-p {
+.pet-option-text {
     font-size: 48px;
     font-family: Manrope;
 }
