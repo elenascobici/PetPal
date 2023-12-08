@@ -9,308 +9,283 @@
  * Cassandra Tin Kwon Yuen
  *
  */
- @import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap');
- @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
 
- :root {
-   --dark-blue: #119899;
-   --mid-blue: #48B7AB;
-   --light-blue: #92DAD9;
-   --dark-orange: #F3A133;
-   --mid-orange: #FEBF11;
-   --light-orange: #FEF2CB;
- }
-
- .main {
-    padding-bottom: 351px;
-    padding-left: 0px;
-    padding-right: 0px;
-    margin-bottom: 128px;
-    width: 100%;
- }
-
- #title {
-    font-family: Mochiy Pop One;
-    font-size: 55px;
-    color: #009899;
- }
-
- #webpage {
-    text-decoration: none;
-    color: #F4A133;
-    font-family: Manrope;
-    font-size: 32px;
-    font-weight: 400;
-    transition: 0.3s;
- }
-
- #webpage:hover {
-   color: #FEBF11;
- }
-
- #contact {
-    background-color: #F9FAFF;
-    margin-top: 100px;
-    text-align: left;
-    padding: 3rem;
-    border-radius: 20px;
-    height: auto;
-    gap: 1rem;
- }
-
- .subtitle, .subtitle2 {
-    font-family: Manrope;
-    font-size: 30px;
-    font-weight: 700;
-    color: #009899;
- }
-
-
- #shelterLogo, #shelterLogo2, #shelterLogo3 {
-    width: 70%;
-    object-fit: contain;
-    padding: 1rem;
- }
-
- #shelterLogo2, #shelterLogo3 {
+#reviews input[type="radio"] {
    display: none;
- }
+}
+ 
+.bi-star-fill {
+   font-family: Manrope;
+   font-size: 25px;
+   padding-right: 0.3rem;
+}
 
- .icon, .icon2 {
-    color: black;
- }
+.rating .bi-star-fill {
+   font-size: 180%;
+   cursor: pointer;
+}
 
- .icon2 {
-   display: none;
- }
+#reviews {
+   padding-top: 9rem;
+   /* padding-right: 6rem; */
+   width: 100%;
+   /* overflow: auto; */
+   padding-left: 3rem;
+   padding-right: 3rem;
+}
 
- .subtitleHeader { 
-   grid-area: h; 
-   display: flex;
-   justify-content: start;
-   align-items: start;
-   text-align: left;
- }
+#reviewTitleRow {
+   height: 3rem;
+}
 
- .shelterImg {
-   grid-area: i; 
+.reply {
+   font-family: Manrope;
+   font-weight: 500;
+   font-size: 17px;
+   text-align: right;
+   padding-bottom: 1rem;
+   padding-right: 0.5rem;
    display: flex;
    justify-content: end;
-   align-items: center;
-   /* height: 100%; */
- }
-
- .phoneIcon {grid-area: a;}
- .emailIcon {grid-area: b;}
- .locationIcon {grid-area: c;}
- .phoneLabel {grid-area: p;}
- .emailLabel {grid-area: e;}
- .locationLabel {grid-area: l;}
- .phone {grid-area: w; }
- .email {grid-area: v;}
- .location {grid-area: z;}
-
- .gridItem {
-   display: flex;
-   justify-content: left;
-   align-items: center;
-   text-align: left;
-   width: 100%;
- }
-
-
- #contactGrid {
-   display: grid;
-   grid-template-areas: 'h h h i'
-                        'a p w i'
-                        'b e v i'
-                        'c l z i';
-   row-gap: 0;
-   column-gap: 1rem;
-   justify-content: start;
-   align-items: center;
-   text-align: left;
- }
-
- .email.gridItem {
-   text-decoration: none;
- }
-
- .contactRow {
-    width: 100%;
-    /* display: flex;
-    align-items: center; */
-    /* height: 5rem; */
-    /* padding-top: 1rem; */
-    padding-bottom: 1rem;
-    word-wrap: break-word;
- }
-
- #subtitleRow {
-    height: 3rem;
-    /* padding-bottom: 1rem; */
- }
-
- .shelterContactInfoLabel {
-    font-family: Manrope;
-    color: #4B4B4B;
-    font-size: 30px;
-    font-weight: 600;
-    padding-right: 0.5rem;
- }
-
- .textInfo {
-    font-family: Manrope;
-    color: #4B4B4B;
-    font-size: 30px;
-    font-weight: 400;
-    display: flex;
-    word-wrap: break-word;
-    word-break: break-word;
- }
-
- .contactImg {
-    padding-right: 0;
-    display: flex;
-    flex-direction: row;
-    justify-content: end;
-    height: 1rem;
- }
-
- .contactInfoRow {
-    height: 3rem;
-    line-height: normal;
- }
-
- #rowGap {
-   display: flex;
- }
-
- .subtitle2 {
-   display: flex;
-   flex-direction: row;
-   justify-content: start;
-   align-items: start;
-   padding-top: 5rem;
-   padding-left: 3rem;
-   padding-bottom: 1rem;
- }
-
- #mission {
-   padding-left: 3rem;
- }
-
- .pet {
-   background-color: #D9EDED;
-   border-radius: 20px;
-   border: none;
-   width: 213px;
-   height: 306px;
-   margin-top: 94px;
-   transition: 0.3s;
-   position: relative;
-   margin-top: 37px;
+   padding-top :0;
 }
 
-.petImage {
-   position: absolute;
-   border-top-left-radius: 20px;
-   border-top-right-radius: 20px;
-   border: none;
-   width: 213px;
-   height: 258px;
-   top: 0;
-   left: 0;
-   object-fit: cover;
+#replyForm, #replyForm2, #replyForm3 {
+   margin-top: 1rem;
+   background-color: #f0f0f7;
 }
 
-.petLabel {
-   font-family: Manrope;
-   font-weight: 400;
-   font-size: 28px;
+.star {
+   color: #FFC011;
+}
+
+.emptyStar {
+   color: #ddd;
+}
+
+#reviewSubtitle {
+   padding-top: 0;
+   padding-right: 1rem;
+   padding-left: 0;
+   padding-bottom: 0;
+   margin-bottom: 0;
+}
+
+.reviewRow {
+   display: flex;
+   flex-flow: row wrap;
+   padding-bottom: 0.5rem;
+   align-items: center;
+}
+
+.reviewClick, .reviewerName {
    color: #4B4B4B;
-   position: absolute;
-   left: 0;
-   right: 0;
-   bottom: 0.3rem;
-   max-height: 48px;
+   font-family: Manrope;
+   font-size: 23px;
+   font-weight: 700;
+   text-decoration: none;
+   padding-left: 1rem;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   transition: 0.3s;
 }
 
-#carouselContainer {
+.reviewerName {
+   font-weight: 600;
+   font-size: 20px;
+   padding-left: 1rem;
+   padding-top: 1.5rem;
+   display: flex;
+   justify-content: start;
+}
+
+#reviewBox, #replyBox {
+   background-color: #F9FAFF;
+   margin-top: 2rem;
+   /* margin-left: 3rem;
+   margin-right: 3rem; */
+   width: 100%;
+}
+
+#replyBox, #replyForm, #replyForm2, #replyForm3 {
+   /* margin-left: 5rem; */
+   background-color: #f0f0f7;
+   /* margin-right: 5rem; */
+   margin-top: 1rem;
+   width: 97%;
+   margin-right: 0;
+   padding-right: 0;
+   /* position: absolute;
+   right: 0; */
+}
+
+#replyForm3 {
+   width: 94%;
+}
+
+#replyForm, #replyForm2, #replyForm3, #replyForm3 {
+   margin-top: 1rem;
+}
+
+#replyBoxForm {
+   margin: 0;
+   padding: 0.5rem 1rem 1rem 1rem;
+}
+
+.lastReview {
+   padding-top: 0 !important;
+}
+
+.noReply {
+   padding-bottom: 2rem;
+}
+
+.submit {
+   text-decoration: none;
+   font-family: Manrope;
+   font-size: 16px;
+   font-weight: 500;
+   color: white;
+   background-color: #48B7AB;
+   padding: 0.4rem 0.5rem 0.4rem 0.5rem;
+   border-radius: 10px;
+   margin-bottom: 0.5rem;
+   transition: 0.3s;
+}
+
+.submit:focus, .submit:hover {
+   color: white;
+}
+
+.submit:hover {
+   background-color: #119899;
+}
+
+/* .responderName {
+   padding-left: 0;
+} */
+
+.stars {
+   display: flex;
+   flex-flow: row wrap;
+   align-items: center;
+   justify-content: end;
+   padding-right: 1rem;
+}
+
+.rating {
+   float:left;
+   width: auto;
+   margin: 0;
+   padding: 0;
+}
+
+/* :not(:checked) is a filter, so that browsers that don’t support :checked don’t 
+  follow these rules. Every browser that supports :checked also supports :not(), so
+  it doesn’t make the test unnecessarily selective */
+/* .rating:not(:checked) > input {
+   position:absolute;
+   top:-9999px;
+   clip:rect(0,0,0,0);
+}
+
+.rating:not(:checked) > label {
+   float: right;
+   width: 1.2em;
+   padding: 0 .1em;
+   overflow: hidden;
+   white-space: nowrap;
+   cursor: pointer;
+   font-size: 180%;
+   line-height: 1.2;
+   color:#ddd;
+}
+
+.rating > input:checked ~ label {
+   color: #FFC011;
+}
+
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label {
+   color: #FFC011;
+}
+
+input[type="radio"]{
+   visibility:hidden;
+}
+
+.rating > label:active {
+   position:relative;
+   top:2px;
+   left:2px;
+} */
+ 
+.reviewText {
+   color: #4B4B4B;
+   font-family: Manrope;
+   font-size: 20px;
+   font-weight: 400;
+   text-decoration: none;
+   padding-left: 1rem;
+   /* padding-bottom: 1.5rem; */
+   padding-right: 1rem;
+   margin-bottom: 1rem;
+}
+
+#seeMoreCollapse {
+   position: relative;
    padding: 0;
    margin: 0;
-   position: relative;
+   /* padding-bottom: 6rem; */
 }
 
-.carousel .carousel-indicators {
-   bottom: -4.5rem;
-}
-
-/* .carousel, .carousel-inner {
-   width: max-content; 
-   max-width: fit-content;
-} */
-
-/* .carousel {
-   width: max-content; 
-   max-width: fit-content;
-} */
-
-#carouselPage {
-   width: max-content; 
-   max-width: fit-content;
-   position: relative;
-}
-
-
-#petsCarousel .carouselIndicator {
-   width: 10px;
-   height: 10px;
-   border-radius: 50%;
-   background-color: var(--dark-orange);
-   margin: 0px 7px;
-}
-
-.carousel-control-next {
-   right: -6rem;
-   /* justify-content: left;
-   padding-left: 1rem; */
-}
-
-.carousel-control-prev {
-   left: -6rem;
-   /* justify-content: right;
-   padding-right: 1rem; */
-}
-
-.carousel-inner {
-   display: flex;
-   /* width: 90%; */
-}
-
-.carousel-button {
-   display: flex;
+#seeMore {
+   text-align: right;
+   padding-right: 3rem;
+   padding-top: 1rem;
+   border: none;
+   width: auto;
    position: absolute;
-
+   right: 0;
 }
 
-.carousel-control-next-icon, .carousel-control-prev-icon {
-   color: var(--dark-orange);
+.reviewClick:hover, .chevron:hover {
+   color: #AFAFAF;
+}
+
+#seeMore:focus {
+   outline: 0;
+   box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+}
+
+#seeMore[aria-expanded=false] .text-expanded {
+   display: none;
+}
+
+#seeMore[aria-expanded=true] .text-collapsed {
+   display: none;
+}
+
+.chevron {
+   color: #4B4B4B;
    font-family: Manrope;
-   font-size: 65px;
-   font-weight: 700;
+   font-size: 20px;
+   text-decoration: none;
+   vertical-align: bottom;
+   transition: 0.3s;
 }
 
-.carousel-control-next-icon::after {
-   content: '>';
+.bi-chevron-up {
+   padding-left: 0.5rem;
 }
 
-.carousel-control-prev-icon::after {
-   content: '<';
-}
 
-.row.align-middle {
-   width: 100%;
+#collapsedReviews {
+   /* padding-right: 6rem; */
+   padding-top: 3rem;
+   padding-left: 3rem;
+   padding-right: 3rem;
 }
 
 /* review.html */

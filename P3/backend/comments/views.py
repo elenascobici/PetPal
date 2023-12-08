@@ -1,6 +1,7 @@
+from django.forms import ValidationError
 from django.http import Http404, HttpResponse
 from django.shortcuts import get_object_or_404, render
-from rest_framework.generics import ListCreateAPIView, CreateAPIView, ListAPIView
+from rest_framework.generics import ListCreateAPIView, CreateAPIView
 from rest_framework.permissions import IsAuthenticated, BasePermission
 from rest_framework.pagination import PageNumberPagination, CursorPagination
 from rest_framework.response import Response
@@ -10,7 +11,7 @@ from urllib.parse import urlparse, parse_qs
 
 
 from notifications.models import Notification
-from .models import Review, Reply, Comment, Message
+from .models import Review, Reply, Comment, Message, Rating
 from .serializers import CommentSerializer, ReviewSerializer, ReplySerializer, RatingSerializer, MessageSerializer
 from accounts.models.ShelterModel import Shelter
 from accounts.models.SeekerModel import Seeker
@@ -99,6 +100,22 @@ class ReviewCreate(CreateAPIView):
         shelter_id = self.kwargs.get('shelter_id')
         shelter = get_object_or_404(Shelter, pk=shelter_id)
         serializer.is_valid()
+        rating = serializer.validated_data.pop('rating', None)
+        if rating:
+            existing_rating = Rating.objects.filter(user=self.request.user, shelter=shelter).first()
+            if existing_rating:
+                existing_rating.value = rating
+                existing_rating.save()
+            else:
+                rating_data = {'value': rating}
+                rating_data['user'] = self.request.user.pk
+                rating_data['shelter'] = shelter_id
+                rating_serializer = RatingSerializer(data=rating_data, context={'request': self.request})
+                rating_serializer.is_valid(raise_exception=True)
+                rating_serializer.save()
+
+            serializer.validated_data['rating'] = rating
+
         event = serializer.save(commenter=self.request.user, commented_shelter=shelter)
         Notification.objects.create(user=shelter, sender=self.request.user, event=event, 
                                     text=f"{self.request.user.username} left a review")
@@ -106,6 +123,28 @@ class ReviewCreate(CreateAPIView):
     def create(self, request, *args, **kwargs):
         if self.request.user.get_user_type() == "Shelter":
             return Response({"detail": "Shelters cannot leave reviews"}, status=403)
+        return super().create(request, *args, **kwargs)
+
+
+class RatingCreate(CreateAPIView):
+    serializer_class = RatingSerializer
+    queryset = Rating.objects.all()
+    permission_classes = [IsAuthenticated]
+    
+    def perform_create(self, serializer):
+        shelter_id = self.kwargs.get('shelter_id')
+        shelter = get_object_or_404(Shelter, pk=shelter_id)
+        existing_rating = Rating.objects.filter(user=self.request.user, shelter=shelter).first()
+        if existing_rating:
+            # Update user's rating
+            print("EXISTS")
+            serializer = self.get_serializer(existing_rating, data=self.request.data, partial=True)
+            serializer.is_valid(raise_exception=True)
+        serializer.save(user=self.request.user, shelter=shelter)
+    
+    def create(self, request, *args, **kwargs):
+        if self.request.user.get_user_type() == "Shelter":
+            return Response({"detail": "Shelters cannot leave ratings"}, status=403)
         return super().create(request, *args, **kwargs)
 
 

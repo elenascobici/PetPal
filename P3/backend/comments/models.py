@@ -48,7 +48,15 @@ class Review(Comment):
                                      on_delete=models.SET_NULL)
     commented_shelter = models.ForeignKey(Shelter, related_name='reviews',
                                              on_delete=models.CASCADE)
-    rating = models.ForeignKey(Rating, null=True, blank=True, on_delete=models.SET_NULL)
+    rating = models.PositiveIntegerField(null=True, blank=True,
+        choices=[
+            (1, '1'),
+            (2, '2'),
+            (3, '3'),
+            (4, '4'),
+            (5, '5'),
+        ]
+    )
 
     
 class Reply(Comment):

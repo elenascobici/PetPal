@@ -43,9 +43,11 @@ class ReplySerializer(CommentSerializer):
         extra_kwargs = {'comment': {'required': False}}
 
 class RatingSerializer(serializers.ModelSerializer):
+    user = serializers.PrimaryKeyRelatedField(read_only=True) 
     class Meta:
         model = Rating
         fields = '__all__'
+        extra_kwargs = {'shelter': {'required': False}}
 
 class MessageSerializer(serializers.ModelSerializer):
     # sender_name = serializers.SerializerMethodField()
