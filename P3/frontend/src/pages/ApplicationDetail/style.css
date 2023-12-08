@@ -1,0 +1,356 @@
+/*
+ * my-application.css
+ *
+ * CSC309 PetPal
+ * 
+ * University of Toronto
+ * Fall 2023
+ *
+ */
+ @import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
+
+ #message-tb-container {
+  position: relative;
+ }
+
+ .disable {
+  pointer-events: none;
+ }
+
+/* #overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 35px;
+  width: 100%;
+  padding-left: 0.8rem;
+  padding-top: 0.3rem;
+  pointer-events: none;
+
+ } */
+
+ .choice-buttons {
+  margin-bottom: 2vw;
+ }
+
+ /* p {
+  font-size: 15px;
+ } */
+
+ .main-detail {
+  width: 90%;
+  margin: 20px;
+ }
+
+ .col-format {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 0px!important;
+  align-items: centef;
+  transition: all 0.3s linear;
+}
+
+ .send-btn-format {
+  height: 25px;
+  /* margin-left: 80%; */
+  object-fit: contain;
+  pointer-events: auto;
+ }
+
+ /* Shared */
+ .t-button {
+    background-color: #48B7AB;
+    border: 1px solid white; 
+    border-radius: 10px;
+    color: white;
+    font-size: 20px;
+    padding: 0.2rem 1rem;
+    transition: 0.3s;
+    text-decoration: none;
+}
+
+.t-button:hover {
+    background-color: #119899;
+    color: #D9EDED;
+}
+
+.r-button {
+  background-color: #ec4141;
+  border: 1px solid white; 
+  border-radius: 10px;
+  color: white;
+  font-size: 20px;
+  padding: 0.2rem 1rem;
+  transition: 0.3s;
+  text-decoration: none;
+  margin-left: 1rem;
+}
+
+.r-button:hover {
+  background-color: #a41616;
+  color: #D9EDED;
+}
+
+.message-history {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    transition: padding 0.3s linear;
+}
+   
+   .back-button {
+      background-color: #FFC011;
+      border: 1px solid white; 
+      border-radius: 10px;
+      color: white;
+      /* font-size: 30px; */
+      padding: 0.2rem 1rem;
+      transition: 0.3s;
+      text-decoration: none;
+   }
+  
+   .back-button:hover {
+      background-color: #FFA903;
+      color: #D9EDED;
+   }
+  
+   .button-pos {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-bottom: 0.5rem;
+    /* margin-right: 1.5rem; */
+   }
+  
+   .app-title {
+    font-family: Mochiy Pop One;
+    color: #119899;
+    /* font-size: 3rem; */
+    text-align: left;
+    margin-bottom: 2rem;
+    transition: font-size 0.3s ease;
+  }
+  
+  .application-details {
+    text-align: left;
+    width: 100%;
+    font-family: Manrope;
+    color: #4B4B4B;
+  }
+  
+  .content {
+    background-color: #D9EDED;
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+    width: 100%;
+  }
+
+  p {
+    font-family: Manrope;
+    font-size: 15px;
+  }
+  
+  .pet-pfp {
+    object-fit:cover;
+    margin: 1.5rem;
+    margin-right: 0rem;
+    height: 260px;
+    object-position: center 80%;
+    width: calc(100% - 1.5rem);
+    transition: width 0.3s ease;
+    transition: height 0.3s ease;
+  }
+
+
+  
+  .heading3 {
+    padding-top: 1.5rem; /* to match pet pfp */
+    margin-bottom: 1rem;
+    font-size: 30px;
+    font-weight: 600;
+    font-family: Manrope;
+    color: #4B4B4B;
+    text-align: left;
+  }
+  
+  .content-details {
+    text-align: left;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 1.5rem;
+  }
+
+  .details-space {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .details-text {
+    background-color: #FFFFFF;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+    width: calc(100% - 3.0rem);
+    border-radius: 15px;
+  }
+
+  .status-container {
+    width: 100%;
+  }
+
+  .modal-text {
+    color: black;
+  }
+
+  .status-update {
+    width: 100%;
+    margin-left: 0.5rem;
+  }
+
+  .btn-format {
+    margin-left: 1rem;
+  }
+
+  .ans-align {
+    margin: 0px !important;
+  }
+  
+  .info-label {
+    /* margin-left: 1rem; */
+    font-weight: 600;
+    padding: 0px;
+    display: flex;
+    align-items: flex-start;
+  }
+  
+  .answer {
+    margin-left: 0.5rem;
+    transition: margin-bottom 0.3s ease;
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+  
+  .line-long {
+    width: calc(100% - 1.5rem);
+    margin-left: 1.5rem;
+    margin-bottom: 0.7rem;
+    /* font-size: 18px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-right: 1rem;
+  }
+  
+  .line {
+    width: calc(100% - 1.5rem);
+    margin-left: 1.5rem;
+    margin-bottom: 0.7rem;
+    /* font-size: 15px; */
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+  
+  .sub-content {
+    margin-left: 1.5rem;
+  }
+  
+  .desc {
+    margin-right: 1.5rem;
+    text-align: left;
+    margin-bottom: 1rem;
+  }
+  
+  .answer-long{
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+  
+  .from-message {
+    display: flex;
+    justify-content: flex-end;
+    margin-left: 40%;
+    width: calc(60% - 1.5rem);
+  }
+  
+  .to-message {
+    display: flex;
+    width: calc(60% - 1.5rem);
+    margin-left: 1.5rem;
+  }
+  
+  .msg-text-from {
+    background-color: #FFA903;
+    padding: 1rem;
+    border-radius: 15px;
+    color: #FFFFFF;
+    transition-property: font-size, padding;
+    transition-duration: 0.3s;
+    transition-timing-function: linear;
+  }
+  
+  .msg-text-to {
+    background-color: #FFC011;
+    padding: 1rem;
+    border-radius: 15px;
+    color: #FFFFFF;
+    transition-property: font-size, padding;
+    transition-duration: 0.3s;
+    transition-timing-function: linear;
+  }
+  
+  .message-tb {
+    margin: 1.5rem;
+    margin-bottom: 0px;
+    border-radius: 15px;
+    height: 35px;
+  }
+  
+  .type-in {
+    width: 100%;
+    height: 35px;
+    padding-left: 0.8rem;
+    padding-top: 0.3rem;
+    box-sizing: border-box;
+    border: 0px solid #ccc;
+    border-radius: 15px;
+    background-color: #EDEDED;
+    color: #575757;
+    font-size: 16px;
+    resize: none;
+    pointer-events: auto;
+  }
+  
+  .msg-pos {
+    max-height: 500px;
+    overflow-y: auto;
+  }
+
+  .details-pos {
+    padding-right: 1.5rem;
+  }
+
+  .email-break {
+    word-break: break-all
+  }
+
+.pet-summary {
+  /* display: flex;
+  flex-direction: row; */
+  width: 100%;
+}
+
+@media screen and (max-width:768px) {
+  .pet-pfp{
+    margin-right: 1.5rem !important;
+    width: calc(100% - 3.0rem) !important;
+  }
+  .summarized-info {
+    width: calc(100% - 3.0rem);
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+  }
+}

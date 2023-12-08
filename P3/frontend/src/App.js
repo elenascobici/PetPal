@@ -14,6 +14,7 @@ import LogOut from './pages/LogOut/LogOut';
 import Layout from './components/Layout'
 import NotFound from './pages/NotFound';
 import ApplicationForm from './pages/ApplicationForm';
+import ApplicationDetail from './pages/ApplicationDetail';
 import { ViewMyProfile } from './pages/Profile/ViewMyProfile'; 
 import ShelterDetail from './pages/ShelterDetail';
 
@@ -29,7 +30,8 @@ function App() {
         <Route path="log-in/" element={<Login />} />
         <Route path="log-out/" element={<LogOut />} />
         <Route path="profile/" element={<ViewMyProfile />} />
-        <Route path="application/form" element={<PrivateRoute>  <ApplicationForm /> </PrivateRoute>} />
+        <Route path="application/form/" element={<PrivateRoute>  <ApplicationForm /> </PrivateRoute>} />
+        <Route path="application/detail/" element={<ApplicationDetail />} />
         <Route path="shelter/:shelterId/:shelterName" element={<PrivateRoute> <ShelterDetail /> </PrivateRoute>} />
         <Route path="*" element={<NotFound />} /> 
       </Route>
