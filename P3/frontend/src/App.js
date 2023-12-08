@@ -12,7 +12,7 @@ import LogOut from './pages/LogOut/LogOut';
 import Layout from './components/Layout'
 import NotFound from './pages/NotFound';
 import ApplicationForm from './pages/ApplicationForm';
-import { ViewProfile } from './pages/Profile/ViewProfile'; 
+import { ViewProfileSeeker } from './pages/Profile/ViewProfileSeeker'; 
 
 function App() {
   return (
@@ -25,7 +25,7 @@ function App() {
         <Route path="sign-up-shelter/" element={<SignUpShelter />} />
         <Route path="log-in/" element={<Login />} />
         <Route path="log-out/" element={<LogOut />} />
-        <Route path="profile/" element={<ViewProfile />} />
+        <Route path="profile/" element={<ViewProfileSeeker />} />
         <Route path="*" element={<NotFound />} /> 
         <Route path="application/form" element={<ApplicationForm />} />
       </Route>
