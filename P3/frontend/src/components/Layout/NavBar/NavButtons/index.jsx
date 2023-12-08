@@ -16,7 +16,7 @@ const NavButtons = ({ userType }) => {
                 <>
                 <li><Link to="/profile" className="yellowButton me-3" id="signUp">Profile</Link></li>
                 <li><div id="empty"> </div></li>
-                <li><Link to="/" className="yellowButton" id="logIn">Log out</Link></li>
+                <li><Link to="/log-out" className="yellowButton" id="logOut">Log out</Link></li>
                 </>
             ) : (
                 <>

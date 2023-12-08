@@ -8,6 +8,7 @@ import SignUp from './pages/SignUp/SignUp';
 import SignUpSeeker from './pages/SignUpSeeker/SignUpSeeker';
 import SignUpShelter from './pages/SignUpShelter/SignUpShelter';
 import { Login } from './pages/LogIn/LogIn';
+import LogOut from './pages/LogOut/LogOut';
 import Layout from './components/Layout'
 import NotFound from './pages/NotFound';
 import ApplicationForm from './pages/ApplicationForm';
@@ -22,6 +23,7 @@ function App() {
         <Route path="sign-up-seeker/" element={<SignUpSeeker />} />
         <Route path="sign-up-shelter/" element={<SignUpShelter />} />
         <Route path="log-in/" element={<Login />} />
+        <Route path="log-out/" element={<LogOut />} />
         <Route path="*" element={<NotFound />} /> 
         <Route path="application/form" element={<ApplicationForm />} />
         <Route path="*" element={<NotFound />} /> 
