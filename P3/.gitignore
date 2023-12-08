@@ -1,1 +1,4 @@
 /node_modules
+backend/db.sqlite3
+**/*000*.*
+.gitignore
