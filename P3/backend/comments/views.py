@@ -8,6 +8,7 @@ from rest_framework.response import Response
 from rest_framework.exceptions import PermissionDenied, NotFound
 from rest_framework import status
 from urllib.parse import urlparse, parse_qs
+from django.db.models import Avg
 
 
 from notifications.models import Notification
@@ -89,8 +90,10 @@ class CommentListCreate(ListCreateAPIView):
                                         text=f"{name} replied to your comment")
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
 
-    # def perform_create(self, serializer):
-    #     serializer.save(commenter=self.request.user)
+
+def get_avg_rating(shelter):
+    return Rating.objects.filter(shelter=shelter).aggregate(average_rating=Avg('value'))['average_rating']
+
 
 class ReviewCreate(CreateAPIView):
     serializer_class = ReviewSerializer
@@ -100,7 +103,7 @@ class ReviewCreate(CreateAPIView):
         shelter_id = self.kwargs.get('shelter_id')
         shelter = get_object_or_404(Shelter, pk=shelter_id)
         serializer.is_valid()
-        rating = serializer.validated_data.pop('rating', None)
+        rating = serializer.validated_data.get('rating')
         if rating:
             existing_rating = Rating.objects.filter(user=self.request.user, shelter=shelter).first()
             if existing_rating:
@@ -115,6 +118,9 @@ class ReviewCreate(CreateAPIView):
                 rating_serializer.save()
 
             serializer.validated_data['rating'] = rating
+            shelter.average_rating = get_avg_rating(shelter)
+            shelter.save()
+            print(shelter.average_rating)
 
         event = serializer.save(commenter=self.request.user, commented_shelter=shelter)
         Notification.objects.create(user=shelter, sender=self.request.user, event=event, 
@@ -141,6 +147,9 @@ class RatingCreate(CreateAPIView):
             serializer = self.get_serializer(existing_rating, data=self.request.data, partial=True)
             serializer.is_valid(raise_exception=True)
         serializer.save(user=self.request.user, shelter=shelter)
+        shelter.average_rating = get_avg_rating(shelter)
+        shelter.save()
+        print(shelter.average_rating)
     
     def create(self, request, *args, **kwargs):
         if self.request.user.get_user_type() == "Shelter":

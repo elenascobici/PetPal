@@ -14,7 +14,7 @@ const NavLink = ({ link, idName, label, users, userType }) => {
     if (userType === "Seeker" && label === "Applications") {
         label = "My Applications";
     }
-    console.log(link);
+
     return (
         <li className="nav-item">
             {isDisabled ? (

@@ -48,6 +48,7 @@ class RatingSerializer(serializers.ModelSerializer):
         model = Rating
         fields = '__all__'
         extra_kwargs = {'shelter': {'required': False}}
+        
 
 class MessageSerializer(serializers.ModelSerializer):
     # sender_name = serializers.SerializerMethodField()

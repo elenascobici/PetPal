@@ -150,7 +150,7 @@ class ViewShelterSerializer(ModelSerializer):
         model = Shelter
         fields = ['username', 'email', 'province', 'profile_picture', 
                   'name', 'website_link', 'preferred_contact', 
-                  'mission_statement', 'user_type']
+                  'mission_statement', 'user_type', 'average_rating']
 
 
     

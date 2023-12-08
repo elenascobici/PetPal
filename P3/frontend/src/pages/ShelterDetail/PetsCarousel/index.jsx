@@ -46,7 +46,7 @@ const PetsCarousel = ({shelterId, shelterName}) => {
     };
 
     const handleNextPage = () => {
-        setCurrentPage(prevPage => prevPage + 1);
+        setCurrentPage(prevPage => Math.min(prevPage + 1, totalPages));
     };
 
     console.log("current", currentPage);
