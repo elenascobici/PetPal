@@ -12,7 +12,7 @@ const NavButtons = ({ userType }) => {
 
     return (
         <ul className="nav navbar-nav navbar-right px-2" id="navButtons">
-            {userType ? (
+            {isAuth ? (
                 <>
                 <li><Link to="/profile" className="yellowButton me-3" id="signUp">Profile</Link></li>
                 <li><div id="empty"> </div></li>
