@@ -16,3 +16,5 @@ class Shelter(ParentUser):
                                             max_length=5
                                             , default='Email')
     mission_statement = models.TextField(null=True, blank=True)
+    average_rating = models.DecimalField(default=None, null=True, blank=True,
+                                         decimal_places=1, max_digits=2)

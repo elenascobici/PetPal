@@ -17,13 +17,21 @@
     width: 100%;
 }
 
-.text-input {
-    width: 30vw !important;
-}
-
 .text-input-error-message {
     color: red;
     font-size: 1vw;
+}
+
+#sign-up-seeker-form, #sign-up-shelter-form {
+    width: auto;
+}
+
+.text-input {
+    width: 40vw !important;
+}
+
+.create-a-pet {
+    margin-top: 40px;
 }
 
 @media only screen and (max-width: 1020px) {
