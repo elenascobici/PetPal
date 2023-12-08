@@ -33,6 +33,9 @@ export const ViewMyProfileSeeker = ({userData, errors, updateProfile}) => {
         if (userData.profile_picture) {
             setProfilePath("http://localhost:8000/accounts/profile-picture/" + userData.profile_picture.split('/').pop());
         }
+
+        // Select correct province.
+        document.getElementById("province-select").value = userData.province;
     }, [userData])
 
     const handleImageUpload = (e) => {
@@ -59,7 +62,7 @@ export const ViewMyProfileSeeker = ({userData, errors, updateProfile}) => {
                 <label for="firstName" id="firstNameLabel" class="gridLabel">First name</label>
             </div>
             <div class="grid-item">
-                <input id="firstName" type="text" name="first_name" class="gridValue" defaultValue={userData.first_name}/>
+                <input id="firstName" type="text" name="first_name" class="gridValue" defaultValue={userData.first_name} required/>
                 <p class="text-input-error-message" id="first_name-error"></p>
             </div>
             <div class="grid-item">
@@ -108,8 +111,8 @@ export const ViewMyProfileSeeker = ({userData, errors, updateProfile}) => {
                 <textarea rows = "1" type="text" name="city" class="gridValue">{userData.city}</textarea>
                 <p class="text-input-error-message" id="city-error"></p>
                 <p class="locationType">City</p>
-                <select name="province" class="gridValue" defaultValue={userData.province}>
-                <p class="text-input-error-message" id="province-error"></p>
+                <select name="province" class="gridValue" defaultValue={userData.province ? userData.province : null}>
+                <option value={null} hidden></option>
                 <option value="alberta">Alberta</option>
                 <option value="britishColumbia">British Columbia</option>
                 <option value="manitoba">Manitoba</option>
@@ -124,6 +127,7 @@ export const ViewMyProfileSeeker = ({userData, errors, updateProfile}) => {
                 <option value="saskatchewan">Saskatchewan</option>
                 <option value="yukon">Yukon</option>
                 </select>
+                <p class="text-input-error-message" id="province-error"></p>
                 <p class="locationType" id="provinceLabel">Province/Territory</p>
             </div>
             <div class="grid-item">

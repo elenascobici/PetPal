@@ -1,12 +1,14 @@
 import React from "react";
 import axios from "axios";
 import { ViewMyProfileSeeker } from "./ViewMyProfileSeeker";
+import { ViewMyProfileShelter } from "./ViewMyProfileShelter";
 
 export const ViewMyProfile = () => {
     const [userData, setUserData] = React.useState({});
     const [editProfileErrors, setEditProfileErrors] = React.useState({});
     const token = localStorage.getItem('access_token'); 
     const userId = localStorage.getItem('id'); 
+    const user_type = localStorage.getItem('user_type'); 
 
     // Fetch user data to display on their profile.
     const fetchProfileData = () => {
@@ -63,6 +65,10 @@ export const ViewMyProfile = () => {
     
 
     return (
-        userData && <ViewMyProfileSeeker userData={userData} errors={editProfileErrors} updateProfile={(formData) => updateProfile(formData)}></ViewMyProfileSeeker>
+        userData && (user_type === "Seeker" ? 
+            <ViewMyProfileSeeker userData={userData} errors={editProfileErrors} updateProfile={(formData) => updateProfile(formData)}></ViewMyProfileSeeker> 
+                : 
+            <ViewMyProfileShelter userData={userData} errors={editProfileErrors} updateProfile={(formData) => updateProfile(formData)}></ViewMyProfileShelter> 
+        )
     )
 }
