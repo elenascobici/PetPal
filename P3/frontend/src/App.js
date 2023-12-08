@@ -2,7 +2,9 @@ import logo from './logo.svg';
 import './App.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import PrivateRoute from './components/PrivateRoute';
 import Home from './pages/Home';
 import SignUp from './pages/SignUp/SignUp';
 import SignUpSeeker from './pages/SignUpSeeker/SignUpSeeker';
@@ -27,9 +29,8 @@ function App() {
         <Route path="log-in/" element={<Login />} />
         <Route path="log-out/" element={<LogOut />} />
         <Route path="profile/" element={<ViewMyProfile />} />
-        <Route path="*" element={<NotFound />} /> 
-        <Route path="application/form" element={<ApplicationForm />} />
-        <Route path="shelter/:shelterId/:shelterName" element={<ShelterDetail />} />
+        <Route path="application/form" element={<PrivateRoute>  <ApplicationForm /> </PrivateRoute>} />
+        <Route path="shelter/:shelterId/:shelterName" element={<PrivateRoute> <ShelterDetail /> </PrivateRoute>} />
         <Route path="*" element={<NotFound />} /> 
       </Route>
     </Routes>

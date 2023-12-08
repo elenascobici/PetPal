@@ -14,11 +14,11 @@ const NavLink = ({ link, idName, label, users, userType }) => {
     if (userType === "Seeker" && label === "Applications") {
         label = "My Applications";
     }
-
+    console.log(link);
     return (
         <li className="nav-item">
             {isDisabled ? (
-                <Link to="/" className="nav-link px-3" id="navHome">
+                <Link to="/sign-up" className="nav-link px-3" id="navHome">
                     {label}
                 </Link>
             ) : (
