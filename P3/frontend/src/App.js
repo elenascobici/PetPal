@@ -11,6 +11,7 @@ import { Login } from './pages/LogIn/LogIn';
 import Layout from './components/Layout'
 import NotFound from './pages/NotFound';
 import ApplicationForm from './pages/ApplicationForm';
+import ShelterDetail from './pages/ShelterDetail';
 
 function App() {
   return (
@@ -22,8 +23,8 @@ function App() {
         <Route path="sign-up-seeker/" element={<SignUpSeeker />} />
         <Route path="sign-up-shelter/" element={<SignUpShelter />} />
         <Route path="log-in/" element={<Login />} />
-        <Route path="*" element={<NotFound />} /> 
         <Route path="application/form" element={<ApplicationForm />} />
+        <Route path="shelter/:shelterId/:shelterName" element={<ShelterDetail />} />
         <Route path="*" element={<NotFound />} /> 
       </Route>
     </Routes>
