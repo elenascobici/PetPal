@@ -146,10 +146,10 @@
     width: 100%;
   }
 
-  p {
+  /* p {
     font-family: Manrope;
     font-size: 15px;
-  }
+  } */
   
   .pet-pfp {
     object-fit:cover;
