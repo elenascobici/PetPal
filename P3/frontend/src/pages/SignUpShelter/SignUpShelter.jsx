@@ -12,8 +12,8 @@ function SignUpSeeker() {
             errorMessageInput.innerHTML = "";
         })
 
-        var formData = Object.fromEntries(new FormData(document.querySelector('#sign-up-seeker-form')).entries());
-        fetch("http://localhost:8000/accounts/seeker/", {
+        var formData = Object.fromEntries(new FormData(document.querySelector('#sign-up-shelter-form')).entries());
+        fetch("http://localhost:8000/accounts/shelter/", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -48,7 +48,7 @@ function SignUpSeeker() {
                 </div>
                 <div id="log-in-info-container">
                 <p class="create-a-pet">Create a <b>Pet Shelter</b> Account</p>
-                <form id="sign-up-seeker-form">
+                <form id="sign-up-shelter-form">
                     <input class="text-input" type="text" name="username" placeholder="username" required />
                     <p class="text-input-error-message" id="username-error"></p>
                     <input class="text-input" type="email" name="email" placeholder="email address" required />

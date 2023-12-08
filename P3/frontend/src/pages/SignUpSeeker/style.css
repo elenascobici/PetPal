@@ -22,7 +22,7 @@
     font-size: 1vw;
 }
 
-#sign-up-seeker-form {
+#sign-up-seeker-form, #sign-up-shelter-form {
     width: auto;
 }
 
