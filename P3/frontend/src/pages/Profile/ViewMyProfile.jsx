@@ -4,11 +4,11 @@ import { ViewMyProfileSeeker } from "./ViewMyProfileSeeker";
 
 export const ViewMyProfile = () => {
     const [userData, setUserData] = React.useState({})
+    const token = localStorage.getItem('access_token'); 
+    const userId = localStorage.getItem('id'); 
 
     // Fetch user data to display on their profile on load.
     React.useEffect(() => {
-        const token = localStorage.getItem('access_token'); 
-        const userId = localStorage.getItem('id'); 
 
         fetch(`http://localhost:8000/accounts/profile/${userId}`, {
             method: 'GET',

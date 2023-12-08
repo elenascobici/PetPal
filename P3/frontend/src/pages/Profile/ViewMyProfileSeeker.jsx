@@ -59,9 +59,9 @@ export const ViewMyProfileSeeker = ({userData}) => {
                 <label for="location" id="locationLabel" class="gridLabel">Location</label>
             </div>
             <div class="grid-item">
-                <textarea id="location" rows = "1" type="text" name="street" class="gridValue"></textarea>
+                <textarea id="location" rows = "1" type="text" name="street" class="gridValue" value={userData.street}></textarea>
                 <p class="locationType">Street</p>
-                <textarea rows = "1" type="text" name="city" class="gridValue" required>Toronto</textarea>
+                <textarea rows = "1" type="text" name="city" class="gridValue" required>{userData.city}</textarea>
                 <p class="locationType">City</p>
                 <select name="province" class="gridValue" value={userData.province} required>
                 <option value="alberta">Alberta</option>
@@ -95,7 +95,7 @@ export const ViewMyProfileSeeker = ({userData}) => {
                 </datalist>
             </div>
             </div>
-            <a type="submit" class="editButton" href="user-update-empty.html" id="save">Save</a>
+            <button type="submit" class="editButton" id="save">Save</button>
         </form>      
         </div>
     </div>
