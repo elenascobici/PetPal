@@ -1,7 +1,8 @@
-import axios from "axios";
 import {useState} from "react";
 import "./style.css"
 import PuppyWavingImage from "../../assets/images/puppy-waving.jpg"
+import logInFetchCall from "./LogInFetchCall";
+import axios from "axios";
 
 export const Login = () => {
     const [username, setUsername] = useState('');
@@ -9,29 +10,23 @@ export const Login = () => {
     
     const submit = (e) => {
         e.preventDefault();
+        logInFetchCall(username, password, setErrorMessages);
+    }
 
-        fetch('http://localhost:8000/accounts/api/token/', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ username: username, password: password }),
-            })
-            .then(response => {
-                return response.json();
-            })
-            .then(data => {
-                localStorage.clear();
-                localStorage.setItem('access_token', data.access);
-                localStorage.setItem('refresh_token', data.refresh);
-                localStorage.setItem('user_type', data.user_type);
-                localStorage.setItem('id', data.id);
-                axios.defaults.headers.common['Authorization'] = 
-                                                `Bearer ${data['access']}`;
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
+    const setErrorMessages = (errors) => {
+        // Clear all error messages initially
+        document.querySelectorAll(".text-input-error-message").forEach((errorMessageInput) => {
+            errorMessageInput.innerHTML = "";
+        })
+        
+        const dataMap = Object.entries(errors);
+        for (let [key, value] of dataMap) {
+            let errorElement = document.getElementById(key + "-error");
+            if (!errorElement) {
+                errorElement = document.getElementById("username-error");
+            }
+            errorElement.innerHTML = value;
+        }
     }
 
     return (
@@ -53,13 +48,13 @@ export const Login = () => {
                         placeholder="username" 
                         onChange={e => setUsername(e.target.value)} 
                         required/>
-                    <br/>
+                    <p class="text-input-error-message" id="username-error"></p>
                     <input class="text-input" type="password"
                         value={password} name="password"
                         placeholder="password"
                         onChange={e => setPassword(e.target.value)}
                         required/>
-                    <br/>
+                    <p class="text-input-error-message" id="password-error"></p>
                     <button id="log-in-btn" class="yellowButton" onClick={submit}>Log In</button>
                 </form>
                 <a class="account-links" href="sign-up.html">Don't have an account? Sign up now!</a>

@@ -1,10 +1,17 @@
 import React from "react";
 import "./style.css";
 import SignUpAnimals from "../../assets/images/sign-up-animals.jpg"
+import logInFetchCall from "../LogIn/LogInFetchCall";
 
 function SignUpSeeker() {
     const validateForm = (e) => {
         e.preventDefault(); // Don't refresh
+
+        // Clear all error messages initially
+        document.querySelectorAll(".text-input-error-message").forEach((errorMessageInput) => {
+            errorMessageInput.innerHTML = "";
+        })
+
         var formData = Object.fromEntries(new FormData(document.querySelector('#sign-up-seeker-form')).entries());
         fetch("http://localhost:8000/accounts/seeker/", {
             method: 'POST',
@@ -12,12 +19,20 @@ function SignUpSeeker() {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(formData)
-        }).then(response => response.json())
-            .then((data) => {
-                console.log(data);
-            }).catch((error) => {
-                console.log(error);
-            })
+        }).then(response => {
+            if (!response.ok) {
+                response.json().then((data) => {
+                    const dataMap = Object.entries(data);
+                    for (let [key, value] of dataMap) {
+                        document.getElementById(key + "-error").innerHTML = value;
+                    }
+                })
+            } else {
+                logInFetchCall(formData.username, formData.password1);
+            }
+        }).catch((error) => {
+            console.log(error);
+        })
     }
 
     return (
@@ -35,11 +50,17 @@ function SignUpSeeker() {
                 <p>Create a <b>Pet Seeker</b> Account</p>
                 <form id="sign-up-seeker-form">
                     <input class="text-input" type="text" name="firstname" placeholder="first name" required />
+                    <p class="text-input-error-message" id="firstname-error"></p>
                     <input class="text-input" type="text" name="lastname" placeholder="last name" required />
+                    <p class="text-input-error-message" id="lastname-error"></p>
                     <input class="text-input" type="text" name="username" placeholder="username" required />
+                    <p class="text-input-error-message" id="username-error"></p>
                     <input class="text-input" type="email" name="email" placeholder="email address" required />
+                    <p class="text-input-error-message" id="email-error"></p>
                     <input class="text-input" type="password" name="password1" placeholder="password" required />
+                    <p class="text-input-error-message" id="password1-error"></p>
                     <input class="text-input" type="password" placeholder="confirm password" name="password2" required />
+                    <p class="text-input-error-message" id="password2-error"></p>
                     <br />
                     <button id="log-in-btn" class="yellowButton" onClick={validateForm}>Sign Up</button>
                 </form>
