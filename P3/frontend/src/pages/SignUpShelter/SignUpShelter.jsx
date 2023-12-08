@@ -24,6 +24,7 @@ function SignUpSeeker() {
                 response.json().then((data) => {
                     const dataMap = Object.entries(data);
                     for (let [key, value] of dataMap) {
+                        console.log(key);
                         document.getElementById(key + "-error").innerHTML = value;
                     }
                 })
@@ -51,6 +52,8 @@ function SignUpSeeker() {
                 <form id="sign-up-shelter-form">
                     <input class="text-input" type="text" name="username" placeholder="username" required />
                     <p class="text-input-error-message" id="username-error"></p>
+                    <input class="text-input" type="text" name="name" placeholder="name" required />
+                    <p class="text-input-error-message" id="name-error"></p>
                     <input class="text-input" type="email" name="email" placeholder="email address" required />
                     <p class="text-input-error-message" id="email-error"></p>
                     <input class="text-input" type="password" name="password1" placeholder="password" required />
