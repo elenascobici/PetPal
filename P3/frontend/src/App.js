@@ -13,6 +13,8 @@ import Layout from './components/Layout'
 import NotFound from './pages/NotFound';
 import ApplicationForm from './pages/ApplicationForm';
 import { ViewProfileSeeker } from './pages/Profile/ViewProfileSeeker'; 
+import ShelterDetail from './pages/ShelterDetail';
+import { ViewProfile } from './pages/Profile/ViewProfile'; 
 
 function App() {
   return (
@@ -28,6 +30,8 @@ function App() {
         <Route path="profile/" element={<ViewProfileSeeker />} />
         <Route path="*" element={<NotFound />} /> 
         <Route path="application/form" element={<ApplicationForm />} />
+        <Route path="shelter/:shelterId/:shelterName" element={<ShelterDetail />} />
+        <Route path="*" element={<NotFound />} /> 
       </Route>
     </Routes>
   </BrowserRouter>
