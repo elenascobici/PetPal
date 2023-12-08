@@ -1,23 +1,55 @@
 import '../../style.css';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-function Phone({required, value, check}){
+function Phone({required, value, check, tofill, fill}){
 
-    const [empty, setEmpty] = useState(true);
+    const [empty, setEmpty] = useState(required==="true");
     const [valid, setValid] = useState(false);
+    const [storage, setValues] = useState({
+        content: ""
+    })
+
+    useEffect (() => {
+        const newVal = {...value, phone: required === "true" && !empty && valid};
+        check(newVal);
+
+        // Put into parent
+        if (required === "true"){
+            if (valid){
+                console.log("yall good?");
+                fill({
+                    ...tofill,
+                    phone: storage.content
+                })
+            } else {
+                console.log("U SUCK")
+                fill({
+                    ...tofill,
+                    phone: ''
+                })
+            }
+        } else {
+            // it is the vet
+            //! FIX TO MAKE VALIDATION FOR INVALID PHONE LATER?
+            if (storage.content.trim() !=''){
+                console.log("u better not")
+                fill({
+                    ...tofill,
+                    vet_contact: storage.content
+                })
+            }
+            
+        }
+    }, [valid]);
   
     const inputCheck = (event) => {
         const content = event.target.value;
-        const regex = /^[0-9]{3}-[0-9]{3}-[0-9]{4}$/;
+        const regex = /^[0-9]{10}$/;
         setEmpty(required === "true" && content.trim() === '');
         setValid(regex.test(content));
-
-        // Check if valid input
-        if (required === "true" && !empty && valid){
-            check({...value, phone: true});
-        } else {
-            check({...value, phone : false});
-        }
+        setValues({content: content.trim()});
+        
+        // console.log("CHECK FILL: " + tofill.phone);
     }
 
     return <>
@@ -25,10 +57,10 @@ function Phone({required, value, check}){
             <label for="phone" class="col-12 col-form-label text-start col-lg-2 text-lg-end">Phone Number</label>
             <div className="col-12 mb-2 col-lg-10">
                 <input type="phoneNumber" className="form-control" id="phoneNumber" placeholder="Number" 
-                onInput={(event) => inputCheck(event)} style={{ borderColor: empty || !valid ? 'red' : '' }} 
+                onInput={(event) => inputCheck(event)} style={{ borderColor: empty || !valid && required === "true" ? 'red' : '' }} 
                 required></input>
                 {empty &&  <p className="required-error"> * This field is required </p>}
-                {!empty && !valid &&  <p className="required-error"> * Invalid Phone Number (Format: xxx-xxx-xxxx) </p>}
+                {!empty && !valid && required === "true" && <p className="required-error"> * Invalid Phone Number (must be 10 digits) </p>}
             </div>
         </div>
     </>

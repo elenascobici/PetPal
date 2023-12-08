@@ -1,22 +1,17 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
-const NavLink = ({ link, idName, label, users, currentUser }) => {
-    // Can change to seeker to test the links (WILL REMOVE) 
-    const dummyCurrUser = { type: "seeker" };
-    currentUser = dummyCurrUser;
-    console.log(currentUser);
-
+const NavLink = ({ link, idName, label, users, userType }) => {
     const location = useLocation();
     const isActive = location.pathname === link;
     const isActiveNotHome = link !== "/" && location.pathname.startsWith(link);
-    const isUserAllowed = users.includes(currentUser?.type) || (!currentUser && users.includes("seeker"));
-    const isDisabled = !currentUser && link !== "/";
+    const isUserAllowed = (userType && users.includes(userType)) || (!userType && users.includes("Seeker"));
+    const isDisabled = !userType && link !== "/";
 
     if (!isUserAllowed) {
         return null;
     }
-    if (currentUser.type === "seeker" && label === "Applications") {
+    if (userType === "Seeker" && label === "Applications") {
         label = "My Applications";
     }
 

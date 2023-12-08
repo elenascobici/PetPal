@@ -6,11 +6,9 @@ import Quokkie from "../../../assets/images/quokkie.png";
 import Calcifer from "../../../assets/images/calcifer.jpg";
 import HokeyPokey from "../../../assets/images/hokey-pokey.jpg";
 
-const PetImages = () => {
-    const dummyCurrUser = { };
-    const currentUser = dummyCurrUser;
-    const filter = currentUser.type === "seeker" ? "?status=available" : "";
-    const containerText = currentUser.type === "shelter" ? "View pet listings" : "Meet more future friends";
+const PetImages = ( {userType, userId } ) => {
+    const filter = userType === "Seeker" ? "?status=available" : "";
+    const containerText = userType === "Shelter" ? "View pet listings" : "Meet more future friends";
     const [pets, setPets] = useState([]);
     const dummyPets = [
         {
@@ -30,30 +28,46 @@ const PetImages = () => {
         },
         {
             "id": 10,
-            "name": "Hokey Pokey",
+            "name": "Hokey Pokey1",
             "pet_image_1": HokeyPokey
         },
 
     ];
-    // const pets = dummyPets;
-    // CAN DO A CHECK IF USER IS SIGNED IN INSTEAD OF FETCHING AND GETTING AN ERROR
+
     useEffect(() => {
-        fetch(`http://localhost:8000/pet/search${filter}`)
-        .then(response => {
-            if (!response.ok) {
+        const fetchPets = async () => {
+            try {
+                const token = localStorage.getItem('access_token'); 
+                const response = await fetch(`http://localhost:8000/pet/search${filter}`, {
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json',
+                    }
+                    });
+                if (!response.ok) {
+                    setPets(dummyPets);
+                    return;
+                }
+                const data = await response.json();
+                const filteredPets = data.results.filter(pet => pet.pet_image_1 && pet.pet_image_1 !== "http://localhost:8000/media/http%3A/127.0.0.1%3A8000/media/pets/IMG-2805_eTxDIx6.jpg");
+                if (filteredPets.length > 0) {
+                    setPets(filteredPets.slice(0, 4));
+                } else {
+                    setPets(dummyPets);
+                }
+                
+            } catch (error) {
                 setPets(dummyPets);
-                return;
             }
-            return response.json();
-        })
-        .then(json => {
-            setPets(json.data.results.slice(0, 4));
-        })
-        .catch(error => {
-            console.error('Fetch error:', error);
+        };
+
+        if (userType && userId) {
+            fetchPets();
+        } else {
             setPets(dummyPets);
-        });
-    }, []);
+        }
+    }, [userType, userId]);
+    
 
     console.log(pets);
 

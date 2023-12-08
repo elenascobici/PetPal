@@ -9,7 +9,7 @@ import AnimalShelter from "../../../assets/images/animalshelter.jpg"
 import PawPatrol from "../../../assets/images/pawpatrol.png"
 
 
-const ShelterOrgs = () => {
+const ShelterOrgs = ( {userType, userId } ) => {
     const [shelters, setShelters] = useState([]);
     const dummyShelters = [
         {
@@ -50,21 +50,40 @@ const ShelterOrgs = () => {
     ];
 
     useEffect(() => {
-        fetch('http://localhost:8000/accounts/shelter-list')
-        .then(response => {
-            if (!response.ok) {
+        const fetchShelters = async () => {
+            try {
+                console.log("Fetching shelters");
+                const token = localStorage.getItem('access_token'); 
+                const response = await fetch('http://localhost:8000/accounts/shelter-list', {
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json',
+                    }
+                    });
+                if (!response.ok) {
+                    setShelters(dummyShelters);
+                    return;
+                }
+                const data = await response.json();
+                const filteredShelters = data.filter(shelter => shelter.profile_picture && shelter.profile_picture !== "http://localhost:8000/media/accounts/default_profile.jpg");
+                if (filteredShelters.length > 0) {
+                    setShelters(filteredShelters.slice(0, 7));
+                } else {
+                    setShelters(dummyShelters);
+                }
+            } catch (error) {
+                console.log(error);
                 setShelters(dummyShelters);
-                return;
             }
-        })
-        .then(json => {
-            setShelters(json.data.slice(0, 7));
-        })
-        .catch(error => {
-            console.error('Fetch error:', error);
+        };
+
+        if (userType && userId) {
+            fetchShelters();
+        } else {
             setShelters(dummyShelters);
-        })
-    }, []);
+        }
+    }, [userType, userId]);
+
 
 
     return (

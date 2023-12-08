@@ -12,13 +12,14 @@ import '../style.css';
 
 const NavBar = () => {
     const links = [
-        { to: "/", idName: "Home", label: "Home", allowedUsers: ["shelter", "seeker"]},
-        { to: "/search", idName: "Search", label: "Search for Pets", allowedUsers: ["shelter", "seeker"] },
-        { to: "/apply", idName: "Apply", label: "Apply Now", allowedUsers: ["seeker"] },
-        { to: "/shelters", idName: "Shelters", label: "Shelters", allowedUsers: ["shelter", "seeker"] },
-        { to: "/pets", idName: "Listings", label: "My Pet Listings", allowedUsers: ["shelter"] },
-        { to: "/applications", idName: "Applications", label: "Applications", allowedUsers: ["shelter", "seeker"] },
+        { to: "/", idName: "Home", label: "Home", allowedUsers: ["Shelter", "Seeker"]},
+        { to: "/search", idName: "Search", label: "Search for Pets", allowedUsers: ["Shelter", "Seeker"] },
+        { to: "/apply", idName: "Apply", label: "Apply Now", allowedUsers: ["Seeker"] },
+        { to: "/shelters", idName: "Shelters", label: "Shelters", allowedUsers: ["Shelter", "Seeker"] },
+        { to: "/pets", idName: "Listings", label: "My Pet Listings", allowedUsers: ["Shelter"] },
+        { to: "/applications", idName: "Applications", label: "Applications", allowedUsers: ["Shelter", "Seeker"] },
     ];
+    const userType = localStorage.getItem('user_type');
 
     return (
         <nav className="navbar navbar-expand-lg">
@@ -32,10 +33,10 @@ const NavBar = () => {
                 <ul className="nav navbar-nav me-auto mb-2 mb-lg-0" id="navbarList">
                     {links.map( link => (
                         <NavLink key={link.label} link={link.to} idName={link.idName} label={link.label} 
-                            users={link.allowedUsers} />
+                            users={link.allowedUsers} userType={userType} />
                     ))}
                 </ul>
-               <NavButtons />
+               <NavButtons userType={userType} />
                 </div>
             </div>
         </nav>

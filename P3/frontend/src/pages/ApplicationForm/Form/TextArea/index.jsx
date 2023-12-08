@@ -2,7 +2,7 @@
 import '../../style.css';
 import React, { useState, useEffect } from 'react';
 
-function TextArea({info, required}){
+function TextArea({info, required, valid, validCheck, tofill, fill, fieldName}){
 
     const [empty, setEmpty] = useState({
         field: false,
@@ -20,6 +20,19 @@ function TextArea({info, required}){
         setEmpty({
             ...empty,
             field: content.trim() === ''});
+
+        if (required === "true"){
+            validCheck({...valid,
+            reason: !empty.field})
+        }
+
+        // Put into parent
+        fill({
+            ...tofill,
+            [fieldName]: content.trim()
+        })
+
+        //   console.log(`CHECK FILL: ${tofill[fieldName]}`);
     }
 
     return <>
