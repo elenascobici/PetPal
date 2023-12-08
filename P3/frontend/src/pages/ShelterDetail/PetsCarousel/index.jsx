@@ -50,6 +50,7 @@ const PetsCarousel = ({shelterId, shelterName}) => {
     };
 
     console.log("current", currentPage);
+    console.log(pets);
 
     return (
         <div className="container" id="carouselContainer">

@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const PetCard = ({ link, name, image }) => {
     return (
         <div className="grid-item" >
-        {name && image ? (
+        {name ? (
                 <Link to={link} className="pet">
                     <img className="petImage" src={image}/>
                     <div className="petLabel">{name}</div>

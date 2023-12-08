@@ -54,11 +54,18 @@ const ShelterDetail = () => {
             return response.json();
         })
         .then(data => {
-            setShelter(data);
+            if (data.user_type !== 'Shelter') {
+                navigate('/404');
+                window.history.replaceState(null, null, `/shelter/${shelterId}/${shelterName}`);
+            } else {
+                setShelter(data);
+            }
+            
         })
     }, [shelterId]);
     
     console.log(shelter.phone);
+    console.log("NAME", shelter.name);
     // WILL REMOVE
     shelter.phone = '1234567890';
     shelter.profile_picture = PawPatrol;
