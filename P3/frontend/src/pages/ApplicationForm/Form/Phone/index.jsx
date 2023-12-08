@@ -16,13 +16,11 @@ function Phone({required, value, check, tofill, fill}){
         // Put into parent
         if (required === "true"){
             if (valid){
-                console.log("yall good?");
                 fill({
                     ...tofill,
                     phone: storage.content
                 })
             } else {
-                console.log("U SUCK")
                 fill({
                     ...tofill,
                     phone: ''
@@ -32,7 +30,6 @@ function Phone({required, value, check, tofill, fill}){
             // it is the vet
             //! FIX TO MAKE VALIDATION FOR INVALID PHONE LATER?
             if (storage.content.trim() !=''){
-                console.log("u better not")
                 fill({
                     ...tofill,
                     vet_contact: storage.content
@@ -54,7 +51,7 @@ function Phone({required, value, check, tofill, fill}){
 
     return <>
         <div className="row mb-3">
-            <label for="phone" class="col-12 col-form-label text-start col-lg-2 text-lg-end">Phone Number</label>
+            <label for="phone" className="col-12 col-form-label text-start col-lg-2 text-lg-end">Phone Number</label>
             <div className="col-12 mb-2 col-lg-10">
                 <input type="phoneNumber" className="form-control" id="phoneNumber" placeholder="Number" 
                 onInput={(event) => inputCheck(event)} style={{ borderColor: empty || !valid && required === "true" ? 'red' : '' }} 

@@ -9,9 +9,7 @@ function Email({value, check, tofill, fill}){
     })
 
     useEffect (() => {
-        // console.log("ya empty?" + empty);
         if (!empty && valid){
-            // console.log("WHY YALL NOT HERE");
             check({...value, email: true});
         } else {
             check({...value, email: false});
@@ -19,12 +17,10 @@ function Email({value, check, tofill, fill}){
 
          // Put into parent
          if(!empty){
-            // console.log("GIRL U BETTER COME IN HERE" + storage.content);
             fill({
                 ...tofill,
                 email: storage.content
             })
-            // console.log("CHECK FILL: " + tofill.email);
         } else {
             fill({
                 ...tofill,
@@ -36,15 +32,9 @@ function Email({value, check, tofill, fill}){
     const inputCheck = (event) => {
         const content = event.target.value;
         const regex = /^(?![a-zA-Z0-9\.!%+-]*\.\.)[a-zA-Z0-9\.!%+-]+@[\w-]+(\.\w+){1,}$/;
-        // console.log('email? ' + content.trim());
         setEmpty(content.trim() === '');
-        // console.log(empty);
         setValid(regex.test(content));
-        // if (valid){
-            setValues({content: content});
-        // }
-
-        // console.log('email? ' + content.trim());
+        setValues({content: content});
     }
 
     return <>

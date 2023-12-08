@@ -49,13 +49,9 @@ function Form({petID}){
 
     const submit = () => {
         //! RMB CHANGE TO 8000 WHEN DONE
-        console.log(valid.adopterDetails);
-        console.log(valid.reason);
-        // console.log(filledValues.first + ' ' + filledValues.last);
-        // console.log(filledValues.email);
-        // console.log(filledValues.phone);
-        // console.log(filledValues.vet_contact);
-        // console.log(null);
+        // console.log(valid.adopterDetails);
+        // console.log(valid.reason);
+
         // 1. get the pet dict:
         // let pet_data = {};
         // fetch(`http://localhost:8090/pet/${petID}/`, {
@@ -110,7 +106,7 @@ function Form({petID}){
                     console.log('Application data:', data);
                     if (data.detail !== ""){
                         setError(data.detail);
-                        console.log("DO U GO");
+                        // console.log("DO U GO");
                         // return <Modal content = {data.detail} show = {true}/>
                     } else {
                         setError(null);
@@ -134,31 +130,14 @@ function Form({petID}){
             <PetDetails tofill={filledValues} fill={setValues}/>
             <Veterinarian valid = {valid} validCheck={setValid} tofill={filledValues} fill={setValues}/>
 
-            <h4 class="text-start mb-4">Extra Notes</h4>
+            <h4 className="text-start mb-4">Extra Notes</h4>
             <TextArea info = {{label: " ", placeholder:"Enter any extra information you would like us to know about you."}} 
             required='false' valid = {{}} validCheck={() => {}} tofill={filledValues} fill={setValues} fieldName="notes" />
 
-            <div class="row mb-3 mt-4">
+            <div className="row mb-3 mt-4">
             {(!valid.adopterDetails || !valid.reason) &&  <p className="final-error required-error"> * Please fill out all the required fields. </p>}
-                <div class="col-12 submit-col">
-                <a class="yellowButton" id="submit" onClick={submit}>Submit</a>
-{/* 
-                <div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="errorMsg" aria-hidden="true" style={{ display: error ? 'block' : 'none' }}>
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="errorMsg">Incomplete Application</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <p class="modal-text"> Please fill in all the required fields. </p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div> */}
+                <div className="col-12 submit-col">
+                <a className="yellowButton" id="submit" onClick={submit}>Submit</a>
                 </div>
                 
             </div>
