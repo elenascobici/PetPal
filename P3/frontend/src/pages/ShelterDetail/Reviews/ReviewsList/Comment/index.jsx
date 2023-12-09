@@ -11,6 +11,9 @@ const Comment = ({ comment, className, isReview, nestingLevel, userName, shelter
     const userType = localStorage.getItem('user_type');
 
     const add_breaks = (text) => {
+      if (typeof text !== 'string') {
+        return text;
+      }
         return text.split('\n').map((line, index) => {
             return (
                 <React.Fragment key={index}>
