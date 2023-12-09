@@ -366,7 +366,7 @@ textarea {
    display: flex;
 } */
 
-.grid {
+.pet-grid {
    grid-template-columns: auto auto auto auto;
    display: grid;
    column-gap: 2rem;
@@ -375,13 +375,13 @@ textarea {
    place-items: center;
 }
 
-/* .grid-item {
+.pet-grid-item {
    display: flex;
    align-items: center;
    justify-content: center;
-} */
+}
 
-.grid-item > .pet {
+.pet-grid-item > .pet {
    margin-top: 1rem;
 }
 
@@ -435,7 +435,7 @@ textarea {
  }
 
 @media screen and (max-width:1210px) {
-   .grid {grid-template-columns: auto auto auto; align-items: center;}
+   .pet-grid {grid-template-columns: auto auto auto; align-items: center;}
    .textInfo {font-size: 25px;}
    .shelterContactInfoLabel {font-size: 25px;}
    .icon {font-size: 20px;}
@@ -457,7 +457,7 @@ textarea {
 }
 
 @media screen and (max-width:1003px) {
-   .grid {grid-template-columns: auto auto; align-items: center;}
+   .pet-grid {grid-template-columns: auto auto; align-items: center;}
    .carousel-control-next {right: -4rem;}
    .carousel-control-prev {left: -4rem;}
    #petsSubtitle {padding-left: 0; padding-bottom: 0.5rem; justify-content: center;}
@@ -512,7 +512,7 @@ textarea {
 } */
 
 @media screen and (max-width:768px) {
-   .grid {grid-template-columns: auto; align-items: center;}
+   .pet-grid {grid-template-columns: auto; align-items: center;}
    .carousel-control-next {right: -4rem;}
    .carousel-control-prev {left: -4rem;}
    #mission , .subtitle2 {padding-left: 0;}

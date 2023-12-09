@@ -2,7 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import PetGrid from './PetGrid';
-
+import Buddy from "../../../assets/images/buddy.jpg"
+import Calcifer from "../../../assets/images/calcifer.jpg"
+import Quokkie from "../../../assets/images/quokkie.png"
+import HokeyPokey from "../../../assets/images/hokey-pokey.jpg"
+import Hamtaro from "../../../assets/images/hamtaro.jpg"
+import Jiji from "../../../assets/images/jiji.jpg"
+import Totoro from "../../../assets/images/totoro.jpg"
+import Sadaharu from "../../../assets/images/sadaharu.jpg"
+import Perry from "../../../assets/images/perry.jpg"
 
 const PetsCarousel = ({shelterId, shelterName}) => {
     const navigate = useNavigate();
@@ -12,6 +20,56 @@ const PetsCarousel = ({shelterId, shelterName}) => {
     const [totalPages, setTotalPages] = useState(0);
     const [pets, setPets] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
+
+    const dummyPets = {
+            "count": 5,
+            "next": null,
+            "previous": null,
+            "results": [
+                {
+                    "id": 2,
+                    "name": "Buddy",
+                    "pet_image_1": Buddy
+                },
+                {
+                    "id": 3,
+                    "name": "Quokkie",
+                    "pet_image_1": Quokkie
+                },
+                {
+                    "id": 1,
+                    "name": "Calcifer",
+                    "pet_image_1": Calcifer
+                },
+                {
+                    "id": 10,
+                    "name": "Hokey Pokey",
+                    "pet_image_1": HokeyPokey
+                },
+                {
+                    "id": 4,
+                    "name": "Hamtaro",
+                    "pet_image_1": Hamtaro
+                },
+                {
+                    "id": 5,
+                    "name": "Jiji",
+                    "pet_image_1": Jiji
+                },
+                {
+                    "id": 6,
+                    "name": "Totoro",
+                    "pet_image_1": Totoro
+                },
+                {
+                    "id": 7,
+                    "name": "Sadaharu",
+                    "pet_image_1": Sadaharu
+                },
+            ]
+        
+
+        }
  
     useEffect(() => {
         const token = localStorage.getItem('access_token'); 
@@ -33,12 +91,15 @@ const PetsCarousel = ({shelterId, shelterName}) => {
         })
         .then(data => {
             console.log(data);
+            // setPets(dummyPets.results)
             setPets(data.results);
             if (currentPage === 1) {
+                // setTotalPages(Math.ceil(dummyPets.count / 8));
                 setTotalPages(Math.ceil(data.count / 8));
                 // setTotalPages(3); // WILL REMOVE
                 console.log("pages", totalPages);
             }
+            console.log("PETS", pets);
         })
     }, [shelterId, shelterName, currentPage]);
 

@@ -10,7 +10,6 @@ const Reviews = ({ shelterId, shelterName }) => {
     const [ currentPage, setCurrentPage ] = useState(1);
     const [ hasMore, setHasMore ] = useState(false);
     const [ userName, setUserName ] = useState('');
-    // const [ submitted, setSubmitted ] = useState(false);
     const userId = localStorage.getItem('id');
     const userType = localStorage.getItem('user_type');
 
@@ -115,9 +114,12 @@ const Reviews = ({ shelterId, shelterName }) => {
         <div className="container justify-content-start text-start" id="reviews">
         <div className="reviewRow">
           <h2 className="subtitle2" id="reviewSubtitle">Reviews: </h2>
-          <Rating rating={rating} handleRatingClick={handleRatingClick} />
+          
           {userType === "Seeker" && (
+            <>
+            <Rating rating={rating} handleRatingClick={handleRatingClick} />
             <a href="review.html" className="reviewClick">Leave a review {'>'}</a>
+            </>
           )}
           
           <AverageRating shelterId={shelterId} rating={rating}  />

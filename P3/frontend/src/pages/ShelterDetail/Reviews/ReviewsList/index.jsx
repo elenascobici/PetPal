@@ -2,21 +2,6 @@ import React, { useState } from "react";
 import Comment from "./Comment";
 
 const ReviewsList = ({ comments, className, isReview, nestingLevel = 0, userName, shelterName, shelterId }) => {
-    // const [updatedComments, setUpdatedComments] = useState(comments);
-
-    // const handleReplySubmit = (commentId, newReplyData) => {
-    //     setUpdatedComments((prevComments) => {
-    //         return prevComments.map((comment) => {
-    //           if (comment.id === commentId) {
-    //             return {
-    //               ...comment,
-    //               replies: [...comment.replies, newReplyData],
-    //             };
-    //           }
-    //           return comment;
-    //         });
-    //       });
-    // };
     return (
         <>
             {comments.map((comment, index) => (

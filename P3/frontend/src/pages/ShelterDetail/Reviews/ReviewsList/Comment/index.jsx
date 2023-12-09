@@ -7,8 +7,8 @@ const Comment = ({ comment, className, isReview, nestingLevel, userName, shelter
     const [showReplies, setShowReplies] = useState(false);
     const [replyClick, setReplyClick] = useState(false);
     const [replySubmitted, setReplySubmitted] = useState(false);
-
     const userId = localStorage.getItem('id');
+    const userType = localStorage.getItem('user_type');
 
     const add_breaks = (text) => {
         return text.split('\n').map((line, index) => {
@@ -60,10 +60,12 @@ const Comment = ({ comment, className, isReview, nestingLevel, userName, shelter
               {showReplies ? "Hide replies" : "See replies"}
             </button>
           )}
-          <button className="btn reply replyButton"
-            onClick={handleReplyClick} >
-            Reply {'>'}
+          {(userType === 'Seeker' || userId === shelterId) && (
+            <button className="btn reply replyButton"
+              onClick={handleReplyClick} >
+              Reply {'>'}
           </button>
+          )}
       </div>
       </div>
       {replyClick && (
