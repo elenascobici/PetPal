@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const ProfilePetGrid = ({ pets }) => {
     return (
-        <div className="grid">
+        <div className="pet-grid">
             {pets.map((pet) => (
                 <ProfilePetCard key={pet.id} name={pet.name} image={pet.pet_image_1} />
             ))}
