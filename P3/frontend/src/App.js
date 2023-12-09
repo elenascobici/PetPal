@@ -32,9 +32,9 @@ function App() {
         <Route path="log-in/" element={<Login />} />
         <Route path="log-out/" element={<LogOut />} />
         <Route path="profile/" element={<ViewMyProfile />} />
-        <Route path="application/form/" element={<ApplicationForm /> } />
-        <Route path="application/detail/:appID/" element={<ApplicationDetail />} />
-        <Route path="application/list/" element={<ApplicationList />} />
+        <Route path="application/form/" element={<PrivateRoute> <ApplicationForm /> </PrivateRoute> } />
+        <Route path="application/detail/:appID/" element={<PrivateRoute> <ApplicationDetail /> </PrivateRoute>} />
+        <Route path="application/list/" element={<PrivateRoute> <ApplicationList /> </PrivateRoute> } />
         <Route path="shelter/:shelterId/:shelterName" element={<PrivateRoute> <ShelterDetail /> </PrivateRoute>} />
         <Route path="shelter/:shelterId/:shelterName/review" element={<PrivateRoute> <CreateReview /> </PrivateRoute>} />
         <Route path="*" element={<NotFound />} /> 

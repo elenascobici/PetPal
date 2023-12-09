@@ -25,10 +25,11 @@ function ApplicationList(){
 
     const fetchData = () => {
         const param = new URLSearchParams(query);
-        fetch(`http://localhost:8090/application/list/?${param}`, {
+        const token = localStorage.getItem('access_token');
+        fetch(`http://localhost:8000/application/list/?${param}`, {
         method: 'GET',
         headers: {
-            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAyMTc5NDM0LCJpYXQiOjE3MDIwOTMwMzQsImp0aSI6IjA1MjgzZjM1Yzg1NzQ5ODJiMjQ5OTZjMTBjNGFmNjBhIiwidXNlcl9pZCI6MTEsInVzZXJfdHlwZSI6IlNoZWx0ZXIiLCJpZCI6MTF9.TocrepnSNK6k4-JrDP8wUk3me0R6o9AZFkgUGZT3tUI',
+            'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json',
         },
         })

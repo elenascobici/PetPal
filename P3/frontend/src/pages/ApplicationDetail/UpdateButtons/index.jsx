@@ -1,16 +1,22 @@
 import React, { useState, useEffect} from 'react';
 
 function UpdateButtons ({show, showBtns, appID, notify}){
-    let userType = "Seeker" //! TESTING PURPOSES CHANGE LATER TO ACTUAL CONTEXT
+    // let userType = "Seeker" //! TESTING PURPOSES 
     const [data, setData] = useState({});
+    const [userType, setUserType] = useState("");
+
+    useEffect(() => {
+        setUserType(localStorage.getItem('user_type'));
+    }, []);
     
 
     const changeStatus = (event, newStatus) => {
-        console.log(newStatus);
-        fetch(`http://localhost:8090/application/${appID}/`, {
+        // console.log(newStatus);
+        const token = localStorage.getItem('access_token');
+        fetch(`http://localhost:8000/application/${appID}/`, {
         method: 'PATCH',
         headers: {
-            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAyMTQ3MDI0LCJpYXQiOjE3MDIwNjA2MjQsImp0aSI6ImY0Mzg0MTI3MzQ0NTQ2NmQ4ZmZlNDhkMmUzYjU5M2M1IiwidXNlcl9pZCI6MywidXNlcl90eXBlIjoiU2Vla2VyIiwiaWQiOjN9.7n60oLI1_ltlgxO9oYDeSJ5aM95jyecGlOcyUf7-XK8',
+            'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json',
         }, body: JSON.stringify({
             status: newStatus
