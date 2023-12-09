@@ -2,12 +2,15 @@ import React, {useState, useEffect, useRef, useCallback} from "react";
 import MessageBox from "./MessageBox";
 import InfiniteScroll from 'react-infinite-scroll-component';
 import "./style.css";
+import SendButton from "../../../assets/images/send-btn.png"
 
 const Messages = ({ appId }) => {
     const [messages, setMessages] = useState([]);
     const [hasMore, setHasMore] = useState(true);
     const [nextCursor, setNextCursor] = useState(null);
     const [scrollPosition, setScrollPosition] = useState(0);
+    const [inputMessage, setInputMessage] = useState("");
+    const [sentMessage, setSentMessage] = useState(false);
     const userId = localStorage.getItem('id');
     const messageContainerRef = useRef(null);
   
@@ -85,9 +88,57 @@ const Messages = ({ appId }) => {
         messageContainerRef.current.scrollTop = messageContainerRef.current.scrollHeight - scrollPosition;
       }
     }, [messages.length, scrollPosition]);
+
+    const handleInputChange = (e) => {
+      setInputMessage(e.target.value);
+    };
+
+    const handleSubmit = (e) => {
+      e.preventDefault();
+        // Do not submit empty messages
+        if (inputMessage.trim() === "") {
+            return;
+        }
+
+        const token = localStorage.getItem('access_token');
+        fetch(`http://localhost:8000/application/${appId}/messages`, {
+          method: 'POST',
+          headers: {
+              'Authorization': `Bearer ${token}`,
+              'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+              content: inputMessage,
+              sender: userId,
+              
+          }),
+      })
+          .then(response => {
+              if (!response.ok) {
+                  console.log("ERROR:", response.status, response.statusText);
+              }
+              return response.json();
+          })
+          .then(data => {
+              setMessages([...messages, data]); 
+              setInputMessage(""); 
+              setSentMessage(true);
+              document.querySelector("#type-in").value = "";
+          })
+          .catch(error => {
+              console.log("Fetch error:", error);
+          });
+    };
+
+    useEffect(() => {
+    // Scroll to the bottom of the container after the component re-renders
+    const messageContainer = messageContainerRef.current;
+    messageContainer.scrollTop = messageContainer.scrollHeight;
+    setSentMessage(false);
+}, [sentMessage]);
   
     return (
-      <div className="details-text">
+      <div className="details-text message-container">
         <div
           className="message-history"
           style={{ height: "500px", overflow: "auto" }}
@@ -101,17 +152,13 @@ const Messages = ({ appId }) => {
             />
           ))}
         </div>
-        <div class="message-tb" id="message-tb-container">
-                <textarea id="type-in" class="type-in" placeholder="Type your message here..."></textarea>
-                <div class="row" id="overlay">
-                  <div class="col-10 col-sm-11 col-md-11 col-lg-11 col-format"></div>
-                  <div class="col-2 col-sm-1 col-md-1 col-lg-1 col-format">
-                    <a href="my-application-msg.html#jump-here">
-                      <img src="images/send-btn.png" class="send-btn-format"/>
-                    </a>
+        <div className="message-tb" id="message-tb-container">
+                <textarea id="type-in" className="type-in" placeholder="Type your message here..." onChange={handleInputChange}></textarea>
+
+                  <button className="send-btn" onClick={handleSubmit}>
+                    <img src={SendButton} className="send-btn-format"/>
+                  </button>
                 </div>
-                </div>
-              </div>
       </div>
     );
   };
