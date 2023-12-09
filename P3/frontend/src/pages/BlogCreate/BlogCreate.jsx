@@ -41,8 +41,23 @@ const BlogCreate = () => {
             }
     }, [])
 
+    const [bannerPath, setBannerPath] = React.useState("");
+
+    const handleImageUpload = (e) => {
+        setBannerPath(URL.createObjectURL(e.target.files[0]));
+    }
+
     return (
         <form action="" method="post" id="create-blog-form">
+            <div class="container gx-0" id="shelterLogoEdit">
+                <div class="form-control" id="blogImage">
+                    <img id="bannerImageDisplay" src={bannerPath} />
+                    <label class="form-label btn" for="banner_image" id="edit">Select blog banner image</label>
+                    <input id="banner_image" type="file" 
+                        name="banner_image" placeholder="Photo" capture onChange={handleImageUpload}/>
+                    <p class="text-input-error-message" id="banner_image-error"></p>
+                </div>
+            </div>
             <div class="grid">
                 <div class="grid-item">
                     <label for="inputTitle" id="shelterNameLabel" class="gridLabel">Blog Title</label>
