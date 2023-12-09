@@ -39,9 +39,9 @@ body {
     margin-top: 10px;
 }
 
-form {
+/* form {
     width: auto !important;
-}
+} */
 
 @media only screen and (max-height: 650px) {
     #login-container {

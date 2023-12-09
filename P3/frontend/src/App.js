@@ -21,6 +21,7 @@ import CreateReview from './pages/ShelterDetail/Reviews/CreateReview';
 import ApplicationList from './pages/ApplicationList';
 import BlogCreate from './pages/BlogCreate/BlogCreate';
 import ApplicationHome from './pages/ApplicationHome';
+import PetSearch from './pages/PetSearch';
 
 function App() {
   return (
@@ -41,6 +42,8 @@ function App() {
         <Route path="shelter/:shelterId/:shelterName" element={<PrivateRoute> <ShelterDetail /> </PrivateRoute>} />
         <Route path="blog-create/" element={<PrivateRoute> <BlogCreate /> </PrivateRoute>} />
         <Route path="shelter/:shelterId/:shelterName/review" element={<PrivateRoute> <CreateReview /> </PrivateRoute>} />
+        <Route path="shelter/:shelterId/:shelterName/review" element={<PrivateRoute> <CreateReview /> </PrivateRoute>} />
+        <Route path="search/" element={<PrivateRoute> <PetSearch /> </PrivateRoute>} />
         <Route path="*" element={<NotFound />} /> 
       </Route>
     </Routes>
