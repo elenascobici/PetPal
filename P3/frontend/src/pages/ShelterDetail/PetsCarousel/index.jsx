@@ -136,7 +136,7 @@ const PetsCarousel = ({shelterId, shelterName}) => {
           <div className="carousel-inner">
             {Array.from({ length: totalPages }).map((_, index) => (
                 <div className={`carousel-item ${index === currentPage - 1 ? 'active' : ''}`}  data-bs-interval="false">
-                <div className="container align-middle text-center" id="carouselPage">
+                <div className="container align-middle" id="carouselPage">
                   <button className="carousel-control-prev carousel-btn" type="button" 
                   data-bs-target="#petsCarousel" data-bs-slide="prev"
                   onClick={handlePrevPage}>

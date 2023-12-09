@@ -8,7 +8,7 @@ import MissionStatement from './MissionStatement';
 import PawPatrol from "../../assets/images/pawpatrol.png"
 import PetsCarousel from './PetsCarousel';
 import Reviews from './Reviews';
-
+import Blogs from './Blogs';
 
 function format_location(street, city, province) {
     const location = [];
@@ -72,8 +72,8 @@ const ShelterDetail = () => {
     // shelter.mission_statement = "No job is too big, no pup is too small!\n\nThe rescuers at Paw Patrol Rescue commit themselves to saving all animals in Ontario and provide them with the care and shelter they deserve. We give our animals a proper inspection to ensure they are healthy and ready to find their new homes!"
     
     return (
-        <div className="main px-6 pt-6">
-      <div id="title">{shelter.name}</div>
+        <div className="main" id="shelter-detail-main">
+      <div id="shelter-detail-title">{shelter.name}</div>
       {shelter.website_link ? (
         <Link to="https://pawpatrolandfriends.com/" id="webpage" target="_blank">Visit our webpage</Link>
         ):
@@ -89,6 +89,7 @@ const ShelterDetail = () => {
           <h2 className="subtitle2" id="petsSubtitle">Pets from {shelterName}:</h2>
         </div>
         <PetsCarousel shelterId={shelterId} shelterName={shelterName} />
+        {/* <Blogs /> */}
         
         <Reviews shelterId={shelterId} shelterName={shelterName} />
         
