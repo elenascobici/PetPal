@@ -3,17 +3,17 @@ import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const PetCard = ({ link, name, image }) => {
+    console.log(image)
     return (
-        <div className="grid-item" >
-        {name ? (
+        <div className="pet-grid-item">
+            {name ? (
                 <Link to={link} className="pet">
-                    <img className="petImage" src={image}/>
+                    {image ? <img className="petImage" src={image} alt={name} /> : null}
                     <div className="petLabel">{name}</div>
                 </Link>
-        ) : (
-          <div type="button" class="pet">
-          </div>
-        )}
+            ) : (
+                <div className="pet" type="button"></div>
+            )}
         </div>
     )
 }

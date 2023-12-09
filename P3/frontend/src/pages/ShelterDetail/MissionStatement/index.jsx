@@ -13,10 +13,14 @@ const MissionStatement = ({ statement }) => {
         })
     };
 
+    const blank = () => {
+        return <i>N/A</i>
+    }
+
     return (
         <div className="container justify-content-start text-start">
           <h2 className="subtitle2">Mission Statement:</h2>
-          <p className="textInfo" id="mission">{statement ? add_breaks(statement) : "Hi"}</p>
+          <p className="textInfo" id="mission">{statement ? add_breaks(statement) : blank()}</p>
         </div>
     )
 }

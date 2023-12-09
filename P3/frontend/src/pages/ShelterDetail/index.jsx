@@ -67,9 +67,9 @@ const ShelterDetail = () => {
     console.log(shelter.phone);
     console.log("NAME", shelter.name);
     // WILL REMOVE
-    shelter.phone = '1234567890';
-    shelter.profile_picture = PawPatrol;
-    shelter.mission_statement = "No job is too big, no pup is too small!\n\nThe rescuers at Paw Patrol Rescue commit themselves to saving all animals in Ontario and provide them with the care and shelter they deserve. We give our animals a proper inspection to ensure they are healthy and ready to find their new homes!"
+    // shelter.phone = '1234567890';
+    // shelter.profile_picture = PawPatrol;
+    // shelter.mission_statement = "No job is too big, no pup is too small!\n\nThe rescuers at Paw Patrol Rescue commit themselves to saving all animals in Ontario and provide them with the care and shelter they deserve. We give our animals a proper inspection to ensure they are healthy and ready to find their new homes!"
     
     return (
         <div className="main px-6 pt-6">
@@ -86,43 +86,12 @@ const ShelterDetail = () => {
         <MissionStatement statement={shelter.mission_statement} />
         
         <div className="container justify-content-start text-start">
-          <h2 className="subtitle2" id="petsSubtitle">Pets from Paw Patrol Rescue:</h2>
+          <h2 className="subtitle2" id="petsSubtitle">Pets from {shelterName}:</h2>
         </div>
         <PetsCarousel shelterId={shelterId} shelterName={shelterName} />
         
         <Reviews shelterId={shelterId} shelterName={shelterName} />
-        <div className="container" id="seeMoreCollapse">
-          <a data-bs-target="#collapsedReviews" className="btn reviewClick" data-bs-toggle="collapse" role="button" 
-          aria-expanded="false" aria-controls="collapsedReviews" id="seeMore">
-            <div className="text-collapsed">See more <i className="bi bi-chevron-right chevron"></i></div>
-            <div className="text-expanded">See less <i className="bi bi-chevron-up chevron"></i></div>
-          </a>
-        <div className="container justify-content-start text-start collapse" id="collapsedReviews">
-          <div className="container justify-content-start text-start" id="reviewBox">
-            <div className="row align-middle">
-              <div className="col d-flex justify-content-start">
-                <h3 className="reviewerName">Emilia</h3>
-              </div>
-              <div className="col d-flex justify-content-end stars">
-                <i className="bi bi-star-fill star"></i>
-                <i className="bi bi-star-fill star"></i>
-                <i className="bi bi-star-fill star"></i>
-                <i className="bi bi-star-fill star"></i>
-                <i className="bi bi-star-fill star" id="emptyStar"></i>
-              </div>
-            </div>
-            <div className="reviewText">
-              I adopted a new cat, Puck, from this. He is so cute!! Thanks Paw Patrol Rescue!
-            </div>
-            <div className="container" id="replyCollapse">
-              <a className="btn reply" data-bs-toggle="collapse" role="button" 
-              aria-expanded="false" aria-controls="replyForm" id="replyButton">
-                Reply  {'>'}
-              </a>
-            </div>
-          </div>     
-        </div>
-      </div>
+        
     </div>
     )
 }

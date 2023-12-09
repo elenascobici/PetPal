@@ -9,6 +9,9 @@ from rest_framework.permissions import AllowAny
 from rest_framework.generics import ListAPIView
 from rest_framework.pagination import PageNumberPagination
 from notifications.models import Notification
+from rest_framework.generics import RetrieveAPIView
+from django.http import FileResponse, HttpResponse
+from django.conf import settings
 
 class SearchPagination(PageNumberPagination):
     page_size = 8
@@ -214,5 +217,13 @@ class PetViewSet(viewsets.ModelViewSet):
     # return filtered results
     serializer = self.get_serializer(queryset, many=True)
     return Response(serializer.data)     
-          
+
+class ServePetPicture(RetrieveAPIView):
+    permission_classes = [AllowAny]
+    def get(self, request, filename):
+        imagePath = settings.MEDIA_ROOT / 'pets' / filename
+        try:
+            return FileResponse(open(imagePath, 'rb'), content_type="image/jpeg")
+        except FileNotFoundError:
+            return HttpResponse("Image not found", status=404)
     

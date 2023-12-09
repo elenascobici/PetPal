@@ -21,13 +21,6 @@
    --light-orange: #FEF2CB;
  }
 
- .main {
-    padding-bottom: 351px;
-    padding-left: 0px;
-    padding-right: 0px;
-    margin-bottom: 128px;
-    width: 100%;
- }
 
  #title {
     font-family: Mochiy Pop One;
@@ -58,7 +51,7 @@
     gap: 1rem;
  }
 
- .subtitle, .subtitle2 {
+ .contact-subtitle{
     font-family: Manrope;
     font-size: 30px;
     font-weight: 700;
@@ -130,6 +123,7 @@
    justify-content: start;
    align-items: center;
    text-align: left;
+   margin-top: 0;
  }
 
  .email.gridItem {
@@ -373,7 +367,7 @@ textarea {
    display: flex;
 } */
 
-.grid {
+.pet-grid {
    grid-template-columns: auto auto auto auto;
    display: grid;
    column-gap: 2rem;
@@ -382,13 +376,13 @@ textarea {
    place-items: center;
 }
 
-/* .grid-item {
+.pet-grid-item {
    display: flex;
    align-items: center;
    justify-content: center;
-} */
+}
 
-.grid-item > .pet {
+.pet-grid-item > .pet {
    margin-top: 1rem;
 }
 
@@ -442,11 +436,11 @@ textarea {
  }
 
 @media screen and (max-width:1210px) {
-   .grid {grid-template-columns: auto auto auto; align-items: center;}
+   .pet-grid {grid-template-columns: auto auto auto; align-items: center;}
    .textInfo {font-size: 25px;}
    .shelterContactInfoLabel {font-size: 25px;}
    .icon {font-size: 20px;}
-   .subtitle {font-size: 27px;}
+   .contact-subtitle{font-size: 27px;}
    #reviewForm {margin-left: 0; margin-right: 0; padding-left: 0; padding-right: 0;}
    /* #replyBox {width: 96%;} */
    /* .carousel-control-next {right: -4rem;}
@@ -457,14 +451,14 @@ textarea {
    #shelterLogo {padding-right: 0;}
    #title {font-size: 50px;}
    #webpage {font-size: 30px;}
-   .subtitle {font-size: 25px;}
+   .contact-subtitle{font-size: 25px;}
    .shelterContactInfoLabel, .textInfo {font-size: 25px;}
    .icon {font-size: 22px;}
    #contact {margin-top: 3rem;}
 }
 
 @media screen and (max-width:1003px) {
-   .grid {grid-template-columns: auto auto; align-items: center;}
+   .pet-grid {grid-template-columns: auto auto; align-items: center;}
    .carousel-control-next {right: -4rem;}
    .carousel-control-prev {left: -4rem;}
    #petsSubtitle {padding-left: 0; padding-bottom: 0.5rem; justify-content: center;}
@@ -487,7 +481,7 @@ textarea {
                            'v v v'
                            'c l l'
                            'z z z';
-      grid-template-columns: 1fr 10fr 10fr;
+      grid-template-columns: 1fr 10fr 10fr !important;
       row-gap: 0;
       column-gap: 0.5rem;
       justify-content: start;
@@ -519,7 +513,7 @@ textarea {
 } */
 
 @media screen and (max-width:768px) {
-   .grid {grid-template-columns: auto; align-items: center;}
+   .pet-grid {grid-template-columns: auto; align-items: center;}
    .carousel-control-next {right: -4rem;}
    .carousel-control-prev {left: -4rem;}
    #mission , .subtitle2 {padding-left: 0;}
@@ -541,7 +535,7 @@ textarea {
    #shelterLogo2 {display: none;}
    #contact {margin-top: 0; display: flex; flex-direction: column; justify-content: center; align-items: center;}
    #contactGrid {
-      grid-template-columns: 10% 90%;
+      grid-template-columns: 10% 90% !important;
       justify-content: center;
       grid-template-areas: 'i i'
                            'h h'

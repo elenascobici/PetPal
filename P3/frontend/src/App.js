@@ -17,6 +17,7 @@ import ApplicationForm from './pages/ApplicationForm';
 import ApplicationDetail from './pages/ApplicationDetail';
 import { ViewMyProfile } from './pages/Profile/ViewMyProfile'; 
 import ShelterDetail from './pages/ShelterDetail';
+import CreateReview from './pages/ShelterDetail/Reviews/CreateReview';
 import ApplicationList from './pages/ApplicationList';
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
         <Route path="application/detail/:appID/" element={<ApplicationDetail />} />
         <Route path="application/list/" element={<ApplicationList />} />
         <Route path="shelter/:shelterId/:shelterName" element={<PrivateRoute> <ShelterDetail /> </PrivateRoute>} />
+        <Route path="shelter/:shelterId/:shelterName/review" element={<PrivateRoute> <CreateReview /> </PrivateRoute>} />
         <Route path="*" element={<NotFound />} /> 
       </Route>
     </Routes>

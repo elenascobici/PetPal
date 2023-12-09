@@ -3,6 +3,16 @@ import bannerImage from "../../../assets/images/main.png"
 import bannerImage2 from "../../../assets/images/main2.png"
 
 const Banner = ({ bannerText1, bannerText2, buttonText }) => {
+  let buttonStyles = {};
+  if (buttonText === 'View applications') {
+    // Update styles for 'View applications' button
+    buttonStyles = {
+      ...buttonStyles,
+      fontSize: '22px',
+      padding: '9px 10px',
+      // Add more styles as needed
+    };
+  }
     return (
         <div className="container-fluid" id="mainImgContainer">
         <img className="img-fluid" id="mainImg" alt="Responsive image" src={bannerImage} />
@@ -11,7 +21,7 @@ const Banner = ({ bannerText1, bannerText2, buttonText }) => {
           <h1 className="overlayPetpal">{ bannerText1 }</h1>
           <h1 className="overlayPetpal">{ bannerText2 }</h1>
           <div id="applyToday">
-            <Link className="yellowButton" id="apply" to="/application-home">{ buttonText }</Link>
+            <Link className="yellowButton" id="apply" style={buttonStyles} to="/application-home">{ buttonText }</Link>
           </div>
         </div>        
       </div>

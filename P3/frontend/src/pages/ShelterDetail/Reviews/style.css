@@ -38,17 +38,28 @@
    height: 3rem;
 }
 
-.reply {
+.replyCollapse {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   padding-left: 0;
+}
+
+.reply, .see-replies {
    font-family: Manrope;
    font-weight: 500;
    font-size: 17px;
    text-align: right;
    padding-bottom: 1rem;
    padding-right: 0.5rem;
-   display: flex;
-   justify-content: end;
    padding-top :0;
 }
+
+
+.reply {
+   margin-left: auto;
+}
+
 
 #replyForm, #replyForm2, #replyForm3 {
    margin-top: 1rem;
@@ -61,6 +72,13 @@
 
 .emptyStar {
    color: #ddd;
+}
+
+.avg-rating {
+   margin-left: auto;
+   display: flex;
+   align-items: center;
+   column-gap: 5px;
 }
 
 #reviewSubtitle {
@@ -100,7 +118,8 @@
    justify-content: start;
 }
 
-#reviewBox, #replyBox {
+
+.reviewBox, .replyBox {
    background-color: #F9FAFF;
    margin-top: 2rem;
    /* margin-left: 3rem;
@@ -108,7 +127,7 @@
    width: 100%;
 }
 
-#replyBox, #replyForm, #replyForm2, #replyForm3 {
+.replyBox, .replyForm, #replyForm2, #replyForm3 {
    /* margin-left: 5rem; */
    background-color: #f0f0f7;
    /* margin-right: 5rem; */
@@ -116,6 +135,7 @@
    width: 97%;
    margin-right: 0;
    padding-right: 0;
+   min-width: 50%;
    /* position: absolute;
    right: 0; */
 }
@@ -124,11 +144,16 @@
    width: 94%;
 }
 
-#replyForm, #replyForm2, #replyForm3, #replyForm3 {
+.replyForm, #replyForm2, #replyForm3, #replyForm3 {
    margin-top: 1rem;
 }
 
-#replyBoxForm {
+.replyBox {
+   display: block;
+   background-color: #f0f0f7;
+}
+
+.replyBoxForm {
    margin: 0;
    padding: 0.5rem 1rem 1rem 1rem;
 }
@@ -141,7 +166,7 @@
    padding-bottom: 2rem;
 }
 
-.submit {
+.reply-submit {
    text-decoration: none;
    font-family: Manrope;
    font-size: 16px;
@@ -152,13 +177,14 @@
    border-radius: 10px;
    margin-bottom: 0.5rem;
    transition: 0.3s;
+   border: none;
 }
 
-.submit:focus, .submit:hover {
+.reply-submit:focus, .reply-submit:hover {
    color: white;
 }
 
-.submit:hover {
+.reply-submit:hover {
    background-color: #119899;
 }
 
@@ -237,12 +263,11 @@ input[type="radio"]{
    position: relative;
    padding: 0;
    margin: 0;
-   /* padding-bottom: 6rem; */
+   transition: 0.5s ease-in-out;
 }
 
 #seeMore {
    text-align: right;
-   padding-right: 3rem;
    padding-top: 1rem;
    border: none;
    width: auto;
@@ -280,6 +305,10 @@ input[type="radio"]{
    padding-left: 0.5rem;
 }
 
+.no-reviews {
+   color: #6a6a6a;
+}
+
 
 #collapsedReviews {
    /* padding-right: 6rem; */
@@ -302,14 +331,31 @@ input[type="radio"]{
    background-color: #F9FAFF;
 }
 
-#underlined {
-   text-decoration: underline;
+.underlined {
+   text-decoration: underline !important;
 }
 
-form {
+.replyBoxForm {
    width: 100%;
-   margin: 3rem;
-   padding: 0 3rem;
+}
+
+.max-char-limit, .error-message, .error-message-small {
+   color: red;
+   padding-bottom: 1rem;
+   font-size: 1rem;
+}
+
+.error-message-small {
+   font-size: calc(1rem + 0.5vw);
+}
+
+.error-message {
+   padding-top: 1rem;
+   font-size: calc(1rem + 1vw);
+}
+
+#replyComment {
+   width: 99% !important;
 }
 
 textarea {
@@ -488,19 +534,26 @@ textarea {
    /* .starReview {font-size: 20px;} */
 }
 
-/* @media screen and (max-width:830px) {
-   .reviewClick {padding-left: 3rem;}
+@media screen and (max-width:830px) {
+   .rating { margin-right: 10rem; }
+   .reviewClick {margin-left: 0; padding-left: 0;}
 
-} */
+}
+
+@media screen and (max-width:770px) {
+   .reviewClick {margin-left: 0; padding-left: 0;}
+
+}
+
 
 @media screen and (max-width:768px) {
    .grid {grid-template-columns: auto; align-items: center;}
    .carousel-control-next {right: -4rem;}
    .carousel-control-prev {left: -4rem;}
    #mission , .subtitle2 {padding-left: 0;}
-   .reviewClick {padding-left: 0;}
+   /* .reviewClick {padding-left: 0.5rem;} */
    #reviews {padding-right: 0; padding-left: 0;}
-   #reviewBox {margin: 0; padding: 0; margin-top: 1rem;}
+   .reviewBox {margin: 0; padding: 0; margin-top: 1rem;}
    #replyBox {padding: 0; margin-top: 1rem;}
    .noReply {padding-bottom: 1rem !important;}
    /* #replyBox {width: 97%;} */
@@ -511,7 +564,7 @@ textarea {
 }
 
 @media screen and (max-width:686px) {
-   .reviewClick {padding-left: 0.5rem;}
+   /* .reviewClick {padding-left: 0.5rem; margin-left: 0;} */
    #shelterLogo3 {display: block; height: 10rem; max-width: 100%;}
    #shelterLogo2 {display: none;}
    #contact {margin-top: 0; display: flex; flex-direction: column; justify-content: center; align-items: center;}
@@ -542,9 +595,10 @@ textarea {
    /* .stars {padding-right: 0;} */
 }
 
-/* @media screen and (max-width:622px) {
-   #replyBox {width: 95%;}
-} */
+@media screen and (max-width:640px) {
+   .rating { margin-right: 0; }
+
+}
 
 @media screen and (max-width:522px) {
    .petImage {width: 164px; height: 200px;}
@@ -554,7 +608,6 @@ textarea {
    .carousel-control-prev {left: -3rem;}
    .textInfo, .shelterContactInfoLabel, .userNameSubtitle {font-size: 20px;}
    .icon2 {font-size: 16px;}
-   .main {padding-left: 3rem !important; padding-right: 3rem !important;}
    /* #replyBox {width: 96%;} */
 }
 
