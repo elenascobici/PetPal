@@ -149,6 +149,10 @@ select {
     padding-top: 0.2rem;
 }
 
+#emailAddress{
+    width: 40vw!important;
+}
+
 #provinceLabel {
     margin: 0;
 }

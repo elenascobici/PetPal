@@ -16,6 +16,11 @@ function ApplicationList(){
     const [totalPages, setTotalPages] = useState(1);
     const [pets, setPets ] = useState([]);
     const [numTotal, setTotal] = useState(0);
+    const [userType, setUserType] = useState("");
+
+    useEffect(() => {
+        setUserType(localStorage.getItem('user_type'));
+    }, []);
 
     const query = useMemo(() => ({
         page: parseInt(searchParams.get("page") ?? 1),
@@ -70,9 +75,9 @@ function ApplicationList(){
                 : <></> }
                 </p>
                 {totalPages === 0 && (<div> <p className="no-apps"> No Applications found </p> <img className="sadDog" src={sadDog}></img>
-                {/* <div class="col-12">
+                {userType === "Seeker" && (<div class="col-12">
                     <a class="appButton" onClick={() => navigate("/search/")}> Explore More Pets! </a>
-                </div> */}
+                </div>)}
                 </div>)}
                 {totalPages !== 0 && <p>Page {query.page} out of {totalPages}</p>}
             </div>
