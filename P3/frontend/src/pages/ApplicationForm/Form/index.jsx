@@ -14,7 +14,7 @@ import Modal from "./Modal";
 import '../style.css';
 import AlertPopup from './Alert';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 // Will also include validation.
 function Form({petID}){
@@ -23,8 +23,12 @@ function Form({petID}){
         adopterDetails: false,
         reason: false,
     });
-
+    const [adopterID, setAdopterID] = useState();
     const [error, setError] = useState(null);
+
+    useEffect(() => {
+        setAdopterID(localStorage.getItem('id'));
+    }, []);
 
     const [filledValues, setValues] = useState({
         first: '',
@@ -49,30 +53,6 @@ function Form({petID}){
 
 
     const submit = () => {
-        //! RMB CHANGE TO 8000 WHEN DONE
-        // console.log(valid.adopterDetails);
-        // console.log(valid.reason);
-
-        // 1. get the pet dict:
-        // let pet_data = {};
-        // fetch(`http://localhost:8090/pet/${petID}/`, {
-        //     method: 'GET',
-        //     headers: {
-        //         'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAyMDUzNjIwLCJpYXQiOjE3MDE5NjcyMjAsImp0aSI6IjgzMGM3MmYxZjEzMTQ0ZTBhNTEyZjIyOGQ2YjYwYjdiIiwidXNlcl9pZCI6M30.f7oUV3MAEMCI7DjOOE1iCqgVqzMvEF6-Nh_t0gZUWDc',
-        //         'Content-Type': 'application/json',
-        //     },
-        //     })
-        //     .then(response => {
-        //         return response.json();
-        //     })
-        //     .then(data => {
-        //         console.log('Application data:', data);
-        //         pet_data = data;
-        //     })
-        //     .catch(error => {
-        //         console.error('Error:', error);
-        //     }); 
-
         if (valid.adopterDetails && valid.reason){
             const token = localStorage.getItem('access_token');
             fetch(`http://localhost:8000/application/pet/${petID}/`, {
@@ -83,7 +63,7 @@ function Form({petID}){
                 },
                 body: JSON.stringify({ 
                     pet: petID,
-                    adopter: 3, //! CHANGE LATER
+                    adopter: adopterID, 
                     name: filledValues.first + ' ' + filledValues.last,
                     email: filledValues.email,
                     phone: filledValues.phone,
@@ -108,6 +88,10 @@ function Form({petID}){
                     console.log('Application data:', data);
                     if (data.detail !== ""){
                         setError(data.detail);
+                        window.scrollTo({
+                            top: 0,
+                            behavior: 'smooth' // Add smooth scrolling effect
+                        });
                         // console.log("DO U GO");
                         // return <Modal content = {data.detail} show = {true}/>
                     } else {
@@ -122,6 +106,8 @@ function Form({petID}){
     }
 
     return <>
+        {error && valid.adopterDetails && valid.reason && <AlertPopup errorMsg={error} />}
+        {(!valid.adopterDetails || !valid.reason) && <AlertPopup errorMsg="Please fill out all the required fields."/>}
         <form action="#" onSubmit={submit}>
             {/* Basic Applicant Info */}
             <AdopterDetails valid = {valid} validCheck={setValid} tofill={filledValues} fill={setValues}/>
@@ -138,7 +124,7 @@ function Form({petID}){
 
             <div className="row mb-3 mt-4">
             {/* {(!valid.adopterDetails || !valid.reason) &&  <p className="final-error required-error"> * Please fill out all the required fields. </p>} */}
-            {(!valid.adopterDetails || !valid.reason) && <AlertPopup />}
+            
                 <div className="col-12 submit-col">
                 <a className="yellowButton" id="submit" onClick={submit}>Submit</a>
                 </div>
@@ -148,7 +134,7 @@ function Form({petID}){
         </form>
 
     
-        {error && <Modal content = {error} show={true} error={error} setError={setError}/>}
+        {/* {error && <Modal content = {error} show={true} error={error} setError={setError}/>} */}
 
     </>
 }

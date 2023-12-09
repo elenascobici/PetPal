@@ -26,25 +26,6 @@ export const ViewMyProfileShelter = ({userData, errors, updateProfile}) => {
                 e.preventDefault();
                 updateProfile(new FormData(document.getElementById("update-shelter-profile-form")));
             }
-
-        // Fetch pets.
-        // const userId = localStorage.getItem("id");
-        // const token = localStorage.getItem("access_token");
-        // fetch(`http://localhost:8000/pet/shelter/${userId}/pets/`, {
-        //     method: 'GET',
-        //     headers: {
-        //         'Authorization': `Bearer ${token}`,
-        //     },
-        //     })
-        //     .then(response => {
-        //         return response.json();
-        //     })
-        //     .then(data => {
-        //         console.log(data);
-        //     })
-        //     .catch(error => {
-        //         console.error('Error:', error);
-        // });
     }, [])
 
     React.useEffect(() => {
