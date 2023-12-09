@@ -394,14 +394,14 @@ textarea {
    display: flex;
 } */
 
-.grid {
+/* .grid {
    grid-template-columns: auto auto auto auto;
    display: grid;
    column-gap: 2rem;
    align-items: center;
    justify-items: center;
    place-items: center;
-}
+} */
 
 /* .grid-item {
    display: flex;

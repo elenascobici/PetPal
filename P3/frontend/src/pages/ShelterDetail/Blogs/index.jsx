@@ -5,12 +5,12 @@ const Blogs = () => {
     
     useEffect(() => {
         const token = localStorage.getItem("access_token");
-        fetch(`http://localhost:8000/blogs/list${shelterId}`, {
-            headers: {
-                'Authorization': `Bearer ${token}`,
-                'Content-Type': 'application/json',
-            }
-        })
+        // fetch(`http://localhost:8000/blogs/list${shelterId}`, {
+        //     headers: {
+        //         'Authorization': `Bearer ${token}`,
+        //         'Content-Type': 'application/json',
+        //     }
+        // })
     })
     
     return (

@@ -56,7 +56,7 @@ export const ViewMyProfileSeeker = ({userData, errors, updateProfile}) => {
             </div>
             </div>
 
-            <div class="grid">
+            <div class="grid grid-profile">
             <div class="grid-item">
                 <label for="firstName" id="firstNameLabel" class="gridLabel">First name</label>
             </div>
@@ -104,10 +104,10 @@ export const ViewMyProfileSeeker = ({userData, errors, updateProfile}) => {
                 <label for="location" id="locationLabel" class="gridLabel">Location</label>
             </div>
             <div class="grid-item">
-                <textarea id="location" rows = "1" type="text" name="street" class="gridValue" defaultValue={userData.street}></textarea>
+                <textarea id="location" rows = "1" type="text" name="street" class="gridValue street" defaultValue={userData.street}></textarea>
                 <p class="text-input-error-message" id="street-error"></p>
                 <p class="locationType">Street</p>
-                <textarea rows = "1" type="text" name="city" class="gridValue">{userData.city}</textarea>
+                <textarea rows = "1" type="text" name="city" class="gridValue city">{userData.city}</textarea>
                 <p class="text-input-error-message" id="city-error"></p>
                 <p class="locationType">City</p>
                 <select name="province" class="gridValue" id="province-select" defaultValue={userData.province ? userData.province : null}>
