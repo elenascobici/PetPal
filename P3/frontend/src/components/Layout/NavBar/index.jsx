@@ -14,7 +14,7 @@ const NavBar = () => {
     const links = [
         { to: "/", idName: "Home", label: "Home", allowedUsers: ["Shelter", "Seeker"]},
         { to: "/search", idName: "Search", label: "Search for Pets", allowedUsers: ["Shelter", "Seeker"] },
-        { to: "/apply", idName: "Apply", label: "Apply Now", allowedUsers: ["Seeker"] },
+        { to: "/application/home/", idName: "Apply", label: "Apply Now", allowedUsers: ["Seeker"] },
         { to: "/shelters", idName: "Shelters", label: "Shelters", allowedUsers: ["Shelter", "Seeker"] },
         { to: "/pets", idName: "Listings", label: "My Pet Listings", allowedUsers: ["Shelter"] },
         { to: "/applications", idName: "Applications", label: "Applications", allowedUsers: ["Shelter", "Seeker"] },

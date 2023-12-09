@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<!--
+  CSC309 PetPal Phase1
+  
+  University of Toronto
+  Fall 2023
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>PetPal</title>
+  <link rel="stylesheet" href="style.css" href="application-home.css">
+  <link rel="stylesheet" href="application-home.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+</head>
+<body>
+  <div class="page-container">
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid" id="headerContainer">
+        <a class="navbar-brand px-3 m-0" id="petpal" href="home.html">PetPal</a>
+        <a id="notifications2" href="notifications.html"><i id="notificationBell2" class="bi bi-bell-fill"></i></a>
+        <button class="navbar-toggler navbar-dark" type="button" data-bs-toggle="collapse" 
+          data-bs-target="#menuItems" aria-controls="menuItems" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="menuItems">
+          <ul class="nav navbar-nav me-auto mb-2 mb-lg-0" id="navbarList">
+            <li class="nav-item">
+              <a class="nav-link px-3" id="navHome" aria-current="page" href="home.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link px-3" id="navSearch" href="search.html">Search for Pets</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active px-3" id="navApply" href="application-home.html">Apply Now</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link px-3" id="navShelters" href="shelters.html">Shelters</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link px-3" id="navApplications" href="user-applications.html">My Applications</a>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right px-2" id="navButtons">
+            <li><a class="yellowButton me-3" href="user-update.html" id="signUp">Profile</a></li>
+            <li><div id="empty"> </div></li>
+            <li><a class="yellowButton" href="home.html" id="logIn">Log out</a></li>
+          </ul>
+        </div>
+        <a id="notifications" href="user-notifications-unread.html"><i id="notificationBell" class="bi bi-bell-fill"></i></a>
+      </div>
+    </nav>
+    <div class="main">
+      <div class="adopt-directory">
+        <div class="row">
+            <h1 class="adopt-title"> Adopt a Pet Today! </h1> 
+            <div class="main-info">
+              <div class="right-info">
+                <div class="main-img">
+                  <img class="sofa-dogs" src="images/dogs_on_sofa.jpeg">
+                </div>
+                <div class="apply">
+                  <a href="pet-adoption.html" class="apply-now-button"> Apply Now </a>
+                </div>
+              </div>
+              <div class="mini-faq">
+                <p class="mini-h1"> Looking to adopt a pet?</p>
+                    <p> Send in your application by clicking the "Apply Now" button. You will be asked to fill out a form as part of your application in which we will review and you can start communicating with one of our agents. We look forward to hearing from you!</p>
+                    <p class="mini-h1"> FAQs </p>
+                    <p class="mini-h2"> What is the adoption fee? </p>
+                    <p> Adopton fees vary between each pet. Please enquire the agent on your application page. </p>
+                    <p class="mini-h2"> Who can I contact regarding the details of my application and adoption status? </p>
+                    <p> Once you have made your application, view it by clicking the button below and there will be a messaging prompt on the bottom of the screen.</p>
+                    <p class="mini-h1 apply-pos"> Already Applied? </p>
+                    <a href="user-applications.html" class="t-button"> See my applications > </a>
+              </div>
+            </div>
+          </div>
+      </div>
+        <!-- Second segment of page -->
+        <div class="explore-more">
+            <h2 class="sub-heading"> Don't know who to choose? </h2>
+            <div class="pet-explore">
+                <div class="row">
+                    <div class="col-sm-6 col-md-6 col-lg-4 pet-opt right-align">
+                        <!-- Dog pic -->
+                        <img src="images/golden-retriever.jpeg" class="pet-img pic-pos-up">
+                        <div class="pet-button-container">
+                          <a href="#" class="pet-button right-pos"> Browse Dogs > </a>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-6 col-lg-4 pet-opt left-align">
+                        <!-- Cat pic -->
+                        <img src="images/cute-cat.jpeg" class="pet-img pic-pos-down">
+                        <div class="pet-button-container">
+                          <a href="search-filter-cats.html" class="pet-button left-pos"> Browse Cats > </a>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-6 col-lg-4 pet-opt right-align extra-padding">
+                        <!-- Bird pic -->
+                        <img src="images/bird.jpeg" class="pet-img pic-pos-up">
+                        <div class="pet-button-container">
+                          <a href="#" class="pet-button right-pos"> Browse Others > </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="text-center">
+      <div class="container-fluid">
+        <div class="row gx-0" id="footer">
+          <div class="footerContact col">
+            <div id="connect">Connect with Us!
+              <p id="connectPetPal">PetPal</p>
+            </div>
+          </div>
+          <div class="col-1" id="verticalLineBox">
+            <div id="verticalLine"></div>
+          </div>
+          <div id="contactInfo" class="col">
+            <a id="link" href="mailto:petpal23@gmail.com">petpal23@gmail.com</a>        	
+            <p id="telephone">(987) 654 - 3210</p>
+            <ul class="list-group list-group-horizontal">
+              <li class="list-group-item" id="insta">
+                <a href="#" role="button">
+                  <i class="bi bi-instagram"></i>
+                </a>
+              </li>
+              <li class="list-group-item" id="x">
+                <a href="#" role="button">
+                  <i class="bi bi-twitter-x"></i>
+                </a>
+              </li>
+              <li class="list-group-item" id="fb">
+                <a href="#" role="button">
+                  <i class="bi bi-facebook"></i>
+                </a>
+              </li>
+            </ul>
+          </div> 
+        </div>
+        <div class="row">
+          <div class="copyright">&copy Copyright 2023</div>
+      </div>
+    </div>
+    </footer>
+  </div>
+</body>
+</html>
