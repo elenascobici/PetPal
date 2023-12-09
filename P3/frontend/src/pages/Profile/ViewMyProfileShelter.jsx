@@ -59,36 +59,41 @@ export const ViewMyProfileShelter = ({userData, errors, updateProfile}) => {
             <div class="container gx-0" id="shelterLogoEdit">
                 <div class="form-control" id="profile">
                     <img id="profileImage" src={profilePath} />
-                    <label class="form-label btn" for="imageUpload" id="edit">Change shelter logo</label>
-                    <input id="imageUpload" type="file" 
+                    <label class="form-label btn" for="profile_picture" id="edit">Change shelter logo</label>
+                    <input id="profile_picture" type="file" 
                         name="profile_picture" placeholder="Photo" capture onChange={handleImageUpload}/>
+                    <p class="text-input-error-message" id="profile_picture-error"></p>
                 </div>
             </div>
                 <div class="grid">
                 <div class="grid-item">
-                    <label for="shelterName" id="shelterNameLabel" class="gridLabel">Shelter Name</label>
+                    <label for="name" id="shelterNameLabel" class="gridLabel">Shelter Name</label>
                 </div>
                 <div class="grid-item">
-                    <textarea id="shelterName" rows = "1" type="text" name="name" class="gridValue" required defaultValue={userData.name}></textarea>
+                    <textarea id="name" rows = "1" type="text" name="name" class="gridValue" required defaultValue={userData.name}></textarea>
+                    <p class="text-input-error-message" id="name-error"></p>
                 </div>
                 <div class="grid-item">
                     <label for="password" id="passwordLabel" class="gridLabel">Password</label>
                 </div>
                 <div class="grid-item">
                     <input id="password" type="password" name="password" class="gridValue" defaultValue="" />
+                    <p class="text-input-error-message" id="password-error"></p>
                 </div>
                 <div class="grid-item">
                     <label for="emailAddress" id="emailLabel" class="gridLabel">Email Address</label>
                 </div>
                 <div class="grid-item">
-                    <textarea id="emailAddress" rows = "1" type="text" name="email" class="gridValue" defaultValue={userData.email} required></textarea>
+                    <textarea id="email" rows = "1" type="text" name="email" class="gridValue" defaultValue={userData.email} required></textarea>
+                    <p class="text-input-error-message" id="email-error"></p>
                 </div>
                 <div class="grid-item">
                     <label for="phoneNumber" id="phoneNumberLabel" class="gridLabel">Phone Number</label>
                 </div>
                 <div class="grid-item">
-                    <input id="phoneNumber" type="tel" name="phone" class="gridValue" required
+                    <input id="phone" type="tel" name="phone" class="gridValue" required
                     defaultValue={userData.phone} size="10" />
+                    <p class="text-input-error-message" id="phone-error"></p>
                 </div>
                 <div class="grid-item">
                     <label for="location" id="locationLabel" class="gridLabel">Location</label>
@@ -114,6 +119,7 @@ export const ViewMyProfileShelter = ({userData, errors, updateProfile}) => {
                         <option value="Saskatchewan">Saskatchewan</option>
                         <option value="Yukon">Yukon</option>
                     </select>
+                    <p class="text-input-error-message" id="province-error"></p>
                     <p class="locationType" id="provinceLabel">Province/Territory</p>
                 </div>
                 <div class="grid-item">
