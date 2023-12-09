@@ -67,9 +67,9 @@ const ShelterDetail = () => {
     console.log(shelter.phone);
     console.log("NAME", shelter.name);
     // WILL REMOVE
-    shelter.phone = '1234567890';
-    shelter.profile_picture = PawPatrol;
-    shelter.mission_statement = "No job is too big, no pup is too small!\n\nThe rescuers at Paw Patrol Rescue commit themselves to saving all animals in Ontario and provide them with the care and shelter they deserve. We give our animals a proper inspection to ensure they are healthy and ready to find their new homes!"
+    // shelter.phone = '1234567890';
+    // shelter.profile_picture = PawPatrol;
+    // shelter.mission_statement = "No job is too big, no pup is too small!\n\nThe rescuers at Paw Patrol Rescue commit themselves to saving all animals in Ontario and provide them with the care and shelter they deserve. We give our animals a proper inspection to ensure they are healthy and ready to find their new homes!"
     
     return (
         <div className="main px-6 pt-6">
@@ -86,7 +86,7 @@ const ShelterDetail = () => {
         <MissionStatement statement={shelter.mission_statement} />
         
         <div className="container justify-content-start text-start">
-          <h2 className="subtitle2" id="petsSubtitle">Pets from Paw Patrol Rescue:</h2>
+          <h2 className="subtitle2" id="petsSubtitle">Pets from {shelterName}:</h2>
         </div>
         <PetsCarousel shelterId={shelterId} shelterName={shelterName} />
         
