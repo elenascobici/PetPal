@@ -54,10 +54,10 @@ export const ViewMyProfileShelter = ({userData, errors, updateProfile}) => {
     return (
         <div class="page-container">
             <div class="main" id="update-page">
-            <div id="title">Update Shelter Details</div>
+            <div id="title-pfp">Update Shelter Details</div>
             <form action="" method="post" id="update-shelter-profile-form">
             <div class="container gx-0" id="shelterLogoEdit">
-                <div class="form-control" id="profile">
+                <div className="form-control" id="profile-form">
                     <img id="profileImage" src={profilePath} />
                     <label class="form-label btn" for="profile_picture" id="edit">Change shelter logo</label>
                     <input id="profile_picture" type="file" 
@@ -133,12 +133,19 @@ export const ViewMyProfileShelter = ({userData, errors, updateProfile}) => {
                     <div class="gridLabel">Preferred Contact</div>
                 </div>
                 <div class="grid-item" id="radioButtons">
+                <div className="row">
+                <div className="col-12">
                     <input id="phonePreferred" type="radio" name="preferred_contact" value="phone" checked={userData.preferred_contact === "phone"} />
                     <span class="checkmark"></span>
                     <label for="phonePreferred" class="contactOptions">Phone</label>
+                </div>
+                <div className="col-12">
                     <input id="emailPreferred" type="radio" name="preferred_contact" value="email"  checked={userData.preferred_contact === "email"}  />
                     <span class="checkmark"></span>
                     <label for="emailPreferred" class="contactOptions">Email</label>
+                </div>
+                </div>
+                    
                 </div>
                 </div>
                 <div class="container justify-content-start text-start">
