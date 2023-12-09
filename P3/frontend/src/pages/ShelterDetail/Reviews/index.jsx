@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import "./style.css"
 import Rating from "./Rating";
 import AverageRating from "./AverageRating";
@@ -118,7 +119,7 @@ const Reviews = ({ shelterId, shelterName }) => {
           {userType === "Seeker" && (
             <>
             <Rating rating={rating} handleRatingClick={handleRatingClick} />
-            <a href="review.html" className="reviewClick">Leave a review {'>'}</a>
+            <Link to={`${window.location.pathname}/review`} className="reviewClick">Leave a review {'>'}</Link>
             </>
           )}
           

@@ -86,7 +86,7 @@ const ShelterDetail = () => {
         <MissionStatement statement={shelter.mission_statement} />
         
         <div className="container justify-content-start text-start">
-          <h2 className="subtitle2" id="petsSubtitle">Pets from Paw Patrol Rescue:</h2>
+          <h2 className="subtitle2" id="petsSubtitle">Pets from {shelterName}:</h2>
         </div>
         <PetsCarousel shelterId={shelterId} shelterName={shelterName} />
         
