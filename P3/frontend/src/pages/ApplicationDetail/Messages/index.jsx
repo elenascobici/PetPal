@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useRef, useCallback} from "react";
 import MessageBox from "./MessageBox";
 import InfiniteScroll from 'react-infinite-scroll-component';
-
+import "./style.css";
 
 const Messages = ({ appId }) => {
     const [messages, setMessages] = useState([]);
@@ -101,9 +101,17 @@ const Messages = ({ appId }) => {
             />
           ))}
         </div>
-        <div className="message-tb" id="message-tb-container">
-          {/* Your message input and send button here */}
-        </div>
+        <div class="message-tb" id="message-tb-container">
+                <textarea id="type-in" class="type-in" placeholder="Type your message here..."></textarea>
+                <div class="row" id="overlay">
+                  <div class="col-10 col-sm-11 col-md-11 col-lg-11 col-format"></div>
+                  <div class="col-2 col-sm-1 col-md-1 col-lg-1 col-format">
+                    <a href="my-application-msg.html#jump-here">
+                      <img src="images/send-btn.png" class="send-btn-format"/>
+                    </a>
+                </div>
+                </div>
+              </div>
       </div>
     );
   };

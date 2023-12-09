@@ -1,0 +1,35 @@
+.msg-text-from, .msg-text-to {
+    padding: 0.5rem 1rem;
+    margin: 0.5rem 0;
+    position: relative;
+}
+
+.msg-text-to:after {
+	content: '';
+	position: absolute;
+	bottom: 10px;
+	left: 20px;
+	width: 0;
+	height: 0;
+	border: 20px solid transparent;
+	border-top-color: #FFC011;
+	border-bottom: 0;
+	border-left: 0;
+	margin-left: -10px;
+	margin-bottom: -20px;
+}
+
+.msg-text-from:after {
+	content: '';
+	position: absolute;
+	bottom: 10px;
+	right: 10px;
+	width: 0;
+	height: 0;
+	border: 20px solid transparent;
+	border-top-color: #FFA903;
+	border-bottom: 0;
+	border-right: 0;
+	margin-left: -10px;
+	margin-bottom: -20px;
+}
