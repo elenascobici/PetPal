@@ -12,6 +12,7 @@ const Reviews = ({ shelterId, shelterName }) => {
     const [ userName, setUserName ] = useState('');
     // const [ submitted, setSubmitted ] = useState(false);
     const userId = localStorage.getItem('id');
+    const userType = localStorage.getItem('user_type');
 
     // Retrieve comments
     const fetchComments = async () => {
@@ -115,7 +116,10 @@ const Reviews = ({ shelterId, shelterName }) => {
         <div className="reviewRow">
           <h2 className="subtitle2" id="reviewSubtitle">Reviews: </h2>
           <Rating rating={rating} handleRatingClick={handleRatingClick} />
-          <a href="review.html" className="reviewClick">Leave a review {'>'}</a>
+          {userType === "Seeker" && (
+            <a href="review.html" className="reviewClick">Leave a review {'>'}</a>
+          )}
+          
           <AverageRating shelterId={shelterId} rating={rating}  />
         </div>
         {reviews.length > 0 ? (

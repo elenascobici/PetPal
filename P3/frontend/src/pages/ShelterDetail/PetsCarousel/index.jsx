@@ -7,7 +7,7 @@ import PetGrid from './PetGrid';
 const PetsCarousel = ({shelterId, shelterName}) => {
     const navigate = useNavigate();
     const userType = localStorage.getItem('user_type');
-    const filter = userType === "Seeker" ? `?shelter_name=${encodeURI(shelterName)}` : "";
+    const filter = userType === "Seeker" ? `shelter_name=${encodeURI(shelterName)}&` : "";
     console.log(filter);
     const [totalPages, setTotalPages] = useState(0);
     const [pets, setPets] = useState([]);
@@ -15,7 +15,7 @@ const PetsCarousel = ({shelterId, shelterName}) => {
  
     useEffect(() => {
         const token = localStorage.getItem('access_token'); 
-        fetch(`http://localhost:8000/pet/search/${filter}&page=${currentPage}`, {
+        fetch(`http://localhost:8000/pet/search/?${filter}page=${currentPage}`, {
             headers: {
                 'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json',
@@ -23,6 +23,7 @@ const PetsCarousel = ({shelterId, shelterName}) => {
         })
         .then(response => {
             console.log(shelterId);
+            console.log("PETS")
             if(!response.ok) {
                 console.error('Error:', response.status, response.statusText);
                 navigate('/404');
