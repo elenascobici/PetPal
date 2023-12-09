@@ -1,6 +1,6 @@
 from django.shortcuts import get_object_or_404
 from rest_framework.exceptions import PermissionDenied
-from rest_framework.generics import CreateAPIView, RetrieveUpdateDestroyAPIView, RetrieveAPIView, ListAPIView, DestroyAPIView
+from rest_framework.generics import CreateAPIView, RetrieveUpdateDestroyAPIView, RetrieveAPIView, ListAPIView, RetrieveDestroyAPIView
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from .serializers import BlogSerializer, LikeSerializer
 from .permissions import BlogCreatePermission, LikePermission
@@ -63,9 +63,12 @@ class LikeCreate(CreateAPIView):
         blog_id = self.kwargs.get('blog_id')
 
         # Get the corresponding blog instance
-        blog = Blog.objects.get(pk=blog_id)
+        existing_like = Like.objects.filter(user=self.request.user, blog_id=blog_id).first()
+        if existing_like:
+            raise PermissionDenied("You have already liked this blog")
 
         # Increase the likes count of the blog by 1
+        blog = Blog.objects.get(pk=blog_id)
         blog.likes += 1
         blog.save()
 
@@ -73,21 +76,8 @@ class LikeCreate(CreateAPIView):
         serializer.validated_data['blog'] = blog
         serializer.save()
 
-class LikeList(ListAPIView):
-    serializer_class = LikeSerializer
-    permission_classes = [IsAuthenticated]
 
-    def get_queryset(self):
-        blog_id = self.kwargs.get('blog_id')
-        return Like.objects.filter(blog__id=blog_id)
-
-    def list(self, request, *args, **kwargs):
-        queryset = self.get_queryset()
-        serializer = self.get_serializer(queryset, many=True)
-        return Response(serializer.data)
-
-
-class LikeDetail(RetrieveUpdateDestroyAPIView):
+class LikeUpdate(RetrieveDestroyAPIView):
     serializer_class = LikeSerializer
     permission_classes = [IsAuthenticated, LikePermission]
 
@@ -108,21 +98,6 @@ class LikeDetail(RetrieveUpdateDestroyAPIView):
         blog.save()
         instance.delete()
 
-
-    def perform_create(self, serializer):
-        # Get the blog_id from the query parameters
-        blog_id = self.kwargs.get('blog_id')
-
-        # Get the corresponding blog instance
-        blog = Blog.objects.get(pk=blog_id)
-
-        # Increase the likes count of the blog by 1
-        blog.likes += 1
-        blog.save()
-
-        # Set the serializer's validated data with the blog instance for Like creation
-        serializer.validated_data['blog'] = blog
-        serializer.save()
 
 class ServeBlogPicture(RetrieveAPIView):
     permission_classes = [AllowAny]
