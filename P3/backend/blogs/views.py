@@ -2,7 +2,7 @@ from rest_framework.exceptions import PermissionDenied
 from rest_framework.generics import CreateAPIView, RetrieveUpdateDestroyAPIView, ListAPIView
 from rest_framework.permissions import IsAuthenticated
 from .serializers import BlogSerializer, LikeSerializer
-from .permissions import BlogCreatePermission, LikePermission, IsAuthorOrReadOnly
+from .permissions import BlogCreatePermission, LikePermission
 from .models import Blog
 from rest_framework.response import Response
 
