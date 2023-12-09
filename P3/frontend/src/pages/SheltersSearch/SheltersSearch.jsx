@@ -1,16 +1,24 @@
-import React, {useState, useEffect} from "react";
-import "./style.css";
+import { useState, useEffect, useMemo } from "react";
+import { useSearchParams } from "react-router-dom";
+import "./shelters.css";
 import SheltersMain from "../../assets/images/shelters-main.jpg";
 import ShelterResults from "./ShelterResults";
+import ShelterRow from "./ShelterRow";
 
 const SheltersSearch = () => {
+    const [searchParams, setSearchParams] = useSearchParams();
     const [totalPages, setTotalPages] = useState(1);
     const [shelters, setShelters ] = useState([]);
     const [numTotal, setTotal] = useState(0);
 
+    const query = useMemo(() => ({
+        page: parseInt(searchParams.get("page") ?? 1),
+    }), [searchParams]);
+
     const fetchData = () => {
+        const param = new URLSearchParams(query);
         const token = localStorage.getItem('access_token');
-        fetch(`http://localhost:8000/accounts/shelter-list/`, {
+        fetch(`http://localhost:8000/accounts/shelter-list/?${param}`, {
         method: 'GET',
         headers: {
             'Authorization': `Bearer ${token}`,
@@ -23,9 +31,7 @@ const SheltersSearch = () => {
         .then(data => {
             console.log('results:', data.results);
             setShelters(data.results);
-            setTotalPages(Math.ceil(data.count / 8));
-            console.log('Shelters data:', shelters);
-            
+            setTotalPages(Math.ceil(data.count / 3));
             setTotal(data.count);
         })
         .catch(error => {
@@ -35,7 +41,7 @@ const SheltersSearch = () => {
 
     useEffect(() => {
         fetchData();
-    }, []);
+    }, [query]);
 
     return (
         <div class="page-container">
@@ -52,9 +58,9 @@ const SheltersSearch = () => {
                     <i class="bi bi-search" id="searchIcon"></i>
                     </a>
                 </div>
-                
                 </div>
             </form>
+            
             <form class="formInputs" id="searchSmall" method="get">
                 <div class="form-row d-flex justify-content-center" id="searchBar">
                 <div class="form-group col d-flex justify-content-center align-center">
@@ -66,67 +72,36 @@ const SheltersSearch = () => {
                 </div>
             </form>
             <div class="container" id="shelterList1">
-            <div class="grid-shelters">
-                <div class="grid-header tableHeader">
-                Organization
-                </div>
-                <div class="grid-header tableHeader">
-                Location
-                </div>
-                <div class="grid-header tableHeader">
-                Contact
-                </div>
-                {/* {shelters !== undefined && <ShelterResults data={shelters} total={totalPages}></ShelterResults>} */}
+                <div class="grid grid-shelter">
+                        <div class="grid-header tableHeader">
+                        Organization
+                        </div>
+                        <div class="grid-header tableHeader">
+                        Location
+                        </div>
+                        <div class="grid-header tableHeader">
+                        Contact
+                        </div>
+                        
+                        {shelters.map((shelter, index) => (
+                            <ShelterRow shelter={shelter} key={shelter.name+index}/>
+                        ))}
+                        
                 </div>
             </div>
-            <nav>
-                <ul class="pagination">
-                <li class="page-item disabled"><a class="page-link" href="#search">Previous</a></li>
-                <li class="page-item"><a class="page-link active" aria-current="page" href="#search">1          </a></li>
-                <li class="page-item"><a class="page-link" href="shelters-next-page.html#search">2</a></li>
-                <li class="page-item"><a class="page-link" href="#search">3</a></li>
-                <li class="page-item"><a class="page-link" href="shelters-next-page.html#search">Next</a></li>
-                </ul>
-            </nav>            
-            </div>
-            <footer class="text-center">
-            <div class="container-fluid">
-                <div class="row gx-0" id="footer">
-                <div class="footerContact col">
-                    <div id="connect">Connect with Us!
-                    <p id="connectPetPal">PetPal</p>
-                    </div>
-                </div>
-                <div class="col-1" id="verticalLineBox">
-                    <div id="verticalLine"></div>
-                </div>
-                <div id="contactInfo" class="col">
-                    <a id="link" href="mailto:petpal23@gmail.com">petpal23@gmail.com</a>        	
-                    <p id="telephone">(987) 654 - 3210</p>
-                    <ul class="list-group list-group-horizontal">
-                    <li class="list-group-item" id="insta">
-                        <a href="#" role="button">
-                        <i class="bi bi-instagram"></i>
-                        </a>
-                    </li>
-                    <li class="list-group-item" id="x">
-                        <a href="#" role="button">
-                        <i class="bi bi-twitter-x"></i>
-                        </a>
-                    </li>
-                    <li class="list-group-item" id="fb">
-                        <a href="#" role="button">
-                        <i class="bi bi-facebook"></i>
-                        </a>
-                    </li>
-                    </ul>
-                </div> 
-                </div>
-                <div class="row">
-                <div class="copyright">&copy Copyright 2023</div>
-            </div>
-            </div>
-            </footer>
+            <div class="col-12">
+                <p>
+                { query.page < totalPages
+                ? <button className="page-btn" onClick={() => setSearchParams({...query, page: query.page + 1})}>Next</button>
+                : <></> }
+                
+                { query.page > 1 
+                ? <button className="page-btn" onClick={() => setSearchParams({...query, page: query.page - 1})}>Previous</button>
+                : <></> }
+                </p>
+                {totalPages !== 0 && <p className="page-indicator">Page {query.page} out of {totalPages}</p>}
+            </div>           
+        </div>
         </div>
     )
 }

@@ -66,7 +66,7 @@ export const ViewMyProfileShelter = ({userData, errors, updateProfile}) => {
                     <p class="text-input-error-message" id="profile_picture-error"></p>
                 </div>
             </div>
-                <div class="grid">
+                <div class="grid grid-profile">
                 <div class="grid-item">
                     <label for="name" id="shelterNameLabel" class="gridLabel">Shelter Name</label>
                 </div>
@@ -100,9 +100,9 @@ export const ViewMyProfileShelter = ({userData, errors, updateProfile}) => {
                     <label for="location" id="locationLabel" class="gridLabel">Location</label>
                 </div>
                 <div class="grid-item">
-                    <textarea id="location" rows = "1" type="text" name="street" class="gridValue" defaultValue={userData.street}></textarea>
+                    <textarea id="location" rows = "1" type="text" name="street" class="gridValue street" defaultValue={userData.street}></textarea>
                     <p class="locationType">Street</p>
-                    <textarea rows = "1" type="text" name="city" class="gridValue" defaultValue={userData.city} required></textarea>
+                    <textarea rows = "1" type="text" name="city" class="gridValue city" defaultValue={userData.city} required></textarea>
                     <p class="locationType">City</p>
                     <select name="province" class="gridValue" id="province-select" defaultValue={userData.province ? userData.province : null} required>
                         <option value={null} hidden></option>
