@@ -7,7 +7,7 @@ function Sort({query, setSearch}){
       }
       return (
         <Dropdown onSelect={addParameter}>
-          <Dropdown.Toggle className="custom-color" variant="secondary" id="dropdown-basic">
+          <Dropdown.Toggle className="custom-color" variant="info" id="dropdown-basic">
             Sort
           </Dropdown.Toggle>
     
