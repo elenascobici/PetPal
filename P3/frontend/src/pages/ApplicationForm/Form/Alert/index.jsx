@@ -8,7 +8,6 @@ import React, { useState } from 'react';
 function AlertPopup({errorMsg}){
 
     return <>
-    {/* {console.log("HERE")} */}
         <div className="container mt-5">
          <Alert key='danger' variant='danger'>
             {errorMsg}

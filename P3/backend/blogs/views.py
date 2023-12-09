@@ -1,10 +1,13 @@
 from rest_framework.exceptions import PermissionDenied
-from rest_framework.generics import CreateAPIView, RetrieveUpdateDestroyAPIView, ListAPIView
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.generics import CreateAPIView, RetrieveUpdateDestroyAPIView, RetrieveAPIView, ListAPIView
+from rest_framework.permissions import IsAuthenticated, AllowAny
 from .serializers import BlogSerializer, LikeSerializer
 from .permissions import BlogCreatePermission, LikePermission
 from .models import Blog
 from rest_framework.response import Response
+from django.http import FileResponse, HttpResponse
+from django.conf import settings
+
 
 class BlogCreate(CreateAPIView):
     serializer_class = BlogSerializer
@@ -54,3 +57,12 @@ class LikeCreate(CreateAPIView):
         # Set the serializer's validated data with the blog instance for Like creation
         serializer.validated_data['blog'] = blog
         serializer.save()
+
+class ServeBlogPicture(RetrieveAPIView):
+    permission_classes = [AllowAny]
+    def get(self, request, filename):
+        imagePath = settings.MEDIA_ROOT / 'blogs' / filename
+        try:
+            return FileResponse(open(imagePath, 'rb'), content_type="image/jpeg")
+        except FileNotFoundError:
+            return HttpResponse("Image not found", status=404)

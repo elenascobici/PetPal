@@ -9,6 +9,7 @@ class Blog(models.Model):
     content = models.CharField(max_length=10000, default="")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    banner_image = models.ImageField(null=True, blank=True, upload_to='blogs/')
 
 class Like(models.Model):
     blog = models.ForeignKey(Blog, on_delete=models.CASCADE)

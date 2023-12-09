@@ -1,0 +1,290 @@
+/*
+ * application-home.css
+ *
+ * CSC309 PetPal
+ * 
+ * University of Toronto
+ * Fall 2023
+ *
+ */
+ @import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
+ 
+ .main-home-app {
+   padding-left: 6.6vw;
+   padding-right: 6.6vw;
+   margin-top: 65px;
+   margin-bottom: 90px;
+ }
+ /* p {
+   margin-bottom: 0.9vw!important;
+ } */
+ .adopt-directory {
+    width: 100%;
+    margin-bottom: 3rem;
+ }
+
+ .adopt-title {
+    font-family: Mochiy Pop One;
+    color: #119899;
+    font-size: 4.5vw;
+    text-align: left;
+    margin-bottom: 2rem;
+ }
+
+ .sofa-dogs {
+   object-fit: contain;
+    width: 50vw;
+    margin-bottom: 2rem;
+ }
+
+ .apply-now-button {
+    background-color: #FFC011;
+    border: 1px solid white; 
+    border-radius: 0.9vw;
+    color: white;
+    font-size: 2.5vw;
+    padding: 0.4vw 0.9vw;
+    transition: 0.3s;
+    text-decoration: none;
+ }
+
+ .apply-now-button:hover {
+    background-color: #FFA903;
+    color: #D9EDED;
+ }
+
+ .apply-pos {
+   margin-bottom: 0.9rem!important;
+ }
+
+ .mini-faq {
+    text-align: left;
+    font-family: Manrope;
+    color: #4B4B4B;
+    margin-left: 1.6vw;
+    font-size: 1.1vw;
+    transition: font-size 0.3s ease;
+ }
+
+ .mini-h1 {
+    font-size: 1.8vw;
+    font-weight: 1000;
+ }
+
+ .mini-h2 {
+    font-size: 1.5vw;
+    font-weight: 600;
+ }
+
+ .t-button {
+    background-color: #48B7AB;
+    border: 1px solid white; 
+    border-radius: 0.9vw;
+    color: white;
+    font-size: 1.3vw;
+    padding: 0.4vw 0.7vw;
+    transition: 0.3s;
+    text-decoration: none;
+ }
+
+ .t-button:hover {
+    background-color: #119899;
+    color: #D9EDED;
+ }
+
+ .explore-more {
+    background-color: #D9EDED;
+    width: 100%;
+    /* height: fit-content; */
+ }
+
+ .sub-heading {
+    font-size: 3.3vw;
+    color: #119899;
+    font-family: Manrope;
+    font-weight: 1000;
+    padding-top: 4vw;
+    margin-bottom: 4vw;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+ }
+
+ .pet-img {
+    width: 23vw;
+    height: 60%;
+    object-fit: cover;
+    margin-bottom: 3rem;
+ }
+
+ .pet-button {
+    background-color: #0c7f7f;
+    border: 1px solid white; 
+    border-radius: 10px;
+    color: white;
+    transition: 0.3s;
+    text-decoration: none;
+    font-size: 20px;
+    font-family: Manrope;
+    padding: 1rem 2rem;
+    width: fit-content;
+ }
+
+ .pet-button:hover {
+    background-color: #92DAD9;
+    color: #119899;
+ }
+
+ .main-info {
+   display: flex;
+   justify-content: flex-start;
+ }
+
+ .apply {
+   display: flex;
+   justify-content: center;
+ }
+
+ /* Modifications for responsiveness */
+ .right-side {
+   margin-bottom: 1rem;
+ }
+
+ .pet-opt {
+   padding-bottom: 3vw;
+ }
+ .pet-button-container {
+   width: 100%;
+ }
+
+ @media screen and (max-width: 991px) {
+   .adopt-title {
+      font-size: 6.5vw;
+      margin-bottom: 3vw;
+      text-align: center;
+   }
+   .pet-button {
+      font-size: 2.5vw;
+      padding: 1vw 2vw;
+   }
+   .pet-button-container {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+   }
+   .right-pos {
+      margin-left: 8vw;
+   }
+   .left-pos {
+      margin-right: 8vw;
+   }
+
+   .right-align {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+   }
+   .left-align {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+   }
+   .sofa-dogs {
+      width: 40vw;
+      margin-bottom: 3.2vw;
+   }
+   .right-side {
+      margin-bottom: 2rem;
+   }
+
+   .sub-heading {
+      font-size: 5vw;
+   }
+   .pet-img  {
+      width: 33vw;
+      height: 70%;
+      margin-bottom: 4vw;
+      margin-top: 1rem;
+   }
+   .apply-pos {
+      margin-bottom: 0.7vw!important;
+   }
+ }
+
+ @media screen and (max-width: 787px) {
+   .main-home-app {
+      padding-top: 10vw;
+   }
+   .mini-faq {
+      font-size: 13px;
+   }
+   .mini-h1 {
+      font-size: 16px;
+   }
+   .mini-h2 {
+      font-size: 15px;
+   }
+   .main-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    .sofa-dogs {
+      width: 100%;
+    }
+    .apply-now-button {
+      font-size: 20px ;
+      margin-bottom: 1rem;
+    }
+
+    .t-button {
+      font-size: 13px;
+    }
+
+    .apply-pos {
+      margin-bottom: 0.7rem!important;
+    }
+   
+ }
+
+ @media screen and (max-width: 576px) {
+
+   .pet-opt {
+      width: 50%!important;
+   }
+   .extra-padding {
+      padding-bottom: 5vw!important;
+   }
+   .sofa-dogs {
+      margin-bottom: 2.5vw;
+   }
+   .adopt-directory {
+      margin-bottom: 8vw;
+   }
+   .sub-heading {
+      margin-bottom: 2vw;
+   }
+ }
+
+ @media screen and (max-width: 487px) {
+   .pet-opt{
+      padding-bottom: 2vw;
+   }
+
+ }
+
+ @media screen and (min-width:410px) and (max-width:541px) {
+   .footerContact {
+     height: 50vw;
+   }
+   .text-center {
+     height: calc(50vw + 56px);
+   }
+ }
+
+ @media screen and (max-width:409px) {
+   .main-home-app {
+     margin-bottom: 14vw;
+   }
+ }

@@ -1,7 +1,5 @@
 
-// A component that will render the form
-// Will have a function that handles submits 
-// No need to handle time cus thats handled in the backend
+
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -16,7 +14,6 @@ import AlertPopup from './Alert';
 
 import React, { useState, useEffect } from 'react';
 
-// Will also include validation.
 function Form({petID}){
 
     const [valid, setValid] = useState({
