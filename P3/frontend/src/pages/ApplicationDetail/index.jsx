@@ -25,7 +25,7 @@ function ApplicationDetail(){
     const [formattedPhone, setFormat] = useState("");
     const [fullProvince, setProvince] = useState("");
     const [fullHome, setHome] = useState("");
-    const [show, showBtns] = useState(true);
+    const [show, showBtns] = useState(false);
     const [notify, notifyToggle] = useState(null);
     const {appID}= useParams();
 

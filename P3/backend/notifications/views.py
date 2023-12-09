@@ -11,7 +11,7 @@ from rest_framework.response import Response
 
 # Create your views here.
 class NotificationPagination(PageNumberPagination):
-    page_size = 3
+    page_size = 10
     page_size_query_param = 'page_size'
 
 class NotificationListView(ListAPIView):
@@ -26,14 +26,14 @@ class NotificationListView(ListAPIView):
             queryset = Notification.objects.filter(user=self.request.user.id, read = True)
         elif filter == 'unread':
             queryset = Notification.objects.filter(user=self.request.user.id, read = False)
-        elif filter == None:
+        elif filter == '':
             queryset = Notification.objects.filter(user=self.request.user.id)
         else:
             raise PermissionDenied(detail="No such filter exists.")
         
         if sort == "creation-time":
             queryset = queryset.order_by('-time')
-        elif sort != None:
+        elif sort != '':
             raise PermissionDenied(detail="Invalid field to sort by.")
         
         return queryset
@@ -54,7 +54,7 @@ class NotificationGetUpdateDeleteView(RetrieveUpdateDestroyAPIView):
         notification = get_object_or_404(Notification, pk=notification_id)
         if not notification:
             raise FileNotFoundError
-        notification.read = True
+        # notification.read = True
         notification.save()
         return super().get(request, *args, **kwargs)
     

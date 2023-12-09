@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 const NavButtons = ({ userType }) => {
+    const navigate = useNavigate();
     const [isAuth, setIsAuth] = useState(false);
 
     useEffect(() => {
@@ -17,6 +19,7 @@ const NavButtons = ({ userType }) => {
                 <li><Link to="/profile" className="yellowButton me-3" id="profile">Profile</Link></li>
                 <li><div id="empty"> </div></li>
                 <li><Link to="/log-out" className="yellowButton" id="logOut">Log out</Link></li>
+                <a id="notifications" onClick={() => navigate("/notifications/")}><i id="notificationBell" class="bi bi-bell-fill"></i></a>
                 </>
             ) : (
                 <>

@@ -66,7 +66,7 @@ function PetCard({listing, image}){
               <br/>
               {formatTime(listing.creation_time)}
             </p>
-            <a class="appView" onClick={() => navigate(`/application/detail/${listing.id}/`)}>View Application</a>
+            <a class="appView" onClick={() => navigate(`/application/${listing.id}/`)}>View Application</a>
           </div> </div>) : <div className="blank"></div>}
           
         </div>
