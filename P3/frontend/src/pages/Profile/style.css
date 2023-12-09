@@ -18,7 +18,7 @@
     --light-orange: #FEF2CB;
 }
 #name, #email, #radioButtons{
-    width: 40vw!important;
+    width: 40vw;
 }
 
 #profile_picture{

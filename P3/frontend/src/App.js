@@ -25,6 +25,7 @@ import PetSearch from './pages/PetSearch';
 import SheltersSearch from './pages/SheltersSearch/SheltersSearch';
 import Notification from './pages/Notification';
 import PetDetail from './pages/PetDetail';
+import PetForm from './pages/PetForm';
 
 function App() {
   return (
@@ -50,6 +51,7 @@ function App() {
         <Route path="search/" element={<PrivateRoute> <PetSearch /> </PrivateRoute>} />
         <Route path="pets/:petId/" element={<PrivateRoute> <PetDetail /> </PrivateRoute>} />
         <Route path="notifications" element={<PrivateRoute> <Notification /> </PrivateRoute> } />
+        <Route path="pet/form" element={<PrivateRoute> <PetForm /> </PrivateRoute>} />
         <Route path="*" element={<NotFound />} /> 
       </Route>
     </Routes>
