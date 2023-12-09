@@ -8,6 +8,7 @@ import { Navigate, useNavigate } from "react-router-dom";
 import UpdateButtons from "./UpdateButtons";
 import { Link, useParams } from 'react-router-dom';
 import AlertPopup from "./Alert";
+import Messages from "./Messages";
 
 function ApplicationDetail(){
     //! TO DO:
@@ -73,6 +74,11 @@ function ApplicationDetail(){
         },
         })
         .then(response => {
+            if (!response.ok) {
+                navigate('/404');
+                window.history.replaceState(null, null, `/application/detail/${appID}`);
+                throw Error(response);
+            }
             return response.json();
         })
         .then(data => {
@@ -140,13 +146,7 @@ function ApplicationDetail(){
           <div className="sub-content">
             <p className="heading3 heading-res"> Message History </p>
           </div>
-          <div className="details-text">
-            <div className="message-history">
-              <div className="msg-pos">
-               {/* Messages */}
-            </div>
-          </div>
-        </div>
+               <Messages appId={appID} />
       </div>
 
     </div>
