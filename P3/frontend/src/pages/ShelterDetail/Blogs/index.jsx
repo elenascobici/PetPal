@@ -16,6 +16,8 @@ const Blogs = () => {
     const [blogs, setBlogs] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
+    const [liked, setLiked] = useState(0);
+    const userType = localStorage.getItem('user_type');
 
     let navigate = useNavigate();
   
@@ -54,32 +56,44 @@ const Blogs = () => {
       fetchBlogs();
     }, [shelterId, currentPage, shelterName]);
 
-    const handleDelete = async (blogId) => {
-        const token = localStorage.getItem("access_token");
-    
-        try {
-          const response = await fetch(`http://localhost:8000/blogs/${blogId}`, {
-            method: 'DELETE',
-            headers: {
-              Authorization: `Bearer ${token}`,
-              'Content-Type': 'application/json',
-            },
-          });
-    
-          if (!response.ok) {
-            console.error('Failed to delete blog:', response.status, response.statusText);
-            throw Error(response);
-          }
-    
-          // If the deletion is successful, remove the deleted blog from the state
-          setBlogs((prevBlogs) => prevBlogs.filter((blog) => blog.id !== blogId));
-        } catch (error) {
-          console.error('Delete request error:', error);
+    const handleLike = async (blogId) => {
+      const token = localStorage.getItem("access_token");
+  
+      try {
+        // Check if the user has already liked the blog
+        const response = await fetch(`http://localhost:8000/blogs/${blogId}/`, {
+          method: 'GET',
+          headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json',
+          },
+        });
+  
+        if (!response.ok) {
+          console.error('Failed to check like status:', response.status, response.statusText);
+          throw Error(response);
         }
-      };
+  
+        const { liked } = await response.json();
+  
+        if (liked) {
+          console.log('User has already liked this blog.');
+          
+        } else {
+
+        }
+  
+      } catch (error) {
+        console.error('Like request error:', error);
+      }
+    };
   
     const handlePageChange = (newPage) => {
       setCurrentPage(newPage);
+    };
+
+    const handleViewClick = (blogId) => {
+      navigate(`/blog-view/${blogId}`);
     };
   
     return (
@@ -95,8 +109,11 @@ const Blogs = () => {
               </p>
             </div>
             <div className="button-container">
-              <button className="blog-button blog-edit">Edit</button>
-              <button className="blog-button blog-delete" onClick={() => handleDelete(blog.id)}>Delete</button>
+              <button className="blog-button blog-view" onClick={() => handleViewClick(blog.id)}>Read</button>
+              {/* {userType === "Seeker" && (
+                  <button className="blog-button blog-like" >Like</button>
+              )} */}
+              
             </div>
           </div>
         ))}

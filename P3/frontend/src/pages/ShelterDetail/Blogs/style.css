@@ -15,6 +15,10 @@
     width: 80px;
     height: fit-content;
     margin-bottom: 0.5rem;
+    transition: 0.3s;
+    &:hover {
+      background-color: var(--dark-orange);
+    }
 }
 
 .blog-edit {
@@ -24,6 +28,9 @@
 
 .blog-delete {
     background-color: var(--dark-orange);
+    &:hover {
+      background-color: #e58912;
+    }
 }
 
 .blog-time {
