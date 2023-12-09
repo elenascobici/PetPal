@@ -1,8 +1,42 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import "./style.css";
 import SheltersMain from "../../assets/images/shelters-main.jpg";
+import ShelterResults from "./ShelterResults";
 
 const SheltersSearch = () => {
+    const [totalPages, setTotalPages] = useState(1);
+    const [shelters, setShelters ] = useState([]);
+    const [numTotal, setTotal] = useState(0);
+
+    const fetchData = () => {
+        const token = localStorage.getItem('access_token');
+        fetch(`http://localhost:8000/accounts/shelter-list/`, {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json',
+        },
+        })
+        .then(response => {
+            return response.json();
+        })
+        .then(data => {
+            console.log('results:', data.results);
+            setShelters(data.results);
+            setTotalPages(Math.ceil(data.count / 8));
+            console.log('Shelters data:', shelters);
+            
+            setTotal(data.count);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }
+
+    useEffect(() => {
+        fetchData();
+    }, []);
+
     return (
         <div class="page-container">
             <div class="main px-6 pt-5">
@@ -42,20 +76,9 @@ const SheltersSearch = () => {
                 <div class="grid-header tableHeader">
                 Contact
                 </div>
-                <div class="grid-item shelterLink">
-                <a href="shelter-detail.html" class="shelterLink">Paw Patrol Rescue</a>
+                {/* {shelters !== undefined && <ShelterResults data={shelters} total={totalPages}></ShelterResults>} */}
                 </div>
-                <div class="grid-item">Adventure Bay, ON CA</div>
-                <div class="grid-item">
-                <a class="email" href="mailto:pawpatrolrescue@gmail.com">pawpatrolrescue@gmail.com</a> 
-                </div>
-                <div class="grid-item shelterLink">Just Paws Animal Rescue</div>
-                <div class="grid-item">Richmond Hill, ON CA</div>
-                <div class="grid-item">
-                <a class="email" href="mailto:info.justpaws@gmail.com">info.justpaws@gmail.com</a> 
-                </div>
-                </div>
-                </div>
+            </div>
             <nav>
                 <ul class="pagination">
                 <li class="page-item disabled"><a class="page-link" href="#search">Previous</a></li>

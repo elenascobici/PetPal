@@ -97,9 +97,30 @@
   padding: 0px;
 }
 
-.btn-secondary {
+.btn-info {
   background-color: #48B7AB;
   border-color: white;
+  color: white;
+}
+
+.btn-info:hover {
+  color: white;
+  border-color: white;
+  background-color: #92DAD9;
+}
+
+.btn-check:active+.btn-info, .btn-check:checked+.btn-info, .btn-info.active, .btn-info:active, .show>.btn-info.dropdown-toggle {
+  color: white;
+  border-color: white;
+  background-color: #92DAD9;
+}
+
+
+.no-notif{
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5rem;
 }
 
 .message-link {

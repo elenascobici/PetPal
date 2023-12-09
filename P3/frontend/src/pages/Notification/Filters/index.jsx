@@ -8,7 +8,7 @@ function Filters({read, setRead}){
    return (
     <Dropdown onSelect={addParameter}>
     {/* <Dropdown> */}
-      <Dropdown.Toggle className="custom-color" variant="secondary" id="dropdown-basic">
+      <Dropdown.Toggle className="custom-color" variant="info" id="dropdown-basic">
         Filter
       </Dropdown.Toggle>
 

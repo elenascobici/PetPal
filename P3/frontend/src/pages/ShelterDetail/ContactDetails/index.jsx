@@ -4,7 +4,7 @@ const ContactDetails = ({ phone, email, location, image }) => {
      return (
         <div className="container" id="contact">
           <img id="shelterLogo3" src={image}/>
-          <div className="grid" id="contactGrid">
+          <div className="contact-grid" id="contactGrid">
             <div className="subtitleHeader gridItem"><div className="contact-subtitle">Contact Details:</div></div> 
             <div className="shelterImg"><img id="shelterLogo" src={image}/></div>
             <div className="phoneIcon gridItem"><i className="bi bi-telephone-fill icon"></i></div>

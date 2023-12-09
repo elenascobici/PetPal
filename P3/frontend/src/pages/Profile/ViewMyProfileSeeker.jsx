@@ -43,7 +43,7 @@ export const ViewMyProfileSeeker = ({userData, errors, updateProfile}) => {
 
     return (
         <div class="page-container">
-        <div class="main">
+        <div class="main" id="update-page">
         <div id="title">Update My Account</div>
         <form action="" method="post" id="update-seeker-profile-form">
             <div class="container gx-0" id="userEdit">

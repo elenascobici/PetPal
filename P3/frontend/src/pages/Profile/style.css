@@ -17,6 +17,18 @@
     --mid-orange: #FEBF11;
     --light-orange: #FEF2CB;
 }
+#name, #email, #radioButtons{
+    width: 40vw!important;
+}
+
+#profile_picture{
+    margin-left: 4.5rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+.contactOptions{
+    margin-left: 1rem;
+}
 
 .main {
     padding-bottom: 351px;
@@ -26,18 +38,39 @@
     width: 100%;
 }
 
+
 .page-container {
     overflow: hidden;
 }
 
-#title {
+#title-pfp {
     font-family: Mochiy Pop One;
     font-size: 55px;
     color: #009899;
 }
 
-#profile {
+
+
+#profile-form {
     border: none;
+    box-shadow: none;
+    padding: 0px;
+}
+
+/* #update-shelter-profile-form {
+    width: 100%!important;
+    padding: 0rem 5rem;
+    position: relative;
+    box-sizing: border-box;
+} */
+
+#update-page .grid-item {
+    border: none !important;
+}
+
+#update-page-pfp {
+    margin: 0px;
+    padding: 0px;
 }
 
 #userEdit {
@@ -138,6 +171,7 @@ select {
     padding: 0.5rem 1.25rem;
     width: 40vw;
 }
+
 
 .locationType,
 .invalid {
@@ -256,11 +290,11 @@ input::-webkit-calendar-picker-indicator {
         padding-right: 2rem;
     }
 
-    input[type="text"],
+    /* input[type="text"],
     input[type="password"],
     input[type="tel"] {
         width: 100%;
-    }
+    } */
 }
 
 @media screen and (max-width:615px) {
