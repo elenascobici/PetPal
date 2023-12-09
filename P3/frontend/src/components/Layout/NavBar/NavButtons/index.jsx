@@ -14,7 +14,7 @@ const NavButtons = ({ userType }) => {
         <ul className="nav navbar-nav navbar-right px-2" id="navButtons">
             {isAuth ? (
                 <>
-                <li><Link to="/profile" className="yellowButton me-3" id="signUp">Profile</Link></li>
+                <li><Link to="/profile" className="yellowButton me-3" id="profile">Profile</Link></li>
                 <li><div id="empty"> </div></li>
                 <li><Link to="/log-out" className="yellowButton" id="logOut">Log out</Link></li>
                 </>

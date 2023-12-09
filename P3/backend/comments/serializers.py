@@ -31,10 +31,13 @@ class CommentSerializer(serializers.ModelSerializer):
         return reply_serializer.data
 
 class ReviewSerializer(CommentSerializer):
+    rating = serializers.IntegerField(default=None)
     class Meta:
         model = Review
         fields = '__all__'
         extra_kwargs = {'commented_shelter': {'required': False}}
+
+
 
 class ReplySerializer(CommentSerializer):
     class Meta:

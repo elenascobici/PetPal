@@ -1,134 +1,143 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./style.css"
 import Rating from "./Rating";
+import AverageRating from "./AverageRating";
+import ReviewsList from "./ReviewsList";
 
 const Reviews = ({ shelterId, shelterName }) => {
-    console.log(shelterId);
+    const [ rating, setRating ] = useState(null);
+    const [ reviews, setReviews ] = useState([])
+    const [ currentPage, setCurrentPage ] = useState(1);
+    const [ hasMore, setHasMore ] = useState(false);
+    const [ userName, setUserName ] = useState('');
+    // const [ submitted, setSubmitted ] = useState(false);
+    const userId = localStorage.getItem('id');
+
+    // Retrieve comments
+    const fetchComments = async () => {
+      const token = localStorage.getItem('access_token');
+      fetch(`http://localhost:8000/shelter/${shelterId}/details/comments?page=${currentPage}`, {
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json',
+            },
+        })
+        .then(response => {
+            if(!response.ok) {
+                console.log("ERROR");
+            }
+            return response.json();
+        })
+        .then(data => {
+
+            setReviews((prevReviews) => {
+              const newReviews = data.results.filter(result => !prevReviews.some(review => review.id === result.id));
+              return [...prevReviews, ...newReviews];
+            });
+            setHasMore(data.next !== null);            
+        })
+    };
+
+    useEffect(() => {
+      fetchComments();
+    }, [currentPage]);
+
+
+    const handleSeeMoreClick = () => {
+      if (hasMore) {
+        setCurrentPage((prevPage) => prevPage + 1);
+      }
+    };
+
+    const handleSeeLessClick = () => {
+        setCurrentPage(1);
+        setReviews((prevReviews) => prevReviews.slice(0, 8));
+        scrollToReviews();
+    };
+
+    const scrollToReviews = () => {
+      const reviewsSection = document.getElementById('reviews');
+      if (reviewsSection) {
+        reviewsSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    };
+
+    const handleRatingClick = (clickedRating) => {
+        const token = localStorage.getItem('access_token'); 
+        console.log(clickedRating);
+        fetch(`http://localhost:8000/shelter/${shelterId}/details/rating/`, {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                'user': userId,
+                'shelter': shelterId,
+                'value': clickedRating,
+            })
+        })
+        .then(response => {
+            console.log(shelterId);
+            if(!response.ok) {
+                console.log("ERROR");
+            }
+            return response.json();
+        })
+        .then(data => {
+            setRating(data.value);
+        })
+    };
+
+    useEffect(() => {
+      const token = localStorage.getItem('access_token');
+      fetch(`http://localhost:8000/accounts/profile/${userId}`, {
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json',
+            },
+        })
+        .then(response => {
+            if(!response.ok) {
+                console.log("ERROR");
+            }
+            return response.json();
+        })
+        .then(data => {
+            setUserName(data.name ?? data.username)            
+        })
+    }, [userId]);
+
+    console.log("reviews", reviews);
+
     return (
-        <div class="container justify-content-start text-start" id="reviews">
-        <div class="reviewRow">
-          <h2 class="subtitle2" id="reviewSubtitle">Reviews: </h2>
-          <Rating shelterId={shelterId} shelterName={shelterName} />
-
-          <a href="review.html" class="reviewClick">Leave a review {'>'}</a>
-
+        <div className="container justify-content-start text-start" id="reviews">
+        <div className="reviewRow">
+          <h2 className="subtitle2" id="reviewSubtitle">Reviews: </h2>
+          <Rating rating={rating} handleRatingClick={handleRatingClick} />
+          <a href="review.html" className="reviewClick">Leave a review {'>'}</a>
+          <AverageRating shelterId={shelterId} rating={rating}  />
         </div>
-      <div class="container justify-content-start text-start" id="reviewBox">
-        <div class="row align-middle">
-          <div class="col d-flex justify-content-start">
-            <h3 class="reviewerName">Sosuke</h3>
+        {reviews.length > 0 ? (
+          <>
+          <ReviewsList comments={reviews} className="reviewBox" isReview={true} userName={userName} shelterName={shelterName} shelterId={shelterId} />
+          <div className="container" id="seeMoreCollapse">
+          {hasMore && (
+            <button className="btn reviewClick" id="seeMore" onClick={handleSeeMoreClick}>
+              <div className="text-collapsed">See more <i className="bi bi-chevron-right chevron"></i></div>
+            </button>
+          )}
+          {!hasMore && currentPage > 1 && (
+            <button className="btn reviewClick" id="seeMore" onClick={handleSeeLessClick}>
+              <div className="text-expanded">See less<i className="bi bi-chevron-up chevron"></i></div>
+            </button>
+          )}
           </div>
-          <div class="col d-flex justify-content-end stars">
-            <i class="bi bi-star-fill star"></i>
-            <i class="bi bi-star-fill star"></i>
-            <i class="bi bi-star-fill star"></i>
-            <i class="bi bi-star-fill star"></i>
-            <i class="bi bi-star-fill star"></i>
-          </div>
-        </div>
-        <div class="reviewText">
-          Lovely organization! I adopted a pet goldfish and named her Ponyo, and she is so adorable! 
-          Would love to adopt another pet from them again and give Ponyo and me some more friends!
-        </div>
-        <div class="container" id="replyCollapse">
-          <a data-bs-target="#replyForm" class="btn reply" data-bs-toggle="collapse" role="button" 
-          aria-expanded="false" aria-controls="replyForm" id="replyButton">
-            Reply {'>'}
-          </a>
-      </div>
-      </div>
-      <div class="container justify-content-start text-start collapse replyBox" id="replyForm">
-            <div class="col d-flex justify-content-start">
-              <h3 class="reviewerName responderName">Jack</h3>
-            </div>
-          <form action="#" method="post" id="replyBoxForm">
-            <textarea id="replyComment" rows = "1" type="text" name="replyComment" class="reviewText" required placeholder="Reply here..."></textarea>
-            <a href="#" type="submit" class="submit">Submit</a>
-          </form>    
-      </div>
-      <div class="container justify-content-start text-start" id="reviewBox">
-        <div class="row align-middle">
-          <div class="col d-flex justify-content-start">
-            <h3 class="reviewerName">Vante</h3>
-          </div>
-          <div class="col d-flex justify-content-end stars">
-            <i class="bi bi-star-fill star"></i>
-            <i class="bi bi-star-fill star"></i>
-            <i class="bi bi-star-fill star"></i>
-            <i class="bi bi-star-fill star"></i>
-            <i class="bi bi-star-fill star"></i>
-          </div>
-        </div>
-        <div class="reviewText">
-          Adopted a pet dog, Yeontan! He’s a little sick, but Paw Patrol Rescue did a great job taking care of him! 
-          He’s a new member of the family!
-        </div>
-        <div class="container" id="replyCollapse">
-          <a data-bs-target="#replyForm2" class="btn reply" data-bs-toggle="collapse" role="button" 
-          aria-expanded="false" aria-controls="replyForm" id="replyButton">
-            Reply {'>'}
-          </a>
-        </div>
-      </div>
-      <div class="container justify-content-start text-start collapse replyBox" id="replyForm2">
-        <div class="col d-flex justify-content-start">
-          <h3 class="reviewerName responderName">Jack</h3>
-        </div>
-        <form action="#" method="post" id="replyBoxForm">
-          <textarea id="replyComment" rows = "1" type="text" name="replyComment" class="reviewText" required placeholder="Reply here..."></textarea>
-          <a href="#" type="submit" class="submit">Submit</a>
-        </form>    
-      </div>
-      <div class="container justify-content-start text-start" id="replyBox">
-        <div class="row align-middle">
-          <div class="col d-flex justify-content-start">
-            <h3 class="reviewerName"  id="underlined">Paw Patrol</h3>
-          </div>
-        </div>
-        <div class="reviewText">
-          We're glad to here that! We hope Yeontan gets better soon!
-        </div>
-        <div class="container" id="replyCollapse">
-          <a data-bs-target="#replyForm3" class="btn reply" data-bs-toggle="collapse" role="button" 
-          aria-expanded="false" aria-controls="replyForm" id="replyButton">
-            Reply {'>'}
-          </a>
-        </div>
-      </div>
-      <div class="container justify-content-start text-start collapse replyBox" id="replyForm3">
-        <div class="col d-flex justify-content-start">
-          <h3 class="reviewerName responderName">Jack</h3>
-        </div>
-        <form action="#" method="post" id="replyBoxForm">
-          <textarea id="replyComment" rows = "1" type="text" name="replyComment" class="reviewText" required placeholder="Reply here..."></textarea>
-          <a href="#" type="submit" class="submit">Submit</a>
-        </form>    
-      </div>
-      
-      <div class="container justify-content-start text-start" id="reviewBox">
-        <div class="row align-middle">
-          <div class="col d-flex justify-content-start">
-            <h3 class="reviewerName">Zura</h3>
-          </div>
-          <div class="col d-flex justify-content-end stars">
-            <i class="bi bi-star-fill star"></i>
-            <i class="bi bi-star-fill star"></i>
-            <i class="bi bi-star-fill star"></i>
-            <i class="bi bi-star-fill star"></i>
-            <i class="bi bi-star-fill star emptyStar"></i>
-          </div>
-        </div>
-        <div class="reviewText">
-          Met my new best friend Elizabeth the duck. She’s well-behaved but it wasn’t a super easy 
-          process to adopt her from the shelter. I still love her though!
-        </div>
-        <div class="container" id="replyCollapse">
-          <a class="btn reply" data-bs-toggle="collapse" role="button" 
-          aria-expanded="false" aria-controls="replyForm" id="replyButton">
-            Reply {'>'}
-          </a>
-        </div>
-      </div>      
+          </>
+        ) : (
+          <h4 className="no-reviews"><i>No reviews yet</i></h4>
+        )}
+        
       </div>
     )
 }

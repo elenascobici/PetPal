@@ -4,7 +4,7 @@ from accounts.models.ShelterModel import Shelter
 from applications.models import Application
 
 class Comment(models.Model):
-    text = models.TextField()
+    text = models.CharField(max_length=350)
     time = models.DateTimeField(auto_now_add=True)
 
     def get_commented_shelter(self):

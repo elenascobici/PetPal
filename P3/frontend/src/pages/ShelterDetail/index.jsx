@@ -91,38 +91,7 @@ const ShelterDetail = () => {
         <PetsCarousel shelterId={shelterId} shelterName={shelterName} />
         
         <Reviews shelterId={shelterId} shelterName={shelterName} />
-        <div className="container" id="seeMoreCollapse">
-          <a data-bs-target="#collapsedReviews" className="btn reviewClick" data-bs-toggle="collapse" role="button" 
-          aria-expanded="false" aria-controls="collapsedReviews" id="seeMore">
-            <div className="text-collapsed">See more <i className="bi bi-chevron-right chevron"></i></div>
-            <div className="text-expanded">See less <i className="bi bi-chevron-up chevron"></i></div>
-          </a>
-        <div className="container justify-content-start text-start collapse" id="collapsedReviews">
-          <div className="container justify-content-start text-start" id="reviewBox">
-            <div className="row align-middle">
-              <div className="col d-flex justify-content-start">
-                <h3 className="reviewerName">Emilia</h3>
-              </div>
-              <div className="col d-flex justify-content-end stars">
-                <i className="bi bi-star-fill star"></i>
-                <i className="bi bi-star-fill star"></i>
-                <i className="bi bi-star-fill star"></i>
-                <i className="bi bi-star-fill star"></i>
-                <i className="bi bi-star-fill star" id="emptyStar"></i>
-              </div>
-            </div>
-            <div className="reviewText">
-              I adopted a new cat, Puck, from this. He is so cute!! Thanks Paw Patrol Rescue!
-            </div>
-            <div className="container" id="replyCollapse">
-              <a className="btn reply" data-bs-toggle="collapse" role="button" 
-              aria-expanded="false" aria-controls="replyForm" id="replyButton">
-                Reply  {'>'}
-              </a>
-            </div>
-          </div>     
-        </div>
-      </div>
+        
     </div>
     )
 }
