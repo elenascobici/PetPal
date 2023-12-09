@@ -1,12 +1,13 @@
 import React from "react";
 import "./style.css";
+import SheltersMain from "../../assets/images/shelters-main.jpg";
 
 const SheltersSearch = () => {
     return (
         <div class="page-container">
             <div class="main px-6 pt-5">
             <div class="container-fluid" id="mainImgContainer">
-                <img class="img-fluid" id="mainImg" alt="Responsive image" src="images/shelters-main.jpg"/>
+                <img class="img-fluid" id="mainImg" alt="Responsive image" src={SheltersMain}/>
             </div>
             <div id="title">Meet our shelter organizations</div>
             <form class="formInputs" id="search" method="get">
