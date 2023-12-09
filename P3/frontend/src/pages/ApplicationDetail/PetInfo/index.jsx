@@ -41,10 +41,10 @@ function PetInfo({petID}){
   
     return <>
         <div className="row mb-3">
-            <div className="col-12 col-md-5 col-lg-5 ml-1">
-                <img src= {decodeURIComponent("http://localhost:8090/media/pets/placeholder.png")} className="pet-pfp img-fluid"/>
+            <div className="col-12 col-md-5 col-lg-4 ml-1">
+                <img src= {`http://localhost:8000/pet/pet-image/${pet_data.pet_image_1}`} className="pet-pfp img-fluid"/>
             </div>
-            <div className="summarized-info col-12 col-md-7 col-lg-7 text-start">
+            <div className="summarized-info col-12 col-md-8 col-lg-7 text-start">
             {pet_data && (<>
               <p className="heading3"> {pet_data.name} </p>
               <p className="desc"> {pet_data.description !== "" ? pet_data.description : "This pet has no description"} </p>
