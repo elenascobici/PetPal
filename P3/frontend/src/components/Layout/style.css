@@ -27,6 +27,11 @@
     height: 100%;
 }
 
+#navButtons{
+  display: flex;
+  align-items: center;
+}
+
 body {
     background-color: white;
     text-align: center;
@@ -94,11 +99,11 @@ body {
   }
 
   #notifications {
-    padding-left: 0.5rem;
+    padding-left: 1rem;
     padding-right: 0.5rem;
     position: relative;
   }
-
+  
   #notificationBell, #notificationBell2 {
     color: #ffd86d;
     font-size: 28px;

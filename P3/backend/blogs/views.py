@@ -7,7 +7,11 @@ from .models import Blog
 from rest_framework.response import Response
 from django.http import FileResponse, HttpResponse
 from django.conf import settings
+from rest_framework.pagination import PageNumberPagination
 
+class BlogPagination(PageNumberPagination):
+    page_size = 10
+    page_size_query_param = 'page_size'
 
 class BlogCreate(CreateAPIView):
     serializer_class = BlogSerializer
@@ -17,6 +21,7 @@ class BlogList(ListAPIView):
     serializer_class = BlogSerializer
     permission_classes = [IsAuthenticated]
     queryset = Blog.objects.all()
+    pagination_class = BlogPagination
 
 class BlogDetail(RetrieveUpdateDestroyAPIView):
     serializer_class = BlogSerializer

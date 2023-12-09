@@ -346,6 +346,13 @@
   flex-direction: row; */
   width: 100%;
 }
+@media screen and (max-width:977px) {
+  .summarized-info {
+    width: calc(100% - 3.0rem);
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+  }
+}
 
 @media screen and (max-width:768px) {
   .pet-pfp{

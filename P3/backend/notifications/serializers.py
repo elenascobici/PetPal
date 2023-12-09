@@ -47,7 +47,7 @@ class NotificationGetSerializer(ModelSerializer):
         url = ''
 
         if isinstance(event, Application):
-            url = reverse('applications:view_application', kwargs={'app_id': event_id})
+            url = reverse('application:view_application', kwargs={'app_id': event_id})
         elif isinstance(event, Comment):
             shelter_id = event.get_commented_shelter().id
             url = reverse('comments:comment', kwargs={'shelter_id': shelter_id})
@@ -55,5 +55,5 @@ class NotificationGetSerializer(ModelSerializer):
             application_id = event.application.id
             url = reverse('comments:messages', kwargs={'pk': application_id})
         elif isinstance(event, PetDetail):
-            url = reverse('pets:pet-detail', kwargs={'pet_id': event_id})
+            url = reverse('pet:pet-detail', kwargs={'pet_id': event_id})
         return url

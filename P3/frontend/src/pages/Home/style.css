@@ -10,10 +10,11 @@
  */
  @import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap');
  @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
-#home {
+
+ #home {
    padding-left: 100px;
    padding-right: 100px;
-}
+ }
 
  .main {
    padding-bottom: 0 !important;
@@ -28,7 +29,7 @@
    display: none;
  }
 
- #mainImgContainer {
+ #mainImgContainerHome {
     padding-left: 0;
     padding-right: 0;
     position: relative;
@@ -300,6 +301,7 @@
    .overlayPetpal { font-size: 40px; }
    #mainImg { height: 350px; object-position: 100% 0; width: 100%; }
    #quote { font-size: 40px; }
+   
  }
 
  @media screen and (max-width: 850px) {
@@ -310,11 +312,12 @@
  }
 
  @media screen and (max-width: 767px) {
+ #mainImgContainerHome {height: 100vh;}
    #overlay { margin-top: 0; display: flex; justify-content: start !important; padding-top: 20vh;}
-   #mainImg {display:none;}
-   #mainImg2 {display: flex; height: 100vh; object-fit: cover; object-position: 100% 0;}
+   #mainImg {display:none !important;}
+   #mainImg2 {display: flex; height: 100vh !important; object-fit: cover; object-position: 100% 0;}
    .main {position: relative;}
-   #mainImgContainer {width: 100vw; height: 100vh; position: absolute; left: 0; top: 0; padding-bottom: 100vh;}
+   #mainImgContainerHome {width: 100vw; height: 100vh; position: absolute; left: 0; top: 0; padding-bottom: 100vh;}
    .shelterLogo { object-fit: scale-down; max-width: 100%; max-height: 50vw; transform: scale(0.9); }
    .main {margin-bottom: 390px; padding-bottom: 5rem;}
    #vectorButtons {padding-top: 50vh !important; padding-left: 0; padding-right: 0;}

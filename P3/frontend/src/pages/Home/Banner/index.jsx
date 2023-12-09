@@ -10,11 +10,10 @@ const Banner = ({ bannerText1, bannerText2, buttonText }) => {
       ...buttonStyles,
       fontSize: '22px',
       padding: '9px 10px',
-      // Add more styles as needed
     };
   }
     return (
-        <div className="container-fluid" id="mainImgContainer">
+        <div className="container-fluid" id="mainImgContainerHome">
         <img className="img-fluid" id="mainImg" alt="Responsive image" src={bannerImage} />
         <img className="img-fluid" id="mainImg2" alt="Responsive image" src={bannerImage2} />
         <div className="d-flex flex-column col-md-6 col-sm-12 col-xs-12 justify-content-center align-middle" id="overlay">

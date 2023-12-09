@@ -102,11 +102,21 @@
   margin-bottom: 1rem;
 }
 
+.card-img-top{
+  /* padding: 15px; */
+  padding-bottom: 0px;
+  height: 240px;
+  object-fit: cover;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+}
+
 .rounded-card {
   background-color: #D9EDED;
   border: none;
   border-radius: 20px;
   width: 213px;
+  /* height: 400px; */
 }
 
 #pet-1 {
@@ -121,6 +131,18 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+/* .petImage {
+  position: absolute;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border: none;
+  width: 213px;
+  height: 258px;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+} */
 
 @media only screen and (max-width: 620px) {
   p{
