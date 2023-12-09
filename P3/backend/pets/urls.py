@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import PetViewSet
+from .views import PetViewSet, ServePetPicture
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -30,7 +30,6 @@ urlpatterns = [
     path('search/', PetViewSet.as_view({
         'get': 'filter_pet'
     }), name='pet-search'),
-]
 
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path('pet-image/<str:filename>', ServePetPicture.as_view(), name='pet-picture'),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

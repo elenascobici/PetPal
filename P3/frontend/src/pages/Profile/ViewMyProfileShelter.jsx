@@ -1,6 +1,7 @@
 import React from "react"
 import DefaultProfilePicture from "../../assets/images/user.png"
 import "./style.css"
+import ProfilePetsCarousel from "./ProfilePetCarousel/ProfilePetCarousel"
 
 export const ViewMyProfileShelter = ({userData, errors, updateProfile}) => {
     const [profilePath, setProfilePath] = React.useState(DefaultProfilePicture);
@@ -27,23 +28,23 @@ export const ViewMyProfileShelter = ({userData, errors, updateProfile}) => {
             }
 
         // Fetch pets.
-        const userId = localStorage.getItem("id");
-        const token = localStorage.getItem("access_token");
-        fetch(`http://localhost:8000/pet/shelter/${userId}/pets/`, {
-            method: 'GET',
-            headers: {
-                'Authorization': `Bearer ${token}`,
-            },
-            })
-            .then(response => {
-                return response.json();
-            })
-            .then(data => {
-                console.log(data);
-            })
-            .catch(error => {
-                console.error('Error:', error);
-        });
+        // const userId = localStorage.getItem("id");
+        // const token = localStorage.getItem("access_token");
+        // fetch(`http://localhost:8000/pet/shelter/${userId}/pets/`, {
+        //     method: 'GET',
+        //     headers: {
+        //         'Authorization': `Bearer ${token}`,
+        //     },
+        //     })
+        //     .then(response => {
+        //         return response.json();
+        //     })
+        //     .then(data => {
+        //         console.log(data);
+        //     })
+        //     .catch(error => {
+        //         console.error('Error:', error);
+        // });
     }, [])
 
     React.useEffect(() => {
@@ -59,6 +60,15 @@ export const ViewMyProfileShelter = ({userData, errors, updateProfile}) => {
     const handleImageUpload = (e) => {
         setProfilePath(URL.createObjectURL(e.target.files[0]));
     }
+
+    // <div class="selectStatus">
+    //     <select name="buddyStatus" class="status">
+    //     <option class="statusOption available" value="available" selected>Available</option>
+    //     <option class="statusOption pending" value="pending">Pending</option>
+    //     <option class="statusOption adopted" value="adopted">Adopted</option>
+    //     <option class="statusOption withdrawn" value="withdrawn">Withdrawn</option>
+    //     </select>
+    // </div>
 
     return (
         <div class="page-container">
@@ -153,96 +163,7 @@ export const ViewMyProfileShelter = ({userData, errors, updateProfile}) => {
                 <div class="container justify-content-start text-start">
                 <h2 class="subtitle" id="listPets">List of Pets:</h2>
                 </div>
-                <div class="container" id="carouselContainer">
-                <div id="petsCarousel" class="carousel slide" data-bs-interval="false">
-                    <div class="carousel-indicators">
-                    <button class="carouselIndicator active" type="button" data-bs-target="#petsCarousel" data-bs-slide-to="0" aria-current="true"></button>
-                    <button class="carouselIndicator" type="button" data-bs-target="#petsCarousel" data-bs-slide-to="1"></button>
-                    <button class="carouselIndicator" type="button" data-bs-target="#petsCarousel" data-bs-slide-to="2"></button>
-                    </div>
-                    <div class="carousel-inner">
-                    <div class="carousel-item active" data-bs-interval="false">
-                        <div class="container align-middle text-center" id="carouselPage">
-                        <button class="carousel-control-prev carousel-btn" type="button" data-bs-target="#petsCarousel" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon"></span>
-                        </button>
-                        <button class="carousel-control-next carousel-btn" type="button" data-bs-target="#petsCarousel" data-bs-slide="next">
-                            <span class="carousel-control-next-icon"></span>
-                        </button>
-                        <div class="grid petGrid">
-                            <div class="grid-item">
-                            <a type="button" class="pet" href="#">
-                                <img class="petImage" src="images/buddy.jpg"/>
-                                <div class="petLabel">Buddy</div>
-                            </a>
-                            <div class="selectStatus">
-                                <select name="buddyStatus" class="status">
-                                <option class="statusOption available" value="available" selected>Available</option>
-                                <option class="statusOption pending" value="pending">Pending</option>
-                                <option class="statusOption adopted" value="adopted">Adopted</option>
-                                <option class="statusOption withdrawn" value="withdrawn">Withdrawn</option>
-                                </select>
-                            </div>
-                            </div>
-                        </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item" data-bs-interval="false">
-                        <div class="container align-middle text-center" id="carouselPage">
-                        <button class="carousel-control-prev carousel-btn" type="button" data-bs-target="#petsCarousel" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon"></span>
-                        </button>
-                        <button class="carousel-control-next carousel-btn" type="button" data-bs-target="#petsCarousel" data-bs-slide="next">
-                            <span class="carousel-control-next-icon"></span>
-                        </button>
-                        <div class="grid petGrid">
-                            <div class="grid-item">
-                            <a type="button" class="pet" href="#">
-                                <img class="petImage" src="images/buddy.jpg"/>
-                                <div class="petLabel">Buddy</div>
-                            </a>
-                            <div class="selectStatus">
-                                <select name="buddyStatus" class="status">
-                                <option class="statusOption available" value="available" selected>Available</option>
-                                <option class="statusOption pending" value="pending">Pending</option>
-                                <option class="statusOption adopted" value="adopted">Adopted</option>
-                                <option class="statusOption withdrawn" value="withdrawn">Withdrawn</option>
-                                </select>
-                            </div>
-                            </div>
-                        </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item" data-bs-interval="false">
-                        <div class="container align-middle text-center" id="carouselPage">
-                        <button class="carousel-control-prev carousel-btn" type="button" data-bs-target="#petsCarousel" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon"></span>
-                        </button>
-                        <button class="carousel-control-next carousel-btn" type="button" data-bs-target="#petsCarousel" data-bs-slide="next">
-                            <span class="carousel-control-next-icon"></span>
-                        </button>
-                        <div class="grid petGrid">
-                            <div class="grid-item">
-                            <a type="button" class="pet" href="#">
-                                <img class="petImage" src="images/buddy.jpg"/>
-                                <div class="petLabel">Buddy</div>
-                            </a>
-                            <div class="selectStatus">
-                                <select name="buddyStatus" class="status">
-                                <option class="statusOption available" value="available" selected>Available</option>
-                                <option class="statusOption pending" value="pending">Pending</option>
-                                <option class="statusOption adopted" value="adopted">Adopted</option>
-                                <option class="statusOption withdrawn" value="withdrawn">Withdrawn</option>
-                                </select>
-                            </div>
-                            </div>
-                        </div>
-                        </div>
-                    </div>
-                    </div>
-                    
-                </div>
-                </div>
+                {userData && <ProfilePetsCarousel shelterId={localStorage.getItem("id")} shelterName={userData.name}></ProfilePetsCarousel>}
                 <button type="submit" class="editButton" id="save-button">Save</button>
                 </form>
             </div>
