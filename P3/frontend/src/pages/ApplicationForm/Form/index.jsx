@@ -74,10 +74,11 @@ function Form({petID}){
         //     }); 
 
         if (valid.adopterDetails && valid.reason){
-            fetch(`http://localhost:8090/application/pet/${petID}/`, {
+            const token = localStorage.getItem('access_token');
+            fetch(`http://localhost:8000/application/pet/${petID}/`, {
                 method: 'POST',
                 headers: {
-                    'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAyMDY3NTQxLCJpYXQiOjE3MDE5ODExNDEsImp0aSI6IjBkZmQ2YjMzNjkzNjQ4N2FhZTlhYjU5MTAzOTdhODA5IiwidXNlcl9pZCI6MX0.Zi8klkyjocttbfeb9uQD4FJiEC7Tm_Cn29MYoGkvyRI',
+                    'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({ 

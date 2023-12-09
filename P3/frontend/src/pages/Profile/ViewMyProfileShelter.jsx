@@ -168,6 +168,7 @@ export const ViewMyProfileShelter = ({userData, errors, updateProfile}) => {
                 </form>
             </div>
             <div class="buttons">
+                <a class="editButton" href="/blog-create">Create a blog ⏵</a>
                 <a href="pet-creation.html" class="editButton" id="create-pet-button">
                 Create new pets ⏵
                 </a>
