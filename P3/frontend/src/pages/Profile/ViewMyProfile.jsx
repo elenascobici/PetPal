@@ -16,7 +16,6 @@ export const ViewMyProfile = () => {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`,
-                'Content-Type': 'application/json',
             },
             })
             .then(response => {
@@ -24,6 +23,7 @@ export const ViewMyProfile = () => {
             })
             .then(data => {
                 setUserData(data);
+                console.log(data);
             })
             .catch(error => {
                 console.error('Error:', error);
@@ -37,7 +37,6 @@ export const ViewMyProfile = () => {
 
     // Send a request to update this profile.
     const updateProfile = (updateData) => {
-        console.log("Update data " + JSON.stringify(updateData));
         fetch(`http://localhost:8000/accounts/profile/`, {
             method: 'PUT',
             headers: {

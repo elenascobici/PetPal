@@ -32,6 +32,9 @@ export const ViewMyProfileShelter = ({userData, errors, updateProfile}) => {
         if (userData.profile_picture) {
             setProfilePath("http://localhost:8000/accounts/profile-picture/" + userData.profile_picture.split('/').pop());
         }
+
+        // Set province.
+        document.getElementById("province-select").value = userData.province;
     }, [userData])
 
     const handleImageUpload = (e) => {
@@ -85,7 +88,7 @@ export const ViewMyProfileShelter = ({userData, errors, updateProfile}) => {
                     <p class="locationType">Street</p>
                     <textarea rows = "1" type="text" name="city" class="gridValue" defaultValue={userData.city} required></textarea>
                     <p class="locationType">City</p>
-                    <select name="province" class="gridValue" defaultValue={userData.province ? userData.province : null} required>
+                    <select name="province" class="gridValue" id="province-select" defaultValue={userData.province ? userData.province : null} required>
                         <option value={null} hidden></option>
                         <option value="Alberta">Alberta</option>
                         <option value="British Columbia">British Columbia</option>

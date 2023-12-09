@@ -33,7 +33,7 @@ export const ViewMyProfileSeeker = ({userData, errors, updateProfile}) => {
             setProfilePath("http://localhost:8000/accounts/profile-picture/" + userData.profile_picture.split('/').pop());
         }
 
-        // Select correct province.
+        // Set province.
         document.getElementById("province-select").value = userData.province;
     }, [userData])
 
