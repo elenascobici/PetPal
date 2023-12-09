@@ -1,0 +1,84 @@
+.blog-container {
+    padding-left: 3rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.blog-button {
+    background-color: var(--mid-orange);
+    border-radius: 0.5rem;
+    border: none;
+    padding: 0.5rem 1rem;
+    color: white;
+    width: 80px;
+    height: fit-content;
+    margin-bottom: 0.5rem;
+}
+
+.blog-edit {
+    margin-left: auto;
+    margin-right: 0.5rem;
+}
+
+.blog-delete {
+    background-color: var(--dark-orange);
+}
+
+.blog-time {
+    font-size: calc(0.8rem + 0.4vw);
+}
+
+.blog-pagination {
+    display: flex;
+    justify-content: center;
+}
+
+.blog-pagination button {
+    background-color: white;
+    font-family: Manrope;
+    font-weight: 500;
+    font-size: 20px;
+    margin-top: 1rem;
+    color: #009899;
+    transition: 0.3s;
+ }
+ 
+ .page-item:active {
+    background-color: #047d7d;
+ }
+ 
+ .page-link {
+    color: #009899;
+ }
+ 
+ .page-link:disabled {
+    color: #6c757d;
+ }
+ .blog-pagination button:hover {
+    background-color: #047d7d;
+    color: white;
+ }
+ 
+ .blog-pagination button:focus {
+    color: #047d7d;
+ }
+ 
+ .blog-pagination button.active {
+    background-color: #047d7d !important;
+    color: white;
+ }
+ 
+ .blog-pagination>li.active>a {
+    background-color: #047d7d !important;
+    color: white;
+ }
+
+ @media screen and (max-width:768px) {
+    .blog-container {padding-left: 0;}
+ }
+
+ @media screen and (max-width:522px) {
+    .blog-container  {display: block;}
+ }

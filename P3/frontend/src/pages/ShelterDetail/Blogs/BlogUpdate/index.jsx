@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import "./style.css";
 
 function format_date(dateString) {
     const dateObject = new Date(dateString);
@@ -11,7 +10,7 @@ function format_date(dateString) {
     return formattedDate;
 };
 
-const Blogs = () => {
+const BlogUpdate = () => {
     const { shelterId, shelterName } = useParams();
     const [blogs, setBlogs] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
@@ -136,4 +135,4 @@ const Blogs = () => {
     );
   };
   
-  export default Blogs;
+  export default BlogUpdate;
