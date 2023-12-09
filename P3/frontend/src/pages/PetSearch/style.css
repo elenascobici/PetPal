@@ -1,0 +1,640 @@
+/*
+ * shelters-pet-listings.css
+ *
+ * CSC309 PetPal
+ * 
+ * University of Toronto
+ * Fall 2023
+ * Cassandra Tin Kwon Yuen
+ *
+ */
+#title {
+   font-family: Mochiy Pop One;
+   font-size: 40px;
+   color: #009899;
+   text-align: center;
+}
+
+#subtitle {
+   font-family: Manrope;
+   font-size: 20px;
+   color: #f4a133;
+   text-align: center;
+}
+
+.main {
+   padding-bottom: 381px;
+   padding-left: 0px;
+   padding-right: 0px;
+   margin-bottom: 128px;
+   width: 100%;
+}
+
+#search,
+#searchSmall {
+   width: 100%;
+   /* padding: 2rem; */
+   margin: 2rem;
+   display: flex;
+   justify-content: center;
+}
+
+#searchSmall {
+   display: none;
+}
+
+#searchBar {
+   font-family: Manrope;
+   font-weight: 400;
+   font-size: 3rem;
+   color: #575757;
+   width: 100%;
+   /* padding: 2rem; */
+   margin-top: 2rem;
+   /* margin-bottom: 2rem; */
+   margin-left: 6rem;
+   margin-right: 6rem;
+}
+
+#searchIcon {
+   color: #575757;
+   font-size: 1rem;
+}
+
+#searchButton {
+   position: absolute;
+   right: 3.5rem;
+   top: 0.2rem;
+   /* top: 50%; */
+}
+
+.form-row {
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   padding-left: 3rem;
+   padding-right: 3rem;
+   position: relative;
+}
+
+.form-control {
+   font-size: 15px;
+   padding: 1rem;
+   border-radius: 50px;
+   background-color: #F5F5F5;
+}
+
+.formInputs {
+   position: relative;
+}
+
+.formInputs .form-control {
+   height: 45px;
+}
+
+.formInputs .form-control:focus {
+   box-shadow: none;
+   border: 1px solid #000;
+}
+
+
+.searchOptions {
+   background-color: var(--dark-blue);
+   font-family: Manrope;
+   font-weight: 500;
+   font-size: 20px;
+   color: white;
+   width: 10rem;
+   border-radius: 10px;
+}
+
+.searchOptions:hover {
+   color: white;
+   background-color: #078182;
+}
+
+.pet {
+   background-color: #D9EDED;
+   border-radius: 20px;
+   border: none;
+   width: 213px;
+   height: 306px;
+   /* margin-top: 94px; */
+   transition: 0.3s;
+   position: relative;
+   margin-top: 37px;
+}
+
+.petImage {
+   position: absolute;
+   border-top-left-radius: 20px;
+   border-top-right-radius: 20px;
+   border: none;
+   width: 213px;
+   height: 258px;
+   top: 0;
+   left: 0;
+   object-fit: cover;
+}
+
+.petLabel {
+   font-family: Manrope;
+   font-weight: 400;
+   font-size: 28px;
+   color: #4B4B4B;
+   position: absolute;
+   left: 0;
+   right: 0;
+   bottom: 0.3rem;
+   max-height: 48px;
+}
+
+.status {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+   width: 213px;
+   font-family: Manrope;
+   font-size: 25px;
+   font-weight: 400;
+   margin-top: 0.5rem;
+   border-radius: 10px;
+   color: white;
+   background-color: #FEBF11;
+   padding: 0;
+   border: none;
+   /* appearance: none;
+   position: relative; */
+}
+
+.details {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+   width: 213px;
+   font-family: Manrope;
+   font-size: 15px;
+   font-weight: 400;
+   margin-top: 0.5rem;
+   border-radius: 10px;
+   color: white;
+   background-color:  #ffc219;
+   padding: 0;
+   border: none;
+   /* appearance: none;
+   position: relative; */
+}
+
+
+.statusDisabled {
+   background-color: #dddcdc;
+   color: #dddcdc;
+}
+
+/* .selectStatus {
+   position: relative;
+
+} */
+
+/* .statusOption {
+   padding: 1rem;
+} */
+
+.statusArrow {
+   /* position: absolute; */
+   right: 5px;
+   /* top: 15px; */
+   top: 30%;
+   font-size: 20px;
+   color: white;
+}
+
+
+.available {
+   /* background-color: #FEBF11; */
+   background-color: white;
+   color: #4B4B4B;
+}
+
+.pending {
+   /* background-color: #F4A133; */
+   background-color: white;
+   color: #4B4B4B;
+}
+
+.adopted {
+   /* background-color: #A3CC5F; */
+   background-color: white;
+   color: #4B4B4B;
+}
+
+.withdrawn {
+   /* background-color: #FB9A84; */
+   background-color: white;
+   color: #4B4B4B;
+}
+
+.status[value="available"] {
+   background-color: #FEBF11;
+}
+
+.new-container {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-wrap: wrap; /* Wrap items in smaller screens */
+   padding: 10px;
+   gap: 10px; /* Space between items */
+}
+
+.new-form-select {
+   padding: 5px;
+   border-radius: 5px;
+   border: 1px solid #ddd;
+   background-color: white;
+   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-item {
+   font-weight: 700;
+   font-size: large;
+   background-color: #F5F5F5;
+   border-color: #009899;
+   border-radius: 10px;
+   
+}
+
+.grid {
+   grid-template-columns: auto auto auto auto;
+   display: grid;
+   column-gap: 2rem;
+   align-items: center;
+   justify-items: center;
+   place-items: center;
+}
+
+.grid-item {
+   border-color: white;
+}
+
+.petGrid {
+   grid-template-columns: auto auto auto auto;
+   display: grid;
+   column-gap: 2rem;
+   align-items: center;
+   justify-items: center;
+   place-items: center;
+   margin-top: 0;
+   border: none;
+   margin-bottom: 2rem;
+}
+
+
+.page-item {
+   font-family: Manrope;
+   font-weight: 500;
+   font-size: 20px;
+   margin-top: 2rem;
+}
+
+.page-item:active {
+   background-color: #047d7d;
+}
+
+.page-link {
+   color: #009899;
+}
+
+.page-link:hover {
+   color: #047d7d;
+}
+
+.page-link:focus {
+   color: #047d7d;
+}
+
+.page-link.active {
+   background-color: #047d7d !important;
+   color: white;
+}
+
+.pagination>li.active>a {
+   background-color: #047d7d !important;
+   color: white;
+}
+
+.pagination {
+   display: flex;
+   justify-content: center;
+}
+
+.buttons {
+   margin-top: 1rem;
+}
+
+.editButton {
+   font-family: Manrope;
+   font-size: 20px;
+   font-weight: 400;
+   padding: 0.5rem 1rem;
+   color: #009899;
+   background-color: white;
+   border: 2px solid #009899;
+   border-radius: 10px;
+   transition: 0.3s;
+   margin: 0 1rem;
+   text-decoration: none;
+}
+
+.editButton:hover {
+   background-color: #eaedf0;
+   color: #009899;
+}
+
+#save, #saved {
+   /* position: fixed; */
+   position: absolute;
+   bottom: 390px;
+   right: 1rem;
+}
+
+#saved {
+   font-family: Manrope;
+   font-size: 28px;
+   font-weight: 400;
+   display: flex;
+   justify-content: center;
+   right: 9.5rem;
+   color: var(--dark-orange);
+   margin-bottom: 0.7rem;
+}
+
+
+@media screen and (max-width:1210px) {
+   #mainImgContainer {
+      margin-bottom: 1rem;
+   }
+
+   #mainImg {
+      height: 100%;
+   }
+
+   #searchBar {
+      margin-left: 0;
+      margin-right: 0;
+   }
+   .petGrid {grid-template-columns: auto auto auto; align-items: center;}
+
+}
+
+@media screen and (max-width:1037px) {
+   .grid {padding-left: 2rem; padding-right: 2rem;}
+}
+
+@media screen and (max-width:1028px) {
+   #mainImg {
+      width: 100%;
+      height: 100%;
+   }
+}
+
+@media screen and (max-width:1003px) {
+   .petGrid {grid-template-columns: auto auto; align-items: center;}
+   .carousel-control-next {right: -4rem;}
+   .carousel-control-prev {left: -4rem;}
+   #listPets {text-align: center; justify-content: center; padding-left: 0;}
+}
+
+
+@media screen and (max-width:991px) {
+   #shelterList1 {
+      padding: 0;
+   }
+
+   .tableHeader {
+      font-size: 25px;
+   }
+
+   .grid-item {
+      font-size: 22px;
+   }
+
+   .grid {
+      width: 100%;
+   }
+
+   #mainImg {
+      display: flex;
+      width: 100%;
+      height: 50vw;
+      object-fit: cover;
+      object-position: 100% 0;
+      margin-top: 1rem;
+   }
+
+   .main {
+      position: relative;
+   }
+
+   #mainImgContainer {
+      width: 100vw;
+      height: 300px;
+      position: absolute;
+      left: 0;
+      top: 0;
+      padding-bottom: 50vh;
+   }
+
+   #save, #saved {bottom: 260px;}
+
+}
+
+@media screen and (max-width:879px) {
+   .tableHeader {
+      display: none;
+   }
+
+   .grid {
+      grid-template-columns: auto;
+   }
+
+   .grid-item {
+      border-top: white;
+      border-bottom: white;
+      padding: 0;
+   }
+
+   .shelterLink+.grid-item {
+      padding-top: 0.5rem;
+   }
+
+   .sadDog {
+      height:250px;
+      margin-bottom: 1rem;
+    }
+
+   .shelterLink {
+      font-weight: 600;
+      border-top: 1px solid #bababa;
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+      background-color: #FFE599;
+   }
+
+   a.shelterLink {
+      border-top: white;
+      padding: 0;
+   }
+
+   .grid-item a.email,
+   .phone {
+      padding-bottom: 0.5rem;
+   }
+
+   #searchBar {
+      margin-left: 0;
+      margin-right: 0;
+   }
+
+   #search {
+      margin-top: 0;
+      margin-bottom: 0;
+   }
+}
+
+
+
+@media screen and (max-width:768px) {
+   .main {
+      padding-left: 14vw;
+      padding-right: 14vw;
+      padding-top: 10vw;
+      padding-bottom: 400px;
+   }
+   .editButton, #saved {font-size: 20px;}
+   .petGrid {grid-template-columns: auto; align-items: center;}
+}
+
+
+@media screen and (max-height:718px) {
+   #mainImgContainer {
+      height: 360px;
+      width: 100%;
+      margin-bottom: 2rem;
+   }
+
+   #mainImg {
+      height: 360px;
+      width: 100%;
+      object-position: 0 0;
+   }
+}
+
+@media screen and (max-width:633px) {
+   .grid {column-gap: 0.5rem;}
+}
+
+@media screen and (max-width:582px) {
+   #search {
+      display: none;
+      margin-left: 0;
+      margin-right: 0;
+   }
+
+   #searchSmall {
+      display: block;
+      margin: 0;
+   }
+
+   .grid-item {
+      word-wrap: break-word;
+      word-break: break-word;
+   }
+
+   /* .main {
+      margin-bottom: 200px;
+   } */
+
+
+   #title {
+      font-size: 40px;
+   }
+
+   .form-control-mi {
+      font-size: 20px;
+      padding: 0rem;
+   }
+
+   #searchIcon {
+      font-size: 1rem;
+   }
+
+   #searchBar {
+      padding: 0;
+   }
+
+   #searchButton {
+      right: 0;
+   }
+}
+
+@media screen and (max-width:522px) {
+   .grid {grid-template-columns: auto; padding: 0; row-gap: 0.75rem; margin-top: 2rem;}
+   .petImage {width: 164px; height: 200px;}
+   .pet {width: 164px; height: 239px;}
+   .status {width: 164px; font-size: 20px; text-align: center;}
+   .petLabel {font-size: 23px; bottom: 0.2rem;}
+   .main {padding-left: 2rem !important; padding-right: 2rem !important;}
+   .editButton, #saved {font-size: 22px;}
+   #save, #saved {bottom: 260px;}
+}
+
+@media screen and (max-width:480px) {
+   .grid-item {
+      font-size: 20px;
+   }
+
+   .main {
+      padding-bottom: 430px;
+      padding-left: 60px !important;
+      padding-right: 60px !important;
+   }
+
+   #title {
+      font-size: 30px;
+   }
+   #subtitle {
+      font-size: 20px;
+   }
+   #save, #saved {bottom: 270px; right: 50vw; transform: translateX(50%); text-align: center; margin: 0;}
+   #save {bottom: 310px;}
+   /* #save {margin-left: 0; text-align: right;} */
+}
+
+@media screen and (max-width:409px) {
+   .main {margin-bottom: 201px;}
+   #save, #saved {bottom: 250px; right: 50vw; transform: translateX(50%); text-align: center; margin: 0;}
+   #save {bottom: 290px;}
+}
+
+@media screen and (max-width:399px) {
+   .main {padding-left: 2rem !important; padding-right: 2rem !important;}
+   .editButton, #saved {font-size: 20px;}
+   /* #save, #saved {display: flex; justify-content: center;} */
+}
+
+@media (min-width: 768px) {
+   .col-md-2 {
+       max-width: 180px; /* Adjust this value as needed */
+       flex: 0 0 auto; /* Prevent the column from growing */
+   }
+}
+
+@media (max-width: 768px) {
+   .new-form-select {
+       width: 100%; /* Full width on smaller screens */
+       margin-bottom: 10px;
+   }
+}

@@ -1,0 +1,142 @@
+/*
+ * style.css
+ *
+ * CSC309 PetPal
+ * 
+ * University of Toronto
+ * Fall 2023
+ *
+ */
+ @import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
+
+ .main-pet-adoption {
+    display: flex;
+    padding-top: 30px;
+    padding-bottom: 351px;
+    padding-left: 70px;
+    padding-right: 70px;
+    /* margin-bottom: 128px; */
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    background-color: #D9EDED;
+  }
+
+  .form-check-label {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .fence-padding {
+    padding-top: 7px;
+    padding-bottom: 7px;
+  }
+
+  .title {
+    font-family: Manrope;
+    color: #119899;
+    font-size: 30px;
+    padding: 5px;
+    font-weight: bolder;
+  }
+  
+  .yellowButton {
+    background-color: #FFC011;
+    border: 1px solid white; 
+    border-radius: 10px;
+    color: white;
+    font-size: 20px;
+    padding: 0.2rem 1rem;
+    transition: 0.3s;
+    text-decoration: none;
+  }
+
+  .yellowButton:hover {
+    background-color: #FFA903;
+    color: white;
+  }
+
+  #submit {
+    padding-bottom: 0.5rem;
+    padding-top: 0.5rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+  }
+  .submit-col {
+    padding-bottom: 0.5rem;
+    padding-top: 0.5rem;
+  }
+  
+  .image-wrapper {
+    position: relative;
+    width: 100%;
+    padding-bottom: 30%;  
+    overflow: hidden; 
+    filter: grayscale(0%);
+    transition: filter 0.3s;       
+  }
+  
+  .responsive-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;     
+    object-fit: cover; 
+  }
+  
+  .form-control {
+    /* border: none; */
+    border-radius: 15px;  
+    box-shadow: none; 
+    margin: 0rem;
+
+  }
+
+  input[type="text"], select[id="size"], select[id="gender"], select[id="behaviour"], select[id="typeOfPet"], select[id="status"], input[type="file"], textarea[id="description"], textarea[id="medicalHistory"]{
+    font-size: 15px;
+    padding-left: 0.6rem;
+}
+
+  form {
+   width: 100%;
+   margin: 0rem;
+   padding: 0rem;
+  }
+
+  .form-pet {
+    margin: 0 rem;
+  }
+
+  .required-error {
+    font-size: 15px;
+    font-family: Manrope;
+    color: red;
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .final-error {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .modal-text {
+    color: red;
+    font-size: 20px;
+  }
+
+  .image-wrapper:hover {
+    filter: grayscale(100%);
+  }
+  
+  .manrope {
+    font-family: Manrope;
+  }
