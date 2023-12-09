@@ -38,13 +38,6 @@ class LikeSerializer(serializers.ModelSerializer):
         # Set the user making the like to the user sending the request
         validated_data['user'] = seeker
 
-        # Get the blog_id from the query parameters
-        # blog_id = self.kwargs.get('blog_id')
-        # blog = Blog.objects.get(id=blog_id)
-
-        # # Set the blog associated with the like
-        # validated_data['blog'] = blog
-
         # Create the blog with the author set
         like = Like.objects.create(**validated_data)
         return like
