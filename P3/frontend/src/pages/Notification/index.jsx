@@ -58,6 +58,8 @@ function Notification(){
                 <Header num={numNotifs} read={query} setRead={setSearchParams}/>
                 <NotificationList notifications={notifications} change={change} notify={notifyChange}/>
 
+                {numNotifs === 0 && <p className="no-notif"> No notifications to see here!</p>}
+
             <div class="col-12">
                 <p>
                 { query.page < totalPages
