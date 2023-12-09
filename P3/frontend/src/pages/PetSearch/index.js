@@ -76,11 +76,7 @@ function PetSearch() {
                 onPageChange={handlePageChange}
             />
             
-            <div className="buttons">
-                <a href="#" className="editButton">
-                    Create new pets ⏵
-                </a>
-            </div>
+            
         </div>
         
     );

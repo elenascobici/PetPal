@@ -6,7 +6,6 @@ function SearchBar({ setSearchTerm }) {
     };
 
 
-
     return (
         <>
             <form className="formInputs" id="search">

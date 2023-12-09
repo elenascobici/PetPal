@@ -1,0 +1,120 @@
+.main-pet-detail {
+  display: flex;
+  padding-top: 30px;
+  padding-bottom: 351px;
+  padding-left: 70px;
+  padding-right: 70px;
+  margin-bottom: 128px;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+
+.custom-rounded {
+  border-radius: 30px;
+}
+
+.custom-rounded-child {
+  border-radius: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+
+/* CSS */
+.title-header {
+  background-color: #d2a03d; /* Replace with your dark yellow color */
+  color: white; /* Text color */
+  text-align: center;
+  padding: 8px;
+  margin-bottom: 0; /* Remove margin between the title and the table */
+}
+
+#pet-name {
+  font-family: Mochiy Pop One;
+  color: #119899;
+  font-size: 30px;
+  padding: 5px;
+}
+
+#date {
+  font-family: Manrope;
+  font-size: medium;
+  font-weight: bold;
+}
+
+.left {
+  text-align: left;
+}
+
+#subtitle {
+  font-family: Manrope;
+}
+
+.greybox {
+  background: grey;
+}
+
+.description-box {
+  background-color: #f0f0f0; 
+  padding: 20px; 
+  margin-top: 20px; 
+  border-radius: 10px; 
+}
+
+.tealButton {
+  background-color: #119899;
+  border: 1px solid white; 
+  border-radius: 10px;
+  color: white;
+  font-size: 20px;
+  padding: 0.2rem 1rem;
+  transition: 0.3s;
+  text-decoration: none;
+}
+
+.flex-row {
+  display: flex;
+}
+
+.bg-lightYellow {
+  background-color: #ffc0113d;
+}
+
+.rounded-table {
+  border-radius: 15px;
+  border-color: none;
+}
+
+.table th {
+  background-color: #ffc011;
+  border: none; 
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
+  font-size: 1.5rem;
+  font-weight: none;
+}
+
+.table td {
+    border: none;
+}
+
+.no-padding {
+  padding: 0px;
+}
+
+.padding {
+  padding: 20px;
+}
+
+@media (min-width: 1200px) {
+  #pet-name {
+      font-size: 55px; 
+  }
+
+  #date {
+      font-size: 28px; 
+  }
+}
