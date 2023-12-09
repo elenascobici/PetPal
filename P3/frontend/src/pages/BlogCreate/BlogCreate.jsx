@@ -1,6 +1,46 @@
 import React from "react";
 
 const BlogCreate = () => {
+    React.useEffect(() => {
+        // Event listener for create button.
+        document.getElementById("create-blog-button").onclick = (e) => 
+            {
+                e.preventDefault();
+                // Clear all error messages initially
+                document.querySelectorAll(".text-input-error-message").forEach((errorMessageInput) => {
+                    errorMessageInput.innerHTML = "";
+                })
+                fetch(`http://localhost:8000/blogs/new-blog/`, {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${localStorage.getItem("access_token")}`,
+                    },
+                    body: new FormData(document.getElementById("create-blog-form")),
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            alert("Created!");
+                            console.log(response);
+                        }
+                        else {
+                            return response.json();
+                        }
+                    })
+                    .then((data) => {
+                        const errorMap = Object.entries(data);
+                        for (let [key, value] of errorMap) {
+                            const errorElement = document.getElementById(key + "-error");
+                            if (errorElement) {
+                                errorElement.innerHTML = value;
+                            }
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                });
+            }
+    }, [])
+
     return (
         <form action="" method="post" id="create-blog-form">
             <div class="grid">
@@ -9,6 +49,7 @@ const BlogCreate = () => {
                 </div>
                 <div class="grid-item">
                     <input id="inputTitle" type="text" name="title" class="gridValue" required></input>
+                    <p class="text-input-error-message" id="title-error"></p>
                 </div>
                 <div class="grid-item">
                     <label for="content" id="shelterNameLabel" class="gridLabel">Content</label>
