@@ -74,6 +74,11 @@ function ApplicationDetail(){
         },
         })
         .then(response => {
+            if (!response.ok) {
+                navigate('/404');
+                window.history.replaceState(null, null, `/application/detail/${appID}`);
+                throw Error(response);
+            }
             return response.json();
         })
         .then(data => {
