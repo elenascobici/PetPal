@@ -10,6 +10,10 @@
  */
  @import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap');
  @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
+#home {
+   padding-left: 100px;
+   padding-right: 100px;
+}
 
  .main {
    padding-bottom: 0 !important;
@@ -149,7 +153,7 @@
     display: inline;
  }
 
- .text {
+ #home .text {
     font-family: Manrope;
     font-size: 32px;
     font-weight: 400;
@@ -298,6 +302,13 @@
    #quote { font-size: 40px; }
  }
 
+ @media screen and (max-width: 850px) {
+   #home {
+      padding-left: 50px;
+      padding-right: 50px;
+   }
+ }
+
  @media screen and (max-width: 767px) {
    #overlay { margin-top: 0; display: flex; justify-content: start !important; padding-top: 20vh;}
    #mainImg {display:none;}
@@ -325,7 +336,7 @@
    #other { width: 60%; height: auto; left: 19%;}
    #shelter { width: 60%; height: auto; left: 20%;}
    #quote {font-size: 35px;}
-   .text, #shelterOrgs {margin-bottom: 0; font-size: 30px;}
+   #home .text, #shelterOrgs {margin-bottom: 0; font-size: 30px;}
    .shelterLogo { max-height: 100%; }
  }
 
