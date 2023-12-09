@@ -110,7 +110,7 @@ export const ViewMyProfileSeeker = ({userData, errors, updateProfile}) => {
                 <textarea rows = "1" type="text" name="city" class="gridValue">{userData.city}</textarea>
                 <p class="text-input-error-message" id="city-error"></p>
                 <p class="locationType">City</p>
-                <select name="province" class="gridValue" defaultValue={userData.province ? userData.province : null}>
+                <select name="province" class="gridValue" id="province-select" defaultValue={userData.province ? userData.province : null}>
                 <option value={null} hidden></option>
                 <option value="alberta">Alberta</option>
                 <option value="britishColumbia">British Columbia</option>

@@ -1,5 +1,4 @@
 /*
- * user-update.css
  *
  * CSC309 PetPal
  * 
@@ -7,285 +6,308 @@
  * Fall 2023
  *
  */
- @import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap');
- @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
- 
- :root {
-     --dark-blue: #119899;
-     --mid-blue: #48B7AB;
-     --light-blue: #92DAD9;
-     --dark-orange: #F3A133;
-     --mid-orange: #FEBF11;
-     --light-orange: #FEF2CB;
- }
- 
- .main {
-     padding-bottom: 351px;
-     padding-left: 0px;
-     padding-right: 0px;
-     margin-bottom: 128px;
-     width: 100%;
- }
- 
- #title {
-     font-family: Mochiy Pop One;
-     font-size: 55px;
-     color: #009899;
- }
- 
- #profile {
-     border: none;
- }
- 
- #userEdit {
-     display: flex;
-     flex-direction: row wrap;
-     justify-content: center;
-     align-items: center;
-     margin-top: 2rem;
-     flex-basis: 100%;
-     width: fit-content;
-     max-width: fit-content;
- }
- 
- #profileImage {
-     /* max-width: 100%; */
-     /* width: 10rem; */
-     /* max-height: 100%; */
-     max-width: 100%;
-     height: 10rem;
-     object-fit: contain;
-     /* display: flex; */
-     padding: 1rem;
- }
- 
- #edit {
-     font-family: Manrope;
-     font-weight: 400;
-     font-size: 30px;
-     color: var(--dark-blue);
-     margin-left: 1rem;
-     /* background-color: var(--dark-blue); */
-     /* margin: 0; */
-     padding: 0.5rem;
-     cursor: pointer;
- }
- 
- #edit:hover {
-     color: #027e7e;
- }
- 
- #edit>.form-label {
-     margin: 0;
-     padding: 0.5rem;
-     cursor: pointer;
- }
- 
- #imageUpload {
-     display: none;
- }
- 
- #profileImage {
-     cursor: pointer;
- }
- 
- #profileInfo {
-     width: 100%;
-     padding: 0rem 5rem;
-     position: relative;
- }
- 
- .grid {
-     grid-template-columns: auto auto !important;
-     display: grid;
-     justify-content: center;
-     align-items: start;
-     column-gap: 4rem;
-     row-gap: 2rem;
-     text-align: left;
-     margin-top: 4rem;
- }
- 
- .gridLabel {
-     font-family: Manrope;
-     font-weight: 700;
-     font-size: 30px;
-     color: #009899;
- }
- 
- .gridValue {
-     font-family: Manrope;
-     font-weight: 500;
-     font-size: 26px;
-     color: #4B4B4B;
-     background-color: #F9F9F9;
-     /* padding: 0.5rem 1rem; */
-     border-radius: 10px;
-     display: flex;
-     align-items: right;
- }
- 
- 
- input[type="text"],
- input[type="tel"],
- input[type="password"],
- textarea,
- select {
-     border: none;
-     padding: 0.5rem 1.25rem;
-     width: 40vw !important;
- }
- 
- .locationType,
- .invalid {
-     font-family: Manrope;
-     font-weight: 400;
-     font-size: 20px;
-     color: #686868;
-     padding-left: 0.5rem;
-     padding-top: 0.2rem;
- }
- 
- #provinceLabel {
-     margin: 0;
- }
- 
- .subtitle {
-     font-family: Manrope;
-     font-size: 30px;
-     font-weight: 700;
-     color: #009899;
-     display: flex;
-     flex-direction: row;
-     justify-content: start;
-     align-items: start;
-     padding-top: 5rem;
-     padding-left: 3rem;
-     padding-bottom: 1rem;
- }
- 
- 
- .textInfo {
-     font-family: Manrope;
-     color: #4B4B4B;
-     font-size: 30px;
-     font-weight: 400;
-     /* word-wrap: break-word; */
- }
- 
- 
- .editButton {
-     font-family: Manrope;
-     font-size: 28px;
-     font-weight: 400;
-     padding: 0.5rem 1rem;
-     color: #009899;
-     background-color: white;
-     border: 2px solid #009899;
-     border-radius: 10px;
-     transition: 0.3s;
-     margin: 4rem 1rem 0 1rem;
-     text-decoration: none;
- }
- 
- .editButton:hover {
-     background-color: #eaedf0;
-     color: #009899;
- }
- 
- /* 
+@import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
+
+:root {
+    --dark-blue: #119899;
+    --mid-blue: #48B7AB;
+    --light-blue: #92DAD9;
+    --dark-orange: #F3A133;
+    --mid-orange: #FEBF11;
+    --light-orange: #FEF2CB;
+}
+
+.main {
+    padding-bottom: 351px;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-bottom: 128px;
+    width: 100%;
+}
+
+.page-container {
+    overflow: hidden;
+}
+
+#title {
+    font-family: Mochiy Pop One;
+    font-size: 55px;
+    color: #009899;
+}
+
+#profile {
+    border: none;
+}
+
+#userEdit {
+    display: flex;
+    flex-direction: row wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    flex-basis: 100%;
+    width: fit-content;
+    max-width: fit-content;
+}
+
+#profileImage {
+    /* max-width: 100%; */
+    /* width: 10rem; */
+    /* max-height: 100%; */
+    max-width: 100%;
+    height: 10rem;
+    object-fit: contain;
+    /* display: flex; */
+    padding: 1rem;
+}
+
+#edit {
+    font-family: Manrope;
+    font-weight: 400;
+    font-size: 30px;
+    color: var(--dark-blue);
+    margin-left: 1rem;
+    /* background-color: var(--dark-blue); */
+    /* margin: 0; */
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
+#edit:hover {
+    color: #027e7e;
+}
+
+#edit>.form-label {
+    margin: 0;
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
+#imageUpload {
+    display: none;
+}
+
+#profileImage {
+    cursor: pointer;
+}
+
+#profileInfo {
+    width: 100%;
+    padding: 0rem 5rem;
+    position: relative;
+}
+
+.grid {
+    grid-template-columns: auto auto !important;
+    display: grid;
+    justify-content: center;
+    align-items: start;
+    column-gap: 4rem;
+    row-gap: 2rem;
+    text-align: left;
+    margin-top: 4rem;
+}
+
+.gridLabel {
+    font-family: Manrope;
+    font-weight: 700;
+    font-size: 30px;
+    color: #009899;
+}
+
+.gridValue {
+    font-family: Manrope;
+    font-weight: 500;
+    font-size: 26px;
+    color: #4B4B4B;
+    background-color: #F9F9F9;
+    /* padding: 0.5rem 1rem; */
+    border-radius: 10px;
+    display: flex;
+    align-items: right;
+}
+
+
+input[type="text"],
+input[type="tel"],
+input[type="password"],
+textarea,
+select {
+    border: none;
+    padding: 0.5rem 1.25rem;
+    width: 40vw !important;
+}
+
+.locationType,
+.invalid {
+    font-family: Manrope;
+    font-weight: 400;
+    font-size: 20px;
+    color: #686868;
+    padding-left: 0.5rem;
+    padding-top: 0.2rem;
+}
+
+#provinceLabel {
+    margin: 0;
+}
+
+.subtitle {
+    font-family: Manrope;
+    font-size: 30px;
+    font-weight: 700;
+    color: #009899;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: start;
+    padding-top: 5rem;
+    padding-left: 3rem;
+    padding-bottom: 1rem;
+}
+
+
+.textInfo {
+    font-family: Manrope;
+    color: #4B4B4B;
+    font-size: 30px;
+    font-weight: 400;
+    /* word-wrap: break-word; */
+}
+
+
+.editButton {
+    font-family: Manrope;
+    font-size: 28px;
+    font-weight: 400;
+    padding: 0.5rem 1rem;
+    color: #009899;
+    background-color: white;
+    border: 2px solid #009899;
+    border-radius: 10px;
+    transition: 0.3s;
+    margin: 4rem 1rem 0 1rem;
+    text-decoration: none;
+}
+
+.editButton:hover {
+    background-color: #eaedf0;
+    color: #009899;
+}
+
+/* 
  #save {
     position: fixed;
     top: 90px;
     right: 1rem;
  } */
- 
- input::-webkit-calendar-picker-indicator {
-     opacity: 0;
-     /* height: 50%; */
-     /* transform: scaleY(0.75);
+
+input::-webkit-calendar-picker-indicator {
+    opacity: 0;
+    /* height: 50%; */
+    /* transform: scaleY(0.75);
     position: absolute;
     right:0;
     top: 25%;
     font-size: 16px; */
- }
- 
- .text {
-     font-family: Manrope;
-     font-size: 28px;
-     font-weight: 400;
-     display: flex;
-     justify-content: center;
-     padding-top: 1rem;
-     color: var(--dark-orange);
- }
- 
- .invalid {
-     color: red;
- }
- 
- @media screen and (max-width:1037px) {
-     .grid {
-         padding-left: 2rem;
-         padding-right: 2rem;
-     }
- 
-     input[type="text"],
-     input[type="password"],
-     input[type="tel"] {
-         width: 100%;
-     }
- }
- 
- @media screen and (max-width:615px) {
-     .grid {
-         grid-template-columns: auto;
-         row-gap: 1rem;
-         margin-top: 1rem;
-     }
- 
-     .gridLabel {
-         padding-top: 1rem;
-     }
- }
- 
- @media screen and (max-width:466px) {
-     .grid {
-         width: 100%;
-         grid-template-columns: auto;
-         row-gap: 1rem;
-         margin-top: 1rem;
-         padding-left: 1rem;
-         padding-right: 1rem;
-     }
- 
-     .gridLabel {
-         font-size: 25px;
-     }
- 
-     .gridValue,
-     option {
-         font-size: 22px !important;
-     }
- 
-     input[type="text"],
-     input[type="password"],
-     input[type="tel"],
-     textarea,
-     select {
-         font-size: 22px;
-         padding-left: 0.6rem;
-     }
- 
-     #title {
-         font-size: 45px;
-     }
- 
-     #edit {
-         margin: 0;
-     }
- 
-     #save {
-         font-size: 25px;
-     }
- }
+}
+
+.text {
+    font-family: Manrope;
+    font-size: 28px;
+    font-weight: 400;
+    display: flex;
+    justify-content: center;
+    padding-top: 1rem;
+    color: var(--dark-orange);
+}
+
+.invalid {
+    color: red;
+}
+
+#delete-account-button {
+    margin: 40px 0;
+    background-color: red;
+    color: white;
+    font-size: 20px;
+    border: 0;
+    border-radius: 10px;
+    padding: 5px 10px;
+    transition: 0.2s;
+}
+
+#delete-account-button:hover {
+    filter: brightness(90%);
+}
+
+#create-pet-button {
+    display: block;
+}
+
+@media screen and (max-width:1037px) {
+    .grid {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    input[type="tel"] {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width:615px) {
+    .grid {
+        grid-template-columns: auto;
+        row-gap: 1rem;
+        margin-top: 1rem;
+    }
+
+    .gridLabel {
+        padding-top: 1rem;
+    }
+}
+
+@media screen and (max-width:466px) {
+    .grid {
+        width: 100%;
+        grid-template-columns: auto;
+        row-gap: 1rem;
+        margin-top: 1rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .gridLabel {
+        font-size: 25px;
+    }
+
+    .gridValue,
+    option {
+        font-size: 22px !important;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    input[type="tel"],
+    textarea,
+    select {
+        font-size: 22px;
+        padding-left: 0.6rem;
+    }
+
+    #title {
+        font-size: 45px;
+    }
+
+    #edit {
+        margin: 0;
+    }
+
+    #save {
+        font-size: 25px;
+    }
+}
