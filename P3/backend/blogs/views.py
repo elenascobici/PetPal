@@ -1,12 +1,29 @@
-from rest_framework.generics import CreateAPIView
+from rest_framework.generics import CreateAPIView, RetrieveUpdateDestroyAPIView
 from rest_framework.permissions import IsAuthenticated
 from .serializers import BlogSerializer, LikeSerializer
-from .permissions import BlogCreatePermission, LikePermission
+from .permissions import BlogCreatePermission, LikePermission, IsAuthorOrReadOnly
 from .models import Blog
+from django.utils import timezone
+
 
 class BlogCreate(CreateAPIView):
     serializer_class = BlogSerializer
     permission_classes = [IsAuthenticated, BlogCreatePermission]
+
+class BlogDetail(RetrieveUpdateDestroyAPIView):
+    serializer_class = BlogSerializer
+    permission_classes = [IsAuthorOrReadOnly]
+    queryset = Blog.objects.all()
+
+    def get(self, request, *args, **kwargs):
+        return super().get(request, *args, **kwargs)
+    
+    def perform_update(self, serializer):
+        serializer.save()
+    
+    def perform_destroy(self, instance):
+        if instance.author == self.request.user:
+            instance.delete()
 
 class LikeCreate(CreateAPIView):
     serializer_class = LikeSerializer
