@@ -8,8 +8,14 @@ from rest_framework.generics import RetrieveUpdateDestroyAPIView, RetrieveAPIVie
 from rest_framework_simplejwt.views import TokenObtainPairView
 from django.http import FileResponse, HttpResponse
 from django.conf import settings
+from rest_framework.pagination import PageNumberPagination
+
 
 from accounts import serializers
+
+class ShelterPagination(PageNumberPagination):
+    page_size = 8
+    page_size_query_param = 'page_size'
 
 class LoginView(TokenObtainPairView):
     serializer_class = serializers.LoginSerializer
@@ -25,6 +31,7 @@ class RegisterShelterView(CreateAPIView):
 class ListSheltersView(ListAPIView):
     serializer_class = serializers.ViewShelterSerializer
     permission_classes = [IsAuthenticated]
+    pagination_class = ShelterPagination
 
     def get_queryset(self):
         return Shelter.objects.all()
