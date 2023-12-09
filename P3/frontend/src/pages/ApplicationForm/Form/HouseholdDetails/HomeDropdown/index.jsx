@@ -25,11 +25,10 @@ function HomeDropdown({tofill, fill}){
             ...tofill,
             home: choice
         })
-        // console.log("CHECK FILL: " + tofill.province);
     }
     
     return <>
-        <select class="form-control" id="homeType" required>
+        <select className="form-control" id="homeType" onChange={storeInput} required>
             <option value="" selected disabled>Select Home Type</option>
             {homeOptions.map((home) => (
                 <option key={home.value} value={home.value}>

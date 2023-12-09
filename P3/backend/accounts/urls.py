@@ -13,7 +13,5 @@ urlpatterns = [
     path('profile/', views.RetrieveUpdateDestroyAccountView.as_view(), name='profile_edit_delete'),
     path('profile/<int:pk>/', views.RetrieveUpdateDestroyAccountView.as_view(), name='profile_get'),
     path('shelter-list/', views.ListSheltersView.as_view(), name='list_shelters'),
-]
-
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path('profile-picture/<str:filename>/', views.ServeProfilePictureView.as_view(), name="serve-profile-picture")
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

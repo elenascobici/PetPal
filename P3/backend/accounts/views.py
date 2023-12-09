@@ -4,8 +4,10 @@ from accounts.models.SeekerModel import Seeker
 from accounts.models.ShelterModel import Shelter
 from accounts.permissions import ProfileViewPermissions
 from accounts.models.ParentUserModel import ParentUser
-from rest_framework.generics import RetrieveUpdateDestroyAPIView
+from rest_framework.generics import RetrieveUpdateDestroyAPIView, RetrieveAPIView
 from rest_framework_simplejwt.views import TokenObtainPairView
+from django.http import FileResponse, HttpResponse
+from django.conf import settings
 
 from accounts import serializers
 
@@ -70,3 +72,12 @@ class RetrieveUpdateDestroyAccountView(RetrieveUpdateDestroyAPIView):
             serializer.save()
         else:
             print(serializer.errors)
+
+class ServeProfilePictureView(RetrieveAPIView):
+    permission_classes = [AllowAny]
+    def get(self, request, filename):
+        imagePath = settings.MEDIA_ROOT / 'accounts' / filename
+        try:
+            return FileResponse(open(imagePath, 'rb'), content_type="image/jpeg")
+        except FileNotFoundError:
+            return HttpResponse("Image not found", status=404)

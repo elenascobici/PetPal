@@ -27,7 +27,7 @@ function SignUp() {
                     </div>
                 </a>
                 </div>
-                <a class="account-links" href="log-in.html">Already have an account? Sign in now!</a>
+                <a class="account-links" href="http://localhost:3000/log-in">Already have an account? Sign in now!</a>
             </div>
             </div>
         </div>

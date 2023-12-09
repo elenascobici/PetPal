@@ -11,7 +11,7 @@ function ApplicationForm(){
     //! RETRIEVE PET ID SOMEHOW
 
     return <>
-       <div class="image-wrapper">
+       <div className="image-wrapper">
             <img className="responsive-image" src={catImg} alt="cat for adoption"/>
        </div>
 

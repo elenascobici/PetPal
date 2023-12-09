@@ -49,10 +49,10 @@ function SignUpSeeker() {
                 <div id="log-in-info-container">
                 <p class="create-a-pet">Create a <b>Pet Seeker</b> Account</p>
                 <form id="sign-up-seeker-form">
-                    <input class="text-input" type="text" name="firstname" placeholder="first name" required />
-                    <p class="text-input-error-message" id="firstname-error"></p>
-                    <input class="text-input" type="text" name="lastname" placeholder="last name" required />
-                    <p class="text-input-error-message" id="lastname-error"></p>
+                    <input class="text-input" type="text" name="first_name" placeholder="first name" required />
+                    <p class="text-input-error-message" id="first_name-error"></p>
+                    <input class="text-input" type="text" name="last_name" placeholder="last name" required />
+                    <p class="text-input-error-message" id="last_name-error"></p>
                     <input class="text-input" type="text" name="username" placeholder="username" required />
                     <p class="text-input-error-message" id="username-error"></p>
                     <input class="text-input" type="email" name="email" placeholder="email address" required />

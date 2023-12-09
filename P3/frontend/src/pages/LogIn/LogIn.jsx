@@ -57,7 +57,7 @@ export const Login = () => {
                     <p class="text-input-error-message" id="password-error"></p>
                     <button id="log-in-btn" class="yellowButton" onClick={submit}>Log In</button>
                 </form>
-                <a class="account-links" href="sign-up.html">Don't have an account? Sign up now!</a>
+                <a class="account-links" href="http://localhost:3000/sign-up">Don't have an account? Sign up now!</a>
                 </div>
             </div>
             </div>

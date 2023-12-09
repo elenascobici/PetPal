@@ -29,10 +29,7 @@ function AdopterDetails({valid, validCheck, tofill, fill}){
       fill({
         ...tofill,
         [field]: content.trim()
-      })
-
-      // console.log("CHECK FILL: " + tofill.street);
-      
+      })    
     }
 
     useEffect (() => {
@@ -41,34 +38,27 @@ function AdopterDetails({valid, validCheck, tofill, fill}){
       } else {
         validCheck({...valid, adopterDetails: false});
       }
-      // console.log("Adopter: " + valid.adopterDetails);
-      // console.log("Name: " + fieldState.name);
-      // console.log("Email: " + fieldState.email);
-      // console.log("Phone: " + fieldState.phone);
-      // console.log("addr: " + !empty.address);
-      // console.log("city: " + !empty.city);
-
     }, [fieldState, empty]);
 
     return <>
             <Name required="true" value= {fieldState} check={setField} tofill={tofill} fill={fill}/>
             <Email value= {fieldState} check={setField} tofill={tofill} fill={fill}/>
             <Phone required="true" value= {fieldState} check={setField} tofill={tofill} fill={fill}/>
-            <div class="row mb-3">
-              <label for="address" class="col-12 col-form-label text-start col-lg-2 text-lg-end">Address</label>
-              <div class="col-12 col-lg-10"> 
-                <input class="form-control mb-2" id="streetAddress1" placeholder="Address Line 1" 
+            <div className="row mb-3">
+              <label for="address" className="col-12 col-form-label text-start col-lg-2 text-lg-end">Address</label>
+              <div className="col-12 col-lg-10"> 
+                <input className="form-control mb-2" id="streetAddress1" placeholder="Address Line 1" 
                 onChange={(event) => inputCheck(event, "address")} style={{ borderColor: empty.address ? 'red' : '' }} required></input>
-                {empty.address &&  <p class="required-error"> * This field is required </p>}
-                <input class="form-control mb-2" id="streetAddress2" placeholder="Address Line 2" onChange={(event) => inputCheck(event, "address2")}></input>
+                {empty.address &&  <p className="required-error"> * This field is required </p>}
+                <input className="form-control mb-2" id="streetAddress2" placeholder="Address Line 2" onChange={(event) => inputCheck(event, "address2")}></input>
         
-                <div class="row"> 
-                  <div class="col-12 mb-2 col-lg-6 ">
-                      <input class="form-control" id="city" placeholder="City" 
+                <div className="row"> 
+                  <div className="col-12 mb-2 col-lg-6 ">
+                      <input className="form-control" id="city" placeholder="City" 
                       onChange={(event) => inputCheck(event, "city")} style={{ borderColor: empty.city ? 'red' : '' }}required></input>
-                      {empty.city &&  <p class="required-error"> * This field is required </p>}
+                      {empty.city &&  <p className="required-error"> * This field is required </p>}
                   </div>
-                  <div class="col-12 mb-2 col-lg-6">
+                  <div className="col-12 mb-2 col-lg-6">
                     <ProvinceDropdown tofill={tofill} fill={fill}/>
                   </div>
                 </div>
