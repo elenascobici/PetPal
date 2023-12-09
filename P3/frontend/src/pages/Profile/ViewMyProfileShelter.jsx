@@ -2,6 +2,7 @@ import React from "react"
 import DefaultProfilePicture from "../../assets/images/user.png"
 import "./style.css"
 import ProfilePetsCarousel from "./ProfilePetCarousel/ProfilePetCarousel"
+import Blogs from "./Blogs"
 
 export const ViewMyProfileShelter = ({userData, errors, updateProfile}) => {
     const [profilePath, setProfilePath] = React.useState(DefaultProfilePicture);
@@ -160,7 +161,9 @@ export const ViewMyProfileShelter = ({userData, errors, updateProfile}) => {
                 {userData && <ProfilePetsCarousel shelterId={localStorage.getItem("id")} shelterName={userData.name}></ProfilePetsCarousel>}
                 <button type="submit" class="editButton" id="save-button">Save</button>
                 </form>
+                <Blogs />
             </div>
+            
             <div class="buttons">
                 <a class="editButton" href="/blog-create">Create a blog ⏵</a>
                 <a href="pet-creation.html" class="editButton" id="create-pet-button">

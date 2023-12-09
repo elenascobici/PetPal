@@ -23,6 +23,7 @@ import BlogCreate from './pages/BlogCreate/BlogCreate';
 import ApplicationHome from './pages/ApplicationHome';
 import SheltersSearch from './pages/SheltersSearch/SheltersSearch';
 import Notification from './pages/Notification';
+import BlogUpdate from './pages/Profile/Blogs/BlogUpdate';
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
         <Route path="shelter/:shelterId/:shelterName" element={<PrivateRoute> <ShelterDetail /> </PrivateRoute>} />
         <Route path="blog-create/" element={<PrivateRoute> <BlogCreate /> </PrivateRoute>} />
         <Route path="shelter/:shelterId/:shelterName/review" element={<PrivateRoute> <CreateReview /> </PrivateRoute>} />
+        <Route path="profile/blog-update/:blogId" element={<PrivateRoute> <BlogUpdate /> </PrivateRoute>} />
         <Route path="notifications" element={<PrivateRoute> <Notification /> </PrivateRoute> } />
         <Route path="*" element={<NotFound />} /> 
       </Route>

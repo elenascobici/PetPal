@@ -12,7 +12,7 @@ function format_date(dateString) {
 };
 
 const Blogs = () => {
-    const { shelterId, shelterName } = useParams();
+    const userId = localStorage.getItem('id');
     const [blogs, setBlogs] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
@@ -24,7 +24,7 @@ const Blogs = () => {
       const fetchBlogs = async () => {
         try {
           const response = await fetch(
-            `http://localhost:8000/blogs/list?shelter=${shelterId}&page=${currentPage || 1}&page_size=8`,
+            `http://localhost:8000/blogs/list?shelter=${userId}&page=${currentPage || 1}&page_size=8`,
             {
               headers: {
                 Authorization: `Bearer ${token}`,
@@ -38,7 +38,7 @@ const Blogs = () => {
             window.history.replaceState(
               null,
               null,
-              `/shelter/${shelterId}/${shelterName}`
+              `/profile/${userId}`
             );
             return;
           }
@@ -52,7 +52,7 @@ const Blogs = () => {
       };
   
       fetchBlogs();
-    }, [shelterId, currentPage, shelterName]);
+    }, [userId, currentPage]);
 
     const handleDelete = async (blogId) => {
         const token = localStorage.getItem("access_token");
@@ -81,6 +81,10 @@ const Blogs = () => {
     const handlePageChange = (newPage) => {
       setCurrentPage(newPage);
     };
+
+    const handleEdit = (blogId) => {
+      navigate(`/profile/blog-update/${blogId}`);
+    };
   
     return (
       <div className="container justify-content-start text-start">
@@ -95,7 +99,7 @@ const Blogs = () => {
               </p>
             </div>
             <div className="button-container">
-              <button className="blog-button blog-edit">Edit</button>
+              <button className="blog-button blog-edit" onClick={() => handleEdit(blog.id)}>Edit</button>
               <button className="blog-button blog-delete" onClick={() => handleDelete(blog.id)}>Delete</button>
             </div>
           </div>
