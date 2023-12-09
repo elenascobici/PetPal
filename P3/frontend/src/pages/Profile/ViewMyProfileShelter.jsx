@@ -3,7 +3,6 @@ import DefaultProfilePicture from "../../assets/images/user.png"
 import "./style.css"
 
 export const ViewMyProfileShelter = ({userData, errors, updateProfile}) => {
-    console.log(userData);
     const [profilePath, setProfilePath] = React.useState(DefaultProfilePicture);
     React.useEffect(() => {
         // Clear all error messages initially
@@ -24,7 +23,7 @@ export const ViewMyProfileShelter = ({userData, errors, updateProfile}) => {
         document.getElementById("save-button").onclick = (e) => 
             {
                 e.preventDefault();
-                updateProfile(new FormData(document.getElementById("update-seeker-profile-form")));
+                updateProfile(new FormData(document.getElementById("update-shelter-profile-form")));
             }
     }, [])
 
@@ -43,7 +42,7 @@ export const ViewMyProfileShelter = ({userData, errors, updateProfile}) => {
         <div class="page-container">
             <div class="main">
             <div id="title">Update Shelter Details</div>
-            <form action="#" method="post" id="profileInfo"></form>
+            <form action="" method="post" id="update-shelter-profile-form">
             <div class="container gx-0" id="shelterLogoEdit">
                 <div class="form-control" id="profile">
                     <img id="profileImage" src={profilePath} />
@@ -222,7 +221,8 @@ export const ViewMyProfileShelter = ({userData, errors, updateProfile}) => {
                     
                 </div>
                 </div>
-                <a type="submit" class="editButton" id="save-button">Save</a>
+                <button type="submit" class="editButton" id="save-button">Save</button>
+                </form>
             </div>
             <div class="buttons">
                 <a href="pet-creation.html" class="editButton">

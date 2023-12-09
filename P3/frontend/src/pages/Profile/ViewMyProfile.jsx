@@ -37,11 +37,11 @@ export const ViewMyProfile = () => {
 
     // Send a request to update this profile.
     const updateProfile = (updateData) => {
+        console.log("Update data " + JSON.stringify(updateData));
         fetch(`http://localhost:8000/accounts/profile/`, {
             method: 'PUT',
             headers: {
                 'Authorization': `Bearer ${token}`,
-                // 'Content-Type': 'multipart/form-data',
             },
             body: updateData,
             })
