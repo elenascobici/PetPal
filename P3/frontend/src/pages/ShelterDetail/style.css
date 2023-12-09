@@ -577,8 +577,8 @@ textarea {
 }
 
 @media screen and (max-width:590px) {
-   #shelter-detail-main .carousel-control-next {right: -3rem;}
-   #shelter-detail-main .carousel-control-prev {left: -3rem;}
+   .carousel-control-next, #shelter-detail-main .carousel-control-next {right: -3rem;}
+   .carousel-control-prev, #shelter-detail-main .carousel-control-prev {left: -3rem;}
 }
 
 @media screen and (max-width:522px) {
