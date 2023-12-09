@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import "./style.css";
 import SheltersMain from "../../assets/images/shelters-main.jpg";
+import ShelterResults from "./ShelterResults";
 
 const SheltersSearch = () => {
     const [totalPages, setTotalPages] = useState(1);
@@ -20,9 +21,10 @@ const SheltersSearch = () => {
             return response.json();
         })
         .then(data => {
-            console.log('Shelters data:', data);
+            console.log('results:', data.results);
             setShelters(data.results);
-                setTotalPages(Math.ceil(data.count / 8));
+            setTotalPages(Math.ceil(data.count / 8));
+            console.log('Shelters data:', shelters);
             
             setTotal(data.count);
         })
@@ -74,20 +76,9 @@ const SheltersSearch = () => {
                 <div class="grid-header tableHeader">
                 Contact
                 </div>
-                <div class="grid-item shelterLink">
-                <a href="shelter-detail.html" class="shelterLink">Paw Patrol Rescue</a>
+                {/* {shelters !== undefined && <ShelterResults data={shelters} total={totalPages}></ShelterResults>} */}
                 </div>
-                <div class="grid-item">Adventure Bay, ON CA</div>
-                <div class="grid-item">
-                <a class="email" href="mailto:pawpatrolrescue@gmail.com">pawpatrolrescue@gmail.com</a> 
-                </div>
-                <div class="grid-item shelterLink">Just Paws Animal Rescue</div>
-                <div class="grid-item">Richmond Hill, ON CA</div>
-                <div class="grid-item">
-                <a class="email" href="mailto:info.justpaws@gmail.com">info.justpaws@gmail.com</a> 
-                </div>
-                </div>
-                </div>
+            </div>
             <nav>
                 <ul class="pagination">
                 <li class="page-item disabled"><a class="page-link" href="#search">Previous</a></li>

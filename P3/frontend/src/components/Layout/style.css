@@ -313,7 +313,7 @@ body {
     .nav-link:focus { text-decoration: none; color: white; }
     .navHome:focus { text-decoration: none; color: white !important; }
     #headerContainer { padding: 0; }
-    #navButtons { padding: 0 !important; }
+    #navButtons { padding: 0 !important; align-items: end}
     #navbarList { margin-bottom: 0; }
     #signUp, #profile, #logIn, #logOut { 
       text-align: right; color: #FFA903; background-color: #92DAD9; border: none; padding: 1rem 0; margin: 0; 
