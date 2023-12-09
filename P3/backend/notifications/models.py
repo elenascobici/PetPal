@@ -14,5 +14,5 @@ class Notification(models.Model):
     event = GenericForeignKey('event_type', 'id_event')
     text = models.CharField(max_length=400)
     time = models.DateTimeField(auto_now_add=True)
-    read = models.BooleanField(default=False)
+    read = models.BooleanField(default=True)
 
