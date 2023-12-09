@@ -150,6 +150,10 @@
     font-family: Manrope;
     font-size: 15px;
   } */
+
+  .form-control{
+    width: 100% !important;
+  }
   
   .pet-pfp {
     object-fit:cover;

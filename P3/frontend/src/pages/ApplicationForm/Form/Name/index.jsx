@@ -60,12 +60,12 @@ function Name({required, value, check, tofill, fill}){
         <div className="row mb-3">
                 <label for="name" className="col-12 col-form-label text-start col-lg-2 text-lg-end"> Name</label>
                 <div className="col-6 col-lg-5"> 
-                  <input type="text" className="form-control" id="firstName" placeholder="First Name" 
-                  onChange={(event) => inputCheck(event, "first")} style={{ borderColor: empty.first ? 'red' : '' }} required/>
+                  <input type="text" className=" name-control form-control" id="firstName" placeholder="First Name" 
+                  onChange={(event) => inputCheck(event, "first")} style={{ border:empty.first ? "1px solid":'', borderColor: empty.first ? 'red' : '' }} required/>
                   {empty.first &&  <p className="required-error"> * This field is required </p>}
                 </div>
                 <div className="col-6 col-lg-5">
-                  <input type="text" className="form-control" id="lastName" placeholder="Last Name" onChange={(event) => inputCheck(event, "last")} style={{ borderColor: empty.last ? 'red' : '' }} required/>
+                  <input type="text" className="name-control form-control" id="lastName" placeholder="Last Name" onChange={(event) => inputCheck(event, "last")} style={{ border:empty.last ? "1px solid":'', borderColor: empty.last ? 'red' : '' }} required/>
                   {empty.last &&  <p className="required-error"> * This field is required </p>}
                 </div>
         </div>

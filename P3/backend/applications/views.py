@@ -57,7 +57,7 @@ class ApplicationCreateView(CreateAPIView):
         return Response(serializer.data, status=201)
 
 class ApplicationPagination(PageNumberPagination):
-    page_size = 3
+    page_size = 8
     page_size_query_param = 'page_size'
 
 class ApplicationListView(ListAPIView):
@@ -67,7 +67,7 @@ class ApplicationListView(ListAPIView):
     def get_queryset(self):
         status = self.request.query_params.get('status')
 
-        if status != None:
+        if status != '':
             #validate status:
             if status == 'pending':
                 status_code = 'P'
@@ -104,7 +104,7 @@ class ApplicationListView(ListAPIView):
 
         # validate ordering field
         type = self.request.query_params.get('type') # should only be able to store "creation_time" or "last_update" or "none"
-        if type != None:
+        if type != '':
         
             if type == 'creation-time':
                 field = '-creation_time'

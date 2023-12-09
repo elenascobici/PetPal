@@ -18,6 +18,7 @@ import ApplicationDetail from './pages/ApplicationDetail';
 import { ViewMyProfile } from './pages/Profile/ViewMyProfile'; 
 import ShelterDetail from './pages/ShelterDetail';
 import CreateReview from './pages/ShelterDetail/Reviews/CreateReview';
+import ApplicationList from './pages/ApplicationList';
 
 function App() {
   return (
@@ -31,8 +32,9 @@ function App() {
         <Route path="log-in/" element={<Login />} />
         <Route path="log-out/" element={<LogOut />} />
         <Route path="profile/" element={<ViewMyProfile />} />
-        <Route path="application/form/" element={<PrivateRoute>  <ApplicationForm /> </PrivateRoute>} />
-        <Route path="application/detail/" element={<ApplicationDetail />} />
+        <Route path="application/form/" element={<ApplicationForm /> } />
+        <Route path="application/detail/:appID/" element={<ApplicationDetail />} />
+        <Route path="application/list/" element={<ApplicationList />} />
         <Route path="shelter/:shelterId/:shelterName" element={<PrivateRoute> <ShelterDetail /> </PrivateRoute>} />
         <Route path="shelter/:shelterId/:shelterName/review" element={<PrivateRoute> <CreateReview /> </PrivateRoute>} />
         <Route path="*" element={<NotFound />} /> 

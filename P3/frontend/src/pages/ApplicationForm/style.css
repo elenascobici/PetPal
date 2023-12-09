@@ -30,6 +30,13 @@
     justify-content: flex-start;
   }
 
+  .name-control {
+    border-radius: 15px; 
+    /* border: 1px solid!important;  */
+    box-shadow: none;
+    /* width: 50%!important; */
+  }
+
   .fence-padding {
     padding-top: 7px;
     padding-bottom: 7px;

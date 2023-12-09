@@ -136,7 +136,7 @@ textarea,
 select {
     border: none;
     padding: 0.5rem 1.25rem;
-    width: 40vw !important;
+    width: 40vw;
 }
 
 .locationType,
