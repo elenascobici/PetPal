@@ -335,10 +335,27 @@ input[type="radio"]{
    text-decoration: underline !important;
 }
 
-form {
+.replyBoxForm {
    width: 100%;
-   margin: 3rem;
-   padding: 0 3rem;
+}
+
+.max-char-limit, .error-message, .error-message-small {
+   color: red;
+   padding-bottom: 1rem;
+   font-size: 1rem;
+}
+
+.error-message-small {
+   font-size: calc(1rem + 0.5vw);
+}
+
+.error-message {
+   padding-top: 1rem;
+   font-size: calc(1rem + 1vw);
+}
+
+#replyComment {
+   width: 99% !important;
 }
 
 textarea {

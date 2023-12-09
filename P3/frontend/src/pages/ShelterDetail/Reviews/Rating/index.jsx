@@ -4,7 +4,6 @@ import { json, useNavigate } from 'react-router-dom';
 const Rating = ({ rating, handleRatingClick }) => {
     const [ hover, setHover ] = useState(null);
 
-
     return (
         <div class="rating">
             {[...Array(5)].map((star, index) => {
