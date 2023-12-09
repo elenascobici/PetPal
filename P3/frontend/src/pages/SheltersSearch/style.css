@@ -151,7 +151,7 @@
  }
  
  
- .grid {
+ .grid-shelters {
     display: grid;
     grid-template-columns: auto auto auto !important;
     font-family: Manrope;
@@ -299,7 +299,7 @@
        font-size: 22px;
     }
  
-    .grid {
+    .grid-shelters {
        width: 100%;
     }
  
@@ -335,7 +335,7 @@
        display: none;
     }
  
-    .grid {
+    .grid-shelters {
        grid-template-columns: auto;
     }
  

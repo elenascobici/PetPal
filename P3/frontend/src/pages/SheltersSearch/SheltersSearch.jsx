@@ -32,7 +32,7 @@ const SheltersSearch = () => {
                 </div>
             </form>
             <div class="container" id="shelterList1">
-            <div class="grid">
+            <div class="grid-shelters">
                 <div class="grid-header tableHeader">
                 Organization
                 </div>
