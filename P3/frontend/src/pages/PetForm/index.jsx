@@ -1,4 +1,5 @@
 import React, { useState } from 'react'; 
+import { useNavigate } from 'react-router-dom';
 import TextInput from './TextInput';
 import TextAreaInput from './TextAreaInput';
 import FileInput from './FileInput';
@@ -22,6 +23,9 @@ const AdoptionForm = () => {
     status: '',
     image: null,
   });
+
+  const navigate = useNavigate();
+
 
   const handleChange = (e) => {
     const { id, value } = e.target;
@@ -70,7 +74,8 @@ const AdoptionForm = () => {
 
       const data = await response.json();
       console.log('Creation data:', data);
-      // Handle success (e.g., redirect or show a success message)
+      navigate('/search/'); 
+
     } catch (error) {
       console.error('Error:', error);
       // Handle error (e.g., show an error message)
@@ -99,7 +104,7 @@ const AdoptionForm = () => {
             <FileInput id="image" onChange={handleFileChange} label="Image"/>
             <div className="row mb-3 mt-4">
               <div className="col-12">
-                <button className="yellowButton" type="submit">Submit</button>
+                <button className="yellowButton" type="submit" >Submit</button>
               </div>
             </div>
           </form>

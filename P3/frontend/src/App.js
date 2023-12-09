@@ -27,6 +27,7 @@ import Notification from './pages/Notification';
 import PetDetail from './pages/PetDetail';
 import PetForm from './pages/PetForm';
 import BlogUpdate from './pages/Profile/Blogs/BlogUpdate';
+import UpdatePet from './pages/UpdatePetListing'
 
 function App() {
   return (
@@ -54,6 +55,7 @@ function App() {
         <Route path="profile/blog-update/:blogId" element={<PrivateRoute> <BlogUpdate /> </PrivateRoute>} />
         <Route path="notifications" element={<PrivateRoute> <Notification /> </PrivateRoute> } />
         <Route path="pet/form" element={<PrivateRoute> <PetForm /> </PrivateRoute>} />
+        <Route path="pet/update" element={<PrivateRoute> <UpdatePet /> </PrivateRoute>} />
         <Route path="*" element={<NotFound />} /> 
       </Route>
     </Routes>
