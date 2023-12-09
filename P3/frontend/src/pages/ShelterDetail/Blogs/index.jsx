@@ -1,29 +1,115 @@
 import React, {useEffect, useState} from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import "./style.css";
 
-const Blogs = () => {
-    
-    useEffect(() => {
-        const token = localStorage.getItem("access_token");
-        fetch(`http://localhost:8000/blogs/list${shelterId}`, {
-            headers: {
-                'Authorization': `Bearer ${token}`,
-                'Content-Type': 'application/json',
-            }
-        })
-    })
-    
-    return (
-        <div className="container justify-content-start text-start">
-          <h2 className="subtitle2">Blogs:</h2>
-          <div className="blog-container">
-            <p className="textInfo">Blog1</p>
-            <button className="blog-button blog-edit">Edit</button>
-            <button className="blog-button blog-delete">Delete</button>
-          </div>
-          <div className="blog-container"><p className="textInfo">Blog1</p></div>
-        </div>
-    )
-}
+function format_date(dateString) {
+    const dateObject = new Date(dateString);
 
-export default Blogs;
+    const options = { month: 'short', day: '2-digit', year: 'numeric', hour: 'numeric', minute: 'numeric' };
+    const formattedDate = dateObject.toLocaleString('en-US', options);
+
+    return formattedDate;
+};
+
+const Blogs = () => {
+    const { shelterId, shelterName } = useParams();
+    const [blogs, setBlogs] = useState([]);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(1);
+  
+    let navigate = useNavigate();
+  
+    useEffect(() => {
+      const token = localStorage.getItem("access_token");
+      const fetchBlogs = async () => {
+        try {
+          const response = await fetch(
+            `http://localhost:8000/blogs/list?shelter=${shelterId}&page=${currentPage || 1}&page_size=8`,
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json",
+              },
+            }
+          );
+  
+          if (!response.ok) {
+            navigate("/404");
+            window.history.replaceState(
+              null,
+              null,
+              `/shelter/${shelterId}/${shelterName}`
+            );
+            return;
+          }
+  
+          const data = await response.json();
+          setBlogs(data.results);
+          setTotalPages(Math.ceil(data.count / 8));
+        } catch (error) {
+          console.error("Fetch error:", error);
+        }
+      };
+  
+      fetchBlogs();
+    }, [shelterId, currentPage, shelterName]);
+  
+    const handlePageChange = (newPage) => {
+      setCurrentPage(newPage);
+    };
+  
+    return (
+      <div className="container justify-content-start text-start">
+        <h2 className="subtitle2">Blogs:</h2>
+  
+        {blogs.map((blog) => (
+          <div key={blog.id} className="blog-container">
+            <div>
+              <p className="textInfo">{blog.title}</p>
+              <p className="textInfo blog-time">
+                <span>{format_date(blog.updated_at)}</span>
+              </p>
+            </div>
+            <div className="button-container">
+              <button className="blog-button blog-edit">Edit</button>
+              <button className="blog-button blog-delete">Delete</button>
+            </div>
+          </div>
+        ))}
+  
+        {totalPages > 1 && (
+          <div className="blog-pagination">
+            <ul className="pagination">
+                
+                {totalPages > 1 && (
+                    <li className="page-item"><button className="page-link" 
+                    onClick={() => handlePageChange(currentPage - 1)}
+                    disabled={currentPage === 1}
+                    >Previous</button></li>
+                )}
+    
+                {Array.from({ length: totalPages }, (_, index) => (
+                <li className="page-item"><button
+                    key={index + 1}
+                    onClick={() => handlePageChange(index + 1)}
+                    className={`${currentPage === index + 1 ? "active" : ""} page-link`}
+                >
+                    {index + 1}
+                </button></li>
+                ))}
+    
+                {totalPages > 1 && (
+                <li className="page-item"><button  className="page-link" 
+                onClick={() => handlePageChange(currentPage + 1)}
+                disabled={currentPage === totalPages}
+                >Next</button></li>
+                )}
+            </ul>
+            
+          </div>
+        )}
+      </div>
+    );
+  };
+  
+  export default Blogs;

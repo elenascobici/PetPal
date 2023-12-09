@@ -542,6 +542,7 @@ textarea {
    #userReview {margin: 0;}
    .starReview {font-size: 22px !important;}
    #shelter-detail-main {padding-left: 1rem; padding-right: 1rem;}
+   .blog-container {padding-left: 0;}
 }
 
 @media screen and (max-width:686px) {
