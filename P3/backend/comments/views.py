@@ -33,14 +33,14 @@ class CommentListCreate(ListCreateAPIView):
                 return RatingSerializer
             elif 'text' in self.request.data:
                 return ReplySerializer
-        return CommentSerializer
+        return ReviewSerializer
 
     def get_queryset(self):
         shelter_id = self.kwargs.get('shelter_id')
         shelter = get_object_or_404(Shelter, pk=shelter_id)
         queryset = Review.objects.filter(commented_shelter_id=shelter)
         queryset = queryset.order_by('-time')
-        queryset = queryset.select_related('rating', 'commenter')
+        queryset = queryset.select_related('commenter')
         # queryset = queryset.prefetch_related('replies', 'rating')
         return queryset
     
@@ -120,7 +120,6 @@ class ReviewCreate(CreateAPIView):
             serializer.validated_data['rating'] = rating
             shelter.average_rating = get_avg_rating(shelter)
             shelter.save()
-            print(shelter.average_rating)
 
         event = serializer.save(commenter=self.request.user, commented_shelter=shelter)
         Notification.objects.create(user=shelter, sender=self.request.user, event=event, 
