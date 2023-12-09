@@ -1,0 +1,74 @@
+import "../style.css"
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
+function PetCard({listing}){
+
+    // retrieve pet from listing
+    const [pet, setPet] = useState({});
+    const navigate = useNavigate();
+
+    const status = {
+      'A': 'Accepted',
+      'W': 'Withdrawn',
+      'P': 'Pending',
+      'D': 'Declines',
+    }
+
+    const formatTime = (time) => {
+      var months = [ "January", "February", "March", "April", "May", "June", 
+           "July", "August", "September", "October", "November", "December" ]
+      var date = time.toString().slice(0,10);
+      var year = date.substring(0,4);
+      var month= date.substring(5,7);
+      var day= date.substring(8,10);
+      // console.log(month);
+      return  months[parseInt(month) - 1] + ' ' + day + ', ' + year;
+    }
+
+    useEffect(() => { 
+      // console.log("LAST PAGE? " + lastPage);
+      if(!listing.fill){
+        fetch(`http://localhost:8090/pet/${listing.pet}/`, {
+        method: 'GET',
+        headers: {
+            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAyMTQ3MDI0LCJpYXQiOjE3MDIwNjA2MjQsImp0aSI6ImY0Mzg0MTI3MzQ0NTQ2NmQ4ZmZlNDhkMmUzYjU5M2M1IiwidXNlcl9pZCI6MywidXNlcl90eXBlIjoiU2Vla2VyIiwiaWQiOjN9.7n60oLI1_ltlgxO9oYDeSJ5aM95jyecGlOcyUf7-XK8',
+            'Content-Type': 'application/json',
+        },
+        })
+        .then(response => {
+            return response.json();
+        })
+        .then(data => {
+            console.log('Pet data:', data);
+            setPet(data[0]);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        }); 
+      }
+        
+    }, [listing]);
+    return <>
+        {/* <div class={`col-12 col-lg-${(numPets % 3 === 1 ? 4 : numPets % 3 === 2 ? 6 : numPets % 3 === 0 ? 4 : 4)} card`}> */}
+        {/* <div className="grid-item" > */}
+        <div class="grid-item card mb-3 rounded-card centered">
+          {!listing.fill ? (<div className="card mb-3 rounded-card centered"> <img src="images/jiji.jpg" class="card-img-top" id="pet-1" alt="adopted pet 1"/>
+          <div class="card-body">
+            <h5 class="card-title">{pet.name}</h5>
+            <p class="card-text">
+              <strong>Status:</strong> {status[listing.status]}
+              <br/>
+              <strong>Applied On:</strong> 
+              <br/>
+              {formatTime(listing.creation_time)}
+            </p>
+            <a class="appView" onClick={() => navigate(`/application/detail/${listing.id}/`)}>View Application</a>
+          </div> </div>) : <div className="blank"></div>}
+          
+        </div>
+        {/* </div> */}
+    </>;
+}
+
+export default PetCard;

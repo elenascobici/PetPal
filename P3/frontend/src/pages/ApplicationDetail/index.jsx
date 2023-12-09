@@ -6,6 +6,8 @@ import "./style.css"
 import React, { useState, useEffect } from 'react';
 import { Navigate, useNavigate } from "react-router-dom";
 import UpdateButtons from "./UpdateButtons";
+import { Link, useParams } from 'react-router-dom';
+import AlertPopup from "./Alert";
 
 function ApplicationDetail(){
     //! TO DO:
@@ -15,7 +17,7 @@ function ApplicationDetail(){
     //! FIX MODAL IT GOES INTO HEADER
 
     // Get the application:
-    let appID = 3; //! CHANGE
+    // let appID = 3; //! CHANGE
     
     const navigate = useNavigate();
     
@@ -25,6 +27,7 @@ function ApplicationDetail(){
     const [fullHome, setHome] = useState("");
     const [show, showBtns] = useState(true);
     const [notify, notifyToggle] = useState(null);
+    const {appID}= useParams();
 
     const provinces = {
         'ON': 'Ontario',
@@ -60,6 +63,7 @@ function ApplicationDetail(){
 
 
     useEffect(() => {
+        console.log("APPD" + appID);
         fetch(`http://localhost:8090/application/${appID}/`, {
         method: 'GET',
         headers: {
@@ -72,13 +76,9 @@ function ApplicationDetail(){
         })
         .then(data => {
             console.log('Application data:', data);
-            if (data.detail){
-                // Not authenticated
-                console.log("HERE??" + data.detail);
-                navigate("/log-in/");
-            }
             setAppData(data);
             // only show the options if u can modify them
+            // console.log("PET NUM " + data.pet);
             showBtns(data.status === 'P');
         })
         .catch(error => {
@@ -106,12 +106,13 @@ function ApplicationDetail(){
     <div className="main-detail">
         <div className="application-details">
             <BackButton />
+            {notify && <AlertPopup />}
             <h1 className="app-title display-5"> My Application </h1>
         </div>
         <UpdateButtons show={show} showBtns={showBtns} appID={appID} notify={notifyToggle}/>
         <div className="content">
             <div className="pet-summary">
-                <PetInfo petID={1}/>
+                {app_data.pet && <PetInfo petID={app_data.pet}/>}
                 <div className="content-details">
                     <div className="details-text">
                         <div className="details-space">
@@ -146,8 +147,6 @@ function ApplicationDetail(){
           </div>
         </div>
       </div>
-
-      {notify && <Modal content = "Your application status has been updated successfully" show={true} error={notify} setError={notifyToggle}/>}
 
     </div>
     </>;

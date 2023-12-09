@@ -12,6 +12,7 @@ import PetDetails from "./PetDetails";
 import Veterinarian from "./Veterinarian";
 import Modal from "./Modal";
 import '../style.css';
+import AlertPopup from './Alert';
 
 import React, { useState } from 'react';
 
@@ -135,7 +136,8 @@ function Form({petID}){
             required='false' valid = {{}} validCheck={() => {}} tofill={filledValues} fill={setValues} fieldName="notes" />
 
             <div className="row mb-3 mt-4">
-            {(!valid.adopterDetails || !valid.reason) &&  <p className="final-error required-error"> * Please fill out all the required fields. </p>}
+            {/* {(!valid.adopterDetails || !valid.reason) &&  <p className="final-error required-error"> * Please fill out all the required fields. </p>} */}
+            {(!valid.adopterDetails || !valid.reason) && <AlertPopup />}
                 <div className="col-12 submit-col">
                 <a className="yellowButton" id="submit" onClick={submit}>Submit</a>
                 </div>
