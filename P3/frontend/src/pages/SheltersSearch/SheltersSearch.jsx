@@ -1,8 +1,40 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import "./style.css";
 import SheltersMain from "../../assets/images/shelters-main.jpg";
 
 const SheltersSearch = () => {
+    const [totalPages, setTotalPages] = useState(1);
+    const [shelters, setShelters ] = useState([]);
+    const [numTotal, setTotal] = useState(0);
+
+    const fetchData = () => {
+        const token = localStorage.getItem('access_token');
+        fetch(`http://localhost:8000/accounts/shelter-list/`, {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json',
+        },
+        })
+        .then(response => {
+            return response.json();
+        })
+        .then(data => {
+            console.log('Shelters data:', data);
+            setShelters(data.results);
+                setTotalPages(Math.ceil(data.count / 8));
+            
+            setTotal(data.count);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }
+
+    useEffect(() => {
+        fetchData();
+    }, []);
+
     return (
         <div class="page-container">
             <div class="main px-6 pt-5">
