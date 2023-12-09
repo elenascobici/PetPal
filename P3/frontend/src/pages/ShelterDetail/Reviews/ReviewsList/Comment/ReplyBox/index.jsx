@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const ReplyBox = ({userName, userId, commentId, nestingLevel, shelterId, replyClick, handleReplySubmitCallback, handleNewReply}) => {
+const ReplyBox = ({userName, userId, commentId, nestingLevel, shelterId, replyClick, handleNewReply}) => {
     const [reply, setReply] = useState('');
     const [submitted, setSubmitted] = useState(false);
 
@@ -32,7 +32,6 @@ const ReplyBox = ({userName, userId, commentId, nestingLevel, shelterId, replyCl
         .then(data => {
             setSubmitted(true);
             replyClick();
-            // handleReplySubmitCallback();
             handleNewReply(data);
         })
     }

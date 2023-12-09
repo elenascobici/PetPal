@@ -22,11 +22,6 @@ const Comment = ({ comment, className, isReview, nestingLevel, userName, shelter
         })
     };
 
-    const handleReplySubmitCallback = () => {
-      console.log("CALLBACK")
-      setReplySubmitted(true);
-    };
-
     const handleSeeReplies = () => {
       setShowReplies(!showReplies);
     }
@@ -78,7 +73,6 @@ const Comment = ({ comment, className, isReview, nestingLevel, userName, shelter
           nestingLevel={nestingLevel+1} 
           shelterId={shelterId}
           replyClick={handleReplyClick}
-          handleReplySubmitCallback={handleReplySubmitCallback}
           handleNewReply={handleNewReply}
         />
       )}
