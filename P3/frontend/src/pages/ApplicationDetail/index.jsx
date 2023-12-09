@@ -63,11 +63,12 @@ function ApplicationDetail(){
 
 
     useEffect(() => {
-        console.log("APPD" + appID);
-        fetch(`http://localhost:8090/application/${appID}/`, {
+        // console.log("APPD" + appID);
+        const token = localStorage.getItem('access_token');
+        fetch(`http://localhost:8000/application/${appID}/`, {
         method: 'GET',
         headers: {
-            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAyMTQ3MDI0LCJpYXQiOjE3MDIwNjA2MjQsImp0aSI6ImY0Mzg0MTI3MzQ0NTQ2NmQ4ZmZlNDhkMmUzYjU5M2M1IiwidXNlcl9pZCI6MywidXNlcl90eXBlIjoiU2Vla2VyIiwiaWQiOjN9.7n60oLI1_ltlgxO9oYDeSJ5aM95jyecGlOcyUf7-XK8',
+            'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json',
         },
         })
@@ -89,10 +90,10 @@ function ApplicationDetail(){
     useEffect(() => {
         const province = provinces[app_data.province];
         const home = homes[app_data.home];
-        // console.log("here")
         formatPhone();
         setProvince(province);
         setHome(home);
+        // Uncomment to test notes
         // app_data.notes = "Many people come and go from my household, but I intend to give the pet a personal space to not be disrupted. My family are very nice and would not bully the pet";
     }, [app_data.phone, app_data.province, app_data.home]); 
 
