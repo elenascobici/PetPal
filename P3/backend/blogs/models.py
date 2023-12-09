@@ -7,6 +7,8 @@ class Blog(models.Model):
     likes = models.IntegerField(default=0)
     title = models.CharField(max_length=100)
     content = models.CharField(max_length=10000, default="")
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
 class Like(models.Model):
     blog = models.ForeignKey(Blog, on_delete=models.CASCADE)
