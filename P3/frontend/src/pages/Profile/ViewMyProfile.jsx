@@ -23,7 +23,6 @@ export const ViewMyProfile = () => {
             })
             .then(data => {
                 setUserData(data);
-                console.log(data);
             })
             .catch(error => {
                 console.error('Error:', error);
@@ -37,6 +36,12 @@ export const ViewMyProfile = () => {
 
     // Send a request to update this profile.
     const updateProfile = (updateData) => {
+        // Don't set the password to nothing if it hasn't been
+        // updated.
+        if (updateData.password === "") {
+            delete updateData.password;
+        }
+        console.log(JSON.stringify(updateData));
         fetch(`http://localhost:8000/accounts/profile/`, {
             method: 'PUT',
             headers: {
@@ -47,13 +52,11 @@ export const ViewMyProfile = () => {
             .then(response => {
                 if (response.ok) {
                     fetchProfileData(); // Update profile with changes.
-                    response.json().then((data) => console.log(data));
                 }
                 else if (response.status === 400) {
                     response.json()
                     .then(data => {
                         setEditProfileErrors(data);
-                        console.log(data);
                     })
                 }
             })

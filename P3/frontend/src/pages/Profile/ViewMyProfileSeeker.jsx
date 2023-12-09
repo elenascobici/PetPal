@@ -82,7 +82,7 @@ export const ViewMyProfileSeeker = ({userData, errors, updateProfile}) => {
                 <label for="password" id="passwordLabel" class="gridLabel">Password</label>
             </div>
             <div class="grid-item">
-                <input id="password" type="password" name="password" class="gridValue" defaultValue="password" required/>
+                <input id="password" type="password" name="password" class="gridValue" defaultValue=""/>
                 <p class="text-input-error-message" id="password-error"></p>
             </div>
             <div class="grid-item">
