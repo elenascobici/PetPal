@@ -53,7 +53,7 @@ export const ViewMyProfileShelter = ({userData, errors, updateProfile}) => {
 
     return (
         <div class="page-container">
-            <div class="main">
+            <div class="main" id="update-page">
             <div id="title">Update Shelter Details</div>
             <form action="" method="post" id="update-shelter-profile-form">
             <div class="container gx-0" id="shelterLogoEdit">

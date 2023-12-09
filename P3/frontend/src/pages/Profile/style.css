@@ -40,6 +40,10 @@
     border: none;
 }
 
+#update-page .grid-item {
+    border: none !important;
+}
+
 #userEdit {
     display: flex;
     flex-direction: row wrap;
