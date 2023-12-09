@@ -9,6 +9,7 @@ export const ViewMyProfile = () => {
     const token = localStorage.getItem('access_token'); 
     const userId = localStorage.getItem('id'); 
     const user_type = localStorage.getItem('user_type'); 
+    let messageStated = false;
 
     // Fetch user data to display on their profile.
     const fetchProfileData = () => {
@@ -29,7 +30,40 @@ export const ViewMyProfile = () => {
         });
     }
 
-    // Fetch profile data on load.
+    const listenForDeleteAccount = () => {
+        if (!messageStated && window.confirm("Are you sure you want to delete your account? This action cannot be undone.")) {
+            fetch(`http://localhost:8000/accounts/profile/`, {
+                method: 'DELETE',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                },
+                })
+                .then(response => {
+                    if (response.ok) {
+                        localStorage.clear();
+                        window.location.href = "http://localhost:3000/";
+                        if (!messageStated) {
+                            alert("Your account has been deleted.");
+                            messageStated = true;
+                        }
+                    }
+                    else {
+                        if (!messageStated) {
+                            alert("Error with account deletion.");
+                            messageStated = true;
+                        }
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+            });
+        }
+        else {
+            messageStated = false;
+        }
+    }
+
+    // Fetch profile data and listen for account deletion on load.
     React.useEffect(() => {
         fetchProfileData();
     }, [])
@@ -67,10 +101,13 @@ export const ViewMyProfile = () => {
     
 
     return (
-        userData && (user_type === "Seeker" ? 
+        <>
+        {userData && (user_type === "Seeker" ? 
             <ViewMyProfileSeeker userData={userData} errors={editProfileErrors} updateProfile={(formData) => updateProfile(formData)}></ViewMyProfileSeeker> 
                 : 
             <ViewMyProfileShelter userData={userData} errors={editProfileErrors} updateProfile={(formData) => updateProfile(formData)}></ViewMyProfileShelter> 
-        )
+        )}
+        <button id="delete-account-button" onClick={listenForDeleteAccount}>Delete Account</button>
+        </>
     )
 }
