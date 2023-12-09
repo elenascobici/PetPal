@@ -1,16 +1,19 @@
 from rest_framework.exceptions import PermissionDenied
-from rest_framework.generics import CreateAPIView, RetrieveUpdateDestroyAPIView
+from rest_framework.generics import CreateAPIView, RetrieveUpdateDestroyAPIView, ListAPIView
 from rest_framework.permissions import IsAuthenticated
 from .serializers import BlogSerializer, LikeSerializer
 from .permissions import BlogCreatePermission, LikePermission, IsAuthorOrReadOnly
 from .models import Blog
 from rest_framework.response import Response
 
-
-
 class BlogCreate(CreateAPIView):
     serializer_class = BlogSerializer
     permission_classes = [IsAuthenticated, BlogCreatePermission]
+
+class BlogList(ListAPIView):
+    serializer_class = BlogSerializer
+    permission_classes = [IsAuthenticated]
+    queryset = Blog.objects.all()
 
 class BlogDetail(RetrieveUpdateDestroyAPIView):
     serializer_class = BlogSerializer
