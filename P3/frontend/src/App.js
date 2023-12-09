@@ -21,6 +21,7 @@ import CreateReview from './pages/ShelterDetail/Reviews/CreateReview';
 import ApplicationList from './pages/ApplicationList';
 import BlogCreate from './pages/BlogCreate/BlogCreate';
 import ApplicationHome from './pages/ApplicationHome';
+import SheltersSearch from './pages/SheltersSearch/SheltersSearch';
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
         <Route path="log-in/" element={<Login />} />
         <Route path="log-out/" element={<LogOut />} />
         <Route path="profile/" element={<ViewMyProfile />} />
+        <Route path="shelters/" element={<SheltersSearch />} />
         <Route path="application/form/:petID/" element={<PrivateRoute> <ApplicationForm /> </PrivateRoute> } />
         <Route path="application/detail/:appID/" element={<PrivateRoute> <ApplicationDetail /> </PrivateRoute>} />
         <Route path="application/list/" element={<PrivateRoute> <ApplicationList /> </PrivateRoute> } />
