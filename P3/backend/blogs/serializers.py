@@ -21,6 +21,15 @@ class BlogSerializer(serializers.ModelSerializer):
         # Create the blog with the author set
         blog = Blog.objects.create(**validated_data)
         return blog
+
+    def update(self, instance, validated_data):
+        instance.title = validated_data.get('title', instance.title)
+        instance.content = validated_data.get('content', instance.content)
+        print(instance.title)
+        print(validated_data.get('title', instance.title))
+        instance.save()
+        return instance
+    
     
 class LikeSerializer(serializers.ModelSerializer):
     user = serializers.PrimaryKeyRelatedField(read_only=True)

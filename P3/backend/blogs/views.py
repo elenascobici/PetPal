@@ -1,9 +1,11 @@
+from rest_framework.exceptions import PermissionDenied
 from rest_framework.generics import CreateAPIView, RetrieveUpdateDestroyAPIView
 from rest_framework.permissions import IsAuthenticated
 from .serializers import BlogSerializer, LikeSerializer
 from .permissions import BlogCreatePermission, LikePermission, IsAuthorOrReadOnly
 from .models import Blog
-from django.utils import timezone
+from rest_framework.response import Response
+
 
 
 class BlogCreate(CreateAPIView):
@@ -12,18 +14,24 @@ class BlogCreate(CreateAPIView):
 
 class BlogDetail(RetrieveUpdateDestroyAPIView):
     serializer_class = BlogSerializer
-    permission_classes = [IsAuthorOrReadOnly]
+    permission_classes = [IsAuthenticated]
     queryset = Blog.objects.all()
 
     def get(self, request, *args, **kwargs):
         return super().get(request, *args, **kwargs)
     
     def perform_update(self, serializer):
+        instance = serializer.instance
+        print(instance.author.id == self.request.user.id)
+        if instance.author.id != self.request.user.id:
+            raise PermissionDenied("You are not permitted to update this blog")
         serializer.save()
+
     
     def perform_destroy(self, instance):
-        if instance.author == self.request.user:
-            instance.delete()
+        if instance.author.id != self.request.user.id:
+            raise PermissionDenied("You are not permitted to delete this blog")
+        instance.delete()
 
 class LikeCreate(CreateAPIView):
     serializer_class = LikeSerializer
