@@ -23,6 +23,15 @@ class BlogList(ListAPIView):
     queryset = Blog.objects.all()
     pagination_class = BlogPagination
 
+    def get_queryset(self):
+        shelter_id = self.request.query_params.get('shelter')
+        if shelter_id:
+            queryset = Blog.objects.filter(author__id=shelter_id)
+        else:
+            queryset = Blog.objects.all()
+        return queryset
+
+
 class BlogDetail(RetrieveUpdateDestroyAPIView):
     serializer_class = BlogSerializer
     permission_classes = [IsAuthenticated]

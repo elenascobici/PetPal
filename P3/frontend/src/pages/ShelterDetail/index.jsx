@@ -89,7 +89,7 @@ const ShelterDetail = () => {
           <h2 className="subtitle2" id="petsSubtitle">Pets from {shelterName}:</h2>
         </div>
         <PetsCarousel shelterId={shelterId} shelterName={shelterName} />
-        {/* <Blogs /> */}
+        <Blogs />
         
         <Reviews shelterId={shelterId} shelterName={shelterName} />
         
