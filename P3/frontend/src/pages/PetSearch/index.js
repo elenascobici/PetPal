@@ -13,13 +13,15 @@ function PetSearch() {
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
     const [filters, setFilters] = useState({ }); 
+    
 
     const [searchTerm, setSearchTerm] = useState(''); 
 
     const itemsPerPage = 8;
 
     const query = useMemo(() => ({
-        page: parseInt(searchParams.get("page") ?? 1)
+        page: parseInt(searchParams.get("page") ?? 1),
+        search: searchParams.get("search") ?? ''
     }), [searchParams]);
 
     useEffect(() => {
@@ -65,7 +67,7 @@ function PetSearch() {
             <div id="title">Pet Listings</div>
             <div id="subtitle">Click on a pet to edit</div>
 
-            <SearchBar setSearchTerm={setSearchTerm} />
+            <SearchBar set={setSearchParams} />
             <SortAndFilter setFilters={setFilters} />
             
 

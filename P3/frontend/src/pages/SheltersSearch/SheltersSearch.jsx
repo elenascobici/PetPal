@@ -50,7 +50,7 @@ const SheltersSearch = () => {
             <div class="container-fluid" id="mainImgContainer">
                 <img class="img-fluid" id="mainImg" alt="Responsive image" src={SheltersMain}/>
             </div>
-            <div id="title">Meet our shelter organizations</div>
+            <div className="title-shelter" id="title">Meet our shelter organizations</div>
             <form class="formInputs" id="search" method="get">
                 <div class="form-row d-flex justify-content-center" id="searchBar">
                 <div class="form-group col d-flex justify-content-center align-center">

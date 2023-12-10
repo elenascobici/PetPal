@@ -1,8 +1,10 @@
 import React from 'react';
 
-function SearchBar({ setSearchTerm }) {
+function SearchBar({set}) {
+
     const handleSearchChange = (event) => {
-        setSearchTerm(event.target.value);
+        // setSearchTerm(event.target.value);
+        set({search: event.target.value, page: 1});
     };
 
 
