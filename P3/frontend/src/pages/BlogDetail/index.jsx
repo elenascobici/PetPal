@@ -31,9 +31,9 @@ const BlogDetail = () => {
   const {blogId} = useParams();
   const [blog, setBlog] = useState({});
   const [author, setAuthor] = useState('');
+  const [like, setLike] = useState(false);
   const userType = localStorage.getItem('user_type');
   let navigate = useNavigate();
-
 
   useEffect(() => {
     const token = localStorage.getItem("access_token");
@@ -72,6 +72,41 @@ const BlogDetail = () => {
 
   useEffect(() => {
     const token = localStorage.getItem("access_token");
+    const fetchLikes = async () => {
+      try {
+        const response = await fetch(
+          `http://localhost:8000/blogs/likes/${blogId}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        if (!response.ok) {
+          navigate("/404");
+          window.history.replaceState(
+            null,
+            null,
+            `/blog-view/${blogId}`
+          );
+          return;
+        }
+
+        const data = await response.json();
+        setLike(data.exists);
+        
+      } catch (error) {
+        console.error("Fetch error:", error);
+      }
+    };
+
+    fetchLikes();
+  }, [blogId]);
+
+  useEffect(() => {
+    const token = localStorage.getItem("access_token");
     if (!blog.author) {
       return;
     }
@@ -88,7 +123,7 @@ const BlogDetail = () => {
         );
 
         if (!response.ok) {
-          console.log(response);
+          console.log("RESPONSE", response);
           navigate("/404");
           window.history.replaceState(
             null,
@@ -117,6 +152,14 @@ const BlogDetail = () => {
     navigate(`/blogs/`);
   };
 
+  // const handleLike = () => {
+  //   if (like) {
+
+  //   } else {
+
+  //   }
+  // }
+
   console.log(blog);
 
     return (
@@ -126,6 +169,7 @@ const BlogDetail = () => {
         <h2 id="blog-author">Author: {author}</h2>
         <h3 id="blog-last-updated">Last updated: {format_date(blog.updated_at)}</h3>
         <p id="blog-content">{add_breaks(blog.content)}</p>
+        <div>Likes</div>
         <div className="blog-btn-container">
           <button className="blog-button" onClick={handleViewShelter}>View shelter</button>
           <button className="blog-button" onClick={handleSeeMore}>See more blogs</button>
