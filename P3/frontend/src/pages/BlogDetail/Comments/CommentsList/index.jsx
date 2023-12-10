@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Comment from "./Comment";
 
-const ReviewsList = ({ comments, className, isReview, nestingLevel = 0, userName, shelterName, shelterId }) => {
+const CommentsList = ({ comments, className, isReview, nestingLevel = 0, userName, blogId, author }) => {
     return (
         <>
             {comments.map((comment, index) => (
@@ -10,8 +10,8 @@ const ReviewsList = ({ comments, className, isReview, nestingLevel = 0, userName
                     isReview={isReview} 
                     nestingLevel={nestingLevel}
                     userName={userName}
-                    shelterName={shelterName}
-                    shelterId={shelterId} 
+                    blogId={blogId}
+                    author={author}
                   />
             ))}
             
@@ -19,4 +19,4 @@ const ReviewsList = ({ comments, className, isReview, nestingLevel = 0, userName
     )
 }   
 
-export default ReviewsList;
+export default CommentsList;

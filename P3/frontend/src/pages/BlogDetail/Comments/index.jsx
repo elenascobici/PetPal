@@ -1,23 +1,24 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./style.css"
-import Rating from "./Rating";
-import AverageRating from "./AverageRating";
-import ReviewsList from "./ReviewsList";
+import CommentsList from "./CommentsList";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-const Reviews = ({ shelterId, shelterName }) => {
-    const [ rating, setRating ] = useState(null);
-    const [ reviews, setReviews ] = useState([])
+const Comments = ({ blogId, author }) => {
+    const [ comments, setComments ] = useState([])
     const [ currentPage, setCurrentPage ] = useState(1);
     const [ hasMore, setHasMore ] = useState(false);
     const [ userName, setUserName ] = useState('');
+    const [ like, setLike ] = useState(false);
+    const [ likes, setLikes ] = useState(0);
+    const [isHovered, setIsHovered] = useState(false);
     const userId = localStorage.getItem('id');
     const userType = localStorage.getItem('user_type');
 
     // Retrieve comments
     const fetchComments = async () => {
       const token = localStorage.getItem('access_token');
-      fetch(`http://localhost:8000/shelter/${shelterId}/details/comments?page=${currentPage}`, {
+      fetch(`http://localhost:8000/blogs/comments/${blogId}?page=${currentPage}`, {
             headers: {
                 'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json',
@@ -31,9 +32,9 @@ const Reviews = ({ shelterId, shelterName }) => {
         })
         .then(data => {
 
-            setReviews((prevReviews) => {
-              const newReviews = data.results.filter(result => !prevReviews.some(review => review.id === result.id));
-              return [...prevReviews, ...newReviews];
+            setComments((prevComments) => {
+              const newComments = data.results.filter(result => !prevComments.some(comment => comment.id === result.id));
+              return [...prevComments, ...newComments];
             });
             setHasMore(data.next !== null);            
         })
@@ -42,6 +43,58 @@ const Reviews = ({ shelterId, shelterName }) => {
     useEffect(() => {
       fetchComments();
     }, [currentPage]);
+
+    useEffect(() => {
+      const token = localStorage.getItem("access_token");
+      const fetchLikes = async () => {
+        try {
+          const response = await fetch(
+            `http://localhost:8000/blogs/${blogId}`,
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json",
+              },
+            }
+          );
+  
+          if (!response.ok) {
+            setLikes(0);
+            return;
+          }
+  
+          const data = await response.json();
+          setLikes(data.likes);
+          
+        } catch (error) {
+          console.error("Fetch error:", error);
+        }
+      };
+  
+      fetchLikes();
+    }, [blogId]);
+
+
+    useEffect(() => {
+        const token = localStorage.getItem('access_token');
+        fetch(`http://localhost:8000/blogs/liked/${blogId}`, {
+          headers: {
+              'Authorization': `Bearer ${token}`,
+              'Content-Type': 'application/json',
+          },
+      })
+      .then(response => {
+          if(!response.ok) {
+              console.log("ERROR");
+          }
+          return response.json();
+      })
+      .then(data => {
+          setLike(data.liked);            
+      })
+      .catch(error => console.log(error))
+    }, [blogId, userId]);
+
 
 
     const handleSeeMoreClick = () => {
@@ -52,42 +105,15 @@ const Reviews = ({ shelterId, shelterName }) => {
 
     const handleSeeLessClick = () => {
         setCurrentPage(1);
-        setReviews((prevReviews) => prevReviews.slice(0, 8));
-        scrollToReviews();
+        setComments((prevComments) => prevComments.slice(0, 8));
+        scrollToComments();
     };
 
-    const scrollToReviews = () => {
-      const reviewsSection = document.getElementById('reviews');
-      if (reviewsSection) {
-        reviewsSection.scrollIntoView({ behavior: 'smooth' });
+    const scrollToComments = () => {
+      const commentsSection = document.getElementById('comments');
+      if (commentsSection) {
+        commentsSection.scrollIntoView({ behavior: 'smooth' });
       }
-    };
-
-    const handleRatingClick = (clickedRating) => {
-        const token = localStorage.getItem('access_token'); 
-        console.log(clickedRating);
-        fetch(`http://localhost:8000/shelter/${shelterId}/details/rating/`, {
-            method: 'POST',
-            headers: {
-                'Authorization': `Bearer ${token}`,
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                'user': userId,
-                'shelter': shelterId,
-                'value': clickedRating,
-            })
-        })
-        .then(response => {
-            console.log(shelterId);
-            if(!response.ok) {
-                console.log("ERROR");
-            }
-            return response.json();
-        })
-        .then(data => {
-            setRating(data.value);
-        })
     };
 
     useEffect(() => {
@@ -109,44 +135,105 @@ const Reviews = ({ shelterId, shelterName }) => {
         })
     }, [userId]);
 
-    console.log("reviews", reviews);
+    const handleLiked = () => {
+      const token = localStorage.getItem('access_token');
+      fetch(`http://localhost:8000/blogs/like/${blogId}/`, {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(
+              {"user": userId, 
+               "blog": blogId,
+              }
+            )
+        })
+        .then(response => {
+            if(!response.ok) {
+                console.log("ERROR");
+            }
+            return response.json();
+        })
+        .then(data => {
+          setLike(prevLike => !prevLike);
+          setLikes((prevLikes) => (prevLikes + 1));       
+        })
+        .catch(error => console.log(error))
+    }
+
+    const handleUnliked = () => {
+      const token = localStorage.getItem('access_token');
+      fetch(`http://localhost:8000/blogs/liked/${blogId}/`, {
+            method: 'DELETE',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json',
+            }
+        })
+        .then(response => {
+            if(!response.ok) {
+                console.log("ERROR");
+                throw new Error('Failed to unlike blog');
+            }
+        })
+        .then(data => {
+          setLike(prevLike => !prevLike);
+          setLikes((prevLikes) => (prevLikes - 1));       
+        })
+    }
+
+    const handleLikeClick = () => {
+      if (like) {
+        handleUnliked();
+      } else {
+        handleLiked();
+      }
+    };
+    
+
+    console.log("comments", comments);
 
     return (
-        <div className="container justify-content-start text-start" id="reviews">
-        <div className="reviewRow">
-          <h2 className="subtitle2" id="reviewSubtitle">Reviews: </h2>
-          
+        <div className="container justify-content-start text-start" id="comments">
+        <div className="commentRow">
+          <h2 className="subtitle2" id="commentSubtitle">Comments: </h2>
           {userType === "Seeker" && (
             <>
-            <Rating rating={rating} handleRatingClick={handleRatingClick} />
-            <Link to={`${window.location.pathname}/review`} className="reviewClick">Leave a review {'>'}</Link>
+            <Link to={`${window.location.pathname}/comment`} className="commentClick">Leave a comment {'>'}</Link>
+            <div className="like-container" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)} onClick={handleLikeClick}>
+            {like ? (
+              <i className="bi bi-suit-heart-fill like-heart filled"></i>
+            ) : (
+              <i className={`bi bi-suit-heart${isHovered ? '-fill' : ''} like-heart`}></i>
+            )}
+            <p id="num-likes">{likes}</p>
+          </div>
             </>
           )}
-          
-          <AverageRating shelterId={shelterId} rating={rating}  />
         </div>
-        {reviews.length > 0 ? (
+        {comments.length > 0 ? (
           <>
-          <ReviewsList comments={reviews} className="reviewBox" isReview={true} userName={userName} shelterName={shelterName} shelterId={shelterId} />
+          <CommentsList comments={comments} className="commentBox" isComment={true} userName={userName} blogId={blogId} author={author} />
           <div className="container" id="seeMoreCollapse">
           {hasMore && (
-            <button className="btn reviewClick" id="seeMore" onClick={handleSeeMoreClick}>
+            <button className="btn commentClick" id="seeMore" onClick={handleSeeMoreClick}>
               <div className="text-collapsed">See more <i className="bi bi-chevron-right chevron"></i></div>
             </button>
           )}
           {!hasMore && currentPage > 1 && (
-            <button className="btn reviewClick" id="seeMore" onClick={handleSeeLessClick}>
+            <button className="btn commentClick" id="seeMore" onClick={handleSeeLessClick}>
               <div className="text-expanded">See less<i className="bi bi-chevron-up chevron"></i></div>
             </button>
           )}
           </div>
           </>
         ) : (
-          <h4 className="no-reviews"><i>No reviews yet</i></h4>
+          <h4 className="no-comments"><i>No comments yet</i></h4>
         )}
         
       </div>
     )
 }
 
-export default Reviews;
+export default Comments;

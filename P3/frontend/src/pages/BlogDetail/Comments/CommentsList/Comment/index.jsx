@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import ReviewRating from "../ReviewRating";
-import ReviewsList from "..";
 import ReplyBox from "./ReplyBox";
+import CommentsList from "..";
 
-const Comment = ({ comment, className, isReview, nestingLevel, userName, shelterName, shelterId }) => {
+const Comment = ({ comment, className, isReview, nestingLevel, userName, blogId, author }) => {
     const [showReplies, setShowReplies] = useState(false);
     const [replyClick, setReplyClick] = useState(false);
     const [replySubmitted, setReplySubmitted] = useState(false);
@@ -46,12 +45,9 @@ const Comment = ({ comment, className, isReview, nestingLevel, userName, shelter
         <div className="row align-middle">
           <div className="col d-flex justify-content-start">
             <h3 
-            className={`reviewerName ${shelterName === comment.commenter_display_name ? "underlined" : ""}`}>
+            className={`reviewerName ${author === comment.commenter_display_name ? "underlined" : ""}`}>
             {comment.commenter_display_name}</h3>
           </div>
-          {isReview && (
-            <ReviewRating rating={comment.rating} />
-          )}
           
         </div>
         <div className="reviewText">
@@ -63,7 +59,7 @@ const Comment = ({ comment, className, isReview, nestingLevel, userName, shelter
               {showReplies ? "Hide replies" : "See replies"}
             </button>
           )}
-          {(userType === 'Seeker' || userId === shelterId) && (
+          {(userType === 'Seeker' || userId === author) && (
             <button className="btn reply replyButton"
               onClick={handleReplyClick} >
               Reply {'>'}
@@ -76,22 +72,22 @@ const Comment = ({ comment, className, isReview, nestingLevel, userName, shelter
           userName={userName} userId={userId} 
           commentId={comment.id} 
           nestingLevel={nestingLevel+1} 
-          shelterId={shelterId}
+          blogId={blogId}
           replyClick={handleReplyClick}
           handleNewReply={handleNewReply}
         />
       )}
 
       {showReplies && (
-        <ReviewsList 
+        <CommentsList 
             key={comment.id} 
             comments={comment.replies} 
             className="replyBox" 
             isReview={false}
             nestingLevel={nestingLevel + 1}
             userName={userName}
-            shelterName={shelterName}
-            shelterId={shelterId}
+            blogId={blogId}
+            author={author}
             />
         )}
       </>

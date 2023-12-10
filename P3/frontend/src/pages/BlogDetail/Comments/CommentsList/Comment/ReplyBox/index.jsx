@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const ReplyBox = ({userName, userId, commentId, nestingLevel, shelterId, replyClick, handleNewReply}) => {
+const ReplyBox = ({userName, userId, commentId, nestingLevel, blogId, replyClick, handleNewReply}) => {
     const [reply, setReply] = useState('');
     const [submitted, setSubmitted] = useState(false);
     const maxCharacterCount = 350;
@@ -27,7 +27,7 @@ const ReplyBox = ({userName, userId, commentId, nestingLevel, shelterId, replyCl
         }
         console.log("REPLIED")
         const token = localStorage.getItem("access_token");
-        fetch(`http://localhost:8000/shelter/${shelterId}/details/comments/?comment_id=${commentId}`, {
+        fetch(`http://localhost:8000/blogs/comments/${blogId}/?comment_id=${commentId}`, {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${token}`,

@@ -14,7 +14,7 @@ const PetDetails = () => {
   useEffect(() => {
     const authToken = localStorage.getItem('access_token');
     // TODO: get the pet dynamically
-    const url = `http://localhost:8000/pet/${petId}/`;
+    const url = `http://localhost:8000/pet/${petId}/?search=`;
 
 
     fetch(url, {
