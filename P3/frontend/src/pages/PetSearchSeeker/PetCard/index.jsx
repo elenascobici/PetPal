@@ -8,7 +8,7 @@ function PetCard({ pet }) {
 
 
   return (
-    <div className="grid-item">
+    <div className="grid-item grid-item-inner">
       <Link to={`/pets/${pet.id}`} className="pet">
         {/* <img className="petImage" src={imageUrl} alt={pet.name} /> */}
         <div className="petLabel">{pet.name}</div>

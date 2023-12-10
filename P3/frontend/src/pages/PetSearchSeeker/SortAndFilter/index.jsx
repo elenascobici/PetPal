@@ -109,9 +109,9 @@ function SortAndFilter({ setFilters }) {
 
                     <Dropdown.Menu>
                         <Dropdown.Item eventKey="">All</Dropdown.Item>
-                        <Dropdown.Item eventKey="1">Small</Dropdown.Item>
-                        <Dropdown.Item eventKey="2">Medium</Dropdown.Item>
-                        <Dropdown.Item eventKey="3">Large</Dropdown.Item>
+                        <Dropdown.Item eventKey="small">Small</Dropdown.Item>
+                        <Dropdown.Item eventKey="medium">Medium</Dropdown.Item>
+                        <Dropdown.Item eventKey="large">Large</Dropdown.Item>
                     </Dropdown.Menu>
                     </Dropdown>
                     {/* </Col> */}
