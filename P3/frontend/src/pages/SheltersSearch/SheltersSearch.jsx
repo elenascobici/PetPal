@@ -2,7 +2,6 @@ import { useState, useEffect, useMemo } from "react";
 import { useSearchParams } from "react-router-dom";
 import "./shelters.css";
 import SheltersMain from "../../assets/images/shelters-main.jpg";
-import ShelterResults from "./ShelterResults";
 import ShelterRow from "./ShelterRow";
 
 const SheltersSearch = () => {

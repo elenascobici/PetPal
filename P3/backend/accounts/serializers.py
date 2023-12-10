@@ -149,7 +149,7 @@ class ViewSeekerSerializer(ModelSerializer):
 class ViewShelterSerializer(ModelSerializer):
     class Meta:
         model = Shelter
-        fields = ['username', 'email', 'province', 'profile_picture', 
+        fields = ['id', 'username', 'email', 'province', 'profile_picture', 
                   'name', 'website_link', 'preferred_contact', 
                   'mission_statement', 'user_type', 'average_rating']
 
