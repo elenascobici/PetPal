@@ -1,14 +1,16 @@
 import React from 'react';
 
-function SearchBar({ setSearchTerm }) {
+function SearchBar({set, val}) {
+
     const handleSearchChange = (event) => {
-        setSearchTerm(event.target.value);
+        // setSearchTerm(event.target.value);
+        set({search: event.target.value, page: 1});
     };
 
 
     return (
         <>
-            <form className="formInputs" id="search">
+            <form className="formInputs searchInput" id="search">
                 <div className="form-row d-flex justify-content-center" id="searchBar">
                     <div className="form-group col d-flex justify-content-center align-center">
                         <input 
@@ -16,6 +18,7 @@ function SearchBar({ setSearchTerm }) {
                             className="form-control" 
                             placeholder="Search for pets ..." 
                             onChange={handleSearchChange} 
+                            value={val}
                         />
                         <a className="btn border-0 position-absolute" id="searchButton" >
                             <i className="bi bi-search" id="searchIcon"></i>

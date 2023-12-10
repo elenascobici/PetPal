@@ -150,9 +150,9 @@
    padding: 1rem;
 }
 
-.grid {
+/* .grid {
    display: flex;
-}
+} */
 
 .grid-header {
    border: 1px solid #ccc;
@@ -201,8 +201,8 @@
 .shelterLink {
    text-decoration: none;
    color: #4B4B4B;
-   transition: 0.3s;
-   cursor: pointer;
+   /* transition: 0.3s;
+   cursor: pointer; */
 }
 
 /* .grid-item-shelter {
@@ -210,10 +210,10 @@
    border-bottom: 1px gray sol;
    padding: 0;
 } */
-
+/* 
 .shelterLink:hover {
    color: var(--dark-orange);
-}
+} */
 
 #shelterList1,
 #shelterList2 {
@@ -351,7 +351,7 @@
       padding-bottom: 50vh;
    }
 
-   #title {
+   .title-shelter {
       margin-top: 50vw;
    }
 }
@@ -563,7 +563,7 @@
       padding-bottom: 50vh;
    }
 
-   #title {
+   .title-shelter {
       margin-top: 50vw;
    }
 }

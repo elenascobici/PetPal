@@ -31,7 +31,7 @@ function PetCard({listing, image}){
       // console.log("LAST PAGE? " + lastPage);
       if(!listing.fill){
         const token = localStorage.getItem('access_token');
-        fetch(`http://localhost:8000/pet/${listing.pet}/`, {
+        fetch(`http://localhost:8000/pet/${listing.pet}/?search=`, {
         method: 'GET',
         headers: {
             'Authorization': `Bearer ${token}`,
