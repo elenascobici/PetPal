@@ -1,63 +1,124 @@
 import React from 'react';
+import Dropdown from 'react-bootstrap/Dropdown';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 
 function SortAndFilter({ setFilters }) {
-    const handleSortChange = (event) => {
-        setFilters(filters => ({ ...filters, sort: event.target.value }));
+    const handleSortChange = (value) => {
+        setFilters(filters => ({ ...filters, sort: value }));
     };
 
-    const handleFilterChange = (event) => {
-        setFilters(filters => ({ ...filters, [event.target.name]: event.target.value }));
+    // const handleFilterChange = (name, value) => {
+    //     setFilters(filters => ({ ...filters, [name]: value }));
+    // };
+
+    const handleTypeChange = (value) => {
+        setFilters(filters => ({ ...filters, "type": value }));
+    };
+
+    const handleStatusChange = (value) => {
+        setFilters(filters => ({ ...filters, "status": value }));
+    };
+
+    const handleAgeChange = (value) => {
+        setFilters(filters => ({ ...filters, "age": value }));
+    };
+    const handleSizeChange = (value) => {
+        setFilters(filters => ({ ...filters, "size": value }));
     };
 
     return (
         <div className="new-container my-3">
-            <div className="row justify-content-center">
-                <div className="col-md-3 mb-2">
-                    <select className="dropdown-item-filter" onChange={handleSortChange}>
-                        <option value="">Sort</option>
-                        <option value="name">Sort by Name</option>
-                        <option value="age">Sort by Age</option>
-                    </select>
-                </div>
-                <div className="col-md-3 mb-2">
-                    <select className="dropdown-item-filter" name="type" onChange={handleFilterChange}>
-                        <option value="">Pet Type</option>
-                        <option value="Cat">Cat</option>
-                        <option value="Dog">Dog</option>
-                        <option value="Aquatic">Aquatic</option>
-                        <option value="Birds">Birds</option>
-                        <option value="Other">Other</option>
-                    </select>
-                </div>
-                <div className="col-md-3 mb-2">
-                    <select className="dropdown-item-filter" name="status" onChange={handleFilterChange}>
-                        <option value="">Status</option>
-                        <option value="Available">Available</option>
-                        <option value="Adopted">Adopted</option>
-                        <option value="Withdrawn">Withdrawn</option>
-                        <option value="Pending">Pending</option>
-                    </select>
-                </div>
-                <div className="col-md-3 mb-2">
-                    <select className="dropdown-item-filter" name="age" onChange={handleFilterChange}>
-                        <option value="">Age</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                    </select>
-                </div>
-                <div className="col-md-3 mb-2">
-                    <select className="dropdown-item-filter" name="size" onChange={handleFilterChange}>
-                        <option value="">All Sizes</option>
-                        <option value="Small">Small</option>
-                        <option value="Medium">Medium</option>
-                        <option value="Large">Large</option>
-                    </select>
-                </div>
+        {/* <Row> */}
+        {/* <Col xs={12} sm={2}> */}
+            {/* <div className="row justify-content-center"> */}
+                {/* <div className="col-md-3 mb-2"> */}
+                <div className="grid filter-grid">
+                    <Dropdown className="dropdown-space filter-grid-space1" onSelect={handleSortChange}>
+                    <Dropdown.Toggle className="custom-color" variant="info" id="dropdown-basic">
+                        Sort
+                    </Dropdown.Toggle>
+
+                    <Dropdown.Menu>
+                        <Dropdown.Item eventKey="name">Sort by Name</Dropdown.Item>
+                        <Dropdown.Item eventKey="age">Sort by Age</Dropdown.Item>
+                    </Dropdown.Menu>
+                    </Dropdown>
+        {/* </Col> */}
+                {/* </div>
+                <div className="col-md-3 mb-2"> */}
+                {/* <Col xs={12} sm={2}> */}
+                    <Dropdown className="dropdown-space" onSelect={handleTypeChange}>
+                    <Dropdown.Toggle className="custom-color" variant="info" id="dropdown-basic">
+                        Pet Type
+                    </Dropdown.Toggle>
+
+                    <Dropdown.Menu>
+                        <Dropdown.Item eventKey="">All</Dropdown.Item>
+                        <Dropdown.Item eventKey="Cat">Cat</Dropdown.Item>
+                        <Dropdown.Item eventKey="Dog">Dog</Dropdown.Item>
+                        <Dropdown.Item eventKey="Aquatic">Aquatic</Dropdown.Item>
+                        <Dropdown.Item eventKey="Birds">Birds</Dropdown.Item>
+                        <Dropdown.Item eventKey="Other">Other</Dropdown.Item>
+                    </Dropdown.Menu>
+                    </Dropdown>
+                    {/* </Col> */}
+                {/* </div>
+                <div className="col-md-3 mb-2"> */}
+                {/* <Col xs={12} sm={2}> */}
+                    <Dropdown className="dropdown-space" onSelect={handleStatusChange}>
+                    <Dropdown.Toggle className="custom-color" variant="info" id="dropdown-basic">
+                        Status
+                    </Dropdown.Toggle>
+
+                    <Dropdown.Menu>
+                        <Dropdown.Item eventKey="">All</Dropdown.Item>
+                        <Dropdown.Item eventKey="Available">Available</Dropdown.Item>
+                        <Dropdown.Item eventKey="Adopted">Adopted</Dropdown.Item>
+                        <Dropdown.Item eventKey="Withdrawn">Withdrawn</Dropdown.Item>
+                        <Dropdown.Item eventKey="Pending">Pending</Dropdown.Item>
+                    </Dropdown.Menu>
+                    </Dropdown>
+                    {/* </Col> */}
+                {/* </div>
+                <div className="col-md-3 mb-2"> */}
+                {/* <Col xs={12} sm={2}> */}
+                    <Dropdown className="dropdown-space filter-grid-space2" onSelect={handleAgeChange}>
+                    <Dropdown.Toggle className="custom-color" variant="info" id="dropdown-basic">
+                        Age
+                    </Dropdown.Toggle>
+
+                    <Dropdown.Menu>
+                        <Dropdown.Item eventKey="">All</Dropdown.Item>
+                        <Dropdown.Item eventKey="1">1</Dropdown.Item>
+                        <Dropdown.Item eventKey="2">2</Dropdown.Item>
+                        <Dropdown.Item eventKey="3">3</Dropdown.Item>
+                        <Dropdown.Item eventKey="4">4</Dropdown.Item>
+                        <Dropdown.Item eventKey="5">5</Dropdown.Item>
+                        <Dropdown.Item eventKey="6">6</Dropdown.Item>
+                    </Dropdown.Menu>
+                    </Dropdown>
+                    {/* </Col> */}
+                {/* </div>
+                <div className="col-md-3 mb-2"> */}
+                {/* <Col xs={12} sm={2}> */}
+                    <Dropdown className="filter-grid-last" onSelect={handleSizeChange}>
+                    <Dropdown.Toggle className="custom-color" variant="info" id="dropdown-basic">
+                        Size
+                    </Dropdown.Toggle>
+
+                    <Dropdown.Menu>
+                        <Dropdown.Item eventKey="">All</Dropdown.Item>
+                        <Dropdown.Item eventKey="1">Small</Dropdown.Item>
+                        <Dropdown.Item eventKey="2">Medium</Dropdown.Item>
+                        <Dropdown.Item eventKey="3">Large</Dropdown.Item>
+                    </Dropdown.Menu>
+                    </Dropdown>
+                    {/* </Col> */}
+                {/* </div> */}
+            {/* </div> */}
+            {/* </Row> */}
             </div>
         </div>
     );

@@ -8,7 +8,7 @@ function SearchBar({ setSearchTerm }) {
 
     return (
         <>
-            <form className="formInputs" id="search">
+            <form className="formInputs searchInput" id="search">
                 <div className="form-row d-flex justify-content-center" id="searchBar">
                     <div className="form-group col d-flex justify-content-center align-center">
                         <input 
