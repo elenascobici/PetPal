@@ -1,5 +1,6 @@
+from django.shortcuts import get_object_or_404
 from rest_framework import serializers
-from .models import Blog, Like
+from .models import Blog, BlogComment, BlogReply, BlogResponse, Like
 from accounts.models.ShelterModel import Shelter
 from accounts.models.SeekerModel import Seeker
 
@@ -50,3 +51,50 @@ class LikeSerializer(serializers.ModelSerializer):
         # Create the blog with the author set
         like = Like.objects.create(**validated_data)
         return like
+    
+
+class BlogCommentSerializer(serializers.ModelSerializer):
+    commenter_display_name = serializers.SerializerMethodField()
+    replies = serializers.SerializerMethodField()
+    
+    class Meta:
+        model = BlogComment
+        fields = '__all__'
+    
+    def get_commenter_display_name(self, comment):
+        if not comment.commenter.is_active:
+            return "Deleted User"
+        user = comment.commenter
+        if user.get_user_type() == "Shelter":
+            return Shelter.objects.get(pk=user.id).name
+        return user.username
+    
+    def get_replies(self, comment):
+        replies = comment.replies.all()
+        reply_serializer = BlogReplySerializer(replies, many=True)
+
+        for reply_data in reply_serializer.data:
+            reply = BlogReply.objects.get(pk=reply_data['id'])
+            reply_data['replies'] = self.get_replies(reply)
+
+        return reply_serializer.data
+
+class BlogResponseSerializer(BlogCommentSerializer):
+    class Meta:
+        model = BlogResponse
+        fields = '__all__'
+        extra_kwargs = {'commented_blog': {'required': False}}
+
+
+
+class BlogReplySerializer(BlogCommentSerializer):
+    class Meta:
+        model = BlogReply
+        fields = '__all__'
+        extra_kwargs = {'comment': {'required': False}}
+
+    def create(self, validated_data):
+        comment_id = validated_data.pop('comment').id
+        comment = get_object_or_404(BlogComment, pk=comment_id)
+        instance = BlogReply.objects.create(comment=comment, **validated_data)
+        return instance

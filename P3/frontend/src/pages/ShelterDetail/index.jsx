@@ -75,7 +75,7 @@ const ShelterDetail = () => {
         <div className="main" id="shelter-detail-main">
       <div id="shelter-detail-title">{shelter.name}</div>
       {shelter.website_link ? (
-        <Link to="https://pawpatrolandfriends.com/" id="webpage" target="_blank">Visit our webpage</Link>
+        <Link to={shelter.website_link} id="webpage" target="_blank">Visit our webpage</Link>
         ):
         (<></>)
       }
