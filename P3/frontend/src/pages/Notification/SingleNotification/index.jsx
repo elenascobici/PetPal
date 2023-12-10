@@ -156,15 +156,19 @@ function SingleNotification({notif, change, notify}){
         const shelter = localStorage.getItem('id');
         const url = notifData.url;
         const regex_review = /^\/shelter\/(\d+)\/details\/comments\/$/
-        // const match = regex_review.test(url);
-        // RIGHT BEFORE NAVIGATE, SET TO READ
+        const regex_msg = /^\/application\/(\d+)\/messages$/
+        const regex_pet = /^\/pet\/(\d+)\/$/
         readNotif();
         
         if (regex_review.test(url)){
-            console.log("GO HERE")
             // Shelter comment
             navigate(`/shelter/${shelter}/${shelterInfo.name}`);
-        } else {
+        } if (regex_msg.test(url)){
+            navigate(url.substring(0,15));
+        } if (regex_pet.test(url)){
+            navigate((url.substring(0,4) + "s" + url.substring(4,7)));
+        }
+        else {
             navigate(url.toString());
         }
         

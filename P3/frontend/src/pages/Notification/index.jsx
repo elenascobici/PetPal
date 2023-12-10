@@ -52,7 +52,7 @@ function Notification(){
     }, [change]);
 
     return <>
-    <div class="main-notif bg-lightYellow manrope">
+    <div class="main-notif manrope">
         <div class="main-notifications manrope">
             <div class="container mt-5 notification-box">
                 <Header num={numNotifs} read={query} setRead={setSearchParams}/>
