@@ -9,6 +9,7 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 from django.http import FileResponse, HttpResponse
 from django.conf import settings
 from rest_framework.pagination import PageNumberPagination
+from django.db.models import Q
 
 
 from accounts import serializers
@@ -34,7 +35,12 @@ class ListSheltersView(ListAPIView):
     pagination_class = ShelterPagination
 
     def get_queryset(self):
-        return Shelter.objects.all()
+        search = self.request.query_params.get('search')
+        if (search == ''):
+            return Shelter.objects.all()
+        else:
+            return Shelter.objects.filter(Q(name__icontains=search))
+        
 
 class RetrieveUpdateDestroyAccountView(RetrieveUpdateDestroyAPIView):
     def get_serializer_class(self):

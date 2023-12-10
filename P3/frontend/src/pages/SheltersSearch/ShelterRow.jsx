@@ -29,12 +29,12 @@ const ShelterRow = ({shelter}) => {
 
     return (
         <>
-        <div class="grid-item shelterLink">
+        <div class="grid-item grid-item-shelter shelterLink">
         <a href="shelter-detail.html" class="shelterLink">{shelter.name}</a>
         </div>
-        <div class="grid-item">{(shelter.street? shelter.street: '') + ' ' + (shelter.city ? shelter.city: '' + ' ') + shelter.province}</div>
-        <div class="grid-item">
-        <a class="email" href={mailTo}>{shelter.email}</a> 
+        <div class="grid-item grid-item-shelter">{(shelter.street? shelter.street: '') + ' ' + (shelter.city ? shelter.city: '' + ' ') + shelter.province}</div>
+        <div class="grid-item grid-item-shelter">
+        <a class="email-shelter" href={mailTo}>{shelter.email}</a> 
         </div>
         </>
     )

@@ -91,12 +91,12 @@
   object-fit: cover;   
 }
 
-.form-control {
+/* .form-control {
   border-color: #ffc011;
   border-radius: 15px;
   box-shadow: none;
   padding: 0px;
-}
+} */
 
 .btn-info {
   background-color: #48B7AB;
