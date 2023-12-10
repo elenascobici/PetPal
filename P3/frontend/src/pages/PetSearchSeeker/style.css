@@ -266,18 +266,18 @@
    
 }
 
-.grid {
+/* .grid {
    grid-template-columns: auto auto auto auto;
    display: grid;
    column-gap: 2rem;
    align-items: center;
    justify-items: center;
    place-items: center;
-}
+} */
 
-.grid-item {
+/* .grid-item {
    border-color: white;
-}
+} */
 
 .petGrid {
    grid-template-columns: auto auto auto auto;
