@@ -20,7 +20,7 @@ function PetCard({ pet }) {
       <p className="status">
         {pet.status}
       </p>
-      <button onClick={handleUpdateClick}>Update</button>
+      <button class="update" onClick={handleUpdateClick}>Update</button>
     </div>
   );
 }

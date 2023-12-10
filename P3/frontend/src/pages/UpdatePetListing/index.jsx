@@ -32,7 +32,7 @@ const EditPetForm = () => {
   useEffect(() => {
     const fetchPetData = async () => {
       const authToken = localStorage.getItem('access_token');
-      const url = `http://localhost:8000/pet/${petId}/`; 
+      const url = `http://localhost:8000/pet/${petId}/?search=`; 
   
       fetch(url, {
         method: 'GET',

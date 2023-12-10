@@ -41,6 +41,7 @@ function SortAndFilter({ setFilters }) {
                     </Dropdown.Toggle>
 
                     <Dropdown.Menu>
+                        <Dropdown.Item eventKey="">Default</Dropdown.Item>
                         <Dropdown.Item eventKey="name">Sort by Name</Dropdown.Item>
                         <Dropdown.Item eventKey="age">Sort by Age</Dropdown.Item>
                     </Dropdown.Menu>
