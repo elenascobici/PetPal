@@ -73,7 +73,6 @@ function SortAndFilter({ setFilters }) {
                     </Dropdown.Toggle>
 
                     <Dropdown.Menu>
-                        <Dropdown.Item eventKey="">All</Dropdown.Item>
                         <Dropdown.Item eventKey="Available">Available</Dropdown.Item>
                         <Dropdown.Item eventKey="Adopted">Adopted</Dropdown.Item>
                         <Dropdown.Item eventKey="Withdrawn">Withdrawn</Dropdown.Item>

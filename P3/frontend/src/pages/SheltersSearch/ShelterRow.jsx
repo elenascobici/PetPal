@@ -30,7 +30,7 @@ const ShelterRow = ({shelter}) => {
     return (
         <>
         <div class="grid-item grid-item-shelter shelterLink">
-        <a href="shelter-detail.html" class="shelterLink">{shelter.name}</a>
+        <p class="shelterLink">{shelter.name}</p>
         </div>
         <div class="grid-item grid-item-shelter">{(shelter.street? shelter.street: '') + ' ' + (shelter.city ? shelter.city: '' + ' ') + shelter.province}</div>
         <div class="grid-item grid-item-shelter">

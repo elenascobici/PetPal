@@ -291,6 +291,12 @@
 
 .grid-item-pet {
    border-color: white!important;
+   padding: 0px!important;
+}
+
+.grid-item-inner {
+   border-color: white!important;
+   padding: 0px!important;
 }
 
 .petGrid {
@@ -403,8 +409,12 @@
 
 }
 
-@media screen and (max-width:1037px) {
+/* @media screen and (max-width:1037px) {
    .grid {padding-left: 2rem; padding-right: 2rem;}
+} */
+
+.pageInfo{
+   padding-left: 2rem;
 }
 
 @media screen and (max-width:1028px) {

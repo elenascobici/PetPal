@@ -201,8 +201,8 @@
 .shelterLink {
    text-decoration: none;
    color: #4B4B4B;
-   transition: 0.3s;
-   cursor: pointer;
+   /* transition: 0.3s;
+   cursor: pointer; */
 }
 
 /* .grid-item-shelter {
@@ -210,10 +210,10 @@
    border-bottom: 1px gray sol;
    padding: 0;
 } */
-
+/* 
 .shelterLink:hover {
    color: var(--dark-orange);
-}
+} */
 
 #shelterList1,
 #shelterList2 {
