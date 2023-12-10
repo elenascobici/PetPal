@@ -1,0 +1,677 @@
+/*
+ * shelter-detail.css
+ * For shelter-detail.html and comment.html
+ *
+ * CSC309 PetPal
+ * 
+ * University of Toronto
+ * Fall 2023
+ * Cassandra Tin Kwon Yuen
+ *
+ */
+
+#comments input[type="radio"] {
+   display: none;
+}
+ 
+.bi-star-fill {
+   font-family: Manrope;
+   font-size: 25px;
+   padding-right: 0.3rem;
+}
+
+.rating .bi-star-fill {
+   font-size: 180%;
+   cursor: pointer;
+}
+
+#comments {
+   padding-top: 5rem;
+   /* padding-right: 6rem; */
+   width: 100%;
+   /* overflow: auto; */
+   padding-left: 3rem;
+   padding-right: 3rem;
+}
+
+#commentTitleRow {
+   height: 3rem;
+}
+
+.replyCollapse {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   padding-left: 0;
+}
+
+.reply, .see-replies {
+   font-family: Manrope;
+   font-weight: 500;
+   font-size: 17px;
+   text-align: right;
+   padding-bottom: 1rem;
+   padding-right: 0.5rem;
+   padding-top :0;
+}
+
+
+.reply {
+   margin-left: auto;
+}
+
+
+#replyForm, #replyForm2, #replyForm3 {
+   margin-top: 1rem;
+   background-color: #f0f0f7;
+}
+
+.star {
+   color: #FFC011;
+}
+
+.emptyStar {
+   color: #ddd;
+}
+
+.avg-rating {
+   margin-left: auto;
+   display: flex;
+   align-items: center;
+   column-gap: 5px;
+}
+
+#commentSubtitle {
+   padding-top: 0;
+   padding-right: 1rem;
+   padding-left: 0;
+   padding-bottom: 0;
+   margin-bottom: 0;
+}
+
+.commentRow {
+   display: flex;
+   flex-flow: row wrap;
+   padding-bottom: 0.5rem;
+   align-items: center;
+}
+
+.commentClick, .commenterName {
+   color: #4B4B4B;
+   font-family: Manrope;
+   font-size: 23px;
+   font-weight: 700;
+   text-decoration: none;
+   padding-left: 1rem;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   transition: 0.3s;
+}
+
+.commenterName {
+   font-weight: 600;
+   font-size: 20px;
+   padding-left: 1rem;
+   padding-top: 1.5rem;
+   display: flex;
+   justify-content: start;
+}
+
+
+.commentBox, .replyBox {
+   background-color: #F9FAFF;
+   margin-top: 2rem;
+   /* margin-left: 3rem;
+   margin-right: 3rem; */
+   width: 100%;
+}
+
+.replyBox, .replyForm, #replyForm2, #replyForm3 {
+   /* margin-left: 5rem; */
+   background-color: #f0f0f7;
+   /* margin-right: 5rem; */
+   margin-top: 1rem;
+   width: 97%;
+   margin-right: 0;
+   padding-right: 0;
+   min-width: 50%;
+   /* position: absolute;
+   right: 0; */
+}
+
+#replyForm3 {
+   width: 94%;
+}
+
+.replyForm, #replyForm2, #replyForm3, #replyForm3 {
+   margin-top: 1rem;
+}
+
+.replyBox {
+   display: block;
+   background-color: #f0f0f7;
+}
+
+.replyBoxForm {
+   margin: 0;
+   padding: 0.5rem 1rem 1rem 1rem;
+}
+
+.lastcomment {
+   padding-top: 0 !important;
+}
+
+.noReply {
+   padding-bottom: 2rem;
+}
+
+.reply-submit {
+   text-decoration: none;
+   font-family: Manrope;
+   font-size: 16px;
+   font-weight: 500;
+   color: white;
+   background-color: #48B7AB;
+   padding: 0.4rem 0.5rem 0.4rem 0.5rem;
+   border-radius: 10px;
+   margin-bottom: 0.5rem;
+   transition: 0.3s;
+   border: none;
+}
+
+.reply-submit:focus, .reply-submit:hover {
+   color: white;
+}
+
+.reply-submit:hover {
+   background-color: #119899;
+}
+
+/* .responderName {
+   padding-left: 0;
+} */
+
+.stars {
+   display: flex;
+   flex-flow: row wrap;
+   align-items: center;
+   justify-content: end;
+   padding-right: 1rem;
+}
+
+.rating {
+   float:left;
+   width: auto;
+   margin: 0;
+   padding: 0;
+}
+
+/* :not(:checked) is a filter, so that browsers that don’t support :checked don’t 
+  follow these rules. Every browser that supports :checked also supports :not(), so
+  it doesn’t make the test unnecessarily selective */
+/* .rating:not(:checked) > input {
+   position:absolute;
+   top:-9999px;
+   clip:rect(0,0,0,0);
+}
+
+.rating:not(:checked) > label {
+   float: right;
+   width: 1.2em;
+   padding: 0 .1em;
+   overflow: hidden;
+   white-space: nowrap;
+   cursor: pointer;
+   font-size: 180%;
+   line-height: 1.2;
+   color:#ddd;
+}
+
+.rating > input:checked ~ label {
+   color: #FFC011;
+}
+
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label {
+   color: #FFC011;
+}
+
+input[type="radio"]{
+   visibility:hidden;
+}
+
+.rating > label:active {
+   position:relative;
+   top:2px;
+   left:2px;
+} */
+ 
+.commentText {
+   color: #4B4B4B;
+   font-family: Manrope;
+   font-size: 20px;
+   font-weight: 400;
+   text-decoration: none;
+   padding-left: 1rem;
+   /* padding-bottom: 1.5rem; */
+   padding-right: 1rem;
+   margin-bottom: 1rem;
+}
+
+#comments #seeMoreCollapse {
+   position: relative;
+   padding: 0;
+   margin: 0;
+   transition: 0.5s ease-in-out;
+   margin-bottom: 5rem;
+}
+
+#comments #seeMore {
+   text-align: right;
+   padding-top: 1rem;
+   border: none;
+   width: auto;
+   position: absolute;
+   right: 0;
+   margin-bottom: 2rem;
+}
+
+.commentClick:hover, .chevron:hover {
+   color: #AFAFAF;
+}
+
+#seeMore:focus {
+   outline: 0;
+   box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+}
+
+#seeMore[aria-expanded=false] .text-expanded {
+   display: none;
+}
+
+#seeMore[aria-expanded=true] .text-collapsed {
+   display: none;
+}
+
+.chevron {
+   color: #4B4B4B;
+   font-family: Manrope;
+   font-size: 20px;
+   text-decoration: none;
+   vertical-align: bottom;
+   transition: 0.3s;
+}
+
+.bi-chevron-up {
+   padding-left: 0.5rem;
+}
+
+.no-comments {
+   color: #6a6a6a;
+}
+
+
+#collapsedcomments {
+   /* padding-right: 6rem; */
+   padding-top: 3rem;
+   padding-left: 3rem;
+   padding-right: 3rem;
+}
+
+/* comment.html */
+.userNameSubtitle {
+   font-family: Manrope;
+   font-size: 30px;
+   font-family: 600;
+   display: flex;
+}
+
+#usercomment {
+   padding: 2rem;
+   /* margin: 3rem; */
+   background-color: #F9FAFF;
+}
+
+.underlined {
+   text-decoration: underline !important;
+}
+
+.replyBoxForm {
+   width: 100%;
+}
+
+.max-char-limit, .error-message, .error-message-small {
+   color: red;
+   padding-bottom: 1rem;
+   font-size: 1rem;
+}
+
+.error-message-small {
+   font-size: calc(1rem + 0.5vw);
+}
+
+.error-message {
+   padding-top: 1rem;
+   font-size: calc(1rem + 1vw);
+}
+
+#replyComment {
+   width: 99% !important;
+}
+
+textarea {
+   font-family: Manrope;
+   font-weight: 500;
+   font-size: 26px;
+   color: #4B4B4B;
+   background-color: #F9FAFF;
+   padding: 0.5rem 1rem;
+   border-radius: 10px;
+   display: flex;
+   align-items: right;
+   width: 100%;
+   border: none;
+}
+
+#submitButton {
+   font-family: Manrope;
+   font-weight: 500;
+   font-size: 26px;
+   color: white;
+   padding: 0.5rem 1rem;
+   border-radius: 10px;
+   background-color: #FFC011;
+   border: none;
+   transition: 0.3s;
+   margin-top: 2rem;
+   text-decoration: none;
+}
+
+#submitButton:hover {
+   background-color:#FFA903;
+}
+
+/* #commentRating {
+   display: flex;
+} */
+
+/* .grid {
+   grid-template-columns: auto auto auto auto;
+   display: grid;
+   column-gap: 2rem;
+   align-items: center;
+   justify-items: center;
+   place-items: center;
+} */
+
+/* .grid-item {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+} */
+
+.grid-item > .pet {
+   margin-top: 1rem;
+}
+
+/* .carouselImages {
+   display: flex;
+   flex-wrap: wrap;
+   padding: 1rem;
+   justify-content: center;
+   align-items: center;
+   align-self: center;
+   justify-self: center;
+   width: 1100px;
+}
+
+.carouselImages div {
+   flex-grow: 1;
+   padding: 0 1rem;
+} */
+
+/* @media screen and (max-width: 409px) {
+   .main {margin-bottom: 403px;}
+   .petImage {width: 164px; height: 200px;}
+   .pet {width: 164px; height: 239px;}
+   .petLabel {font-size: 23px; bottom: 0.2rem;}
+   #dog { width: 80%; height: auto; left: 10%;}
+   #cat { width: 70%; height: auto; left: 17%;}
+   #other { width: 60%; height: auto; left: 19%;}
+   #shelter { width: 60%; height: auto; left: 20%;}
+   #quote {font-size: 35px;}
+   .text, #shelterOrgs {margin-bottom: 0; font-size: 30px;}
+ }
+
+ @media screen and (max-width: 325px) {
+   .main {margin-bottom: 403px;}
+   .petImage {width: 100%; height: 200px;}
+   .pet {width: 164px; height: 239px;}
+   .petLabel {font-size: 23px; bottom: 0.2rem;}
+ } */
+
+ #commentGrid {
+   display: grid;
+   grid-template-columns: auto auto;
+ }
+
+ #userGridItem {
+   justify-self: start;
+ }
+
+ #starsGridItem {
+   justify-self: end;
+   border: none;
+   background-color: transparent;
+   padding: 0;
+   font-size: calc(1rem + 0.4vw);
+ }
+
+ .like-heart {
+   color: rgb(255, 73, 73);
+   cursor: pointer;
+   transition: 0.3s;
+   margin-right: 0.5rem;
+   font-size: calc(0.9rem + 0.6vw);
+  }
+
+  .like-container {
+   display: inline-flex;
+   align-items: center;
+   cursor: pointer;
+   margin-left: auto;
+ }
+
+  .filled:hover {
+   color: rgb(138, 138, 138);
+  }
+
+  #num-likes {
+   font-size: calc(0.9rem + 0.6vw);
+  }
+
+
+@media screen and (max-width:1210px) {
+   .grid {grid-template-columns: auto auto auto; align-items: center;}
+   .textInfo {font-size: 25px;}
+   .shelterContactInfoLabel {font-size: 25px;}
+   .icon {font-size: 20px;}
+   .subtitle {font-size: 27px;}
+   #commentForm {margin-left: 0; margin-right: 0; padding-left: 0; padding-right: 0;}
+   /* #replyBox {width: 96%;} */
+   /* .carousel-control-next {right: -4rem;}
+   .carousel-control-prev {left: -4rem;} */
+}
+
+@media screen and (max-width:1062px) {
+   #shelterLogo {padding-right: 0;}
+   #title {font-size: 50px;}
+   #webpage {font-size: 30px;}
+   .subtitle {font-size: 25px;}
+   .shelterContactInfoLabel, .textInfo {font-size: 25px;}
+   .icon {font-size: 22px;}
+   #contact {margin-top: 3rem;}
+}
+
+@media screen and (max-width:1003px) {
+   .grid {grid-template-columns: auto auto; align-items: center;}
+   .carousel-control-next {right: -4rem;}
+   .carousel-control-prev {left: -4rem;}
+   #petsSubtitle {padding-left: 0; padding-bottom: 0.5rem; justify-content: center;}
+   #shelterLogo {width: 100%;}
+   #comment {font-size: 23px;}
+   .userNameSubtitle {font-size: 26px;}
+   #submitButton {font-size: 23px;}
+   .commentRating {font-size: 12px;}
+   .starcomment {font-size: 25px !important;}
+   /* #replyBox {width: 95%;} */
+}
+
+@media screen and (max-width:878px) {
+   #contact { width: 100%; position: relative;}
+   #contactGrid {
+      grid-template-areas: 'h h i'
+                           'a p i'
+                           'w w w'
+                           'b e e'
+                           'v v v'
+                           'c l l'
+                           'z z z';
+      grid-template-columns: 1fr 10fr 10fr;
+      row-gap: 0;
+      column-gap: 0.5rem;
+      justify-content: start;
+      align-items: center;
+      text-align: left;
+   }
+   /* .icon {display: none;}
+   .icon2 {display: block; font-size: 20px; padding-bottom: 0; padding-right: 0.5rem;} */
+   #shelterImg {align-items: start;}
+   #shelterLogo {display: none;}
+   #shelterLogo2 {
+      display: flex; 
+      justify-content: end; 
+      padding: 0; 
+      height: 7rem; 
+      width: auto;
+      align-items: end; 
+      position: absolute; 
+      right: 1rem; 
+      top: 1rem;
+   }
+   #replyBox {width: 94%;}
+   /* .starcomment {font-size: 20px;} */
+}
+
+@media screen and (max-width:830px) {
+   .rating { margin-right: 10rem; }
+   .commentClick {margin-left: 0; padding-left: 0;}
+
+}
+
+@media screen and (max-width:770px) {
+   .commentClick {margin-left: 0; padding-left: 0;}
+
+}
+
+
+@media screen and (max-width:768px) {
+   .grid {grid-template-columns: auto; align-items: center;}
+   .carousel-control-next {right: -4rem;}
+   .carousel-control-prev {left: -4rem;}
+   #mission , .subtitle2 {padding-left: 0;}
+   /* .commentClick {padding-left: 0.5rem;} */
+   #comments {padding-right: 0; padding-left: 0;}
+   .commentBox {margin: 0; padding: 0; margin-top: 1rem;}
+   #replyBox {padding: 0; margin-top: 1rem;}
+   .noReply {padding-bottom: 1rem !important;}
+   /* #replyBox {width: 97%;} */
+   #collapsedcomments {padding-right: 0; padding-left: 0; margin-left: 0; margin-right: 0;}
+   #seeMore {padding-right: 0;}
+   #usercomment {margin: 0;}
+   .starcomment {font-size: 22px !important;}
+}
+
+@media screen and (max-width:686px) {
+   /* .commentClick {padding-left: 0.5rem; margin-left: 0;} */
+   #shelterLogo3 {display: block; height: 10rem; max-width: 100%;}
+   #shelterLogo2 {display: none;}
+   #contact {margin-top: 0; display: flex; flex-direction: column; justify-content: center; align-items: center;}
+   #contactGrid {
+      grid-template-columns: 10% 90%;
+      justify-content: center;
+      grid-template-areas: 'i i'
+                           'h h'
+                           'a p'
+                           'w w'
+                           'b e'
+                           'v v'
+                           'c l'
+                           'z z';
+   }
+   
+   #commentGrid {grid-template-columns: auto;}
+   #starsGridItem {justify-self: start; padding-bottom: 1rem;}
+}
+
+@media screen and (max-width:678px) {
+   .commentClick {padding-left: 0;}
+   .rating {padding-right: 1rem; font-size: 15px;}
+   .star, .starcomment  {font-size: 20px;}
+   .stars {padding-right: 0;}
+   #contact {padding: 2rem;}
+   .subtitle2 {text-align: center; justify-content: center; align-items: center;}
+   /* .stars {padding-right: 0;} */
+}
+
+@media screen and (max-width:640px) {
+   .rating { margin-right: 0; }
+}
+
+@media screen and (max-width:590px) {
+   .commentRow { flex-direction: column; align-items: start;}
+   .like-container {margin-left: 0;}
+}
+@media screen and (max-width:556px) {
+   #userGridItem.reviewGridItem {
+      padding-left: 0;
+   }
+}
+
+@media screen and (max-width:522px) {
+   .petImage {width: 164px; height: 200px;}
+   .pet {width: 164px; height: 239px;}
+   .petLabel {font-size: 23px; bottom: 0.2rem;}
+   .carousel-control-next {right: -3rem;}
+   .carousel-control-prev {left: -3rem;}
+   .textInfo, .shelterContactInfoLabel, .userNameSubtitle {font-size: 20px;}
+   .icon2 {font-size: 16px;}
+   /* #replyBox {width: 96%;} */
+}
+
+@media screen and (max-width:448px) {
+   .rating {font-size: 12px;}
+   .star, .starcomment  {font-size: 15px;}
+   .carousel-control-next {right: -2rem;}
+   .carousel-control-prev {left: -2rem;}
+   .userNameSubtitle {font-size: 19px;}
+   #comment {font-size: 18px;}
+   #submitButton {font-size: 18px;}
+   #title {font-size: 40px; line-height: 2.8rem;}
+   #webpage {font-size: 25px; padding-top: 0.5rem;}
+   .subtitleHeader {width: 100%;}
+   #replyBox {width: 95%;}
+}
+
+@media screen and (max-width:399px) {
+   .main {padding-left: 2rem !important; padding-right: 2rem !important;}
+   .commentLink {font-size: 20px;}
+   #userGridItem, #starsGridItem {justify-self: center;}
+   #commentRating {padding-right: 0;}
+}
+
+@media screen and (max-width:367px) {
+   .rating {padding-top: 0.5rem}
+}
+

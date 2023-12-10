@@ -17,7 +17,7 @@ function AlertPopup(){
     {/* {console.log("HERE")} */}
         {close && (<div className="container mt-5">
          <Alert key='success' variant='success' onClose={closeAlert} dismissible>
-            Your Application has been successfully Updated.
+            Application has been successfully Updated.
         </Alert>
         </div>)}
     </>;

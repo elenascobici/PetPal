@@ -11,7 +11,7 @@ function PetCard({ pet }) {
 };
 
   return (
-    <div className="grid-item">
+    <div className="grid-item grid-item-inner">
       {/* Use the Link component to navigate to the pet detail route */}
       <Link to={`/pets/${pet.id}`} className="pet">
         {/* <img className="petImage" src={imageUrl} alt={pet.name} /> */}

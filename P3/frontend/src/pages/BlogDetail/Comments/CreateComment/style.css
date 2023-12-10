@@ -1,6 +1,6 @@
 /*
  * shelter-detail.css
- * For shelter-detail.html and review.html
+ * For shelter-detail.html and comment.html
  *
  * CSC309 PetPal
  * 
@@ -10,7 +10,7 @@
  *
  */
 
- #reviewGrid input[type="radio"] {
+ #commentGrid input[type="radio"] {
     display: none;
  }
   
@@ -30,7 +30,7 @@
  }
  
  
- #reviewTitleRow {
+ #commentTitleRow {
     height: 3rem;
  }
  
@@ -42,8 +42,12 @@
     color: #ddd;
  }
  
+ .blog-name {
+   font-size: calc(1rem + 1vw);
+   color: #009899;
+ }
  
- #reviewSubtitle {
+ #commentSubtitle {
     padding-top: 0;
     padding-right: 1rem;
     padding-left: 0;
@@ -67,7 +71,7 @@
  }
  
   
- .reviewText {
+ .commentText {
     color: #4B4B4B;
     font-family: Manrope;
     font-size: 20px;
@@ -81,7 +85,7 @@
 
  
  
- /* review.html */
+ /* comment.html */
  .userNameSubtitle {
     font-family: Manrope;
     font-size: 30px;
@@ -90,19 +94,19 @@
     margin-top: 3px;
  }
  
- #userReview {
+ #userComment {
     padding: 2rem;
     /* margin: 3rem; */
     background-color: #F9FAFF;
  }
  
- #reviewForm {
+ #commentForm {
     width: 100%;
     margin: 3rem;
     padding: 0 3rem;
  }
  
- #review {
+ #comment {
     font-family: Manrope;
     font-weight: 500;
     font-size: 26px;
@@ -135,11 +139,11 @@
  }
 
  
- #reviewForm {
+ #commentForm {
     width: 100% !important;
  }
  
-  #reviewGrid {
+  #commentGrid {
     display: flex;
     column-gap: 2rem;
     width: 100%;
@@ -150,16 +154,24 @@
  
   #userGridItem {
     margin-right: auto;
+    border: none;
+    padding-left: 1rem;
   }
 
   #userGridItem {
     padding-top: 0;
   }
 
-  #reviewForm .max-char-limit {
+  #commentGrid * {
+   background-color: transparent;
+  }
+
+  #commentForm .max-char-limit {
    font-size: calc(1rem + 0.5vw);
   }
- 
+
+
+
  
  @media screen and (max-width:1210px) {
     .grid {grid-template-columns: auto auto auto; align-items: center;}
@@ -167,14 +179,14 @@
     .shelterContactInfoLabel {font-size: 25px;}
     .icon {font-size: 20px;}
     .subtitle {font-size: 27px;}
-    #reviewForm {margin-left: 0; margin-right: 0; padding-left: 0; padding-right: 0;}
+    #commentForm {margin-left: 0; margin-right: 0; padding-left: 0; padding-right: 0;}
     /* #replyBox {width: 96%;} */
     /* .carousel-control-next {right: -4rem;}
     .carousel-control-prev {left: -4rem;} */
  }
  
  @media screen and (max-width:1037px) {
-    #reviewGrid { padding: 0;}
+    #commentGrid { padding: 0;}
  }
  
  @media screen and (max-width:1003px) {
@@ -183,14 +195,14 @@
     .carousel-control-prev {left: -4rem;}
     #petsSubtitle {padding-left: 0; padding-bottom: 0.5rem; justify-content: center;}
     #shelterLogo {width: 100%;}
-    #review {font-size: 23px;}
+    #comment {font-size: 23px;}
     .userNameSubtitle {font-size: 26px;}
     #submitButton {font-size: 23px;}
-    .reviewRating {font-size: 12px;}
-    .starReview {font-size: 25px !important;}
+    .commentRating {font-size: 12px;}
+    .starComment {font-size: 25px !important;}
     /* #replyBox {width: 95%;} */
  }
-
+ 
  @media screen and (max-width:991px) {
    .comment-title {
       margin-top: 1rem !important;
@@ -230,17 +242,17 @@
        top: 1rem;
     }
     #replyBox {width: 94%;}
-    /* .starReview {font-size: 20px;} */
+    /* .starComment {font-size: 20px;} */
  }
  
  @media screen and (max-width:830px) {
     .rating { margin-right: 10rem; }
-    .reviewClick {margin-left: 0; padding-left: 0;}
+    .commentClick {margin-left: 0; padding-left: 0;}
     #starsGridItem .rating {margin-right: 0;}
  }
  
  @media screen and (max-width:770px) {
-    .reviewClick {margin-left: 0; padding-left: 0;}
+    .commentClick {margin-left: 0; padding-left: 0;}
  
  }
  
@@ -250,20 +262,20 @@
     .carousel-control-next {right: -4rem;}
     .carousel-control-prev {left: -4rem;}
     #mission , .subtitle2 {padding-left: 0;}
-    /* .reviewClick {padding-left: 0.5rem;} */
-    #reviews {padding-right: 0; padding-left: 0;}
-    .reviewBox {margin: 0; padding: 0; margin-top: 1rem;}
+    /* .commentClick {padding-left: 0.5rem;} */
+    #comments {padding-right: 0; padding-left: 0;}
+    .commentBox {margin: 0; padding: 0; margin-top: 1rem;}
     #replyBox {padding: 0; margin-top: 1rem;}
     .noReply {padding-bottom: 1rem !important;}
     /* #replyBox {width: 97%;} */
-    #collapsedReviews {padding-right: 0; padding-left: 0; margin-left: 0; margin-right: 0;}
+    #collapsedComments {padding-right: 0; padding-left: 0; margin-left: 0; margin-right: 0;}
     #seeMore {padding-right: 0;}
-    #userReview {margin: 0;}
-    .starReview {font-size: 22px !important;}
+    #userComment {margin: 0;}
+    .starComment {font-size: 22px !important;}
  }
  
  @media screen and (max-width:686px) {
-    /* .reviewClick {padding-left: 0.5rem; margin-left: 0;} */
+    /* .commentClick {padding-left: 0.5rem; margin-left: 0;} */
     #shelterLogo3 {display: block; height: 10rem; max-width: 100%;}
     #shelterLogo2 {display: none;}
     #contact {margin-top: 0; display: flex; flex-direction: column; justify-content: center; align-items: center;}
@@ -280,14 +292,14 @@
                             'z z';
     }
     
-    #reviewGrid {grid-template-columns: auto;}
+    #commentGrid {grid-template-columns: auto;}
     #starsGridItem {justify-self: start; padding-bottom: 1rem;}
  }
  
  @media screen and (max-width:678px) {
-    .reviewClick {padding-left: 0;}
+    .commentClick {padding-left: 0;}
     .rating {padding-right: 1rem; font-size: 15px;}
-    .star, .starReview  {font-size: 20px;}
+    .star, .starComment  {font-size: 20px;}
     .stars {padding-right: 0;}
     #contact {padding: 2rem;}
     .subtitle2 {text-align: center; justify-content: center; align-items: center;}
@@ -301,11 +313,11 @@
  
  @media screen and (max-width:522px) {
     .rating {font-size: 12px;}
-    .star, .starReview  {font-size: 15px;}
+    .star, .starComment  {font-size: 15px;}
     .carousel-control-next {right: -2rem;}
     .carousel-control-prev {left: -2rem;}
     .userNameSubtitle {font-size: 19px;}
-    #review {font-size: 18px;}
+    #comment {font-size: 18px;}
     #submitButton {font-size: 18px;}
     #title {font-size: 40px; line-height: 2.8rem;}
     #webpage {font-size: 25px; padding-top: 0.5rem;}
@@ -315,11 +327,11 @@
  
  @media screen and (max-width:448px) {
     .rating {font-size: 12px;}
-    .star, .starReview  {font-size: 15px;}
+    .star, .starComment  {font-size: 15px;}
     .carousel-control-next {right: -2rem;}
     .carousel-control-prev {left: -2rem;}
     .userNameSubtitle {font-size: 19px;}
-    #review {font-size: 18px;}
+    #comment {font-size: 18px;}
     #submitButton {font-size: 18px;}
     #title {font-size: 40px; line-height: 2.8rem;}
     #webpage {font-size: 25px; padding-top: 0.5rem;}
@@ -329,9 +341,9 @@
  
  @media screen and (max-width:399px) {
     .main {padding-left: 2rem !important; padding-right: 2rem !important;}
-    .reviewLink {font-size: 20px;}
+    .commentLink {font-size: 20px;}
     #userGridItem, #starsGridItem {justify-self: center;}
-    #reviewRating {padding-right: 0;}
+    #commentRating {padding-right: 0;}
  }
  
  @media screen and (max-width:367px) {

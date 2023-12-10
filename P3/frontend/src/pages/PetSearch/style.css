@@ -240,6 +240,19 @@
    background-color: #FEBF11;
 }
 
+.searchInput{
+   margin-bottom: 0px!important;
+}
+
+.filter-grid{
+   display: flex;
+   grid-template-columns: auto auto auto auto auto;
+}
+
+.dropdown-space{
+   margin-right: 1rem;
+}
+
 .new-container {
    display: flex;
    justify-content: center;
@@ -247,6 +260,7 @@
    flex-wrap: wrap; /* Wrap items in smaller screens */
    padding: 10px;
    gap: 10px; /* Space between items */
+   width: 100%!important;
 }
 
 .new-form-select {
@@ -257,7 +271,7 @@
    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.dropdown-item {
+.dropdown-item-filter {
    font-weight: 700;
    font-size: large;
    background-color: #F5F5F5;
@@ -265,7 +279,7 @@
    border-radius: 10px;
    
 }
-
+/* 
 .grid {
    grid-template-columns: auto auto auto auto;
    display: grid;
@@ -273,10 +287,16 @@
    align-items: center;
    justify-items: center;
    place-items: center;
+} */
+
+.grid-item-pet {
+   border-color: white!important;
+   padding: 0px!important;
 }
 
-.grid-item {
-   border-color: white;
+.grid-item-inner {
+   border-color: white!important;
+   padding: 0px!important;
 }
 
 .petGrid {
@@ -389,8 +409,12 @@
 
 }
 
-@media screen and (max-width:1037px) {
+/* @media screen and (max-width:1037px) {
    .grid {padding-left: 2rem; padding-right: 2rem;}
+} */
+
+.pageInfo{
+   padding-left: 2rem;
 }
 
 @media screen and (max-width:1028px) {
@@ -400,11 +424,23 @@
    }
 }
 
-@media screen and (max-width:1003px) {
+@media screen and (max-width:1103px) {
    .petGrid {grid-template-columns: auto auto; align-items: center;}
    .carousel-control-next {right: -4rem;}
    .carousel-control-prev {left: -4rem;}
    #listPets {text-align: center; justify-content: center; padding-left: 0;}
+}
+
+@media screen and (max-width:703px) {
+   .filter-grid {
+      display:grid;
+      justify-content: flex-start;
+      grid-template-columns: auto auto auto;
+   }
+   .filter-grid-last{
+      display: grid;
+      justify-content: flex-start;
+   }
 }
 
 
@@ -417,13 +453,13 @@
       font-size: 25px;
    }
 
-   .grid-item {
+   .grid-item-pet {
       font-size: 22px;
    }
-
+/* 
    .grid {
       width: 100%;
-   }
+   } */
 
    #mainImg {
       display: flex;
@@ -456,13 +492,14 @@
       display: none;
    }
 
-   .grid {
+   /* .grid {
       grid-template-columns: auto;
-   }
+   } */
 
-   .grid-item {
+   .grid-item-pet {
       border-top: white;
       border-bottom: white;
+      border: 0px;
       padding: 0;
    }
 
@@ -488,10 +525,10 @@
       padding: 0;
    }
 
-   .grid-item a.email,
+   /* .grid-item a.email,
    .phone {
       padding-bottom: 0.5rem;
-   }
+   } */
 
    #searchBar {
       margin-left: 0;
@@ -581,7 +618,8 @@
 }
 
 @media screen and (max-width:522px) {
-   .grid {grid-template-columns: auto; padding: 0; row-gap: 0.75rem; margin-top: 2rem;}
+   /* .grid {grid-template-columns: auto; padding: 0; row-gap: 0.75rem; margin-top: 2rem;} */
+   .new-container{margin-top: 0px!important; padding-top: 0px!important;}
    .petImage {width: 164px; height: 200px;}
    .pet {width: 164px; height: 239px;}
    .status {width: 164px; font-size: 20px; text-align: center;}
@@ -589,6 +627,21 @@
    .main {padding-left: 2rem !important; padding-right: 2rem !important;}
    .editButton, #saved {font-size: 22px;}
    #save, #saved {bottom: 260px;}
+}
+
+@media screen and (max-width:522px) {
+   .filter-grid{
+      display: grid;
+      justify-content: flex-start;
+      grid-template-columns: auto auto;
+   }
+   .filter-grid-space1{
+      margin-right: 2rem;
+   }
+
+   .filter-grid-space2{
+      margin-right: 3.1rem;
+   }
 }
 
 @media screen and (max-width:480px) {

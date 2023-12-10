@@ -29,6 +29,8 @@ import PetForm from './pages/PetForm';
 import BlogUpdate from './pages/Profile/Blogs/BlogUpdate';
 import UpdatePet from './pages/UpdatePetListing'
 import PetSearchSeeker from './pages/PetSearchSeeker'
+import BlogDetail from './pages/BlogDetail';
+import CreateComment from './pages/BlogDetail/Comments/CreateComment';
 
 function App() {
   return (
@@ -49,7 +51,8 @@ function App() {
         <Route path="application/home/" element={<PrivateRoute> <ApplicationHome /> </PrivateRoute> } />
         <Route path="shelter/:shelterId/:shelterName" element={<PrivateRoute> <ShelterDetail /> </PrivateRoute>} />
         <Route path="blog-create/" element={<PrivateRoute> <BlogCreate /> </PrivateRoute>} />
-        <Route path="shelter/:shelterId/:shelterName/review" element={<PrivateRoute> <CreateReview /> </PrivateRoute>} />
+        <Route path="blogs/:blogId" element={<PrivateRoute> <BlogDetail /> </PrivateRoute>} />
+        <Route path="blogs/:blogId/comment" element={<PrivateRoute> <CreateComment /> </PrivateRoute>} />
         <Route path="shelter/:shelterId/:shelterName/review" element={<PrivateRoute> <CreateReview /> </PrivateRoute>} />
         <Route path="pets/:petId/" element={<PrivateRoute> <PetDetail /> </PrivateRoute>} />
         <Route path="profile/blog-update/:blogId" element={<PrivateRoute> <BlogUpdate /> </PrivateRoute>} />

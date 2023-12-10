@@ -13,11 +13,11 @@ import '../style.css';
 const NavBar = () => {
     const links = [
         { to: "/", idName: "Home", label: "Home", allowedUsers: ["Shelter", "Seeker"]},
-        { to: "/search", idName: "Search", label: "Search for Pets", allowedUsers: ["Shelter", "Seeker"] },
-        { to: "/application/home/", idName: "Apply", label: "Apply Now", allowedUsers: ["Seeker"] },
+        { to: "/search", idName: "Search", label: "Find Pets", allowedUsers: ["Seeker", "Shelter"] },
+        { to: "/application/home", idName: "Apply", label: "Apply", allowedUsers: ["Seeker"] },
+        { to: "/application/list", idName: "Applications", label: "Applications", allowedUsers: ["Shelter", "Seeker"] },
         { to: "/shelters", idName: "Shelters", label: "Shelters", allowedUsers: ["Shelter", "Seeker"] },
-        { to: "/pets", idName: "Listings", label: "My Pet Listings", allowedUsers: ["Shelter"] },
-        { to: "/application/list/", idName: "Applications", label: "Applications", allowedUsers: ["Shelter", "Seeker"] },
+        { to: "/blogs", idName: "Blogs", label: "Blogs", allowedUsers: ["Shelter", "Seeker"] },
     ];
     const userType = localStorage.getItem('user_type');
 

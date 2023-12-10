@@ -16,7 +16,7 @@ const PetsCarousel = ({shelterId, shelterName}) => {
     const navigate = useNavigate();
     const userType = localStorage.getItem('user_type');
     const filter = userType === "Seeker" ? `shelter_name=${encodeURI(shelterName)}&` : "";
-    console.log(filter);
+    console.log("FILTER", filter);
     const [totalPages, setTotalPages] = useState(0);
     const [pets, setPets] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
@@ -73,7 +73,7 @@ const PetsCarousel = ({shelterId, shelterName}) => {
  
     useEffect(() => {
         const token = localStorage.getItem('access_token'); 
-        fetch(`http://localhost:8000/pet/search/?${filter}page=${currentPage}`, {
+        fetch(`http://localhost:8000/pet/search/?search=&${filter}page=${currentPage}`, {
             headers: {
                 'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json',
@@ -117,7 +117,7 @@ const PetsCarousel = ({shelterId, shelterName}) => {
     return (
         <div className="container" id="carouselContainer">
             {totalPages === 0 ? (
-                <h2>No pets yet!</h2>
+                <h2 className="textInfo" id="no-pets"><i>No pets yet!</i></h2>
             ) : (
                 <div id="petsCarousel" className="carousel slide" data-bs-interval="false">
           <div className="carousel-indicators">

@@ -50,9 +50,9 @@ function SignUpSeeker() {
                 <div id="log-in-info-container">
                 <p class="create-a-pet">Create a <b>Pet Shelter</b> Account</p>
                 <form id="sign-up-shelter-form">
-                    <input class="text-input" type="text" name="username" placeholder="username" required />
+                    <input class="text-input" id="sign-up-shelter-username" type="text" name="username" placeholder="username" required />
                     <p class="text-input-error-message" id="username-error"></p>
-                    <input class="text-input" type="text" name="name" placeholder="name" required />
+                    <input class="text-input" id="sign-up-shelter-name" type="text" name="name" placeholder="name" required />
                     <p class="text-input-error-message" id="name-error"></p>
                     <input class="text-input" type="email" name="email" placeholder="email address" required />
                     <p class="text-input-error-message" id="email-error"></p>
@@ -63,7 +63,7 @@ function SignUpSeeker() {
                     <br />
                     <button id="log-in-btn" class="yellowButton" onClick={validateForm}>Sign Up</button>
                 </form>
-                <a class="account-links" href="log-in.html">Already have an account? Sign in now!</a>
+                <a class="account-links" href="/log-in">Already have an account? Sign in now!</a>
                 </div>
             </div>
             </div>

@@ -2,7 +2,6 @@ import { useState, useEffect, useMemo } from "react";
 import { useSearchParams } from "react-router-dom";
 import "./shelters.css";
 import SheltersMain from "../../assets/images/shelters-main.jpg";
-import ShelterResults from "./ShelterResults";
 import ShelterRow from "./ShelterRow";
 
 const SheltersSearch = () => {
@@ -13,6 +12,7 @@ const SheltersSearch = () => {
 
     const query = useMemo(() => ({
         page: parseInt(searchParams.get("page") ?? 1),
+        search: searchParams.get("search") ?? '',
     }), [searchParams]);
 
     const fetchData = () => {
@@ -31,7 +31,7 @@ const SheltersSearch = () => {
         .then(data => {
             console.log('results:', data.results);
             setShelters(data.results);
-            setTotalPages(Math.ceil(data.count / 3));
+            setTotalPages(Math.ceil(data.count / 8));
             setTotal(data.count);
         })
         .catch(error => {
@@ -49,11 +49,12 @@ const SheltersSearch = () => {
             <div class="container-fluid" id="mainImgContainer">
                 <img class="img-fluid" id="mainImg" alt="Responsive image" src={SheltersMain}/>
             </div>
-            <div id="title">Meet our shelter organizations</div>
+            <div className="title-shelter" id="title">Meet our shelter organizations</div>
             <form class="formInputs" id="search" method="get">
                 <div class="form-row d-flex justify-content-center" id="searchBar">
                 <div class="form-group col d-flex justify-content-center align-center">
-                    <input class="form-control" type="search" placeholder="Search for shelters..."/>
+                    <input class="form-control" type="search" placeholder="Search for shelters..." value={query.search} 
+                    onChange={event => setSearchParams({search: event.target.value, page: 1})}/>
                     <a class="btn border-0 position-absolute" id="searchButton" type="submit" href="shelters-search.html#search">
                     <i class="bi bi-search" id="searchIcon"></i>
                     </a>

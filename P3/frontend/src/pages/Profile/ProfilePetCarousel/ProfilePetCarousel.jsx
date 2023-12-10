@@ -44,7 +44,7 @@ const ProfilePetsCarousel = ({shelterId, shelterName}) => {
     return (
         <div className="container" id="carouselContainer">
             {totalPages === 0 ? (
-                <h2>No pets yet!</h2>
+                <h2 className="textInfo" id="no-pets"><i>No pets yet!</i></h2>
             ) : (
                 <div id="petsCarousel" className="carousel slide" data-bs-interval="false">
           <div className="carousel-indicators">

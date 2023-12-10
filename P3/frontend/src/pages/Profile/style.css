@@ -49,20 +49,25 @@
     color: #009899;
 }
 
+#firstName,
+#lastName,
+#username,
+#preferences,
+#websiteLink {
+    font-size: 26px;
+}
 
+#shelter-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
 
 #profile-form {
     border: none;
     box-shadow: none;
     padding: 0px;
 }
-
-/* #update-shelter-profile-form {
-
-    padding: 0rem 5rem;
-    position: relative;
-    box-sizing: border-box;
-} */
 
 #update-page .grid-item {
     border: none !important;
@@ -85,13 +90,9 @@
 }
 
 #profileImage {
-    /* max-width: 100%; */
-    /* width: 10rem; */
-    /* max-height: 100%; */
     max-width: 100%;
     height: 10rem;
     object-fit: contain;
-    /* display: flex; */
     padding: 1rem;
 }
 
@@ -101,8 +102,6 @@
     font-size: 30px;
     color: var(--dark-blue);
     margin-left: 1rem;
-    /* background-color: var(--dark-blue); */
-    /* margin: 0; */
     padding: 0.5rem;
     cursor: pointer;
 }
@@ -130,10 +129,6 @@
     padding: 0rem 5rem;
     position: relative;
 }
-
-/* .grid-profile{
-
-} */
 
 .grid-profile {
     grid-template-columns: auto auto !important;
@@ -167,8 +162,6 @@
     font-size: 26px;
     color: #4B4B4B;
     background-color: #F9F9F9;
-    /* padding: 0.5rem 1rem; */
-    /* width: 40vw!important; */
     border-radius: 10px;
     display: flex;
     align-items: right;
@@ -224,9 +217,7 @@ select {
     color: #4B4B4B;
     font-size: 30px;
     font-weight: 400;
-    /* word-wrap: break-word; */
 }
-
 
 .editButton {
     font-family: Manrope;
@@ -247,21 +238,8 @@ select {
     color: #009899;
 }
 
-/* 
- #save {
-    position: fixed;
-    top: 90px;
-    right: 1rem;
- } */
-
 input::-webkit-calendar-picker-indicator {
     opacity: 0;
-    /* height: 50%; */
-    /* transform: scaleY(0.75);
-    position: absolute;
-    right:0;
-    top: 25%;
-    font-size: 16px; */
 }
 
 .text {
@@ -302,12 +280,6 @@ input::-webkit-calendar-picker-indicator {
         padding-left: 2rem;
         padding-right: 2rem;
     }
-
-    /* input[type="text"],
-    input[type="password"],
-    input[type="tel"] {
-        width: 100%;
-    } */
 }
 
 @media screen and (max-width:615px) {
