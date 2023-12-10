@@ -73,7 +73,7 @@ const PetsCarousel = ({shelterId, shelterName}) => {
  
     useEffect(() => {
         const token = localStorage.getItem('access_token'); 
-        fetch(`http://localhost:8000/pet/search/?search=${filter}page=${currentPage}`, {
+        fetch(`http://localhost:8000/pet/search/?search=&${filter}page=${currentPage}`, {
             headers: {
                 'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json',
