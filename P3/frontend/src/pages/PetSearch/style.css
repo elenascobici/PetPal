@@ -257,7 +257,7 @@
    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.dropdown-item {
+.dropdown-item-filter {
    font-weight: 700;
    font-size: large;
    background-color: #F5F5F5;
