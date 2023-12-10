@@ -69,6 +69,17 @@
     padding: 0px;
 }
 
+#update-shelter-profile-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#save-button {
+    margin-top: 60px;
+}
+
 #update-page .grid-item {
     border: none !important;
 }
