@@ -1,5 +1,5 @@
-import React, { useState } from 'react'; 
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import TextInput from './TextInput';
 import TextAreaInput from './TextAreaInput';
 import FileInput from './FileInput';
@@ -7,7 +7,7 @@ import DateInput from './DateInput';
 import './style.css';
 import SelectInput, { sizeOptions, genderOptions, behaviourOptions, typeOfPetOptions, statusOptions } from './SelectInput';
 
-const AdoptionForm = () => {
+const EditPetForm = () => {
   const [formData, setFormData] = useState({
     name: '',
     description: '',
@@ -22,10 +22,45 @@ const AdoptionForm = () => {
     deadline: '',
     status: '',
     image: null,
-  });
-
+  }); 
+  const { petId } = useParams();
+  console.log(petId);
   const navigate = useNavigate();
 
+  const shelterId = localStorage.getItem('id');
+  
+  useEffect(() => {
+    const fetchPetData = async () => {
+      const authToken = localStorage.getItem('access_token');
+      const url = `http://localhost:8000/pet/${petId}/`; 
+  
+      fetch(url, {
+        method: 'GET',
+        headers: {
+          'Authorization': `Bearer ${authToken}`,
+          'Content-Type': 'application/json',
+        }
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log("Fetched pet data:", data);
+        setFormData(data[0]); 
+      })
+      .catch(error => {
+        console.error('Error fetching pet data:', error);
+      });
+    };
+  
+    if (petId) {
+      fetchPetData();
+    }
+  }, [petId]);
+  
 
   const handleChange = (e) => {
     const { id, value } = e.target;
@@ -35,6 +70,7 @@ const AdoptionForm = () => {
     }));
   };
 
+  
   const handleFileChange = (e) => {
     setFormData(prevState => ({
       ...prevState,
@@ -44,67 +80,71 @@ const AdoptionForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const authToken = localStorage.getItem('access_token');
 
-    const shelterId = localStorage.getItem('id'); 
-    const authToken = localStorage.getItem('access_token'); 
-    const url = `http://localhost:8000/pet/shelter/${shelterId}/pet/`;
+    const { name, gender, type, ...dataToSend } = formData;
 
-    const formDataToSend = new FormData();
-    Object.keys(formData).forEach(key => {
-      if (key === 'image' && formData[key]) {
-        formDataToSend.append('pet_image_1', formData[key]);
-      } else {
-        formDataToSend.append(key, formData[key]);
+    const formDataObj = new FormData();
+    for (const key in dataToSend) {
+      if (dataToSend[key] != null) { 
+        formDataObj.append(key, dataToSend[key]);
       }
-    });
+    }
+
+    if (formData.image) {
+      formDataObj.append('pet_image_1', formData.image);
+    }
+
+
+    const url = `http://localhost:8000/pet/shelter/${shelterId}/pet/${petId}/`; 
 
     try {
       const response = await fetch(url, {
-        method: 'POST',
+        method: 'PUT',
         headers: {
           'Authorization': `Bearer ${authToken}`,
         },
-        body: formDataToSend,
+        body: formDataObj,
       });
 
       if (!response.ok) {
         const errorText = await response.text();
-        throw new Error(`HTTP error! status: ${response.status} - ${errorText}`);
+        throw new Error(`HTTP error! Status: ${response.status} - ${errorText}`);
       }
 
       const data = await response.json();
-      console.log('Creation data:', data);
-      navigate('/shelter/search'); 
+      console.log('Update data:', data);
+      navigate('/shelter/search/'); 
 
     } catch (error) {
-      console.error('Error:', error);
-      // Handle error (e.g., show an error message)
+      console.error('Error updating shelter:', error);
     }
   };
 
-   
-   return (
+
+  // ... Your form JSX goes here, similar to AdoptionForm ...
+  return (
     <div className="page-container">
       <div className="main-pet-adoption manrope">
         <div className="container mt-5">
-          <h2 className="text-center mb-4 mt-4 title">Create Pet Listing</h2>
+          <h2 className="text-center mb-4 mt-4 title">Edit Pet Listing</h2>
           <form onSubmit={handleSubmit}>
-            <TextInput id="name" value={formData.name} onChange={handleChange} label="Pet Name" />
+            <TextInput id="name" value={formData.name} label="Pet Name" readOnly/>
             <TextAreaInput id="description" value={formData.description} onChange={handleChange} label="Description" rows="3" />
             <TextAreaInput id="medicalHistory" value={formData.medicalHistory} onChange={handleChange} label="Medical History" rows="3" />
             <TextInput id="location" value={formData.location} onChange={handleChange} label="Location" placeholder="PAW Station, ON" />
             <TextInput id="age" value={formData.age} onChange={handleChange} label="Age" />
             <TextInput id="colour" value={formData.colour} onChange={handleChange} label="Colour" />
             <SelectInput id="size" value={formData.size} onChange={handleChange} label="Size" options={sizeOptions} />
-            <SelectInput id="gender" value={formData.gender} onChange={handleChange} label="Gender" options={genderOptions} />
+            <SelectInput id="gender" value={formData.gender} label="Gender" options={genderOptions} readOnly/>
             <SelectInput id="behaviour" value={formData.behaviour} onChange={handleChange} label="Behaviour" options={behaviourOptions} />
-            <SelectInput id="typeOfPet" value={formData.type} onChange={handleChange} label="Type" options={typeOfPetOptions} />
+            <SelectInput id="typeOfPet" value={formData.type}  label="Type" options={typeOfPetOptions} readOnly/>
             <SelectInput id="status" value={formData.status} onChange={handleChange} label="Status" options={statusOptions} />
             <DateInput id="deadline" value={formData.deadline} onChange={handleChange} label="Deadline" min="2021-09-01" max="2024-12-31" /> 
             <FileInput id="image" onChange={handleFileChange} label="Image"/>
             <div className="row mb-3 mt-4">
               <div className="col-12">
-                <button className="yellowButton" type="submit" >Submit</button>
+                <button className="yellowButton" type="submit" >Update</button>
               </div>
             </div>
           </form>
@@ -115,5 +155,5 @@ const AdoptionForm = () => {
 };
    
 
-export default AdoptionForm;
 
+export default EditPetForm;

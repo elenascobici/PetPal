@@ -1,4 +1,3 @@
-// PetSearch.js
 import React, { useState, useEffect } from 'react';
 import PetCard from './PetCard';
 import SortAndFilter from './SortAndFilter';
@@ -6,7 +5,7 @@ import SearchBar from './SearchBar';
 import Pagination from './Pagination';
 import "./style.css";
 
-function PetSearch() {
+function PetSearchSeeker() {
     const [pets, setPets] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
@@ -75,8 +74,6 @@ function PetSearch() {
                 totalPages={totalPages}
                 onPageChange={handlePageChange}
             />
-            
-            
         </div>
         
     );
@@ -84,4 +81,4 @@ function PetSearch() {
     
 
 
-export default PetSearch;
+export default PetSearchSeeker;

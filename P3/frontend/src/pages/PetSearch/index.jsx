@@ -1,4 +1,3 @@
-// PetSearch.js
 import React, { useState, useEffect } from 'react';
 import PetCard from './PetCard';
 import SortAndFilter from './SortAndFilter';
@@ -75,8 +74,6 @@ function PetSearch() {
                 totalPages={totalPages}
                 onPageChange={handlePageChange}
             />
-            
-            
         </div>
         
     );
