@@ -1,6 +1,6 @@
 import React from 'react';
 
-function SearchBar({set}) {
+function SearchBar({set, val}) {
 
     const handleSearchChange = (event) => {
         // setSearchTerm(event.target.value);
@@ -18,6 +18,7 @@ function SearchBar({set}) {
                             className="form-control" 
                             placeholder="Search for pets ..." 
                             onChange={handleSearchChange} 
+                            value={val}
                         />
                         <a className="btn border-0 position-absolute" id="searchButton" >
                             <i className="bi bi-search" id="searchIcon"></i>

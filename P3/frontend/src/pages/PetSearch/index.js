@@ -67,7 +67,7 @@ function PetSearch() {
             <div id="title">Pet Listings</div>
             <div id="subtitle">Click on a pet to edit</div>
 
-            <SearchBar set={setSearchParams} />
+            <SearchBar set={setSearchParams} val={query.search} />
             <SortAndFilter setFilters={setFilters} />
             
 
@@ -86,7 +86,7 @@ function PetSearch() {
             /> */}
 
             <div class="col-12">
-                <p>
+                <p className="pageInfo">
                 { query.page < totalPages
                 ? <button className="page-btn" onClick={() => setSearchParams({...query, page: query.page + 1})}>Next</button>
                 : <></> }
