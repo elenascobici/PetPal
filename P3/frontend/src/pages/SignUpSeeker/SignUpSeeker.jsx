@@ -64,7 +64,7 @@ function SignUpSeeker() {
                     <br />
                     <button id="log-in-btn" class="yellowButton" onClick={validateForm}>Sign Up</button>
                 </form>
-                <a class="account-links" href="log-in.html">Already have an account? Sign in now!</a>
+                <a class="account-links" href="/log-in">Already have an account? Sign in now!</a>
                 </div>
             </div>
             </div>
