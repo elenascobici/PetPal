@@ -18,7 +18,7 @@ function PetInfo({petID}){
   useEffect(() => {
     // console.log("do u go in here?")
     const token = localStorage.getItem('access_token');
-    fetch(`http://localhost:8000/pet/${petID}/`, {
+    fetch(`http://localhost:8000/pet/${petID}/?search=`, {
       method: 'GET',
       headers: {
           'Authorization': `Bearer ${token}`,
