@@ -14,6 +14,9 @@ const NavLink = ({ link, idName, label, users, userType }) => {
     if (userType === "Seeker" && label === "Applications") {
         label = "My Applications";
     }
+    if (userType === "Shelter" && label === "Find Pets") {
+        label = "My Pet Listings";
+    }    
 
     return (
         <li className="nav-item">

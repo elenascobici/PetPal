@@ -103,17 +103,25 @@
   font-size: 17px;
 }
 
+.empty-card{
+  height: 394px;
+}
+
+.card-body{
+  padding: 0px;
+}
+
 .card-img-top{
   /* padding: 15px; */
   padding-bottom: 0px;
-  height: 240px;
+  height: 200px;
   object-fit: cover;
   border-top-right-radius: 20px;
   border-top-left-radius: 20px;
 }
 
 .rounded-card {
-  background-color: #D9EDED;
+  background-color: #D9EDED!important;
   border: none;
   border-radius: 20px;
   width: 213px;

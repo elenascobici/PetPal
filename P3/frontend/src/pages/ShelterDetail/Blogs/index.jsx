@@ -93,7 +93,7 @@ const Blogs = () => {
     };
 
     const handleViewClick = (blogId) => {
-      navigate(`/blog/${blogId}`);
+      navigate(`/blogs/${blogId}`);
     };
   
     return (
