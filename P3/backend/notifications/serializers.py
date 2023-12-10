@@ -1,9 +1,11 @@
 from rest_framework.serializers import ModelSerializer, PrimaryKeyRelatedField, ChoiceField
 from rest_framework import serializers
+
 from .models import Notification
 from applications.models import Application
 from comments.models import Comment, Message
 from pets.models import PetDetail
+from blogs.models import BlogComment
 from django.urls import reverse
 from django.contrib.contenttypes.models import ContentType
 
@@ -56,4 +58,7 @@ class NotificationGetSerializer(ModelSerializer):
             url = reverse('comments:messages', kwargs={'pk': application_id})
         elif isinstance(event, PetDetail):
             url = reverse('pet:pet-detail', kwargs={'pet_id': event_id})
+        elif isinstance(event, BlogComment):
+            blog_id = event.get_commented_shelter().id
+            url = reverse('blogs:blog-comment', kwargs={'blog_id': blog_id})
         return url
