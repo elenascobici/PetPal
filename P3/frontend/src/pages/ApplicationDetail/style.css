@@ -71,6 +71,7 @@
 }
 
 .t-button:hover {
+    cursor: pointer;
     background-color: #119899;
     color: #D9EDED;
 }
