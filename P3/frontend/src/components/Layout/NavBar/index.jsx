@@ -13,7 +13,7 @@ import '../style.css';
 const NavBar = () => {
     const links = [
         { to: "/", idName: "Home", label: "Home", allowedUsers: ["Shelter", "Seeker"]},
-        { to: "/search", idName: "Search", label: "Find Pets", allowedUsers: ["Seeker", "Shelter"] },
+        { to: "/seeker/search", idName: "Search", label: "Find Pets", allowedUsers: ["Seeker", "Shelter"] },
         { to: "/application/home", idName: "Apply", label: "Apply", allowedUsers: ["Seeker"] },
         { to: "/application/list", idName: "Applications", label: "Applications", allowedUsers: ["Shelter", "Seeker"] },
         { to: "/shelters", idName: "Shelters", label: "Shelters", allowedUsers: ["Shelter", "Seeker"] },
