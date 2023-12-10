@@ -103,6 +103,10 @@ a.account-option-link {
         font-size: 5vw;
     }
 
+    #sign-up-text {
+        font-size: 7vw;
+    }
+
     #options-container {
         width: 100%;
         margin: 0;
@@ -110,17 +114,21 @@ a.account-option-link {
     }
 
     .account-option {
-        padding-top: 1vh;
         width: 100%;
         height: calc(100vw * 0.6);
     }
 
     .sign-up-image-container {
         width: 70%;
+        height: auto;
     }
 
     .sign-up-image {
         width: 100%;
         height: auto;
+    }
+
+    .pet-option-text {
+        font-size: 30px;
     }
 }
