@@ -12,6 +12,7 @@ from notifications.models import Notification
 from rest_framework.generics import RetrieveAPIView
 from django.http import FileResponse, HttpResponse
 from django.conf import settings
+from django.db.models import Q
 
 class SearchPagination(PageNumberPagination):
     page_size = 8
@@ -120,6 +121,10 @@ class PetViewSet(viewsets.ModelViewSet):
 
     # if the shelter is None, Seeker is trying to see all pets OR 1 pet
     if user.is_authenticated:
+      search = self.request.query_params.get('search')
+      if (search != ''):
+          return PetDetail.objects.filter(Q(name__icontains=search))
+      
       if pet_id is not None: 
         return PetDetail.objects.filter(id=pet_id) # endpoint -> pets/
       return PetDetail.objects.filter() # endpoint -> <int:pet_id>/
