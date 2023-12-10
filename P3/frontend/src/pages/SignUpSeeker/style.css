@@ -30,6 +30,14 @@
     width: 40vw !important;
 }
 
+#sign-up-seeker-first, 
+#sign-up-seeker-last,
+#sign-up-seeker-username,
+#sign-up-shelter-username,
+#sign-up-shelter-name {
+    font-size: 32px;
+}
+
 .create-a-pet {
     font-size: 48px;
     font-family: Manrope;
@@ -57,7 +65,12 @@
         font-size: 5vw;
     }
 
-    p {
+    p,
+    #sign-up-seeker-first, 
+    #sign-up-seeker-last,
+    #sign-up-seeker-username,
+    #sign-up-shelter-username,
+    #sign-up-shelter-name {
         font-size: 10vw;
     }
 }

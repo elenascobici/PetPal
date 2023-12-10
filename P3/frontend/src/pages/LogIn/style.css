@@ -39,10 +39,6 @@ body {
     margin-top: 10px;
 }
 
-/* form {
-    width: auto !important;
-} */
-
 @media only screen and (max-height: 650px) {
     #login-container {
         height: 100%;
@@ -203,6 +199,10 @@ body {
     padding: 5px 10px;
     margin-top: 20px;
     width: 50%;
+}
+
+#username-login {
+    font-size: 32px;
 }
 
 #log-in-btn {

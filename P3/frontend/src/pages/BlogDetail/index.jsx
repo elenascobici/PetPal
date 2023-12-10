@@ -54,7 +54,7 @@ const BlogDetail = () => {
           window.history.replaceState(
             null,
             null,
-            `/blog/${blogId}`
+            `/blogs/${blogId}`
           );
           return;
         }
@@ -93,7 +93,7 @@ const BlogDetail = () => {
           window.history.replaceState(
             null,
             null,
-            `/blog/${blogId}`
+            `/blogs/${blogId}`
           );
           return;
         }

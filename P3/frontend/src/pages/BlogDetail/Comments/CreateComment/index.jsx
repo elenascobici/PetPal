@@ -35,14 +35,14 @@ const CreateComment = () => {
             console.log(blogId);
             if(!response.ok) {
                 navigate('/404');
-                window.history.replaceState(null, null, `/blog/${blogId}/comment`);
+                window.history.replaceState(null, null, `/blogs/${blogId}/comment`);
             }
             return response.json();
         })
         .then(data => {
             if (data.user_type !== 'Seeker') {
                 navigate('/404');
-                window.history.replaceState(null, null, `/blog/${blogId}/comment`);
+                window.history.replaceState(null, null, `/blogs/${blogId}/comment`);
             } else {
                 setUser(data.username);
             }
@@ -62,7 +62,7 @@ const CreateComment = () => {
             if(!response.ok) {
                 console.log(response);
                 navigate('/404');
-                window.history.replaceState(null, null, `/blog/${blogId}/comment`);
+                window.history.replaceState(null, null, `/blogs/${blogId}/comment`);
             }
             return response.json();
         })

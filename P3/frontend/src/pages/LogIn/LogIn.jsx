@@ -2,7 +2,6 @@ import {useState} from "react";
 import "./style.css"
 import PuppyWavingImage from "../../assets/images/puppy-waving.jpg"
 import logInFetchCall from "./LogInFetchCall";
-import axios from "axios";
 
 export const Login = () => {
     const [username, setUsername] = useState('');
@@ -43,7 +42,7 @@ export const Login = () => {
                 <div id="log-in-info-container">
                 <p>Log In</p>
                 <form>
-                    <input class="text-input" type="text" 
+                    <input class="text-input" id="username-login" type="text" 
                         value={username} name="username" 
                         placeholder="username" 
                         onChange={e => setUsername(e.target.value)} 
@@ -57,7 +56,7 @@ export const Login = () => {
                     <p class="text-input-error-message" id="password-error"></p>
                     <button id="log-in-btn" class="yellowButton" onClick={submit}>Log In</button>
                 </form>
-                <a class="account-links" href="http://localhost:3000/sign-up">Don't have an account? Sign up now!</a>
+                <a class="account-links" href="/sign-up">Don't have an account? Sign up now!</a>
                 </div>
             </div>
             </div>

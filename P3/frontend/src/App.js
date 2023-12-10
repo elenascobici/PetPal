@@ -49,8 +49,8 @@ function App() {
         <Route path="application/home/" element={<PrivateRoute> <ApplicationHome /> </PrivateRoute> } />
         <Route path="shelter/:shelterId/:shelterName" element={<PrivateRoute> <ShelterDetail /> </PrivateRoute>} />
         <Route path="blog-create/" element={<PrivateRoute> <BlogCreate /> </PrivateRoute>} />
-        <Route path="blog/:blogId" element={<PrivateRoute> <BlogDetail /> </PrivateRoute>} />
-        <Route path="blog/:blogId/comment" element={<PrivateRoute> <CreateComment /> </PrivateRoute>} />
+        <Route path="blogs/:blogId" element={<PrivateRoute> <BlogDetail /> </PrivateRoute>} />
+        <Route path="blogs/:blogId/comment" element={<PrivateRoute> <CreateComment /> </PrivateRoute>} />
         <Route path="shelter/:shelterId/:shelterName/review" element={<PrivateRoute> <CreateReview /> </PrivateRoute>} />
         <Route path="search/" element={<PrivateRoute> <PetSearch /> </PrivateRoute>} />
         <Route path="pets/:petId/" element={<PrivateRoute> <PetDetail /> </PrivateRoute>} />
