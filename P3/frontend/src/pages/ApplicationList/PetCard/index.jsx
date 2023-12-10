@@ -13,7 +13,7 @@ function PetCard({listing, image}){
       'A': 'Accepted',
       'W': 'Withdrawn',
       'P': 'Pending',
-      'D': 'Declines',
+      'D': 'Declined',
     }
 
     const formatTime = (time) => {

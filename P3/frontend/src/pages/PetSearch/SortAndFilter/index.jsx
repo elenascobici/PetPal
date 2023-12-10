@@ -14,14 +14,14 @@ function SortAndFilter({ setFilters }) {
         <div className="new-container my-3">
             <div className="row justify-content-center">
                 <div className="col-md-3 mb-2">
-                    <select className="dropdown-item" onChange={handleSortChange}>
+                    <select className="dropdown-item-filter" onChange={handleSortChange}>
                         <option value="">Sort</option>
                         <option value="name">Sort by Name</option>
                         <option value="age">Sort by Age</option>
                     </select>
                 </div>
                 <div className="col-md-3 mb-2">
-                    <select className="dropdown-item" name="type" onChange={handleFilterChange}>
+                    <select className="dropdown-item-filter" name="type" onChange={handleFilterChange}>
                         <option value="">Pet Type</option>
                         <option value="Cat">Cat</option>
                         <option value="Dog">Dog</option>
@@ -31,7 +31,7 @@ function SortAndFilter({ setFilters }) {
                     </select>
                 </div>
                 <div className="col-md-3 mb-2">
-                    <select className="dropdown-item" name="status" onChange={handleFilterChange}>
+                    <select className="dropdown-item-filter" name="status" onChange={handleFilterChange}>
                         <option value="">Status</option>
                         <option value="Available">Available</option>
                         <option value="Adopted">Adopted</option>
@@ -40,7 +40,7 @@ function SortAndFilter({ setFilters }) {
                     </select>
                 </div>
                 <div className="col-md-3 mb-2">
-                    <select className="dropdown-item" name="age" onChange={handleFilterChange}>
+                    <select className="dropdown-item-filter" name="age" onChange={handleFilterChange}>
                         <option value="">Age</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -51,7 +51,7 @@ function SortAndFilter({ setFilters }) {
                     </select>
                 </div>
                 <div className="col-md-3 mb-2">
-                    <select className="dropdown-item" name="size" onChange={handleFilterChange}>
+                    <select className="dropdown-item-filter" name="size" onChange={handleFilterChange}>
                         <option value="">All Sizes</option>
                         <option value="Small">Small</option>
                         <option value="Medium">Medium</option>

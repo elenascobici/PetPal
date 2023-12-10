@@ -64,7 +64,7 @@ function PetSearch() {
 
             <div className="grid petGrid">
                 {pets.map(pet => (
-                    <div className="grid-item" key={pet.id}>
+                    <div className="grid-item grid-item-pet" key={pet.id}>
                         <PetCard key={pet.id} pet={pet} />
                     </div>
                 ))}
