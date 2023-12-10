@@ -73,8 +73,6 @@ const PetsCarousel = ({shelterId, shelterName}) => {
  
     useEffect(() => {
         const token = localStorage.getItem('access_token'); 
-        console.log("NAME", shelterName);
-        console.log("LINK", `http://localhost:8000/pet/search/?${filter}page=${currentPage}`);
         fetch(`http://localhost:8000/pet/search/?search=&${filter}page=${currentPage}`, {
             headers: {
                 'Authorization': `Bearer ${token}`,
