@@ -98,6 +98,12 @@
   text-decoration: none;
 }
 
+.appView:hover{
+  cursor: pointer;
+  background-color: #137171;
+  color: white;
+}
+
 .card-text {
   margin-bottom: 1rem;
   font-size: 17px;

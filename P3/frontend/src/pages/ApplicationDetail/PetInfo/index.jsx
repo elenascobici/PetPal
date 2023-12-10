@@ -1,18 +1,20 @@
 import "../style.css"
 // import Calcifer from "../../../assets/images/calcifer.jpg";
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
 
 function PetInfo({petID}){
 
   const [pet_data, setPetData] = useState({});
+  const navigate = useNavigate();
+
   // const [pet_info, setPetInfo] = useState({
   //   name: '',
   //   description: 'This pet has no description',
   // });
 
   const moreDetails = () => {
-    //! REDIRECT TO PET PAGE
-    console.log(pet_data.name);
+    navigate(`/pets/${petID}`);
   }
 
   useEffect(() => {

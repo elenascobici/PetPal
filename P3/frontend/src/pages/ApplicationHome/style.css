@@ -77,7 +77,7 @@
     font-weight: 600;
  }
 
- .t-button {
+ .t-button-home {
     background-color: #48B7AB;
     border: 1px solid white; 
     border-radius: 0.9vw;
@@ -88,7 +88,7 @@
     text-decoration: none;
  }
 
- .t-button:hover {
+ .t-button-home:hover {
     background-color: #119899;
     color: #D9EDED;
  }

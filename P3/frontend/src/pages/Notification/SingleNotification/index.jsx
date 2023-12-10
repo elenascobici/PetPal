@@ -166,7 +166,7 @@ function SingleNotification({notif, change, notify}){
         } if (regex_msg.test(url)){
             navigate(url.substring(0,15));
         } if (regex_pet.test(url)){
-            navigate((url.substring(0,4) + "s" + url.substring(4,7)));
+            navigate((url.substring(0,4) + "s" + url.substring(4)));
         }
         else {
             navigate(url.toString());

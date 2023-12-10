@@ -15,7 +15,7 @@ function MiniFAQ(){
             <p> Once you have made your application, view it by clicking the button below and there will be a messaging prompt on the bottom of the screen.</p>
             <br></br>
             <p class="mini-h1 apply-pos"> Already Applied? </p>
-            <a class="t-button" onClick={() => navigate("/application/list/")}> See my applications &gt; </a>
+            <a class="t-button-home" onClick={() => navigate("/application/list/")}> See my applications &gt; </a>
         </div>
     </>;
 }
