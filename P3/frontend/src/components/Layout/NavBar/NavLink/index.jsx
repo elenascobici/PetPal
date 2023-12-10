@@ -16,7 +16,9 @@ const NavLink = ({ link, idName, label, users, userType }) => {
     }
     if (userType === "Shelter" && label === "Find Pets") {
         label = "My Pet Listings";
-    }    
+        link = "shelter/search";
+    }   
+
 
     return (
         <li className="nav-item">
