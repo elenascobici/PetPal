@@ -17,7 +17,7 @@ function PetSearch() {
 
     const [searchTerm, setSearchTerm] = useState(''); 
 
-    const itemsPerPage = 8;
+    const itemsPerPage = 6;
 
     const query = useMemo(() => ({
         page: parseInt(searchParams.get("page") ?? 1),
