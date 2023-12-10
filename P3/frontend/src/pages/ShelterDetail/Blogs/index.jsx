@@ -93,7 +93,7 @@ const Blogs = () => {
     };
 
     const handleViewClick = (blogId) => {
-      navigate(`/blog-view/${blogId}`);
+      navigate(`/blog/${blogId}`);
     };
   
     return (
@@ -109,7 +109,7 @@ const Blogs = () => {
               </p>
             </div>
             <div className="button-container">
-              <button className="blog-button blog-view" onClick={() => handleViewClick(blog.id)}>Read</button>
+              <button className="blog-button blog" onClick={() => handleViewClick(blog.id)}>Read</button>
               {/* {userType === "Seeker" && (
                   <button className="blog-button blog-like" >Like</button>
               )} */}

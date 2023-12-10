@@ -179,6 +179,7 @@ class BlogResponseCreate(CreateAPIView):
     permission_classes = [IsAuthenticated]
 
     def perform_create(self, serializer):
+        print("CREATE")
         blog_id = self.kwargs.get('blog_id')
         blog = get_object_or_404(Blog, pk=blog_id)
         serializer.is_valid()
