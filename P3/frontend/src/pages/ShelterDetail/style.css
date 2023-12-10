@@ -190,7 +190,7 @@
    padding-bottom: 1rem;
  }
 
- #mission {
+ #mission, #no-pets {
    padding-left: 3rem;
  }
 
@@ -530,7 +530,7 @@ textarea {
    .pet-grid {grid-template-columns: auto; align-items: center;}
    .carousel-control-next {right: -4rem;}
    .carousel-control-prev {left: -4rem;}
-   #mission , .subtitle2 {padding-left: 0;}
+   #mission, #no-pets , .subtitle2 {padding-left: 0;}
    .reviewClick {padding-left: 0;}
    #reviews {padding-right: 0; padding-left: 0;}
    #reviewBox {margin: 0; padding: 0; margin-top: 1rem;}
