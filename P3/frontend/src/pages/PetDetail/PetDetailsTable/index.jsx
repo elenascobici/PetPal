@@ -32,7 +32,6 @@ const PetDetailsTable = ({ details }) => {
 
 export default PetDetailsTable;
 
-// Helper function to capitalize the first letter of each word
 function capitalizeFirstLetter(string) {
   return string.split(' ').map(str => str.charAt(0).toUpperCase() + str.slice(1)).join(' ');
 }

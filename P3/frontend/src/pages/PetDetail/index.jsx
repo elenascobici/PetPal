@@ -11,6 +11,8 @@ const PetDetails = () => {
   const { petId } = useParams();
   const navigate = useNavigate();
 
+  const userType = localStorage.getItem('user_type');
+
   const handleAdoptClick = () => {
     navigate(`/application/form/${petId}/`);
   };
@@ -52,7 +54,10 @@ const PetDetails = () => {
           <PetImage images={petData.pet_image_1} />
           <PetDescription title="Description" content={petData.description} />
           <PetDescription title="Medical History" content={petData.medicalHistory} />
-          <AdoptButton status={petData.status} onAdopt={handleAdoptClick} />
+          {/* Render AdoptButton only for seekers */}
+          {userType === 'Seeker' && (
+            <AdoptButton status={petData.status} onAdopt={handleAdoptClick} />
+          )}
         </div>
       </div>
     </div>
