@@ -1,4 +1,4 @@
-First, navigate to the P3/frontend folder and install the following packages:
+First, navigate to the P3/frontend folder and install the following packages (also located in pacakge.json):
 npm install react-scripts
 npm install react-router-dom
 npm install bootstrap@5.0.0 react-bootstrap
@@ -6,11 +6,20 @@ npm i bootstrap-icons
 npm i axios
 npm install react-infinite-scroll-component
  
-Similarly, go to the P3/backend folder and install these packages:
+Similarly, go to the P3/backend folder and install these packages (also located in requirements.txt):
+pip3 install django==4.2
+pip3 install pillow==10.0
+pip3 install djangorestframework
+pip3 install django-filter
+pip3 install djangorestframework-simplejwt
 pip3 install django-cors-headers
+pip3 install gunicorn
+
  
 To run, in the backend folder, run .\venv\scripts\activate to activate the virtual environment. Then, run python manage.py makemigrations, and python manage.py migrate to migrate all database data. Finally, run python manage.py runserver to run the backend.
  
 To run the frontend, go to the frontend folder and run npm start.
 
+
 Regarding the deployment, we are hosting the frontend on Vercel and the backend with the database on Railway. These are both connected to our github repository directly.
+Railway uses the requirements.txt file to install all the necessary packages for the backend. Vercel uses the package.json file to install the dependencies for the React app.
