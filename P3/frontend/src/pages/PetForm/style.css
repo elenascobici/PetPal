@@ -93,11 +93,9 @@
   }
   
   .form-control {
-    /* border: none; */
-    border-radius: 15px;  
+    border-radius: 15px !important;  
     box-shadow: none; 
     margin: 0rem;
-
   }
 
   input[type="text"], select[id="size"], select[id="gender"], select[id="behaviour"], select[id="typeOfPet"], select[id="status"], input[type="file"], textarea[id="description"], textarea[id="medicalHistory"]{
