@@ -13,7 +13,7 @@ function SignUpSeeker() {
         })
 
         var formData = Object.fromEntries(new FormData(document.querySelector('#sign-up-seeker-form')).entries());
-        fetch("http://localhost:8000/accounts/seeker/", {
+        fetch("https://petpal-production.up.railway.app/accounts/seeker/", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

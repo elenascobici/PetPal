@@ -75,7 +75,7 @@ const PetFormNotWorking = () => {
 
     const shelterId = localStorage.getItem('id'); 
     const authToken = localStorage.getItem('access_token'); 
-    const url = `http://localhost:8000/pet/shelter/${shelterId}/pet/`;
+    const url = `https://petpal-production.up.railway.app/pet/shelter/${shelterId}/pet/`;
 
     const formDataToSend = new FormData();
     Object.keys(formData).forEach(key => {

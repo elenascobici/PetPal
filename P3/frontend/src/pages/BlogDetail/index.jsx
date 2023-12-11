@@ -40,7 +40,7 @@ const BlogDetail = () => {
     const fetchBlog = async () => {
       try {
         const response = await fetch(
-          `http://localhost:8000/blogs/${blogId}`,
+          `https://petpal-production.up.railway.app/blogs/${blogId}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -78,7 +78,7 @@ const BlogDetail = () => {
     const fetchBlog = async () => {
       try {
         const response = await fetch(
-          `http://localhost:8000/accounts/profile/${blog.author}`,
+          `https://petpal-production.up.railway.app/accounts/profile/${blog.author}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,

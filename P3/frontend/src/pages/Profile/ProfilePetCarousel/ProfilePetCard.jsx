@@ -9,7 +9,7 @@ const ProfilePetCard = ({ id, name, image }) => {
     const [picture, setPicture] = React.useState(DefaultPet);
     React.useEffect(() => {
         if (image) {
-            setPicture("http://localhost:8000/pet/pet-image/" + image.split('/').pop());
+            setPicture("https://petpal-production.up.railway.app/pet/pet-image/" + image.split('/').pop());
         }
 
     }, [image, picture])

@@ -30,7 +30,7 @@ export const ViewMyProfileSeeker = ({userData, errors, updateProfile}) => {
     // Fetch profile picture.
     React.useEffect(() => {
         if (userData.profile_picture) {
-            setProfilePath("http://localhost:8000/accounts/profile-picture/" + userData.profile_picture.split('/').pop());
+            setProfilePath("https://petpal-production.up.railway.app/accounts/profile-picture/" + userData.profile_picture.split('/').pop());
         }
 
         // Set province.

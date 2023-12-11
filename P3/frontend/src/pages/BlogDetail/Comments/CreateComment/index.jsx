@@ -25,7 +25,7 @@ const CreateComment = () => {
     console.log(userId);
 
     useEffect(() => {
-        fetch(`http://localhost:8000/accounts/profile/${userId}`, {
+        fetch(`https://petpal-production.up.railway.app/accounts/profile/${userId}`, {
             headers: {
                 'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json',
@@ -51,7 +51,7 @@ const CreateComment = () => {
     }, [userId]);
 
     useEffect(() => {
-        fetch(`http://localhost:8000/blogs/${blogId}`, {
+        fetch(`https://petpal-production.up.railway.app/blogs/${blogId}`, {
             headers: {
                 'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json',
@@ -101,7 +101,7 @@ const CreateComment = () => {
             'text': comment,
         };
         console.log(requestBody);
-        fetch(`http://localhost:8000/blogs/response/${blogId}/`, {
+        fetch(`https://petpal-production.up.railway.app/blogs/response/${blogId}/`, {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${token}`,

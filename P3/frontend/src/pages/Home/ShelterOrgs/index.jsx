@@ -62,7 +62,7 @@ const ShelterOrgs = ( {userType, userId } ) => {
             return image;
         }
         if (image && typeof image === 'string') {
-            const img = "http://localhost:8000/accounts/profile-picture/" + image.split('/').pop();
+            const img = "https://petpal-production.up.railway.app/accounts/profile-picture/" + image.split('/').pop();
             return img;
         }
         return
@@ -78,7 +78,7 @@ const ShelterOrgs = ( {userType, userId } ) => {
             try {
                 console.log("Fetching shelters");
                 const token = localStorage.getItem('access_token'); 
-                const response = await fetch('http://localhost:8000/accounts/shelter-list?search', {
+                const response = await fetch('https://petpal-production.up.railway.app/accounts/shelter-list?search', {
                     headers: {
                         'Authorization': `Bearer ${token}`,
                         'Content-Type': 'application/json',
@@ -91,7 +91,7 @@ const ShelterOrgs = ( {userType, userId } ) => {
                 }
                 const data = await response.json();
                 console.log("DATA", data)
-                const filteredShelters = data.results.filter(shelter => shelter.profile_picture && shelter.profile_picture !== "http://localhost:8000/media/accounts/default_profile.jpg");
+                const filteredShelters = data.results.filter(shelter => shelter.profile_picture && shelter.profile_picture !== "https://petpal-production.up.railway.app/media/accounts/default_profile.jpg");
                 if (filteredShelters.length > 0) {
                     setShelters(filteredShelters.slice(0, 7));
                     setDummy(false);

@@ -13,7 +13,7 @@ function UpdateButtons ({show, showBtns, appID, notify}){
     const changeStatus = (event, newStatus) => {
         // console.log(newStatus);
         const token = localStorage.getItem('access_token');
-        fetch(`http://localhost:8000/application/${appID}/`, {
+        fetch(`https://petpal-production.up.railway.app/application/${appID}/`, {
         method: 'PATCH',
         headers: {
             'Authorization': `Bearer ${token}`,

@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 function PetCard({ pet }) {
   const navigate = useNavigate();
-  // const imageUrl = `http://localhost:8000/media/pets/${pet.pet_image_1}`;
+  // const imageUrl = `https://petpal-production.up.railway.app/media/pets/${pet.pet_image_1}`;
 
 
   return (

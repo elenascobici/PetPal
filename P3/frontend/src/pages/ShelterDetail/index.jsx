@@ -39,7 +39,7 @@ const ShelterDetail = () => {
 
     useEffect(() => {
         const token = localStorage.getItem('access_token'); 
-        fetch(`http://localhost:8000/accounts/profile/${shelterId}`, {
+        fetch(`https://petpal-production.up.railway.app/accounts/profile/${shelterId}`, {
             headers: {
                 'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json',

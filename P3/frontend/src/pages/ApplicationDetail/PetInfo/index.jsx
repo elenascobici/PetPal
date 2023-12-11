@@ -21,7 +21,7 @@ function PetInfo({petID}){
   useEffect(() => {
     // Fetch profile picture.
     if (pet_data.pet_image_1) {
-        setProfilePath("http://localhost:8000/pet/pet-image/" + pet_data.pet_image_1.split('/').pop());
+        setProfilePath("https://petpal-production.up.railway.app/pet/pet-image/" + pet_data.pet_image_1.split('/').pop());
     }
 
   }, [pet_data])
@@ -29,7 +29,7 @@ function PetInfo({petID}){
   useEffect(() => {
     // console.log("do u go in here?")
     const token = localStorage.getItem('access_token');
-    fetch(`http://localhost:8000/pet/${petID}/?search=`, {
+    fetch(`https://petpal-production.up.railway.app/pet/${petID}/?search=`, {
       method: 'GET',
       headers: {
           'Authorization': `Bearer ${token}`,

@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function get_image_url(image) {
     if (image && typeof image === 'string') {
-        const img = "http://localhost:8000/pet/pet-image/" + image.split('/').pop();
+        const img = "https://petpal-production.up.railway.app/pet/pet-image/" + image.split('/').pop();
         console.log(img);
         return img;
     }

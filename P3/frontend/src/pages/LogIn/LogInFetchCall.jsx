@@ -7,7 +7,7 @@ import axios from "axios";
 
 const logInFetchCall = (username, password, setErrorMessages) => {
     localStorage.clear();
-    fetch('http://localhost:8000/accounts/api/token/', {
+    fetch('https://petpal-production.up.railway.app/accounts/api/token/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

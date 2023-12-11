@@ -13,7 +13,7 @@ export const ViewMyProfile = () => {
 
     // Fetch user data to display on their profile.
     const fetchProfileData = () => {
-        fetch(`http://localhost:8000/accounts/profile/${userId}`, {
+        fetch(`https://petpal-production.up.railway.app/accounts/profile/${userId}`, {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -32,7 +32,7 @@ export const ViewMyProfile = () => {
 
     const listenForDeleteAccount = () => {
         if (!messageStated && window.confirm("Are you sure you want to delete your account? This action cannot be undone.")) {
-            fetch(`http://localhost:8000/accounts/profile/`, {
+            fetch(`https://petpal-production.up.railway.app/accounts/profile/`, {
                 method: 'DELETE',
                 headers: {
                     'Authorization': `Bearer ${token}`,
@@ -41,7 +41,7 @@ export const ViewMyProfile = () => {
                 .then(response => {
                     if (response.ok) {
                         localStorage.clear();
-                        window.location.href = "http://localhost:3000/";
+                        window.location.href = "/";
                         if (!messageStated) {
                             alert("Your account has been deleted.");
                             messageStated = true;
@@ -76,7 +76,7 @@ export const ViewMyProfile = () => {
             delete updateData.password;
         }
         console.log(JSON.stringify(updateData));
-        fetch(`http://localhost:8000/accounts/profile/`, {
+        fetch(`https://petpal-production.up.railway.app/accounts/profile/`, {
             method: 'PUT',
             headers: {
                 'Authorization': `Bearer ${token}`,

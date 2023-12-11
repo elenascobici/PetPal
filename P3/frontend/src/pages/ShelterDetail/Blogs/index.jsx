@@ -26,7 +26,7 @@ const Blogs = () => {
       const fetchBlogs = async () => {
         try {
           const response = await fetch(
-            `http://localhost:8000/blogs/list?shelter=${shelterId}&page=${currentPage || 1}&page_size=8`,
+            `https://petpal-production.up.railway.app/blogs/list?shelter=${shelterId}&page=${currentPage || 1}&page_size=8`,
             {
               headers: {
                 Authorization: `Bearer ${token}`,
@@ -61,7 +61,7 @@ const Blogs = () => {
   
       try {
         // Check if the user has already liked the blog
-        const response = await fetch(`http://localhost:8000/blogs/${blogId}/`, {
+        const response = await fetch(`https://petpal-production.up.railway.app/blogs/${blogId}/`, {
           method: 'GET',
           headers: {
             Authorization: `Bearer ${token}`,

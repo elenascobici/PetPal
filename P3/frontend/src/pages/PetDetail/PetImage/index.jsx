@@ -1,6 +1,6 @@
 const PetImage = ({ images }) => {
   // Ensure images is a string and construct the URL
-  const imageUrl = `http://localhost:8000/pet/pet-image/` + (typeof images === 'string' ? images.split('/').pop() : '');;
+  const imageUrl = `https://petpal-production.up.railway.app/pet/pet-image/` + (typeof images === 'string' ? images.split('/').pop() : '');;
 
 
   return (

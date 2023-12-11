@@ -18,7 +18,7 @@ const SheltersSearch = () => {
     const fetchData = () => {
         const param = new URLSearchParams(query);
         const token = localStorage.getItem('access_token');
-        fetch(`http://localhost:8000/accounts/shelter-list/?${param}`, {
+        fetch(`https://petpal-production.up.railway.app/accounts/shelter-list/?${param}`, {
         method: 'GET',
         headers: {
             'Authorization': `Bearer ${token}`,

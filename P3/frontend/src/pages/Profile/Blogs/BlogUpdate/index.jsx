@@ -14,7 +14,7 @@ const BlogUpdate = () => {
     useEffect(() => {
       const token = localStorage.getItem("access_token");
   
-      fetch(`http://localhost:8000/blogs/${blogId}/`, {
+      fetch(`https://petpal-production.up.railway.app/blogs/${blogId}/`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -48,7 +48,7 @@ const BlogUpdate = () => {
                 document.querySelectorAll(".text-input-error-message").forEach((errorMessageInput) => {
                     errorMessageInput.innerHTML = "";
                 })
-                fetch(`http://localhost:8000/blogs/${blogId}/`, {
+                fetch(`https://petpal-production.up.railway.app/blogs/${blogId}/`, {
                     method: 'PATCH',
                     headers: {
                         'Authorization': `Bearer ${localStorage.getItem("access_token")}`,

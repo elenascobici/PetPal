@@ -35,7 +35,7 @@ function ApplicationList(){
     const fetchData = () => {
         const param = new URLSearchParams(query);
         const token = localStorage.getItem('access_token');
-        fetch(`http://localhost:8000/application/list/?${param}`, {
+        fetch(`https://petpal-production.up.railway.app/application/list/?${param}`, {
         method: 'GET',
         headers: {
             'Authorization': `Bearer ${token}`,

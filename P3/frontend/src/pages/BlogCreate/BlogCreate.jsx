@@ -11,7 +11,7 @@ const BlogCreate = () => {
                 document.querySelectorAll(".text-input-error-message").forEach((errorMessageInput) => {
                     errorMessageInput.innerHTML = "";
                 })
-                fetch(`http://localhost:8000/blogs/new-blog/`, {
+                fetch(`https://petpal-production.up.railway.app/blogs/new-blog/`, {
                     method: 'POST',
                     headers: {
                         'Authorization': `Bearer ${localStorage.getItem("access_token")}`,

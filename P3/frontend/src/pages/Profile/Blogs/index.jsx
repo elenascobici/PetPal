@@ -24,7 +24,7 @@ const Blogs = () => {
       const fetchBlogs = async () => {
         try {
           const response = await fetch(
-            `http://localhost:8000/blogs/list?shelter=${userId}&page=${currentPage || 1}&page_size=8`,
+            `https://petpal-production.up.railway.app/blogs/list?shelter=${userId}&page=${currentPage || 1}&page_size=8`,
             {
               headers: {
                 Authorization: `Bearer ${token}`,
@@ -58,7 +58,7 @@ const Blogs = () => {
         const token = localStorage.getItem("access_token");
     
         try {
-          const response = await fetch(`http://localhost:8000/blogs/${blogId}`, {
+          const response = await fetch(`https://petpal-production.up.railway.app/blogs/${blogId}`, {
             method: 'DELETE',
             headers: {
               Authorization: `Bearer ${token}`,

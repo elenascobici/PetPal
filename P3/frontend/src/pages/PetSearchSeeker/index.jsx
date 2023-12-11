@@ -27,7 +27,7 @@ function PetSearchSeeker() {
     useEffect(() => {
         const param = new URLSearchParams(query);
         const token = localStorage.getItem('access_token');
-        const url = new URL(`http://localhost:8000/pet/search/?${param}`);
+        const url = new URL(`https://petpal-production.up.railway.app/pet/search/?${param}`);
         // url.searchParams.append('page', currentPage);
         
         Object.keys(filters).forEach(key => {
