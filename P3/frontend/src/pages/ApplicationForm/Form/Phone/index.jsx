@@ -53,7 +53,7 @@ function Phone({required, value, check, tofill, fill}){
         <div className="row mb-3">
             <label for="phone" className="col-12 col-form-label text-start col-lg-2 text-lg-end">Phone Number</label>
             <div className="col-12 mb-2 col-lg-10">
-                <input type="phoneNumber" className="form-control" id="phoneNumber" placeholder="Number" 
+                <input type="phoneNumber" className="form-control name-control" id="phoneNumber" placeholder="Number" 
                 onInput={(event) => inputCheck(event)} style={{ borderColor: empty || !valid && required === "true" ? 'red' : '' }} 
                 required></input>
                 {empty &&  <p className="required-error"> * This field is required </p>}
