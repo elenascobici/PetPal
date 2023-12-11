@@ -64,14 +64,14 @@ const BlogCreate = () => {
                     <label for="inputTitle" id="shelterNameLabel" class="gridLabel">Blog Title</label>
                 </div>
                 <div class="grid-item">
-                    <input id="inputTitle" type="text" name="title" class="gridValue" required></input>
+                    <input id="inputTitle" type="text" name="title" class="gridValue" maxLength={100} required></input>
                     <p class="text-input-error-message" id="title-error"></p>
                 </div>
                 <div class="grid-item">
                     <label for="content" id="shelterNameLabel" class="gridLabel">Content</label>
                 </div>
                 <div class="grid-item">
-                    <textarea id="content" type="text" name="content" class="gridValue" rows={20} required></textarea>
+                    <textarea id="content" type="text" name="content" class="gridValue" rows={20} maxLength={10000} required></textarea>
                 </div>
             </div>
             <button type="submit" class="editButton" id="create-blog-button">Create</button>
