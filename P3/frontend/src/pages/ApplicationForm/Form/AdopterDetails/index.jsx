@@ -47,14 +47,14 @@ function AdopterDetails({valid, validCheck, tofill, fill}){
             <div className="row mb-3">
               <label for="address" className="col-12 col-form-label text-start col-lg-2 text-lg-end">Address</label>
               <div className="col-12 col-lg-10"> 
-                <input className="form-control mb-2" id="streetAddress1" placeholder="Address Line 1" 
+                <input className="form-control mb-2 name-control" id="streetAddress1" placeholder="Address Line 1" 
                 onChange={(event) => inputCheck(event, "address")} style={{ borderColor: empty.address ? 'red' : '' }} required></input>
                 {empty.address &&  <p className="required-error"> * This field is required </p>}
-                <input className="form-control mb-2" id="streetAddress2" placeholder="Address Line 2" onChange={(event) => inputCheck(event, "address2")}></input>
+                <input className="form-control mb-2 name-control" id="streetAddress2" placeholder="Address Line 2" onChange={(event) => inputCheck(event, "address2")}></input>
         
                 <div className="row"> 
                   <div className="col-12 mb-2 col-lg-6 ">
-                      <input className="form-control" id="city" placeholder="City" 
+                      <input className="form-control name-control" id="city" placeholder="City" 
                       onChange={(event) => inputCheck(event, "city")} style={{ borderColor: empty.city ? 'red' : '' }}required></input>
                       {empty.city &&  <p className="required-error"> * This field is required </p>}
                   </div>

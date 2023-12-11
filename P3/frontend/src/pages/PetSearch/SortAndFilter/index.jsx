@@ -51,6 +51,7 @@ function SortAndFilter({ setFilters }) {
                     </Dropdown.Toggle>
 
                     <Dropdown.Menu>
+                        <Dropdown.Item eventKey="">Default</Dropdown.Item>
                         <Dropdown.Item eventKey="name">Sort by Name</Dropdown.Item>
                         <Dropdown.Item eventKey="age">Sort by Age</Dropdown.Item>
                     </Dropdown.Menu>
@@ -119,9 +120,9 @@ function SortAndFilter({ setFilters }) {
 
                     <Dropdown.Menu>
                         <Dropdown.Item eventKey="">All</Dropdown.Item>
-                        <Dropdown.Item eventKey="1">Small</Dropdown.Item>
-                        <Dropdown.Item eventKey="2">Medium</Dropdown.Item>
-                        <Dropdown.Item eventKey="3">Large</Dropdown.Item>
+                        <Dropdown.Item eventKey="Small">Small</Dropdown.Item>
+                        <Dropdown.Item eventKey="Medium">Medium</Dropdown.Item>
+                        <Dropdown.Item eventKey="Large">Large</Dropdown.Item>
                     </Dropdown.Menu>
                     </Dropdown>
                     {/* </Col> */}

@@ -13,7 +13,11 @@
 }
 
 .custom-rounded {
-  border-radius: 30px;
+  border-radius: 5%;
+  max-height: 95%; 
+  max-width: 100%; 
+  height: auto; 
+  width: auto; 
 }
 
 .custom-rounded-child {
@@ -22,14 +26,26 @@
   margin-bottom: 20px;
 }
 
+/* img-fluid-pet {
+  max-width: 100%;
+  height: auto;
+} */
 
-/* CSS */
+.image-box {
+  background-color: white;
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  overflow: hidden;
+  /* background-color: aquamarine; */
+}
+
 .title-header {
-  background-color: #d2a03d; /* Replace with your dark yellow color */
-  color: white; /* Text color */
+  background-color: #d2a03d; 
+  color: white; 
   text-align: center;
   padding: 8px;
-  margin-bottom: 0; /* Remove margin between the title and the table */
+  margin-bottom: 0;
 }
 
 #pet-name {
@@ -109,6 +125,13 @@
   padding: 20px;
 }
 
+subtitle-petdet {
+  font-family: Manrope;
+  font-size: 20px;
+  color: black;
+  text-align: center;
+}
+
 @media (min-width: 1200px) {
   #pet-name {
       font-size: 55px; 
@@ -116,5 +139,17 @@
 
   #date {
       font-size: 28px; 
+  }
+}
+
+@media (width < 900px) {
+  .custom-rounded {
+    border-radius: 5%;
+    max-height: 100%; /* or any specific size */
+    max-width: 100%; /* or any specific size */
+    height: auto; /* Maintain aspect ratio */
+    width: auto; /* Maintain aspect ratio */
+    margin-top: 20px;
+    
   }
 }

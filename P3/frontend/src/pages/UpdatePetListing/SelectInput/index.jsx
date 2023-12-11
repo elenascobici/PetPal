@@ -47,6 +47,12 @@ const SelectInput = ({ id, value, onChange, label, options }) => (
           <option key={option.value} value={option.value}>{option.label}</option>
         ))}
       </select>
+      {id === "gender" && (
+        <p className="form-message">Gender cannot be updated</p>
+      )}
+      {id === "typeOfPet" && (
+        <p className="form-message">Type of pet cannot be updated</p>
+      )}
     </div>
   </div>
 );

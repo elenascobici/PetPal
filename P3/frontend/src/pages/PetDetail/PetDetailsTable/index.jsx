@@ -8,8 +8,8 @@ const PetDetailsTable = ({ details }) => {
   }, {});
 
   return (
-    <div className="col-12 col-lg-5 d-flex align-items-center">
-      <table className="table bg-lightYellow rounded-table m-auto" id="subtitle">
+    <div className="col-12 col-lg-6 d-flex align-items-center">
+      <table className="table bg-lightYellow rounded-table m-auto" id="subtitle-petdet">
         <thead>
           <tr>
             <th colSpan="2" >Details</th>
@@ -32,7 +32,6 @@ const PetDetailsTable = ({ details }) => {
 
 export default PetDetailsTable;
 
-// Helper function to capitalize the first letter of each word
 function capitalizeFirstLetter(string) {
   return string.split(' ').map(str => str.charAt(0).toUpperCase() + str.slice(1)).join(' ');
 }

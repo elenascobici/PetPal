@@ -157,6 +157,24 @@
    /* appearance: none;
    position: relative; */
 }
+.update {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+   width: 213px;
+   font-family: Manrope;
+   font-size: 25px;
+   font-weight: 400;
+   margin-top: 0.5rem;
+   border-radius: 10px;
+   color: white;
+   background-color: rgba(179, 179, 179, 0.615);
+   padding: 0;
+   border: none;
+   /* appearance: none;
+   position: relative; */
+}
 
 .details {
    display: flex;

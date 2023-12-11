@@ -1,9 +1,9 @@
-const AdoptButton = ({ link, status }) => {
-  const buttonClass = status === "Available" ? "tealButton" : "greybox";
-
+const AdoptButton = ({ status, onAdopt }) => {
   return (
     <div className="col-12 padding">
-      <a className={buttonClass} href={link}>{status === "Available" ? "Adopt!" : "Not Available"}</a>
+      <button className={`btn ${status === 'Available' ? 'tealButton' : 'greyButton'}`} onClick={onAdopt}>
+        Adopt!
+      </button>
     </div>
   );
 };

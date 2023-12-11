@@ -13,4 +13,5 @@ class PetSerializer(serializers.ModelSerializer):
       extra_kwargs = {
           'description': {'required': False},
           'medical_history': {'required': False},
+          'pet_image_1': {'required': False, 'allow_null': True},
       }

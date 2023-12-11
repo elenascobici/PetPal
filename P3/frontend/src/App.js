@@ -25,12 +25,13 @@ import PetSearchShelter from './pages/PetSearch';
 import SheltersSearch from './pages/SheltersSearch/SheltersSearch';
 import Notification from './pages/Notification';
 import PetDetail from './pages/PetDetail';
-import PetForm from './pages/PetForm';
+import PetForm from './pages/PetForm/PetForm';
 import BlogUpdate from './pages/Profile/Blogs/BlogUpdate';
 import UpdatePet from './pages/UpdatePetListing'
 import PetSearchSeeker from './pages/PetSearchSeeker'
 import BlogDetail from './pages/BlogDetail';
 import CreateComment from './pages/BlogDetail/Comments/CreateComment';
+import BlogSearch from './pages/BlogSearch';
 
 function App() {
   return (
@@ -61,6 +62,7 @@ function App() {
         <Route path="pet/:petId/update" element={<PrivateRoute> <UpdatePet /> </PrivateRoute>} />
         <Route path="seeker/search/" element={<PrivateRoute> <PetSearchSeeker /> </PrivateRoute>} />
         <Route path="shelter/search/" element={<PrivateRoute> <PetSearchShelter /> </PrivateRoute>} />
+        <Route path="blog/search/" element={<BlogSearch />} />
         <Route path="*" element={<NotFound />} /> 
       </Route>
     </Routes>

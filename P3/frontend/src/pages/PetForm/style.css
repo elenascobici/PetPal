@@ -73,6 +73,13 @@
     padding-bottom: 0.5rem;
     padding-top: 0.5rem;
   }
+
+  .form-simple-message {
+    display: flex;
+    color: grey;
+    text-align: center;
+    
+  }
   
   .image-wrapper {
     position: relative;
@@ -93,11 +100,9 @@
   }
   
   .form-control {
-    /* border: none; */
-    border-radius: 15px;  
+    border-radius: 15px !important;  
     box-shadow: none; 
     margin: 0rem;
-
   }
 
   input[type="text"], select[id="size"], select[id="gender"], select[id="behaviour"], select[id="typeOfPet"], select[id="status"], input[type="file"], textarea[id="description"], textarea[id="medicalHistory"]{
@@ -109,6 +114,13 @@
    width: 100%;
    margin: 0rem;
    padding: 0rem;
+  }
+
+  .form-error {
+    display: flex;
+    color: rgb(196, 0, 0);
+    text-align: center;
+    
   }
 
   .form-pet {

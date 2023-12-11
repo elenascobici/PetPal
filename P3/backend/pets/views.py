@@ -187,6 +187,7 @@ class PetViewSet(viewsets.ModelViewSet):
     pet_type = request.query_params.get('type')
     status = request.query_params.get('status')
     age = request.query_params.get('age')
+    size = request.query_params.get('size')
     
     if pet_type:
       queryset = queryset.filter(type__iexact=pet_type)
@@ -202,6 +203,9 @@ class PetViewSet(viewsets.ModelViewSet):
          
     if age:
       queryset = queryset.filter(age=age)
+    
+    if size:
+       queryset = queryset.filter(size=size)
 
     # regardless of who the user is, sort by name and age 
     sort = request.query_params.get('sort')

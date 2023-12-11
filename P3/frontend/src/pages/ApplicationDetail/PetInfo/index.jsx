@@ -7,6 +7,7 @@ function PetInfo({petID}){
 
   const [pet_data, setPetData] = useState({});
   const navigate = useNavigate();
+  const [profilePath, setProfilePath] = useState("");
 
   // const [pet_info, setPetInfo] = useState({
   //   name: '',
@@ -16,6 +17,14 @@ function PetInfo({petID}){
   const moreDetails = () => {
     navigate(`/pets/${petID}`);
   }
+
+  useEffect(() => {
+    // Fetch profile picture.
+    if (pet_data.pet_image_1) {
+        setProfilePath("http://localhost:8000/pet/pet-image/" + pet_data.pet_image_1.split('/').pop());
+    }
+
+  }, [pet_data])
 
   useEffect(() => {
     // console.log("do u go in here?")
@@ -44,7 +53,7 @@ function PetInfo({petID}){
     return <>
         <div className="row mb-3">
             <div className="col-12 col-md-5 col-lg-4 ml-1">
-                <img src= {`http://localhost:8000/pet/pet-image/${pet_data.pet_image_1}`} className="pet-pfp img-fluid"/>
+                <img src={profilePath} className="pet-pfp img-fluid"/>
             </div>
             <div className="summarized-info col-12 col-md-8 col-lg-7 text-start">
             {pet_data && (<>

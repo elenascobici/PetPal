@@ -1,9 +1,9 @@
 import "../style.css"
 
-function BackButton(){
+function BackButton({back}){
     return <>
         <div className="button-pos">
-          <a className="back-button btn text-lg btn-lg"> Back </a>
+          <a className="back-button btn text-lg btn-lg" onClick={back}> Back </a>
         </div>
     </>;
 }

@@ -26,53 +26,54 @@ function PetSearch() {
       }, []);
   
     const query = useMemo(() => ({
-      page: parseInt(searchParams.get("page") ?? 1),
-      search: searchParams.get("search") ?? ''
+        page: parseInt(searchParams.get("page") ?? 1),
+        search: searchParams.get("search") ?? ''
     }), [searchParams]);
-  
+
     useEffect(() => {
-      const fetchData = async () => {
-        const param = new URLSearchParams(query);
-        const token = localStorage.getItem('access_token');
-        const url = new URL(`http://localhost:8000/pet/search/?${param}`);
-  
-        Object.keys(filters).forEach(key => {
-          if (filters[key]) {
-            url.searchParams.append(key, filters[key]);
+        const fetchData = async () => {
+          try {
+            const param = new URLSearchParams(query);
+            const token = localStorage.getItem('access_token');
+            const url = new URL(`http://localhost:8000/pet/search/?${param}`);
+      
+            Object.keys(filters).forEach(key => {
+              if (filters[key]) {
+                  url.searchParams.append(key, filters[key]);
+              }
+            });
+      
+            if (searchTerm) {
+                url.searchParams.append('name', searchTerm);
+            }
+      
+            const response = await fetch(url, {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json',
+                },
+            });  // Missing semicolon added here
+      
+            const data = await response.json();
+            console.log("Pagination data from backend:", data);
+      
+            setPets(data.results);
+      
+            const totalItems = data.count;
+            setTotalPages(Math.ceil(totalItems / itemsPerPage));
+          } catch (error) {
+            console.error('Error:', error);
           }
-        });
-  
-        if (searchTerm) {
-          url.searchParams.append('name', searchTerm);
-        }
-  
-        try {
-          const response = await fetch(url, {
-            method: 'GET',
-            headers: {
-              'Authorization': `Bearer ${token}`,
-              'Content-Type': 'application/json',
-            },
-          });
-  
-          const data = await response.json();
-          console.log("Pagination data from backend:", data);
-  
-          setPets(data.results);
-  
-          const totalItems = data.count;
-          setTotalPages(Math.ceil(totalItems / itemsPerPage));
-        } catch (error) {
-          console.error('Error:', error);
-        }
+        };
+      
+        fetchData();
+      }, [currentPage, filters, searchTerm, query]);
+      
+      const handlePageChange = (newPage) => {
+          setCurrentPage(newPage);
       };
-  
-      fetchData();
-    }, [currentPage, filters, searchTerm, query]);
-  
-    const handlePageChange = (newPage) => {
-      setCurrentPage(newPage);
-    };
+      
     
     return (
         <div className="main px-6 pt-6">
@@ -90,12 +91,6 @@ function PetSearch() {
                     </div>
                 ))}
             </div>
-
-            {/* <Pagination 
-                currentPage={currentPage}
-                totalPages={totalPages}
-                onPageChange={handlePageChange}
-            /> */}
 
             <div class="col-12">
                 <p className="pageInfo">

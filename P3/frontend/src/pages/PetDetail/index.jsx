@@ -1,19 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import './style.css';
-import PetImageGallery from './PetImage';
+import PetImage from './PetImage';
 import PetDetailsTable from './PetDetailsTable';
 import PetDescription from './PetDescription';
 import AdoptButton from './AdoptButton';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 const PetDetails = () => {
   const [petData, setPetData] = useState({});
   const { petId } = useParams();
+  const navigate = useNavigate();
+
+  const userType = localStorage.getItem('user_type');
+
+  const handleAdoptClick = () => {
+    navigate(`/application/form/${petId}/`);
+  };
   
 
   useEffect(() => {
     const authToken = localStorage.getItem('access_token');
-    // TODO: get the pet dynamically
     const url = `http://localhost:8000/pet/${petId}/?search=`;
 
 
@@ -28,7 +34,6 @@ const PetDetails = () => {
     .then(data => {
       console.log("the data", data);
       if (data.length > 0) {
-        // Assuming the first element in the array is the pet object you want
         setPetData(data[0]);
     }})
     .catch(error => {
@@ -42,14 +47,15 @@ const PetDetails = () => {
         <div className="row">
           <div className="col-12 padding">
             <h2 id="pet-name">{petData.name}</h2>
-            <h3 id="date">Submission Deadline: {petData.deadline}</h3>
+            <h3 id="date">Adopt Me By: {petData.deadline}</h3>
           </div>
-
-          {/* <PetImageGallery images={petData.pet_image_1} /> */}
           <PetDetailsTable details={petData} />
+          <PetImage images={petData.pet_image_1} />
           <PetDescription title="Description" content={petData.description} />
           <PetDescription title="Medical History" content={petData.medicalHistory} />
-          <AdoptButton link="pet-adoption.html" status={petData.status} />
+          {userType === 'Seeker' && (
+            <AdoptButton status={petData.status} onAdopt={handleAdoptClick} />
+          )}
         </div>
       </div>
     </div>
