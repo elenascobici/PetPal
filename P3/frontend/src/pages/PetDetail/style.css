@@ -13,7 +13,11 @@
 }
 
 .custom-rounded {
-  border-radius: 30px;
+  border-radius: 5%;
+  max-height: 95%; 
+  max-width: 100%; 
+  height: auto; 
+  width: auto; 
 }
 
 .custom-rounded-child {
@@ -22,6 +26,19 @@
   margin-bottom: 20px;
 }
 
+/* img-fluid-pet {
+  max-width: 100%;
+  height: auto;
+} */
+
+.image-box {
+  background-color: white;
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  overflow: hidden;
+  /* background-color: aquamarine; */
+}
 
 .title-header {
   background-color: #d2a03d; 
@@ -59,14 +76,6 @@
 .description-box {
   background-color: #f0f0f0; 
   padding: 20px; 
-  margin-top: 20px; 
-  border-radius: 10px; 
-}
-
-
-.image-box {
-  background-color: white; 
-  padding: 10px; 
   margin-top: 20px; 
   border-radius: 10px; 
 }
@@ -130,5 +139,17 @@ subtitle-petdet {
 
   #date {
       font-size: 28px; 
+  }
+}
+
+@media (width < 900px) {
+  .custom-rounded {
+    border-radius: 5%;
+    max-height: 100%; /* or any specific size */
+    max-width: 100%; /* or any specific size */
+    height: auto; /* Maintain aspect ratio */
+    width: auto; /* Maintain aspect ratio */
+    margin-top: 20px;
+    
   }
 }

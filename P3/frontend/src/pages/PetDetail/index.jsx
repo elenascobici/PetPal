@@ -49,12 +49,10 @@ const PetDetails = () => {
             <h2 id="pet-name">{petData.name}</h2>
             <h3 id="date">Adopt Me By: {petData.deadline}</h3>
           </div>
-
           <PetDetailsTable details={petData} />
           <PetImage images={petData.pet_image_1} />
           <PetDescription title="Description" content={petData.description} />
           <PetDescription title="Medical History" content={petData.medicalHistory} />
-          {/* Render AdoptButton only for seekers */}
           {userType === 'Seeker' && (
             <AdoptButton status={petData.status} onAdopt={handleAdoptClick} />
           )}

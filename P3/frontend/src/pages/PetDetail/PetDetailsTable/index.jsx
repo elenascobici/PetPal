@@ -8,7 +8,7 @@ const PetDetailsTable = ({ details }) => {
   }, {});
 
   return (
-    <div className="col-12 col-lg-5 d-flex align-items-center">
+    <div className="col-12 col-lg-6 d-flex align-items-center">
       <table className="table bg-lightYellow rounded-table m-auto" id="subtitle-petdet">
         <thead>
           <tr>
