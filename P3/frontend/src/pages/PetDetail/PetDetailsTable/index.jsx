@@ -9,7 +9,7 @@ const PetDetailsTable = ({ details }) => {
 
   return (
     <div className="col-12 col-lg-5 d-flex align-items-center">
-      <table className="table bg-lightYellow rounded-table m-auto" id="subtitle">
+      <table className="table bg-lightYellow rounded-table m-auto" id="subtitle-petdet">
         <thead>
           <tr>
             <th colSpan="2" >Details</th>

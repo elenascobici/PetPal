@@ -23,13 +23,12 @@
 }
 
 
-/* CSS */
 .title-header {
-  background-color: #d2a03d; /* Replace with your dark yellow color */
-  color: white; /* Text color */
+  background-color: #d2a03d; 
+  color: white; 
   text-align: center;
   padding: 8px;
-  margin-bottom: 0; /* Remove margin between the title and the table */
+  margin-bottom: 0;
 }
 
 #pet-name {
@@ -107,6 +106,13 @@
 
 .padding {
   padding: 20px;
+}
+
+subtitle-petdet {
+  font-family: Manrope;
+  font-size: 20px;
+  color: black;
+  text-align: center;
 }
 
 @media (min-width: 1200px) {
