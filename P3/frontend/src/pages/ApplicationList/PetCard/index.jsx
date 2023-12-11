@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom';
 
 function PetCard({listing, image}){
+  const user_type = localStorage.getItem('user_type');
 
     // retrieve pet from listing
     const [pet, setPet] = useState({});
@@ -102,7 +103,7 @@ function PetCard({listing, image}){
                 </p>
                 <a class="appView" onClick={() => navigate(`/application/${listing.id}/`)}>View Application</a>
               </div> 
-          </div>) : <div class="grid-item card mb-3 rounded-card centered empty-card"/>}
+          </div>) : <div class="grid-item card mb-3 rounded-card centered empty-card" style={user_type === "Shelter" && { height: '452px' }}/>}
           
     </>;
 }
