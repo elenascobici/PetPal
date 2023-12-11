@@ -17,7 +17,7 @@ const NavBar = () => {
         { to: "/application/home", idName: "Apply", label: "Apply", allowedUsers: ["Seeker"] },
         { to: "/application/list", idName: "Applications", label: "Applications", allowedUsers: ["Shelter", "Seeker"] },
         { to: "/shelters", idName: "Shelters", label: "Shelters", allowedUsers: ["Shelter", "Seeker"] },
-        { to: "/blogs", idName: "Blogs", label: "Blogs", allowedUsers: ["Shelter", "Seeker"] },
+        { to: "/blogs/search", idName: "Blogs", label: "Blogs", allowedUsers: ["Shelter", "Seeker"] },
     ];
     const userType = localStorage.getItem('user_type');
 
