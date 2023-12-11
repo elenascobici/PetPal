@@ -1,6 +1,16 @@
-# This text file should explain how to deploy your website.
+First, navigate to the P3/frontend folder and install the following packages:
+npm install react-scripts
+npm install react-router-dom
+npm install bootstrap@5.0.0 react-bootstrap
+npm i bootstrap-icons
+npm i axios
+npm install react-infinite-scroll-component
+ 
+Similarly, go to the P3/backend folder and install these packages:
+pip3 install django-cors-headers
+ 
+To run, in the backend folder, run .\venv\scripts\activate to activate the virtual environment. Then, run python manage.py makemigrations, and python manage.py migrate to migrate all database data. Finally, run python manage.py runserver to run the backend.
+ 
+To run the frontend, go to the frontend folder and run npm start.
 
-# You should write detailed description on:
-
-# 1. All the packages you need to install
-# 2. How to configure various servers (e.g., Nginx, Apache, etc)
+Regarding the deployment, we are hosting the frontend on Vercel and the backend with the database on Railway. These are both connected to our github repository directly.
