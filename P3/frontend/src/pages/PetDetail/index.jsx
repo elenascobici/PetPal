@@ -45,7 +45,7 @@ const PetDetails = () => {
         <div className="row">
           <div className="col-12 padding">
             <h2 id="pet-name">{petData.name}</h2>
-            <h3 id="date">Submission Deadline: {petData.deadline}</h3>
+            <h3 id="date">Adopt Me By: {petData.deadline}</h3>
           </div>
 
           <PetDetailsTable details={petData} />
