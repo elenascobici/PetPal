@@ -18,7 +18,6 @@ const PetDetails = () => {
 
   useEffect(() => {
     const authToken = localStorage.getItem('access_token');
-    // TODO: get the pet dynamically
     const url = `http://localhost:8000/pet/${petId}/?search=`;
 
 
@@ -33,7 +32,6 @@ const PetDetails = () => {
     .then(data => {
       console.log("the data", data);
       if (data.length > 0) {
-        // Assuming the first element in the array is the pet object you want
         setPetData(data[0]);
     }})
     .catch(error => {
@@ -50,7 +48,6 @@ const PetDetails = () => {
             <h3 id="date">Submission Deadline: {petData.deadline}</h3>
           </div>
 
-          
           <PetDetailsTable details={petData} />
           <PetImage images={petData.pet_image_1} />
           <PetDescription title="Description" content={petData.description} />

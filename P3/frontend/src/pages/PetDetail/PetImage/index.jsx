@@ -4,7 +4,7 @@ const PetImage = ({ images }) => {
 
 
   return (
-    <div className="col-12 col-lg-7">
+    <div className="col-12 col-lg-7 image-box">
       <img src={imageUrl} alt="Main Image" className="img-fluid custom-rounded" />
     </div>
   );

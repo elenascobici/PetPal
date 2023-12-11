@@ -25,7 +25,7 @@ import PetSearchShelter from './pages/PetSearch';
 import SheltersSearch from './pages/SheltersSearch/SheltersSearch';
 import Notification from './pages/Notification';
 import PetDetail from './pages/PetDetail';
-import PetForm from './pages/PetForm';
+import PetForm from './pages/PetForm/PetForm';
 import BlogUpdate from './pages/Profile/Blogs/BlogUpdate';
 import UpdatePet from './pages/UpdatePetListing'
 import PetSearchSeeker from './pages/PetSearchSeeker'

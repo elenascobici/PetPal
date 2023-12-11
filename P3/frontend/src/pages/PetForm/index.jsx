@@ -7,7 +7,7 @@ import DateInput from './DateInput';
 import './style.css';
 import SelectInput, { sizeOptions, genderOptions, behaviourOptions, typeOfPetOptions, statusOptions } from './SelectInput';
 
-const AdoptionForm = () => {
+const PetFormNotWorking = () => {
   const [formData, setFormData] = useState({
     name: '',
     description: '',
@@ -24,6 +24,8 @@ const AdoptionForm = () => {
     image: null,
   });
 
+  const [formErrors, setFormErrors] = useState({});
+
   const navigate = useNavigate();
 
 
@@ -33,6 +35,27 @@ const AdoptionForm = () => {
       ...prevState,
       [id]: value,
     }));
+    setFormErrors(prevErrors => ({
+      ...prevErrors,
+      [id]: '', 
+    }));
+
+    console.log(`handleChange: ${id} = ${value}`);
+  };
+
+  const validateForm = () => {
+    const errors = {};
+    const requiredFields = ['name', 'location', 'age', 'size', 'gender', 'behaviour', 'typeOfPet', 'colour', 'deadline', 'status'];
+
+    // here
+    requiredFields.forEach(field => {
+      if (!formData[field]) {
+        errors[field] = 'Required';
+      }
+    });
+
+    setFormErrors(errors);
+    return Object.keys(errors).length === 0;
   };
 
   const handleFileChange = (e) => {
@@ -44,6 +67,11 @@ const AdoptionForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!validateForm()) {
+      console.log('Form validation failed', formErrors);
+      return; 
+    }
 
     const shelterId = localStorage.getItem('id'); 
     const authToken = localStorage.getItem('access_token'); 
@@ -78,7 +106,7 @@ const AdoptionForm = () => {
 
     } catch (error) {
       console.error('Error:', error);
-      // Handle error (e.g., show an error message)
+ 
     }
   };
 
@@ -90,6 +118,7 @@ const AdoptionForm = () => {
           <h2 className="text-center mb-4 mt-4 title">Create Pet Listing</h2>
           <form onSubmit={handleSubmit}>
             <TextInput id="name" value={formData.name} onChange={handleChange} label="Pet Name" />
+            {formErrors.name && <p className="form-error">{formErrors.name}</p>}
             <TextAreaInput id="description" value={formData.description} onChange={handleChange} label="Description" rows="3" />
             <TextAreaInput id="medicalHistory" value={formData.medicalHistory} onChange={handleChange} label="Medical History" rows="3" />
             <TextInput id="location" value={formData.location} onChange={handleChange} label="Location" placeholder="PAW Station, ON" />
@@ -115,5 +144,5 @@ const AdoptionForm = () => {
 };
    
 
-export default AdoptionForm;
+export default PetFormNotWorking;
 
