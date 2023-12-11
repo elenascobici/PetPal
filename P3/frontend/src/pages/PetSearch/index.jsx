@@ -28,7 +28,6 @@ function PetSearch() {
         const param = new URLSearchParams(query);
         const token = localStorage.getItem('access_token');
         const url = new URL(`http://localhost:8000/pet/search/?${param}`);
-        // url.searchParams.append('page', currentPage);
         
         Object.keys(filters).forEach(key => {
             if (filters[key]) {
@@ -56,7 +55,7 @@ function PetSearch() {
         setTotalPages(Math.ceil(totalItems / itemsPerPage));
     })
     .catch(error => console.error('Error:', error));
-}, [currentPage, filters, searchTerm,query]); 
+}, [currentPage, filters, searchTerm, query]); 
 
     const handlePageChange = (newPage) => {
         setCurrentPage(newPage);

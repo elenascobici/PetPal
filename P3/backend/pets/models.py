@@ -17,9 +17,9 @@ class PetDetail(models.Model):
     ]
 
     size_choices = [
-        ('Small', 'Small'),
-        ('Medium', 'Medium'),
-        ('Large', 'Large'),
+        ('small', 'Small'),
+        ('medium', 'Medium'),
+        ('large', 'Large'),
     ]
 
     behaviour_choices = [

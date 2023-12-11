@@ -28,11 +28,18 @@ class BlogList(ListAPIView):
 
     def get_queryset(self):
         shelter_id = self.request.query_params.get('shelter')
+        search_term = self.request.query_params.get('search')
+        
         if shelter_id:
             queryset = Blog.objects.filter(author__id=shelter_id)
         else:
             queryset = Blog.objects.all()
+        
+        if search_term:
+            queryset = queryset.filter(title__icontains=search_term)
+        
         return queryset
+
 
 
 class BlogDetail(RetrieveUpdateDestroyAPIView):

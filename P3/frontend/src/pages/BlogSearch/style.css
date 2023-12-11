@@ -1,0 +1,55 @@
+.search-bar {
+  width: 100%;
+  padding: 10px 15px;
+  margin: 20px auto;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  font-size: 16px;
+  background-color: rgba(185, 185, 185, 0.504);
+}
+
+.blog-card {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  margin: 20px 0;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: #ffc10777;
+}
+
+.blog-title {
+  margin: 0;
+  color: #333;
+  font-size: 24px;
+}
+
+.blog-content {
+  color: #666;
+  font-size: 16px;
+}
+
+/* Pagination styles */
+.pagination-container {
+  text-align: center;
+  padding: 20px;
+}
+
+.page-item {
+  display: inline-block;
+  margin: 0 5px;
+  padding: 5px 10px;
+  border: 1px solid #ddd;
+  background-color: #f9f9f9;
+  cursor: pointer;
+}
+
+.page-item.active {
+  background-color: #ffc107;
+  color: white;
+  border-color: #ffc107;
+}
+
+.page-container-blog {
+  max-width: 800px;
+  margin: 40px auto;
+  /* padding: 20px; */
+}

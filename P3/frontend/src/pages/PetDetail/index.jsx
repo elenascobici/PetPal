@@ -4,11 +4,16 @@ import PetImageGallery from './PetImage';
 import PetDetailsTable from './PetDetailsTable';
 import PetDescription from './PetDescription';
 import AdoptButton from './AdoptButton';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 const PetDetails = () => {
   const [petData, setPetData] = useState({});
   const { petId } = useParams();
+  const navigate = useNavigate();
+
+  const handleAdoptClick = () => {
+    navigate(`/application/form/${petId}/`);
+  };
   
 
   useEffect(() => {
@@ -49,7 +54,7 @@ const PetDetails = () => {
           <PetDetailsTable details={petData} />
           <PetDescription title="Description" content={petData.description} />
           <PetDescription title="Medical History" content={petData.medicalHistory} />
-          <AdoptButton link="pet-adoption.html" status={petData.status} />
+          <AdoptButton status={petData.status} onAdopt={handleAdoptClick} />
         </div>
       </div>
     </div>
