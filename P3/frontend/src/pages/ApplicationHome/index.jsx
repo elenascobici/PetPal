@@ -11,7 +11,7 @@ function ApplicationHome(){
             behavior: 'smooth' // Add smooth scrolling effect
         });
     },[]);
-    
+
     return <>
         <div className="main-home-app">
                 <FirstLayer />

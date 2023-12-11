@@ -91,6 +91,7 @@
  .t-button-home:hover {
     background-color: #119899;
     color: #D9EDED;
+    cursor: pointer;
  }
 
  .explore-more {
@@ -133,6 +134,7 @@
  .pet-button:hover {
     background-color: #92DAD9;
     color: #119899;
+    cursor: pointer;
  }
 
  .main-info {

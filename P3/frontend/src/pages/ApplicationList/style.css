@@ -82,6 +82,7 @@
   background-color: white;
   color: #FFA903;
   border-color: #FFA903;
+  cursor: pointer;
 }
 .grid-item > .blank {
   margin-top: 450px;

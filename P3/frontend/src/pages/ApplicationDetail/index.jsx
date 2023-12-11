@@ -129,7 +129,7 @@ function ApplicationDetail(){
                             <Line label="Residential Address:" style="line" answer={app_data.street + ', ' + app_data.city + ', ' + fullProvince + ', Canada'} />
                             <Line label="Reason:" style="line-long" answer={app_data.reason} />
                             <Line label="Home Type:" style="line" answer={fullHome} />
-                            <Line label="Fenced Yard?:" style="line" answer={String(app_data.fenced_yard).charAt(0).toUpperCase() + String(app_data.fenced_yard).slice(1)} />
+                            <Line label="Fenced Yard:" style="line" answer={String(app_data.fenced_yard).charAt(0).toUpperCase() + String(app_data.fenced_yard).slice(1)} />
                             <Line label="Other Pets Owned:" style="line-long" answer={app_data.owned_pets ? app_data.owned_pets : 'N/A'} />
                             <Line label="Other Pets' Behavior:" style="line-long" answer={app_data.other_pet_behavior ? app_data.other_pet_behavior : 'N/A'} />
                             <Line label="Household Residents:" style="line-long" answer={app_data.residents ? app_data.residents : 'N/A'} />
