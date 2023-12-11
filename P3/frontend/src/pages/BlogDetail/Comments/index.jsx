@@ -18,7 +18,7 @@ const Comments = ({ blogId, author }) => {
     // Retrieve comments
     const fetchComments = async () => {
       const token = localStorage.getItem('access_token');
-      fetch(`http://localhost:8000/blogs/comments/${blogId}?page=${currentPage}`, {
+      fetch(`https://petpal-production.up.railway.app/blogs/comments/${blogId}?page=${currentPage}`, {
             headers: {
                 'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json',
@@ -49,7 +49,7 @@ const Comments = ({ blogId, author }) => {
       const fetchLikes = async () => {
         try {
           const response = await fetch(
-            `http://localhost:8000/blogs/${blogId}`,
+            `https://petpal-production.up.railway.app/blogs/${blogId}`,
             {
               headers: {
                 Authorization: `Bearer ${token}`,
@@ -77,7 +77,7 @@ const Comments = ({ blogId, author }) => {
 
     useEffect(() => {
         const token = localStorage.getItem('access_token');
-        fetch(`http://localhost:8000/blogs/liked/${blogId}`, {
+        fetch(`https://petpal-production.up.railway.app/blogs/liked/${blogId}`, {
           headers: {
               'Authorization': `Bearer ${token}`,
               'Content-Type': 'application/json',
@@ -118,7 +118,7 @@ const Comments = ({ blogId, author }) => {
 
     useEffect(() => {
       const token = localStorage.getItem('access_token');
-      fetch(`http://localhost:8000/accounts/profile/${userId}`, {
+      fetch(`https://petpal-production.up.railway.app/accounts/profile/${userId}`, {
             headers: {
                 'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json',
@@ -137,7 +137,7 @@ const Comments = ({ blogId, author }) => {
 
     const handleLiked = () => {
       const token = localStorage.getItem('access_token');
-      fetch(`http://localhost:8000/blogs/like/${blogId}/`, {
+      fetch(`https://petpal-production.up.railway.app/blogs/like/${blogId}/`, {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -164,7 +164,7 @@ const Comments = ({ blogId, author }) => {
 
     const handleUnliked = () => {
       const token = localStorage.getItem('access_token');
-      fetch(`http://localhost:8000/blogs/liked/${blogId}/`, {
+      fetch(`https://petpal-production.up.railway.app/blogs/liked/${blogId}/`, {
             method: 'DELETE',
             headers: {
                 'Authorization': `Bearer ${token}`,

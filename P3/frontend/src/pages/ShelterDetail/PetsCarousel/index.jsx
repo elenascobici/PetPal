@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import PetGrid from './PetGrid';
 import Buddy from "../../../assets/images/buddy.jpg"
 import Calcifer from "../../../assets/images/calcifer.jpg"
-import Quokkie from "../../../assets/images/quokkie.png"
+import Quokkie from "../../../assets/images/quokkie.jpg"
 import HokeyPokey from "../../../assets/images/hokey-pokey.jpg"
 import Hamtaro from "../../../assets/images/hamtaro.jpg"
 import Jiji from "../../../assets/images/jiji.jpg"
@@ -73,7 +73,7 @@ const PetsCarousel = ({shelterId, shelterName}) => {
  
     useEffect(() => {
         const token = localStorage.getItem('access_token'); 
-        fetch(`http://localhost:8000/pet/search/?search=&${filter}page=${currentPage}`, {
+        fetch(`https://petpal-production.up.railway.app/pet/search/?search=&${filter}page=${currentPage}`, {
             headers: {
                 'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json',

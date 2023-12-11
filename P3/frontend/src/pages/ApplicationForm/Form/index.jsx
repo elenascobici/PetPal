@@ -54,7 +54,7 @@ function Form({petID}){
     const submit = () => {
         if (valid.adopterDetails && valid.reason){
             const token = localStorage.getItem('access_token');
-            fetch(`http://localhost:8000/application/pet/${petID}/`, {
+            fetch(`https://petpal-production.up.railway.app/application/pet/${petID}/`, {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${token}`,

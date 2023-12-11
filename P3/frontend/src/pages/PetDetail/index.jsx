@@ -20,7 +20,7 @@ const PetDetails = () => {
 
   useEffect(() => {
     const authToken = localStorage.getItem('access_token');
-    const url = `http://localhost:8000/pet/${petId}/?search=`;
+    const url = `https://petpal-production.up.railway.app/pet/${petId}/?search=`;
 
 
     fetch(url, {

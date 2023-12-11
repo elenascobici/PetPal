@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
 import PetImageCard from "./PetImageCard";
 import Buddy from "../../../assets/images/buddy.jpg";
-import Quokkie from "../../../assets/images/quokkie.png";
+import Quokkie from "../../../assets/images/quokkie.jpg";
 import Calcifer from "../../../assets/images/calcifer.jpg";
 import HokeyPokey from "../../../assets/images/hokey-pokey.jpg";
 import DefaultPet from "../../../assets/images/default-pet.png";
@@ -41,7 +41,7 @@ const PetImages = ( {userType, userId } ) => {
             return image;
         }
         if (image && typeof image === 'string') {
-            const img = "http://localhost:8000/pet/pet-image/" + image.split('/').pop();
+            const img = "https://petpal-production.up.railway.app/pet/pet-image/" + image.split('/').pop();
             console.log(img);
             return img;
         }
@@ -59,7 +59,7 @@ const PetImages = ( {userType, userId } ) => {
         const fetchPets = async () => {
             try {
                 const token = localStorage.getItem('access_token'); 
-                const response = await fetch(`http://localhost:8000/pet/search/?search=&${filter}`, {
+                const response = await fetch(`https://petpal-production.up.railway.app/pet/search/?search=&${filter}`, {
                     headers: {
                         'Authorization': `Bearer ${token}`,
                         'Content-Type': 'application/json',

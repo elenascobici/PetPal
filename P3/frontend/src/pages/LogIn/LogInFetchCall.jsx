@@ -7,7 +7,7 @@ import axios from "axios";
 
 const logInFetchCall = (username, password, setErrorMessages) => {
     localStorage.clear();
-    fetch('http://localhost:8000/accounts/api/token/', {
+    fetch('https://petpal-production.up.railway.app/accounts/api/token/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -25,7 +25,7 @@ const logInFetchCall = (username, password, setErrorMessages) => {
                 localStorage.setItem('id', data.id);
                 axios.defaults.headers.common['Authorization'] = 
                                                 `Bearer ${data['access']}`;
-                window.location.href = "http://localhost:3000/";
+                window.location.href = "/";
             }
             else {
                 setErrorMessages(data);

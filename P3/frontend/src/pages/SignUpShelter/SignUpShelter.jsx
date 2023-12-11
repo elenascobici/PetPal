@@ -13,7 +13,7 @@ function SignUpSeeker() {
         })
 
         var formData = Object.fromEntries(new FormData(document.querySelector('#sign-up-shelter-form')).entries());
-        fetch("http://localhost:8000/accounts/shelter/", {
+        fetch("https://petpal-production.up.railway.app/accounts/shelter/", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

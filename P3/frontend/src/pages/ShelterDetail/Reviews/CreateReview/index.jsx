@@ -25,7 +25,7 @@ const CreateReview = () => {
     const remainingCharacters = maxCharacterCount - review.length;
 
     useEffect(() => {
-        fetch(`http://localhost:8000/accounts/profile/${userId}`, {
+        fetch(`https://petpal-production.up.railway.app/accounts/profile/${userId}`, {
             headers: {
                 'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json',
@@ -51,7 +51,7 @@ const CreateReview = () => {
     }, [userId]);
 
     useEffect(() => {
-        fetch(`http://localhost:8000/accounts/profile/${shelterId}`, {
+        fetch(`https://petpal-production.up.railway.app/accounts/profile/${shelterId}`, {
             headers: {
                 'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json',
@@ -108,7 +108,7 @@ const CreateReview = () => {
         if (rating !== null) {
             requestBody['rating'] = rating;
         }
-        fetch(`http://localhost:8000/shelter/${shelterId}/details/review/`, {
+        fetch(`https://petpal-production.up.railway.app/shelter/${shelterId}/details/review/`, {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${token}`,

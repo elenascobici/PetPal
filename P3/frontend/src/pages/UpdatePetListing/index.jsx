@@ -32,7 +32,7 @@ const EditPetForm = () => {
   useEffect(() => {
     const fetchPetData = async () => {
       const authToken = localStorage.getItem('access_token');
-      const url = `http://localhost:8000/pet/${petId}/?search=`; 
+      const url = `https://petpal-production.up.railway.app/pet/${petId}/?search=`; 
   
       fetch(url, {
         method: 'GET',
@@ -100,7 +100,7 @@ const EditPetForm = () => {
     }
 
 
-    const url = `http://localhost:8000/pet/shelter/${shelterId}/pet/${petId}/`; 
+    const url = `https://petpal-production.up.railway.app/pet/shelter/${shelterId}/pet/${petId}/`; 
 
     try {
       const response = await fetch(url, {

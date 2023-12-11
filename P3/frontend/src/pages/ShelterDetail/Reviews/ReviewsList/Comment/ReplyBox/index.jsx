@@ -27,7 +27,7 @@ const ReplyBox = ({userName, userId, commentId, nestingLevel, shelterId, replyCl
         }
         console.log("REPLIED")
         const token = localStorage.getItem("access_token");
-        fetch(`http://localhost:8000/shelter/${shelterId}/details/comments/?comment_id=${commentId}`, {
+        fetch(`https://petpal-production.up.railway.app/shelter/${shelterId}/details/comments/?comment_id=${commentId}`, {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${token}`,

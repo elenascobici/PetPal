@@ -29,7 +29,7 @@ function SingleNotification({notif, change, notify}){
 
     const getNotif = () => {
         const token = localStorage.getItem('access_token');
-        fetch(`http://localhost:8000/notifications/${notif.id}/`, {
+        fetch(`https://petpal-production.up.railway.app/notifications/${notif.id}/`, {
         method: 'GET',
         headers: {
             'Authorization': `Bearer ${token}`,
@@ -54,7 +54,7 @@ function SingleNotification({notif, change, notify}){
     useEffect(() => {
         const token = localStorage.getItem('access_token');
         const id = localStorage.getItem('id');
-        // fetch(`http://localhost:8000/notifications/${notif.id}/`, {
+        // fetch(`https://petpal-production.up.railway.app/notifications/${notif.id}/`, {
         // method: 'GET',
         // headers: {
         //     'Authorization': `Bearer ${token}`,
@@ -75,7 +75,7 @@ function SingleNotification({notif, change, notify}){
         // });
         getNotif();
 
-        fetch(`http://localhost:8000/accounts/profile/${id}/`, {
+        fetch(`https://petpal-production.up.railway.app/accounts/profile/${id}/`, {
         method: 'GET',
         headers: {
             'Authorization': `Bearer ${token}`,
@@ -106,7 +106,7 @@ function SingleNotification({notif, change, notify}){
     //   }, [location]);
     const readNotif = () => {
         const token = localStorage.getItem('access_token');
-        fetch(`http://localhost:8000/notifications/${notif.id}/`, {
+        fetch(`https://petpal-production.up.railway.app/notifications/${notif.id}/`, {
         method: 'PATCH',
         headers: {
             'Authorization': `Bearer ${token}`,
@@ -130,7 +130,7 @@ function SingleNotification({notif, change, notify}){
 
     const deleteNotif = () => {
         const token = localStorage.getItem('access_token');
-        fetch(`http://localhost:8000/notifications/${notif.id}/`, {
+        fetch(`https://petpal-production.up.railway.app/notifications/${notif.id}/`, {
         method: 'DELETE',
         headers: {
             'Authorization': `Bearer ${token}`,

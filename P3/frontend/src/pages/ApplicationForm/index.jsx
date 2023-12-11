@@ -16,7 +16,7 @@ function ApplicationForm(){
         });
 
           const token = localStorage.getItem('access_token');
-          fetch(`http://localhost:8000/pet/${petID}/`, {
+          fetch(`https://petpal-production.up.railway.app/pet/${petID}/`, {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`,

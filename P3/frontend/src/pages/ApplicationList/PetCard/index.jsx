@@ -31,7 +31,7 @@ function PetCard({listing, image}){
 
     const fetchProfileData = () => {
       const token = localStorage.getItem('access_token');
-      fetch(`http://localhost:8000/accounts/profile/${listing.adopter}`, {
+      fetch(`https://petpal-production.up.railway.app/accounts/profile/${listing.adopter}`, {
           method: 'GET',
           headers: {
               'Authorization': `Bearer ${token}`,
@@ -52,7 +52,7 @@ function PetCard({listing, image}){
     useEffect(() => { 
       if(!listing.fill){
         const token = localStorage.getItem('access_token');
-        fetch(`http://localhost:8000/pet/${listing.pet}/?search=`, {
+        fetch(`https://petpal-production.up.railway.app/pet/${listing.pet}/?search=`, {
         method: 'GET',
         headers: {
             'Authorization': `Bearer ${token}`,
@@ -76,7 +76,7 @@ function PetCard({listing, image}){
     useEffect(() => {
       // Fetch profile picture.
       if (pet.pet_image_1) {
-          setProfilePath("http://localhost:8000/pet/pet-image/" + pet.pet_image_1.split('/').pop());
+          setProfilePath("https://petpal-production.up.railway.app/pet/pet-image/" + pet.pet_image_1.split('/').pop());
       }
 
       //Get user if shelter

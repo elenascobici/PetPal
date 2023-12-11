@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-f2xonu&htfe_udfnpk0xhwru1cc%ha&@p)@=%r9_vxuaddl^x@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [ '18.189.184.51', 'localhost' ]
+ALLOWED_HOSTS = [ '18.189.184.51', 'localhost', 'petpal-production.up.railway.app' ]
 
 
 # Application definition
@@ -158,6 +158,7 @@ REST_FRAMEWORK = {
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",  
     "http://127.0.0.1:3000",
+    "https://pet-pal-vercel.vercel.app",
 ]
 
 from datetime import timedelta

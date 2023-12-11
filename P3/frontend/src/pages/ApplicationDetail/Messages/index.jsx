@@ -26,8 +26,8 @@ const Messages = ({ appId }) => {
       }
   
       const url = nextCursor
-        ? `http://localhost:8000/application/${appId}/messages?cursor=${nextCursor}`
-        : `http://localhost:8000/application/${appId}/messages`;
+        ? `https://petpal-production.up.railway.app/application/${appId}/messages?cursor=${nextCursor}`
+        : `https://petpal-production.up.railway.app/application/${appId}/messages`;
   
       fetch(url, {
         headers: {
@@ -101,7 +101,7 @@ const Messages = ({ appId }) => {
         }
 
         const token = localStorage.getItem('access_token');
-        fetch(`http://localhost:8000/application/${appId}/messages`, {
+        fetch(`https://petpal-production.up.railway.app/application/${appId}/messages`, {
           method: 'POST',
           headers: {
               'Authorization': `Bearer ${token}`,

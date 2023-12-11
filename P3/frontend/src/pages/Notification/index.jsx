@@ -20,7 +20,7 @@ function Notification(){
     const pageRender = () => {
         const param = new URLSearchParams(query);
         const token = localStorage.getItem('access_token');
-        fetch(`http://localhost:8000/notifications/list/?${param}`, {
+        fetch(`https://petpal-production.up.railway.app/notifications/list/?${param}`, {
         method: 'GET',
         headers: {
             'Authorization': `Bearer ${token}`,

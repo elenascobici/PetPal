@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 function PetCard({ pet }) {
   const navigate = useNavigate();
-  const imageUrl = `http://localhost:8000/pet/pet-image/` + (typeof pet.pet_image_1 === 'string' ? pet.pet_image_1.split('/').pop() : '');
+  const imageUrl = `https://petpal-production.up.railway.app/pet/pet-image/` + (typeof pet.pet_image_1 === 'string' ? pet.pet_image_1.split('/').pop() : '');
 
   const handleUpdateClick = () => {
     navigate(`/pet/${pet.id}/update`); 

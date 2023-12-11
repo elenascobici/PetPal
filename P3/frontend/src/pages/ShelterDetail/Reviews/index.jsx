@@ -17,7 +17,7 @@ const Reviews = ({ shelterId, shelterName }) => {
     // Retrieve comments
     const fetchComments = async () => {
       const token = localStorage.getItem('access_token');
-      fetch(`http://localhost:8000/shelter/${shelterId}/details/comments?page=${currentPage}`, {
+      fetch(`https://petpal-production.up.railway.app/shelter/${shelterId}/details/comments?page=${currentPage}`, {
             headers: {
                 'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json',
@@ -66,7 +66,7 @@ const Reviews = ({ shelterId, shelterName }) => {
     const handleRatingClick = (clickedRating) => {
         const token = localStorage.getItem('access_token'); 
         console.log(clickedRating);
-        fetch(`http://localhost:8000/shelter/${shelterId}/details/rating/`, {
+        fetch(`https://petpal-production.up.railway.app/shelter/${shelterId}/details/rating/`, {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -92,7 +92,7 @@ const Reviews = ({ shelterId, shelterName }) => {
 
     useEffect(() => {
       const token = localStorage.getItem('access_token');
-      fetch(`http://localhost:8000/accounts/profile/${userId}`, {
+      fetch(`https://petpal-production.up.railway.app/accounts/profile/${userId}`, {
             headers: {
                 'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json',

@@ -27,7 +27,7 @@ const ReplyBox = ({userName, userId, commentId, nestingLevel, blogId, replyClick
         }
         console.log("REPLIED")
         const token = localStorage.getItem("access_token");
-        fetch(`http://localhost:8000/blogs/comments/${blogId}/?comment_id=${commentId}`, {
+        fetch(`https://petpal-production.up.railway.app/blogs/comments/${blogId}/?comment_id=${commentId}`, {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${token}`,
