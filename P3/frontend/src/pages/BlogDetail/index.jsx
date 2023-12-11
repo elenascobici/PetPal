@@ -120,10 +120,15 @@ const BlogDetail = () => {
 
   console.log(blog);
 
+  let blogUrl = "";
+  if (blog.banner_image) {
+    blogUrl = "https://petpal-production.up.railway.app/blogs/blog-picture/" + blog.banner_image.split('/').pop();
+  }
+
     return (
       <div id="blog-page">
         <h1 id="blog-title">{blog.title}</h1>
-        <img id="blog-image" src={blog.banner_image} />
+        <img id="blog-image" src={blogUrl} />
         <h2 id="blog-author">Author: {author}</h2>
         <h3 id="blog-last-updated">Last updated: {format_date(blog.updated_at)}</h3>
         <p id="blog-content">{add_breaks(blog.content)}</p>
