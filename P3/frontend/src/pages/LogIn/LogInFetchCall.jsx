@@ -25,7 +25,7 @@ const logInFetchCall = (username, password, setErrorMessages) => {
                 localStorage.setItem('id', data.id);
                 axios.defaults.headers.common['Authorization'] = 
                                                 `Bearer ${data['access']}`;
-                window.location.href = "http://localhost:3000/";
+                window.location.href = "/";
             }
             else {
                 setErrorMessages(data);

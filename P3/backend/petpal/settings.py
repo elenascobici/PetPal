@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-f2xonu&htfe_udfnpk0xhwru1cc%ha&@p)@=%r9_vxuaddl^x@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [ '18.189.184.51', 'localhost' ]
+ALLOWED_HOSTS = [ '18.189.184.51', 'localhost', 'petpal-production.up.railway.app' ]
 
 
 # Application definition
