@@ -20,6 +20,10 @@ function ApplicationList(){
 
     useEffect(() => {
         setUserType(localStorage.getItem('user_type'));
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth' // Add smooth scrolling effect
+        });
     }, []);
 
     const query = useMemo(() => ({
@@ -76,7 +80,7 @@ function ApplicationList(){
                 </p>
                 {totalPages === 0 && (<div> <p className="no-apps"> No Applications found </p> <img className="sadDog" src={sadDog}></img>
                 {userType === "Seeker" && (<div class="col-12">
-                    <a class="appButton" onClick={() => navigate("/search/")}> Explore More Pets! </a>
+                    <a class="appButton" onClick={() => navigate(`/${(localStorage.getItem('user_type')).toLowerCase()}/search`)}> Explore More Pets! </a>
                 </div>)}
                 </div>)}
                 {totalPages !== 0 && <p>Page {query.page} out of {totalPages}</p>}

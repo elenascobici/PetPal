@@ -29,7 +29,7 @@ function ProvinceDropdown({tofill, fill}){
     }
     
     return <>
-        <select className="form-control" id="province" onChange={storeInput} required>
+        <select className="form-control name-control" id="province" onChange={storeInput} required>
             <option value="" selected disabled>Select Province</option>
             {provinceOptions.map((province) => (
                 <option key={province.value} value={province.value}>

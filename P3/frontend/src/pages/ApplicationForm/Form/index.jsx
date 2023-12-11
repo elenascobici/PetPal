@@ -11,10 +11,12 @@ import Veterinarian from "./Veterinarian";
 import Modal from "./Modal";
 import '../style.css';
 import AlertPopup from './Alert';
+import { Navigate, useNavigate } from "react-router-dom";
 
 import React, { useState, useEffect } from 'react';
 
 function Form({petID}){
+    const navigate = useNavigate();
 
     const [valid, setValid] = useState({
         adopterDetails: false,
@@ -85,12 +87,14 @@ function Form({petID}){
                     console.log('Application data:', data);
                     if (data.detail !== ""){
                         setError(data.detail);
-                        window.scrollTo({
-                            top: 0,
-                            behavior: 'smooth' // Add smooth scrolling effect
-                        });
+                        navigate("/application/list")
+                        // window.scrollTo({
+                        //     top: 0,
+                        //     behavior: 'smooth' // Add smooth scrolling effect
+                        // });
                         // console.log("DO U GO");
                         // return <Modal content = {data.detail} show = {true}/>
+                        
                     } else {
                         setError(null);
                     }

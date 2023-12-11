@@ -28,7 +28,7 @@ function HomeDropdown({tofill, fill}){
     }
     
     return <>
-        <select className="form-control" id="homeType" onChange={storeInput} required>
+        <select className="form-control name-control" id="homeType" onChange={storeInput} required>
             <option value="" selected disabled>Select Home Type</option>
             {homeOptions.map((home) => (
                 <option key={home.value} value={home.value}>

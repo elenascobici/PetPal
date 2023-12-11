@@ -11,14 +11,6 @@ import AlertPopup from "./Alert";
 import Messages from "./Messages";
 
 function ApplicationDetail(){
-    //! TO DO:
-    //! - Refactor
-    //! - Test Image
-    //! - Proper Auth Token and URL param retrieval for update n detail
-    //! FIX MODAL IT GOES INTO HEADER
-
-    // Get the application:
-    // let appID = 3; //! CHANGE
     
     const navigate = useNavigate();
     
@@ -62,8 +54,16 @@ function ApplicationDetail(){
         'IGL': 'Igloo'
     }
 
+    const back = () => {
+        navigate(-1);
+    };
+
 
     useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth' // Add smooth scrolling effect
+        });
         // console.log("APPD" + appID);
         const token = localStorage.getItem('access_token');
         fetch(`http://localhost:8000/application/${appID}/`, {
@@ -112,7 +112,7 @@ function ApplicationDetail(){
     return <>
     <div className="main-detail">
         <div className="application-details">
-            <BackButton />
+            <BackButton back={back}/>
             {notify && <AlertPopup />}
             <h1 className="app-title display-5"> My Application </h1>
         </div>
@@ -129,7 +129,7 @@ function ApplicationDetail(){
                             <Line label="Residential Address:" style="line" answer={app_data.street + ', ' + app_data.city + ', ' + fullProvince + ', Canada'} />
                             <Line label="Reason:" style="line-long" answer={app_data.reason} />
                             <Line label="Home Type:" style="line" answer={fullHome} />
-                            <Line label="Fenced Yard?:" style="line" answer={String(app_data.fenced_yard).charAt(0).toUpperCase() + String(app_data.fenced_yard).slice(1)} />
+                            <Line label="Fenced Yard:" style="line" answer={String(app_data.fenced_yard).charAt(0).toUpperCase() + String(app_data.fenced_yard).slice(1)} />
                             <Line label="Other Pets Owned:" style="line-long" answer={app_data.owned_pets ? app_data.owned_pets : 'N/A'} />
                             <Line label="Other Pets' Behavior:" style="line-long" answer={app_data.other_pet_behavior ? app_data.other_pet_behavior : 'N/A'} />
                             <Line label="Household Residents:" style="line-long" answer={app_data.residents ? app_data.residents : 'N/A'} />

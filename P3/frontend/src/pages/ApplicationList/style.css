@@ -82,6 +82,7 @@
   background-color: white;
   color: #FFA903;
   border-color: #FFA903;
+  cursor: pointer;
 }
 .grid-item > .blank {
   margin-top: 450px;
@@ -105,22 +106,24 @@
 }
 
 .card-text {
-  margin-bottom: 1rem;
+  margin-bottom: 0.7rem;
   font-size: 17px;
 }
 
 .empty-card{
-  height: 394px;
+  height: 433px;
 }
 
 .card-body{
   padding: 0px;
+  margin-top: 10px;
 }
 
 .card-img-top{
   /* padding: 15px; */
   padding-bottom: 0px;
-  height: 200px;
+  margin-bottom: 10px;
+  height: 230px;
   object-fit: cover;
   border-top-right-radius: 20px;
   border-top-left-radius: 20px;
@@ -131,6 +134,11 @@
   border: none;
   border-radius: 20px;
   width: 213px;
+  padding-top: 0px!important;
+  padding-left: 0px!important;
+  padding-right: 0px!important;
+  padding-bottom: 1.5rem!important;
+
   /* height: 400px; */
 }
 

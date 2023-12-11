@@ -35,6 +35,8 @@
     /* border: 1px solid!important;  */
     box-shadow: none;
     /* width: 50%!important; */
+    font-size: 15px!important;
+    padding: 0.5rem!important;
   }
 
   .fence-padding {

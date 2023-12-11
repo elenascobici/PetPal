@@ -41,7 +41,7 @@ function Email({value, check, tofill, fill}){
         <div className="row mb-3">
             <label for="email" className="col-12 col-form-label text-start col-lg-2 text-lg-end">Email</label>
                 <div className="col-12 col-lg-10">
-                    <input type="email" className="form-control" id="email" placeholder="ryder@pawpatrol.com" 
+                    <input type="email" className="form-control name-control" id="email" placeholder="ryder@pawpatrol.com" 
                     onInput={(event) => inputCheck(event)} style={{ borderColor: empty || !valid ? 'red' : '' }} 
                     required/>
                     {empty &&  <p className="required-error"> * This field is required </p>}
