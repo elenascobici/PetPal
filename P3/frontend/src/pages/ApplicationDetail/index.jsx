@@ -11,14 +11,6 @@ import AlertPopup from "./Alert";
 import Messages from "./Messages";
 
 function ApplicationDetail(){
-    //! TO DO:
-    //! - Refactor
-    //! - Test Image
-    //! - Proper Auth Token and URL param retrieval for update n detail
-    //! FIX MODAL IT GOES INTO HEADER
-
-    // Get the application:
-    // let appID = 3; //! CHANGE
     
     const navigate = useNavigate();
     
@@ -62,8 +54,16 @@ function ApplicationDetail(){
         'IGL': 'Igloo'
     }
 
+    const back = () => {
+        navigate(-1);
+    };
+
 
     useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth' // Add smooth scrolling effect
+        });
         // console.log("APPD" + appID);
         const token = localStorage.getItem('access_token');
         fetch(`http://localhost:8000/application/${appID}/`, {
@@ -112,7 +112,7 @@ function ApplicationDetail(){
     return <>
     <div className="main-detail">
         <div className="application-details">
-            <BackButton />
+            <BackButton back={back}/>
             {notify && <AlertPopup />}
             <h1 className="app-title display-5"> My Application </h1>
         </div>

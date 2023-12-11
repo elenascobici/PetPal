@@ -10,6 +10,11 @@ function ApplicationForm(){
     const [pet_data, setPetData] = useState({});
 
     useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth' 
+        });
+
           const token = localStorage.getItem('access_token');
           fetch(`http://localhost:8000/pet/${petID}/`, {
             method: 'GET',

@@ -20,6 +20,10 @@ function ApplicationList(){
 
     useEffect(() => {
         setUserType(localStorage.getItem('user_type'));
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth' // Add smooth scrolling effect
+        });
     }, []);
 
     const query = useMemo(() => ({
