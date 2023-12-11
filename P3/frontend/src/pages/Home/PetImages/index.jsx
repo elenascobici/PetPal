@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
 import PetImageCard from "./PetImageCard";
 import Buddy from "../../../assets/images/buddy.jpg";
-import Quokkie from "../../../assets/images/quokkie.png";
+import Quokkie from "../../../assets/images/quokkie.jpg";
 import Calcifer from "../../../assets/images/calcifer.jpg";
 import HokeyPokey from "../../../assets/images/hokey-pokey.jpg";
 import DefaultPet from "../../../assets/images/default-pet.png";
