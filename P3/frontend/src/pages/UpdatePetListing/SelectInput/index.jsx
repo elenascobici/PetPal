@@ -1,9 +1,9 @@
 import React from 'react';
 
 export const sizeOptions = [
-  { value: 'Small', label: 'Small' },
-  { value: 'Medium', label: 'Medium' },
-  { value: 'Large', label: 'Large' }
+  { value: 'small', label: 'Small' },
+  { value: 'medium', label: 'Medium' },
+  { value: 'large', label: 'Large' }
 ];
 
 export const genderOptions = [

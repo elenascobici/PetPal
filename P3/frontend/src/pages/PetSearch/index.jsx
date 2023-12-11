@@ -92,12 +92,6 @@ function PetSearch() {
                 ))}
             </div>
 
-            {/* <Pagination 
-                currentPage={currentPage}
-                totalPages={totalPages}
-                onPageChange={handlePageChange}
-            /> */}
-
             <div class="col-12">
                 <p className="pageInfo">
                 { query.page < totalPages
