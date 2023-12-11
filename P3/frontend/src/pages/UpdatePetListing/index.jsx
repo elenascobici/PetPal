@@ -134,7 +134,7 @@ const EditPetForm = () => {
           <h2 className="text-center mb-4 mt-4 title">Edit Pet Listing</h2>
           <form onSubmit={handleSubmit}>
             <div className="alert alert-info" role="alert">
-                Please fill out at least one field to update.
+                Please fill out at least one field to update. 
             </div>
             <TextInput id="name" value={formData.name} label="Pet Name" readOnly/>
             <TextAreaInput id="description" value={formData.description} onChange={handleChange} label="Description" rows="3" />
@@ -151,7 +151,7 @@ const EditPetForm = () => {
             <FileInput id="image" onChange={handleFileChange} label="Image"/>
             <div className="row mb-3 mt-4">
               <div className="col-12">
-                <button className="yellowButton" type="button" onClick={handleCancel}>Cancel</button>
+                <button className="greyButton" type="button" onClick={handleCancel}>Cancel</button>
                 <button className="yellowButton" type="submit" >Update</button>
               </div>
             </div>
