@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './style.css';
-import PetImageGallery from './PetImage';
+import PetImage from './PetImage';
 import PetDetailsTable from './PetDetailsTable';
 import PetDescription from './PetDescription';
 import AdoptButton from './AdoptButton';
@@ -50,8 +50,9 @@ const PetDetails = () => {
             <h3 id="date">Submission Deadline: {petData.deadline}</h3>
           </div>
 
-          {/* <PetImageGallery images={petData.pet_image_1} /> */}
+          
           <PetDetailsTable details={petData} />
+          <PetImage images={petData.pet_image_1} />
           <PetDescription title="Description" content={petData.description} />
           <PetDescription title="Medical History" content={petData.medicalHistory} />
           <AdoptButton status={petData.status} onAdopt={handleAdoptClick} />
