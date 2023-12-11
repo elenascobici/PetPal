@@ -13,18 +13,15 @@ function PetSearch() {
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
     const [searchTerm, setSearchTerm] = useState('');
-    const [filters, setFilters] = useState({}); // Add this line
+    const [filters, setFilters] = useState({}); 
   
     const itemsPerPage = 8;
   
     useEffect(() => {
         console.log("Running useEffect");
         const type = searchParams.get('type');
-        const color = searchParams.get('color');
-        console.log("Type:", type, "Color:", color);
         setFilters({
           type: type || '',
-          color: color || '',
         });
       }, []);
   
@@ -83,7 +80,7 @@ function PetSearch() {
             <div id="subtitle">Click on a pet to edit</div>
 
             <SearchBar set={setSearchParams} val={query.search} />
-            <SortAndFilter setFilters={setFilters} setSearchParams={setSearchParams} searchParams={searchParams} />
+            <SortAndFilter setFilters={setFilters} />
             
 
             <div className="grid petGrid">
