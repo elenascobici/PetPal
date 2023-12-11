@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import PetGrid from './PetGrid';
 import Buddy from "../../../assets/images/buddy.jpg"
 import Calcifer from "../../../assets/images/calcifer.jpg"
-import Quokkie from "../../../assets/images/quokkie.png"
+import Quokkie from "../../../assets/images/quokkie.jpg"
 import HokeyPokey from "../../../assets/images/hokey-pokey.jpg"
 import Hamtaro from "../../../assets/images/hamtaro.jpg"
 import Jiji from "../../../assets/images/jiji.jpg"
