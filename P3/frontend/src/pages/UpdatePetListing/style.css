@@ -52,6 +52,7 @@
     padding: 0.2rem 1rem;
     transition: 0.3s;
     text-decoration: none;
+    margin: 10px;
   }
 
   .yellowButton:hover {
