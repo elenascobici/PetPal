@@ -1,10 +1,12 @@
 import React from 'react';
+import { useSearchParams } from 'react-router-dom';
 import Dropdown from 'react-bootstrap/Dropdown';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 
 function SortAndFilter({ setFilters }) {
+    const [searchParams, setSearchParams] = useSearchParams();
     const handleSortChange = (value) => {
         setFilters(filters => ({ ...filters, sort: value }));
     };
@@ -15,17 +17,25 @@ function SortAndFilter({ setFilters }) {
 
     const handleTypeChange = (value) => {
         setFilters(filters => ({ ...filters, "type": value }));
+        searchParams.append('type', value);
+        setSearchParams(searchParams.toString());
     };
 
     const handleStatusChange = (value) => {
         setFilters(filters => ({ ...filters, "status": value }));
+        searchParams.append('status', value);
+        setSearchParams(searchParams.toString());
     };
 
     const handleAgeChange = (value) => {
         setFilters(filters => ({ ...filters, "age": value }));
+        searchParams.append('age', value);
+        setSearchParams(searchParams.toString());
     };
     const handleSizeChange = (value) => {
         setFilters(filters => ({ ...filters, "size": value }));
+        searchParams.append('size', value);
+        setSearchParams(searchParams.toString());
     };
 
     return (

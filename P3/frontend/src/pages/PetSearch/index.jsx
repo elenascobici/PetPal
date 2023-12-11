@@ -12,23 +12,30 @@ function PetSearch() {
     const [pets, setPets] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
-    const [filters, setFilters] = useState({ }); 
-    
-
-    const [searchTerm, setSearchTerm] = useState(''); 
-
+    const [searchTerm, setSearchTerm] = useState('');
+    const [filters, setFilters] = useState({}); 
+  
     const itemsPerPage = 8;
-
+  
+    useEffect(() => {
+        console.log("Running useEffect");
+        const type = searchParams.get('type');
+        setFilters({
+          type: type || '',
+        });
+      }, []);
+  
     const query = useMemo(() => ({
         page: parseInt(searchParams.get("page") ?? 1),
         search: searchParams.get("search") ?? ''
     }), [searchParams]);
 
     useEffect(() => {
+      const fetchData = async () => {
         const param = new URLSearchParams(query);
         const token = localStorage.getItem('access_token');
         const url = new URL(`http://localhost:8000/pet/search/?${param}`);
-        
+  
         Object.keys(filters).forEach(key => {
             if (filters[key]) {
                 url.searchParams.append(key, filters[key]);
@@ -45,18 +52,23 @@ function PetSearch() {
                 'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json',
             },
-        })
-        .then(response => response.json())
-        .then(data => {
-        console.log("Pagination data from backend:", data);
-        setPets(data.results);
-
-        const totalItems = data.count;
-        setTotalPages(Math.ceil(totalItems / itemsPerPage));
-    })
-    .catch(error => console.error('Error:', error));
-}, [currentPage, filters, searchTerm, query]); 
-
+          });
+  
+          const data = await response.json();
+          console.log("Pagination data from backend:", data);
+  
+          setPets(data.results);
+  
+          const totalItems = data.count;
+          setTotalPages(Math.ceil(totalItems / itemsPerPage));
+        } catch (error) {
+          console.error('Error:', error);
+        }
+      };
+  
+      fetchData();
+    }, [currentPage, filters, searchTerm, query]);
+  
     const handlePageChange = (newPage) => {
         setCurrentPage(newPage);
     };
