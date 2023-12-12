@@ -133,17 +133,9 @@ export const ViewMyProfileSeeker = ({userData, errors, updateProfile}) => {
                 <div class="gridLabel">Preferences</div>
             </div>
             <div class="grid-item">
-                <input type="text" list="preferenceList" name="preferences" 
-                    id="preferences" class="gridValue" defaultValue={userData.preferences ? userData.preferences : false}/>
+                <input type="checkbox" list="preferenceList" name="preferences" 
+                    id="preferences" class="gridValue" defaultChecked={userData.preferences ? userData.preferences : false}/>
                 <p class="text-input-error-message" id="preferences-error"></p>
-                <datalist id="preferenceList">
-                    <option value="Dogs">Dogs</option>
-                    <option value="Cats">Cats</option>
-                    <option value="Rabbits">Rabbits</option>
-                    <option value="Hamsters">Hamsters</option>
-                    <option value="Hedgehogs">Hedgehogs</option>
-                    <option value="Quokkas">Quokkas</option>
-                </datalist>
             </div>
             </div>
             <button type="submit" class="editButton" id="save-button">Save</button>
