@@ -10,6 +10,7 @@ from rest_framework.exceptions import NotAuthenticated, PermissionDenied
 from rest_framework.pagination import PageNumberPagination
 from django.utils import timezone
 from notifications.models import Notification
+from django.db.models import Q
 
 
 class ApplicationCreateView(CreateAPIView):
@@ -115,6 +116,10 @@ class ApplicationListView(ListAPIView):
 
             queryset = queryset.order_by(field)
         # else if none then do nothing.
+
+        search = self.request.query_params.get('search')
+        if (search != ''):
+            queryset = Application.objects.filter(Q(pet__name__icontains=search))
     
         return queryset
     

@@ -103,7 +103,7 @@ function PetCard({listing, image}){
                 </p>
                 <a class="appView" onClick={() => navigate(`/application/${listing.id}/`)}>View Application</a>
               </div> 
-          </div>) : <div class="grid-item card mb-3 rounded-card centered empty-card" style={user_type === "Shelter" && { height: '452px' }}/>}
+          </div>) : <div class="grid-item card mb-3 rounded-card centered empty-card" style={user_type === "Shelter" ? { height: '452px' } : {}}/>}
           
     </>;
 }

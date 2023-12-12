@@ -1,5 +1,6 @@
 import PetCard from "./PetCard";
 import "./style.css"
+import SearchBar from "../PetSearch/SearchBar";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect, useMemo } from "react";
 import { useSearchParams } from "react-router-dom";
@@ -17,6 +18,7 @@ function ApplicationList(){
     const [pets, setPets ] = useState([]);
     const [numTotal, setTotal] = useState(0);
     const [userType, setUserType] = useState("");
+    const [searchTerm, setSearchTerm] = useState('');
 
     useEffect(() => {
         setUserType(localStorage.getItem('user_type'));
@@ -30,11 +32,13 @@ function ApplicationList(){
         page: parseInt(searchParams.get("page") ?? 1),
         status: searchParams.get("status") ?? '',
         type: searchParams.get("type") ?? '',
+        search: searchParams.get("search") ?? ''
     }), [searchParams]);
 
     const fetchData = () => {
         const param = new URLSearchParams(query);
         const token = localStorage.getItem('access_token');
+        // https://petpal-production.up.railway.app/application/list/?${param}
         fetch(`https://petpal-production.up.railway.app/application/list/?${param}`, {
         method: 'GET',
         headers: {
@@ -59,11 +63,12 @@ function ApplicationList(){
 
     useEffect(() => {
         fetchData();
-    }, [query]);
+    }, [query, searchTerm]);
 
     return <>
         <div class="main-user-applications">
             <h2 id="title-app">Application Overview</h2>
+            <SearchBar set={setSearchParams} val={query.search} />
             <Filters setParam={setSearchParams} query={query}/>
   
             <PetApplications listings={pets} totalPets={numTotal}/>
