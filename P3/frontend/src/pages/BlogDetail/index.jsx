@@ -114,7 +114,7 @@ const BlogDetail = () => {
   };
 
   const handleSeeMore = () => {
-    navigate(`/blogs/`);
+    navigate(`/blog/search`);
   };
 
 
