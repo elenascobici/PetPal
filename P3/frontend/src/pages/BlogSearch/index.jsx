@@ -33,7 +33,7 @@ const BlogSearch = () => {
         const authToken = localStorage.getItem('access_token'); 
 
         const fetchBlogs = async () => {
-        const url = new URL('https://petpal-production.up.railway.app/blogs/list');
+        const url = new URL(`https://petpal-production.up.railway.app/blogs/list`);
         url.searchParams.append('page', currentPage);
         if (searchTerm) {
             url.searchParams.append('search', searchTerm);
