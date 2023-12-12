@@ -37,6 +37,14 @@ const ShelterDetail = () => {
     const { shelterId, shelterName } = useParams();
     const [ shelter, setShelter ] = useState({});
 
+    const get_image_url = (image) => {
+        if (image && typeof image === 'string') {
+            const img = "https://petpal-production.up.railway.app/accounts/profile-picture/" + image.split('/').pop();
+            return img;
+        }
+        return
+    }
+
     useEffect(() => {
         const token = localStorage.getItem('access_token'); 
         fetch(`https://petpal-production.up.railway.app/accounts/profile/${shelterId}`, {
@@ -82,7 +90,7 @@ const ShelterDetail = () => {
       
         <ContactDetails phone={format_phone(shelter.phone)} email={shelter.email} 
             location={format_location(shelter.street, shelter.city, shelter.province)} 
-            image={shelter.profile_picture}/>
+            image={get_image_url(shelter.profile_picture)}/>
         <MissionStatement statement={shelter.mission_statement} />
         
         <div className="container justify-content-start text-start">
