@@ -62,7 +62,7 @@ function App() {
         <Route path="pet/:petId/update" element={<PrivateRoute> <UpdatePet /> </PrivateRoute>} />
         <Route path="seeker/search/" element={<PrivateRoute> <PetSearchSeeker /> </PrivateRoute>} />
         <Route path="shelter/search/" element={<PrivateRoute> <PetSearchShelter /> </PrivateRoute>} />
-        <Route path="blog/search/" element={<BlogSearch />} />
+        <Route path="blog/search/" element={<PrivateRoute> <BlogSearch /> </PrivateRoute>} />
         <Route path="*" element={<NotFound />} /> 
       </Route>
     </Routes>
