@@ -1,7 +1,7 @@
 const PetDetailsTable = ({ details }) => {
 
   const filteredDetails = Object.entries(details).reduce((acc, [key, value]) => {
-    if (key !== "description" && key !== "medical_history" && key !== "pet_image_1" && key !== "id"  && key !== "deadline" ) {
+    if (key !== "description" && key !== "medical_history" && key !== "pet_image_1" && key !== "id"  && key !== "deadline" && key !== "shelter" ) {
       acc[key] = value;
     }
     return acc;
