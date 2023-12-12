@@ -134,7 +134,7 @@ export const ViewMyProfileSeeker = ({userData, errors, updateProfile}) => {
             </div>
             <div class="grid-item">
                 <input type="checkbox" list="preferenceList" name="preferences" 
-                    id="preferences" class="gridValue" defaultChecked={userData.preferences ? userData.preferences : false}/>
+                    id="preferences" class="gridValue" defaultChecked={userData.preferences}/>
                 <p class="text-input-error-message" id="preferences-error"></p>
             </div>
             </div>
