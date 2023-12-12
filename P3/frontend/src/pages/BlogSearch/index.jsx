@@ -9,12 +9,17 @@ const BlogSearch = () => {
     const [searchParams, setSearchParams] = useSearchParams();
     const [blogs, setBlogs] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
-    const [currentPage, setCurrentPage] = useState(1);
+    const [currentPage, setCurrentPage] = useState(parseInt(searchParams.get("page") ?? 1));
     const [totalPages, setTotalPages] = useState(0);
 
     console.log(currentPage, totalPages);
 
     const itemsPerPage = 10;
+
+    useEffect(() => {
+        const newPage = parseInt(searchParams.get("page") ?? 1);
+        setCurrentPage(newPage);
+    }, [searchParams]);
 
     const query = useMemo(() => ({
         page: parseInt(searchParams.get("page") ?? 1),
@@ -28,7 +33,7 @@ const BlogSearch = () => {
         const authToken = localStorage.getItem('access_token'); 
 
         const fetchBlogs = async () => {
-        const url = new URL('https://petpal-production.up.railway.app/blogs/list');
+        const url = new URL('http://localhost:8000/blogs/list');
         url.searchParams.append('page', currentPage);
         if (searchTerm) {
             url.searchParams.append('search', searchTerm);
@@ -54,10 +59,10 @@ const BlogSearch = () => {
         fetchBlogs().catch(error => {
             console.error('Error fetching blogs:', error);
         });
-    }, [currentPage, searchTerm, query]);
+    }, [currentPage, searchTerm]);
 
     const handlePageChange = (newPage) => {
-        setCurrentPage(newPage);
+        setCurrentPage({ page: newPage, search: searchTerm });
     };
 
     return (

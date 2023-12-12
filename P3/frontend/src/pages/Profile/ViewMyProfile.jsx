@@ -24,6 +24,7 @@ export const ViewMyProfile = () => {
             })
             .then(data => {
                 setUserData(data);
+                console.log(data);
             })
             .catch(error => {
                 console.error('Error:', error);
@@ -75,7 +76,9 @@ export const ViewMyProfile = () => {
         if (updateData.password === "") {
             delete updateData.password;
         }
-        console.log(JSON.stringify(updateData));
+        for (var pair of updateData.entries()) {
+            console.log(pair[0]+ ', ' + pair[1]); 
+        }
         fetch(`https://petpal-production.up.railway.app/accounts/profile/`, {
             method: 'PUT',
             headers: {

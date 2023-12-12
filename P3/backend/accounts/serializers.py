@@ -127,8 +127,8 @@ class UpdateShelterSerializer(ModelSerializer):
     class Meta:
         model = Shelter
         fields = ['username', 'password', 'email', 'province', 'name', 
-                  'website_link', 'preferred_contact', 
-                  'mission_statement', 'profile_picture']
+                  'website_link', 'preferred_contact', 'phone',
+                  'mission_statement', 'profile_picture', 'street', 'city']
     
     def update(self, instance, validated_data):
         for attr, value in validated_data.items():
@@ -151,7 +151,8 @@ class ViewShelterSerializer(ModelSerializer):
         model = Shelter
         fields = ['id', 'username', 'email', 'province', 'profile_picture', 
                   'name', 'website_link', 'preferred_contact', 
-                  'mission_statement', 'user_type', 'average_rating']
+                  'mission_statement', 'user_type', 'average_rating',
+                  'street', 'city', 'phone']
 
 
     

@@ -107,7 +107,7 @@ export const ViewMyProfileSeeker = ({userData, errors, updateProfile}) => {
                 <textarea id="location" rows = "1" type="text" name="street" class="gridValue street" defaultValue={userData.street}></textarea>
                 <p class="text-input-error-message" id="street-error"></p>
                 <p class="locationType">Street</p>
-                <textarea rows = "1" type="text" name="city" class="gridValue city">{userData.city}</textarea>
+                <textarea rows = "1" type="text" name="city" class="gridValue city" defaultValue={userData.city}></textarea>
                 <p class="text-input-error-message" id="city-error"></p>
                 <p class="locationType">City</p>
                 <select name="province" class="gridValue" id="province-select" defaultValue={userData.province ? userData.province : null}>
@@ -134,7 +134,7 @@ export const ViewMyProfileSeeker = ({userData, errors, updateProfile}) => {
             </div>
             <div class="grid-item">
                 <input type="checkbox" list="preferenceList" name="preferences" 
-                    id="preferences" class="gridValue" defaultChecked={userData.preferences ? userData.preferences : false}/>
+                    id="preferences" class="gridValue" defaultChecked={userData.preferences}/>
                 <p class="text-input-error-message" id="preferences-error"></p>
             </div>
             </div>
