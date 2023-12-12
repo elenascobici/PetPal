@@ -62,7 +62,7 @@ const BlogSearch = () => {
     }, [currentPage, searchTerm]);
 
     const handlePageChange = (newPage) => {
-        setCurrentPage({ page: newPage, search: searchTerm });
+        setSearchParams({ page: newPage, search: searchTerm });
     };
 
     return (
