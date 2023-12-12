@@ -51,6 +51,14 @@
     color: #009899;
     transition: 0.3s;
  }
+
+ .blog-pagination .page-item {
+   background-color: white;
+   border: none;
+   padding: 0;
+   margin: 0;
+ }
+
  
  .page-item:active {
     background-color: #047d7d;
