@@ -3,10 +3,6 @@
 
 **[PetPal](https://pet-pal-vercel.vercel.app/)** is a platform that simplifies pet adoption by connecting users with shelters and streamlining the adoption of various pets! This project was created with **React**, **HTML**, **CSS** (Bootstrap) **Django** and **MySQL**.
 
-[Insert Video] 
-
-[Insert ER diagram?]
-
 **References:**
 - https://getbootstrap.com/docs/5.0/getting-started/introduction/
 - https://www.w3schools.com/bootstrap5/bootstrap_carousel.php
