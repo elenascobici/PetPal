@@ -3,7 +3,6 @@
 
 **[PetPal](https://pet-pal-vercel.vercel.app/)** is a platform that simplifies pet adoption by connecting users with shelters and streamlining the adoption of various pets! This project was created with **React**, **HTML**, **CSS** (Bootstrap) **Django** and **MySQL**.
 
-
 ### Features & Demo
 #### Login
 Users/ogranizations can choose to login as a seeker or shelter depending on whether they want to adopt a pet or want to make pets available for adoption.
@@ -31,7 +30,7 @@ Create a pet shelter account
 ### Other
 Update or delete profile for both users
 
-access the blog, make and view commenys
+access the blog, make and view comments
 
 ### Setup and Installation
 With Python, Node.js, npm and MySQL installed, **clone** this repository:
