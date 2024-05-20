@@ -72,7 +72,7 @@ npm start
 ```
 
 ## University of Toronto
-Programming on the Web (CSC309) <br>
+Programming on the Web (CSC309 Course Project) <br>
 Grade: 96%
 
 ## Authors
