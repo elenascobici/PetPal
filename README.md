@@ -3,14 +3,25 @@
 
 **[PetPal](https://pet-pal-vercel.vercel.app/)** is a platform that simplifies pet adoption by connecting users with shelters and streamlining the adoption of various pets! This project was created with **React**, **HTML**, **CSS** (Bootstrap) **Django** and **MySQL**.
 
-### Features & Demo
+### Landing Page
+
+<p align="center">
+  <img src="https://github.com/elenascobici/PetPal/assets/95773832/9db0ab0c-3563-4a5f-8e9d-0d76e5447306" alt="Description" />
+</p>
+
+
 #### Login
 Users/ogranizations can choose to login as a seeker or shelter depending on whether they want to adopt a pet or want to make pets available for adoption.
+<img width="1273" alt="image" src="https://github.com/elenascobici/PetPal/assets/95773832/efeac658-8fea-47f1-8f74-f74a365966c1">
 
 #### Seeker
 Signing up as a seeker, a user can search for pets of interest via the Find Pets page.
+<img width="1271" alt="image" src="https://github.com/elenascobici/PetPal/assets/95773832/2260edd2-c936-41b8-a192-0340834d969f">
+
 
 Sort pets by various filter and view they satus
+
+
 
 Click on each pet to enter their profile or view shelter details
 
