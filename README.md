@@ -71,8 +71,6 @@ Start the React development server:
 npm start 
 ```
 
-**Sign Up!**
-
 ## University of Toronto
 Programming on the Web (CSC309) <br>
 Grade: 96%
