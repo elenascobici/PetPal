@@ -24,7 +24,7 @@ Shelters and seekers can **view** the Blog page where they can **search**, **cre
 https://github.com/elenascobici/PetPal/assets/95773832/2cd15293-50c7-4267-a8fb-14fc150295ac
 
 ## Setup and Installation
-With `Python 3.12.` , `Django 5.0`, `React 18.2.0` and latest version of `MySQL` installed, **clone** this repository.
+With `Python 3.12.`, `Django 5.0`, `React 18.2.0` and the latest version of `MySQL` installed, **clone** this repository.
 
 ### Backend
 Navigate to **backend** folder:
