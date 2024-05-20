@@ -1,55 +1,32 @@
 
 ![Group 2 (1)](https://github.com/elenascobici/PetPal/assets/95773832/a4b936db-a63a-4c2b-b9ea-568600588626)
 
-**[PetPal](https://pet-pal-vercel.vercel.app/)** is a platform that simplifies pet adoption by connecting users with shelters and streamlining the adoption of various pets! This project was created with **React**, **HTML**, **CSS** (Bootstrap) **Django** and **MySQL**.
+**[PetPal](https://pet-pal-vercel.vercel.app/)** is a platform that simplifies pet adoption by connecting users with shelters and streamlining the adoption of various pets! This project was created with **React**, **HTML**, **CSS** (Bootstrap), **Django** and **MySQL**.
 
-### Landing Page
+https://github.com/elenascobici/PetPal/assets/95773832/a6cc563a-5ab6-4ba4-a04d-ca76d5b8c309
 
-<p align="center">
-  <img src="https://github.com/elenascobici/PetPal/assets/95773832/9db0ab0c-3563-4a5f-8e9d-0d76e5447306" alt="Description" />
-</p>
+## Features
 
+### Seekers
+Seekers who are looking to adopt pets, can **sign up** as a seeker, **search** for pets, **view** pet profiles and **adopt** pets by filling out the adoption form. After submitting a form, seekers can **view** the status of all pets they applied for, **message** the shelter of the pet and receive **notifications** once the shelter has approved/denied the adoption request.
 
-#### Login
-Users/ogranizations can choose to login as a seeker or shelter depending on whether they want to adopt a pet or want to make pets available for adoption.
-<img width="1273" alt="image" src="https://github.com/elenascobici/PetPal/assets/95773832/efeac658-8fea-47f1-8f74-f74a365966c1">
+https://github.com/elenascobici/PetPal/assets/95773832/6f0c1976-742c-4184-8520-d05d83543c97
 
-#### Seeker
-Signing up as a seeker, a user can search for pets of interest via the Find Pets page.
-<img width="1271" alt="image" src="https://github.com/elenascobici/PetPal/assets/95773832/2260edd2-c936-41b8-a192-0340834d969f">
+### Shelters
+Shelter organizations who would like to offer pets for adoption, can **sign up** as a shelter, **create** new pets for adoption, **manage** pet adoption requests, **message** interested pet seekers and **notify** pet seekers on the status of their application.
 
-
-Sort pets by various filter and view they satus
+https://github.com/elenascobici/PetPal/assets/95773832/65db024c-08e3-4da8-b295-9b31577fb2e6
 
 
+### Pet Blog
+Shelters and seekers can **view** the Blog page where they can **search**, **create**, **update** and **comment** on blogs through their **profile/account**.
 
-Click on each pet to enter their profile or view shelter details
+https://github.com/elenascobici/PetPal/assets/95773832/2cd15293-50c7-4267-a8fb-14fc150295ac
 
-If available, adopt!
+## Setup and Installation
+With `Python 3.12.` , `Django 5.0`, `React 18.2.0` and latest version of `MySQL` installed, **clone** this repository.
 
-Fill out the General Pet Adoption Application
-
-View the pet you submitted an aplication for in My Applications
-
-Chat with the Shelter of the pet you want to adopt
-
-Receive notifications once the Shelter has approved from the notifications center
-
-### Shelter
-Create a pet shelter account
-
-### Other
-Update or delete profile for both users
-
-access the blog, make and view comments
-
-### Setup and Installation
-With Python, Node.js, npm and MySQL installed, **clone** this repository:
-``` bash 
-git clone <>
-```
-
-#### Backend
+### Backend
 Navigate to **backend** folder:
 ```bash
 cd PetPal/P3/backend
@@ -77,11 +54,11 @@ Run the backend server:
 ```bash
 python manage.py runserver
 ```
-#### Frontend
+### Frontend
 
 Navigate to the frontend folder:
 ```bash
-cd ../frontend
+cd PetPal/P3/frontend
 ```
 
 Install the required packages:
@@ -94,16 +71,14 @@ Start the React development server:
 npm start 
 ```
 
-**Signup** as a _seeker_ to adopt pets or _shelter_ to add pets for adoption!
+**Sign Up!**
 
-### University of Toronto
+## University of Toronto
 Programming on the Web (CSC309) <br>
 Grade: 96%
 
-### Authors
-
-Note: We are working on deploying this so you can access it without a hassle.
-
+## Authors
+Malaikah Hussain, Cassandra Tin Kwon Yuen, Daelenia Susanto, Elena Scobici
 
 
 
