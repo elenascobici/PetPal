@@ -27,7 +27,7 @@ https://github.com/elenascobici/PetPal/assets/95773832/2cd15293-50c7-4267-a8fb-1
 With `Python 3.12.0`, `Django 5.0`, `React 18.2.0` and the latest version of `MySQL` installed, **clone** this repository.
 
 ### Backend
-Navigate to **backend** folder:
+Navigate to the backend folder:
 ```bash
 cd PetPal/P3/backend
 ```
