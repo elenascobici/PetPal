@@ -35,8 +35,7 @@ cd PetPal/P3/backend
 Create and activate the virtual environment
 ``` bash
 python3 -m venv venv
-.\venv\Scripts\activate  # On Windows
-source venv/bin/activate  # On MacOS/Linux
+.\venv\Scripts\activate 
 ```
 
 Install the required packages
